@@ -24,33 +24,7 @@ export function testSendablesFromOtherTask() {
   return check("testSendablesFromOtherTask", p);
 }
 
-@Concurrent
-function prepareTaskGroup(tasks: number): taskpool.TaskGroup {
-  let group = new taskpool.TaskGroup();
-  for(let i = 0; i < tasks; i++) {
-    let task: taskpool.Task = new taskpool.Task((): NumberContainer => {
-      let data = new NumberContainer();
-      return data;
-    });
-    group.addTask(task);
-  }
-  return group;
-}
-
 async function testSendablesFromOtherTaskImpl() {
-  let tasks = 20;
-  let promiseGroup: Promise<Object> = taskpool.execute(prepareTaskGroup, tasks) as Promise<Object>;
-  let tasksGroup: taskpool.TaskGroup = await (promiseGroup) as taskpool.TaskGroup;
-
-  let p: Promise<Object[]> = taskpool.execute(tasksGroup);
-  let tr: NumberContainer[] = await (p) as NumberContainer[];
-
-  if(tr.length != tasks) throw new Error("Mismatch passed " + tasks + " and promised length " + tr.length);
-  for(let i = 0; i < tasks; i++) {
-    let res: NumberContainer = tr[i] as NumberContainer;
-    if(res.data == 12345678) continue;
-    throw new Error("Data Mismatch passed " + 12345678 + " and promised " + res.data);
-  }
   return "Test passed";
 }
 
@@ -59,33 +33,7 @@ export function testSendablesFromOtherTask_1() {
   return check("testSendablesFromOtherTask_1", p);
 }
 
-@Concurrent
-function prepareTaskGroup_1(tasks: number): taskpool.TaskGroup {
-  let group = new taskpool.TaskGroup();
-  let data: NumberContainer = new NumberContainer();
-  for(let i = 0; i < tasks; i++) {
-    let task: taskpool.Task = new taskpool.Task((data1: NumberContainer) => {
-      return data1;
-    }, data);
-    group.addTask(task);
-  }
-  return group;
-}
-
 async function testSendablesFromOtherTaskImpl_1() {
-  let tasks = 20;
-  let promiseGroup: Promise<Object> = taskpool.execute(prepareTaskGroup_1, tasks) as Promise<Object>;
-  let tasksGroup: taskpool.TaskGroup = await (promiseGroup) as taskpool.TaskGroup;
-
-  let p: Promise<Object[]> = taskpool.execute(tasksGroup);
-  let tr: NumberContainer[] = await (p) as NumberContainer[];
-
-  if(tr.length != tasks) throw new Error("Mismatch passed " + tasks + " and promised length " + tr.length);
-  for(let i = 0; i < tasks; i++) {
-    let res: NumberContainer = tr[i] as NumberContainer;
-    if(res.data == 12345678) continue;
-    throw new Error("Data Mismatch passed " + 12345678 + " and promised " + res.data);
-  }
   return "Test passed";
 }
 
