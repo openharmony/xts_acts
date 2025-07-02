@@ -60,10 +60,19 @@ static OH_AVFormat *format = nullptr;
 static int32_t g_trackCount;
 static int32_t g_width = 3840;
 static int32_t g_height = 2160;
+constexpr int32_t THOUSAND = 1000.0;
+int32_t unSelect = -1;
+const std::string TRACK_REF_TYPE_DEPTH = "vdep";
+const std::string TRACK_REF_TYPE_PREY = "auxl";
+const std::string TRACK_REF_TYPE_CDSC = "cdsc";
+const std::string AUXILIARY_DEPTH_TRACK_KEY = "com.openharmony.moviemode.depth";
+const std::string AUXILIARY_PREY_TRACK_KEY = "com.openharmony.moviemode.prey";
+const std::string TIMED_METADATA_KEY = "timed_metadata"; 
 void DemuxerFunc2NdkTest::SetUpTestCase() {}
 void DemuxerFunc2NdkTest::TearDownTestCase() {}
 void DemuxerFunc2NdkTest::SetUp()
 {
+    unSelect = -1;
     memory = OH_AVMemory_Create(g_width * g_height);
     g_trackCount = 0;
 }
@@ -166,6 +175,42 @@ static void CountAudioFrames(OH_AVDemuxer *audioDemuxer, OH_AVMemory *mem,
     ASSERT_EQ(keyCount, audioKeyNum);
 }
 
+static void SetVideoValue(OH_AVCodecBufferAttr attr, bool &videoIsEnd, int &videoFrame, int &vKeyCount)
+{
+    if (attr.flags & OH_AVCodecBufferFlags::AVCODEC_BUFFER_FLAGS_EOS) {
+        videoIsEnd = true;
+        cout << videoFrame << "   video is end !!!!!!!!!!!!!!!" << endl;
+    } else {
+        videoFrame++;
+        cout << "video track !!!!!" << endl;
+        if (attr.flags & OH_AVCodecBufferFlags::AVCODEC_BUFFER_FLAGS_SYNC_FRAME) {
+            vKeyCount++;
+        }
+    }
+}
+static void InitFile(const char *file, int32_t trackNum, int &fd, bool &initResult)
+{
+    fd = open(file, O_RDONLY);
+    int64_t size = GetFileSize(file);
+    cout << file << "----------------------" << fd << "---------" << size << endl;
+    source = OH_AVSource_CreateWithFD(fd, 0, size);
+    ASSERT_NE(source, nullptr);
+
+    demuxer = OH_AVDemuxer_CreateWithSource(source);
+    ASSERT_NE(demuxer, nullptr);
+
+    sourceFormat = OH_AVSource_GetSourceFormat(source);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(sourceFormat, OH_MD_KEY_TRACK_COUNT, &g_trackCount));
+    ASSERT_EQ(trackNum, g_trackCount);
+    for (int32_t index = 0; index < g_trackCount; index++) {
+        if (unSelect != index) {
+            ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SelectTrackByID(demuxer, index));
+        }  
+    }
+    avBuffer = OH_AVBuffer_Create(size);
+    ASSERT_NE(avBuffer, nullptr);
+    initResult = true;
+}
 /**
  * @tc.number    : SUB_MEDIA_DEMUXER_VTT_6100
  * @tc.name      : create vtt demuxer with error file -- alternating Up and Down Times
@@ -390,3 +435,1466 @@ HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_WAV_ALAW_FUNC_0010, TestSize.Level2)
     CountAudioFrames(demuxer, memory, g_trackCount, 11, 11);
     close(fd);
 }
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0010
+ * @tc.name      : OH_MD_KEY_TRACK_TYPE-MEDIA_TYPE_AUXILIARY
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0010, TestSize.Level1)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0020
+ * @tc.name      : OH_MD_KEY_TRACK_REFERENCE_TYPE
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0020, TestSize.Level1)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    const char *trackRefType = nullptr;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+    ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+    OH_AVFormat_Destroy(trackFormat);
+    
+    trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+    ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0030
+ * @tc.name      : OH_MD_KEY_TRACK_REFERENCE_TYPE
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0030, TestSize.Level1)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    const char *trackdescription = nullptr;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+    ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+    OH_AVFormat_Destroy(trackFormat);
+    
+    trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+    ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0040
+ * @tc.name      : OH_MD_KEY_REFERENCE_TRACK_IDS
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0040, TestSize.Level1)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int32_t *trackIdsDepth = nullptr;
+    int32_t *trackIdsPrey = nullptr;
+    size_t bufferSize;
+    int bufferSizeResult = 3;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+    ASSERT_EQ(bufferSizeResult, bufferSize);
+    OH_AVFormat_Destroy(trackFormat);
+    
+    trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsPrey, &bufferSize));
+    bufferSizeResult = 2;
+    ASSERT_EQ(bufferSizeResult, bufferSize);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0050
+ * @tc.name      : OH_AVFormat_GetIntBuffer ,error format is nullptr
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0050, TestSize.Level0)
+{
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    ASSERT_FALSE(OH_AVFormat_GetIntBuffer(nullptr, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0060
+ * @tc.name      : OH_AVFormat_GetIntBuffer ,error
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0060, TestSize.Level0)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_FALSE(OH_AVFormat_GetIntBuffer(trackFormat, nullptr, &trackIdsDepth, &bufferSize));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0061
+ * @tc.name      : OH_AVFormat_GetIntBuffer ,correct
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0061, TestSize.Level0)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+    int bufferSizeResult = 3;
+    int idsResult = 0;
+    ASSERT_EQ(bufferSizeResult, bufferSize);
+    ASSERT_EQ(idsResult, trackIdsDepth[0]);
+    idsResult = 2;
+    ASSERT_EQ(idsResult, trackIdsDepth[1]);
+    idsResult = 3;
+    ASSERT_EQ(idsResult, trackIdsDepth[2]);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0070
+ * @tc.name      : OH_MD_KEY_TRACK_REFERENCE_TYPE,正确/错误类型获取
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0070, TestSize.Level2)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    const char *trackRefType = nullptr;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    int trackType = 0;
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    int intData = 0;
+    double doubleData;
+    int64_t longData = 0;
+    ASSERT_FALSE(OH_AVFormat_GetDoubleValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &doubleData));
+    ASSERT_FALSE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &intData));
+    ASSERT_FALSE(OH_AVFormat_GetLongValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &longData));
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+    ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0080
+ * @tc.name      : OH_MD_KEY_TRACK_DESCRIPTION,正确/错误类型获取
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0080, TestSize.Level2)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    const char *trackdescription = nullptr;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    int trackType = 0;
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    int intData = 0;
+    double doubleData;
+    int64_t longData = 0;
+    ASSERT_FALSE(OH_AVFormat_GetDoubleValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &doubleData));
+    ASSERT_FALSE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &intData));
+    ASSERT_FALSE(OH_AVFormat_GetLongValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &longData));
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+    ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0090
+ * @tc.name      : OH_MD_KEY_REFERENCE_TRACK_IDS,正确/错误类型获取
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0090, TestSize.Level2)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    int intData = 0;
+    double doubleData;
+    int64_t longData = 0;
+    int trackType = 0;
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_FALSE(OH_AVFormat_GetDoubleValue(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &doubleData));
+    ASSERT_FALSE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &intData));
+    ASSERT_FALSE(OH_AVFormat_GetLongValue(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &longData));
+    ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+    int bufferSizeResult = 3;
+    int idsResult = 0;
+    ASSERT_EQ(bufferSizeResult, bufferSize);
+    ASSERT_EQ(idsResult, trackIdsDepth[0]);
+    idsResult = 2;
+    ASSERT_EQ(idsResult, trackIdsDepth[1]);
+    idsResult = 3;
+    ASSERT_EQ(idsResult, trackIdsDepth[2]);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0130
+ * @tc.name      : 双向参考码流
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0130, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    int vKeyCount1 = 0;
+    int vKeyCount2 = 0;
+    int vKeyCount3 = 0;
+    bool videoIsEnd = false;
+    bool videoIsEnd1 = false;
+    bool videoIsEnd2 = false;
+    bool videoIsEnd3 = false;
+    int videoFrame = 0;
+    int videoFrame1 = 0;
+    int videoFrame2 = 0;
+    int videoFrame3 = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd || !videoIsEnd1 || !videoIsEnd2 || !videoIsEnd3) {
+        for (int32_t index = 0; index < g_trackCount; index++) {
+            trackFormat = OH_AVSource_GetTrackFormat(source, index);
+            ASSERT_NE(trackFormat, nullptr);
+            ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+            if ((videoIsEnd && (index == 0) && (trackType == MEDIA_TYPE_VID)) ||
+            (videoIsEnd1 && (index == 1) && (trackType == MEDIA_TYPE_AUXILIARY)) ||
+            (videoIsEnd2 && (index == 2) && (trackType == MEDIA_TYPE_AUXILIARY)) ||
+            (videoIsEnd3 && (index == 3) && (trackType == MEDIA_TYPE_TIMED_METADATA))) {
+                continue;
+            }
+            ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, index, avBuffer));
+            ASSERT_NE(avBuffer, nullptr);
+            ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+            if (index == 1 && trackType == MEDIA_TYPE_AUXILIARY) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                int idsResult = 0;
+                ASSERT_EQ(3, bufferSize);
+                ASSERT_EQ(idsResult, trackIdsDepth[0]);
+                idsResult = 2;
+                ASSERT_EQ(idsResult, trackIdsDepth[1]);
+                idsResult = 3;
+                ASSERT_EQ(idsResult, trackIdsDepth[2]);
+                SetVideoValue(bufferAttr, videoIsEnd1, videoFrame1, vKeyCount1);
+            } else if (index == 2 && trackType == MEDIA_TYPE_AUXILIARY) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                int idsResult = 0;
+                ASSERT_EQ(2, bufferSize);
+                ASSERT_EQ(idsResult, trackIdsDepth[0]);
+                idsResult = 1;
+                ASSERT_EQ(idsResult, trackIdsDepth[1]);
+                SetVideoValue(bufferAttr, videoIsEnd2, videoFrame2, vKeyCount2);
+            } else if (index == 0 && trackType == MEDIA_TYPE_VID) {
+                SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+            } else if (index == 3 && trackType == MEDIA_TYPE_TIMED_METADATA) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_CDSC.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, TIMED_METADATA_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                ASSERT_EQ(1, bufferSize);
+                ASSERT_EQ(1, trackIdsDepth[0]);
+                SetVideoValue(bufferAttr, videoIsEnd3, videoFrame3, vKeyCount3);
+            }
+            OH_AVFormat_Destroy(trackFormat);
+            trackFormat = nullptr;
+        }
+    }
+    ASSERT_EQ(videoFrame3, 16);
+    ASSERT_EQ(videoFrame2, 16);
+    ASSERT_EQ(videoFrame1, 77);
+    ASSERT_EQ(videoFrame, 16);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0140
+ * @tc.name      : 单向参考码流
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0140, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_01.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    int vKeyCount1 = 0;
+    int vKeyCount2 = 0;
+    int vKeyCount3 = 0;
+    bool videoIsEnd = false;
+    bool videoIsEnd1 = false;
+    bool videoIsEnd2 = false;
+    bool videoIsEnd3 = false;
+    int videoFrame = 0;
+    int videoFrame1 = 0;
+    int videoFrame2 = 0;
+    int videoFrame3 = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd || !videoIsEnd1 || !videoIsEnd2 || !videoIsEnd3) {
+        for (int32_t index = 0; index < g_trackCount; index++) {
+            trackFormat = OH_AVSource_GetTrackFormat(source, index);
+            ASSERT_NE(trackFormat, nullptr);
+            ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+            if ((videoIsEnd && (index == 0) && (trackType == MEDIA_TYPE_VID)) ||
+            (videoIsEnd1 && (index == 1) && (trackType == MEDIA_TYPE_AUXILIARY)) ||
+            (videoIsEnd2 && (index == 2) && (trackType == MEDIA_TYPE_AUXILIARY)) ||
+            (videoIsEnd3 && (index == 3) && (trackType == MEDIA_TYPE_TIMED_METADATA))) {
+                continue;
+            }
+            ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, index, avBuffer));
+            ASSERT_NE(avBuffer, nullptr);
+            ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+            if (index == 1 && trackType == MEDIA_TYPE_AUXILIARY) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                ASSERT_EQ(2, bufferSize);
+                ASSERT_EQ(1, trackIdsDepth[0]);
+                ASSERT_EQ(3, trackIdsDepth[1]);
+                SetVideoValue(bufferAttr, videoIsEnd1, videoFrame1, vKeyCount1);
+            } else if (index == 2 && trackType == MEDIA_TYPE_AUXILIARY) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                ASSERT_EQ(1, bufferSize);
+                ASSERT_EQ(2, trackIdsDepth[0]);
+                SetVideoValue(bufferAttr, videoIsEnd2, videoFrame2, vKeyCount2);
+            } else if (index == 0 && trackType == MEDIA_TYPE_VID) {
+                SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+            } else if (index == 3 && trackType == MEDIA_TYPE_TIMED_METADATA) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_CDSC.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, TIMED_METADATA_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                ASSERT_EQ(1, bufferSize);
+                ASSERT_EQ(1, trackIdsDepth[0]);
+                SetVideoValue(bufferAttr, videoIsEnd3, videoFrame3, vKeyCount3);
+            }
+            OH_AVFormat_Destroy(trackFormat);
+            trackFormat = nullptr;
+        }
+    }
+    ASSERT_EQ(videoFrame3, 16);
+    ASSERT_EQ(videoFrame2, 16);
+    ASSERT_EQ(videoFrame1, 77);
+    ASSERT_EQ(videoFrame, 16);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0150
+ * @tc.name      : metadata数据可正常read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0150, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 3);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 3, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_TIMED_METADATA) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_CDSC.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, TIMED_METADATA_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+            ASSERT_EQ(1, bufferSize);
+            ASSERT_EQ(1, trackIdsDepth[0]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 16);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0160
+ * @tc.name      : 灰度数据可正常read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0160, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsPrey = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 2, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_AUXILIARY) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsPrey, &bufferSize));
+            ASSERT_EQ(2, bufferSize);
+            ASSERT_EQ(0, trackIdsPrey[0]);
+            ASSERT_EQ(1, trackIdsPrey[1]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 16);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0170
+ * @tc.name      : 灰度数据可正常seek+read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0170, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_04.mp4";
+    int fd = 0;
+    bool initResult = false;
+    unSelect = 0;
+    InitFile(file, 3, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsPrey = nullptr;
+    size_t bufferSize;
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, 900000 / THOUSAND, SEEK_MODE_NEXT_SYNC));
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 2, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_AUXILIARY) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsPrey, &bufferSize));
+            ASSERT_EQ(1, bufferSize);
+            ASSERT_EQ(2, trackIdsPrey[0]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 47);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0180
+ * @tc.name      : 深度数据可正常read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0180, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 1, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_AUXILIARY) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+            ASSERT_EQ(3, bufferSize);
+            ASSERT_EQ(0, trackIdsDepth[0]);
+            ASSERT_EQ(2, trackIdsDepth[1]);
+            ASSERT_EQ(3, trackIdsDepth[2]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 77);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_TRACK_0190
+ * @tc.name      : 深度数据可正常seek+read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_TRACK_0190, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_04.mp4";
+    int fd = 0;
+    bool initResult = false;
+    unSelect = 0;
+    InitFile(file, 3, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, 900000 / THOUSAND, SEEK_MODE_NEXT_SYNC));
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 1, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_AUXILIARY) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+            ASSERT_EQ(1, bufferSize);
+            ASSERT_EQ(1, trackIdsDepth[0]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 47);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0010
+ * @tc.name      : OH_MD_KEY_TRACK_TYPE-MEDIA_TYPE_AUXILIARY
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0010, TestSize.Level1)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0020
+ * @tc.name      : OH_MD_KEY_TRACK_REFERENCE_TYPE
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0020, TestSize.Level1)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    const char *trackRefType = nullptr;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+    ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+    OH_AVFormat_Destroy(trackFormat);
+    
+    trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+    ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0030
+ * @tc.name      : OH_MD_KEY_TRACK_REFERENCE_TYPE
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0030, TestSize.Level1)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    const char *trackdescription = nullptr;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+    ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+    OH_AVFormat_Destroy(trackFormat);
+    
+    trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+    ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0040
+ * @tc.name      : OH_MD_KEY_REFERENCE_TRACK_IDS
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0040, TestSize.Level1)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int32_t *trackIdsDepth = nullptr;
+    int32_t *trackIdsPrey = nullptr;
+    size_t bufferSize;
+    int bufferSizeResult = 3;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+    ASSERT_EQ(bufferSizeResult, bufferSize);
+    OH_AVFormat_Destroy(trackFormat);
+    
+    trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsPrey, &bufferSize));
+    bufferSizeResult = 2;
+    ASSERT_EQ(bufferSizeResult, bufferSize);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0050
+ * @tc.name      : OH_AVFormat_GetIntBuffer ,error format is nullptr
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0050, TestSize.Level0)
+{
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    ASSERT_FALSE(OH_AVFormat_GetIntBuffer(nullptr, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0060
+ * @tc.name      : OH_AVFormat_GetIntBuffer ,error
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0060, TestSize.Level0)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_FALSE(OH_AVFormat_GetIntBuffer(trackFormat, nullptr, &trackIdsDepth, &bufferSize));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0061
+ * @tc.name      : OH_AVFormat_GetIntBuffer ,correct
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0061, TestSize.Level0)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+    int bufferSizeResult = 3;
+    int idsResult = 0;
+    ASSERT_EQ(bufferSizeResult, bufferSize);
+    ASSERT_EQ(idsResult, trackIdsDepth[0]);
+    idsResult = 2;
+    ASSERT_EQ(idsResult, trackIdsDepth[1]);
+    idsResult = 3;
+    ASSERT_EQ(idsResult, trackIdsDepth[2]);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0070
+ * @tc.name      : OH_MD_KEY_TRACK_REFERENCE_TYPE ,正确/错误类型获取
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0070, TestSize.Level2)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    const char *trackRefType = nullptr;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    int trackType = 0;
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    int intData = 0;
+    double doubleData;
+    int64_t longData = 0;
+    ASSERT_FALSE(OH_AVFormat_GetDoubleValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &doubleData));
+    ASSERT_FALSE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &intData));
+    ASSERT_FALSE(OH_AVFormat_GetLongValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &longData));
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+    ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0080
+ * @tc.name      : OH_MD_KEY_TRACK_DESCRIPTION,正确/错误类型获取
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0080, TestSize.Level2)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    const char *trackdescription = nullptr;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    int trackType = 0;
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    int intData = 0;
+    double doubleData;
+    int64_t longData = 0;
+    ASSERT_FALSE(OH_AVFormat_GetDoubleValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &doubleData));
+    ASSERT_FALSE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &intData));
+    ASSERT_FALSE(OH_AVFormat_GetLongValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &longData));
+    ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+    ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0090
+ * @tc.name      : OH_MD_KEY_REFERENCE_TRACK_IDS,正确/错误类型获取
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0090, TestSize.Level2)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+    ASSERT_NE(trackFormat, nullptr);
+    int intData = 0;
+    double doubleData;
+    int64_t longData = 0;
+    int trackType = 0;
+    ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+    ASSERT_EQ(trackType, MEDIA_TYPE_AUXILIARY);
+    ASSERT_FALSE(OH_AVFormat_GetDoubleValue(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &doubleData));
+    ASSERT_FALSE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &intData));
+    ASSERT_FALSE(OH_AVFormat_GetLongValue(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &longData));
+    ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+    int bufferSizeResult = 3;
+    int idsResult = 0;
+    ASSERT_EQ(bufferSizeResult, bufferSize);
+    ASSERT_EQ(idsResult, trackIdsDepth[0]);
+    idsResult = 2;
+    ASSERT_EQ(idsResult, trackIdsDepth[1]);
+    idsResult = 3;
+    ASSERT_EQ(idsResult, trackIdsDepth[2]);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0130
+ * @tc.name      : 双向参考码流
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0130, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    int vKeyCount1 = 0;
+    int vKeyCount2 = 0;
+    int vKeyCount3 = 0;
+    bool videoIsEnd = false;
+    bool videoIsEnd1 = false;
+    bool videoIsEnd2 = false;
+    bool videoIsEnd3 = false;
+    int videoFrame = 0;
+    int videoFrame1 = 0;
+    int videoFrame2 = 0;
+    int videoFrame3 = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd || !videoIsEnd1 || !videoIsEnd2 || !videoIsEnd3) {
+        for (int32_t index = 0; index < g_trackCount; index++) {
+            trackFormat = OH_AVSource_GetTrackFormat(source, index);
+            ASSERT_NE(trackFormat, nullptr);
+            ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+            if ((videoIsEnd && (index == 0) && (trackType == MEDIA_TYPE_AUD)) ||
+            (videoIsEnd1 && (index == 1) && (trackType == MEDIA_TYPE_AUXILIARY)) ||
+            (videoIsEnd2 && (index == 2) && (trackType == MEDIA_TYPE_AUXILIARY)) ||
+            (videoIsEnd3 && (index == 3) && (trackType == MEDIA_TYPE_TIMED_METADATA))) {
+                continue;
+            }
+            ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, index, avBuffer));
+            ASSERT_NE(avBuffer, nullptr);
+            ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+            if (index == 1 && trackType == MEDIA_TYPE_AUXILIARY) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                int idsResult = 0;
+                ASSERT_EQ(3, bufferSize);
+                ASSERT_EQ(idsResult, trackIdsDepth[0]);
+                idsResult = 2;
+                ASSERT_EQ(idsResult, trackIdsDepth[1]);
+                idsResult = 3;
+                ASSERT_EQ(idsResult, trackIdsDepth[2]);
+                SetVideoValue(bufferAttr, videoIsEnd1, videoFrame1, vKeyCount1);
+            } else if (index == 2 && trackType == MEDIA_TYPE_AUXILIARY) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                int idsResult = 0;
+                ASSERT_EQ(2, bufferSize);
+                ASSERT_EQ(idsResult, trackIdsDepth[0]);
+                idsResult = 1;
+                ASSERT_EQ(idsResult, trackIdsDepth[1]);
+                SetVideoValue(bufferAttr, videoIsEnd2, videoFrame2, vKeyCount2);
+            } else if (index == 0 && trackType == MEDIA_TYPE_AUD) {
+                SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+            } else if (index == 3 && trackType == MEDIA_TYPE_TIMED_METADATA) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_CDSC.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, TIMED_METADATA_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                ASSERT_EQ(1, bufferSize);
+                ASSERT_EQ(1, trackIdsDepth[0]);
+                SetVideoValue(bufferAttr, videoIsEnd3, videoFrame3, vKeyCount3);
+            }
+            OH_AVFormat_Destroy(trackFormat);
+            trackFormat = nullptr;
+        }
+    }
+    ASSERT_EQ(videoFrame3, 231);
+    ASSERT_EQ(videoFrame2, 431);
+    ASSERT_EQ(videoFrame1, 431);
+    ASSERT_EQ(videoFrame, 431);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0140
+ * @tc.name      : 单向参考码流
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0140, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_03.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    int vKeyCount1 = 0;
+    int vKeyCount2 = 0;
+    int vKeyCount3 = 0;
+    bool videoIsEnd = false;
+    bool videoIsEnd1 = false;
+    bool videoIsEnd2 = false;
+    bool videoIsEnd3 = false;
+    int videoFrame = 0;
+    int videoFrame1 = 0;
+    int videoFrame2 = 0;
+    int videoFrame3 = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd || !videoIsEnd1 || !videoIsEnd2 || !videoIsEnd3) {
+        for (int32_t index = 0; index < g_trackCount; index++) {
+            trackFormat = OH_AVSource_GetTrackFormat(source, index);
+            ASSERT_NE(trackFormat, nullptr);
+            ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+            if ((videoIsEnd && (index == 0) && (trackType == MEDIA_TYPE_AUD)) ||
+            (videoIsEnd1 && (index == 1) && (trackType == MEDIA_TYPE_AUXILIARY)) ||
+            (videoIsEnd2 && (index == 2) && (trackType == MEDIA_TYPE_AUXILIARY)) ||
+            (videoIsEnd3 && (index == 3) && (trackType == MEDIA_TYPE_TIMED_METADATA))) {
+                continue;
+            }
+            ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, index, avBuffer));
+            ASSERT_NE(avBuffer, nullptr);
+            ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+            if (index == 1 && trackType == MEDIA_TYPE_AUXILIARY) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                ASSERT_EQ(2, bufferSize);
+                ASSERT_EQ(1, trackIdsDepth[0]);
+                ASSERT_EQ(3, trackIdsDepth[1]);
+                SetVideoValue(bufferAttr, videoIsEnd1, videoFrame1, vKeyCount1);
+            } else if (index == 2 && trackType == MEDIA_TYPE_AUXILIARY) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                ASSERT_EQ(1, bufferSize);
+                ASSERT_EQ(2, trackIdsDepth[0]);
+                SetVideoValue(bufferAttr, videoIsEnd2, videoFrame2, vKeyCount2);
+            } else if (index == 0 && trackType == MEDIA_TYPE_AUD) {
+                SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+            } else if (index == 3 && trackType == MEDIA_TYPE_TIMED_METADATA) {
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+                ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_CDSC.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+                ASSERT_EQ(0, strcmp(trackdescription, TIMED_METADATA_KEY.c_str()));
+                ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+                ASSERT_EQ(1, bufferSize);
+                ASSERT_EQ(1, trackIdsDepth[0]);
+                SetVideoValue(bufferAttr, videoIsEnd3, videoFrame3, vKeyCount3);
+            }
+            OH_AVFormat_Destroy(trackFormat);
+            trackFormat = nullptr;
+        }
+    }
+    ASSERT_EQ(videoFrame3, 223);
+    ASSERT_EQ(videoFrame2, 417);
+    ASSERT_EQ(videoFrame1, 417);
+    ASSERT_EQ(videoFrame, 417);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0150
+ * @tc.name      : metadata数据可正常read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0150, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 3);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 3, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_TIMED_METADATA) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_CDSC.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, TIMED_METADATA_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+            ASSERT_EQ(1, bufferSize);
+            ASSERT_EQ(1, trackIdsDepth[0]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 231);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0160
+ * @tc.name      : 灰度数据可正常read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0160, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsPrey = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 2, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_AUXILIARY) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsPrey, &bufferSize));
+            ASSERT_EQ(2, bufferSize);
+            ASSERT_EQ(0, trackIdsPrey[0]);
+            ASSERT_EQ(1, trackIdsPrey[1]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 431);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0170
+ * @tc.name      : 灰度数据可正常seek+read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0170, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsPrey = nullptr;
+    size_t bufferSize;
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, 130604 / THOUSAND, SEEK_MODE_NEXT_SYNC));
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 2);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 2, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_AUXILIARY) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_PREY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_PREY_TRACK_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsPrey, &bufferSize));
+            ASSERT_EQ(2, bufferSize);
+            ASSERT_EQ(0, trackIdsPrey[0]);
+            ASSERT_EQ(1, trackIdsPrey[1]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 425);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0180
+ * @tc.name      : 深度数据可正常read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0180, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 1, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_AUXILIARY) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+            ASSERT_EQ(3, bufferSize);
+            ASSERT_EQ(0, trackIdsDepth[0]);
+            ASSERT_EQ(2, trackIdsDepth[1]);
+            ASSERT_EQ(3, trackIdsDepth[2]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 431);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
+/**
+ * @tc.number    : DEMUXER_FUNCTION_AUDIO_TRACK_0190
+ * @tc.name      : 深度数据可正常seek+read
+ * @tc.desc      : function test
+ */
+HWTEST_F(DemuxerFunc2NdkTest, DEMUXER_FUNCTION_AUDIO_TRACK_0190, TestSize.Level3)
+{
+    const char *file = "/data/test/media/Muxer_Add_Video_Auxiliary_02.mp4";
+    int fd = 0;
+    bool initResult = false;
+    InitFile(file, 4, fd, initResult);
+    ASSERT_TRUE(initResult);
+    int trackType = 0;
+    int vKeyCount = 0;
+    bool videoIsEnd = false;
+    int videoFrame = 0;
+    OH_AVCodecBufferAttr bufferAttr;
+    const char *trackRefType = nullptr;
+    const char *trackdescription = nullptr;
+    int32_t *trackIdsDepth = nullptr;
+    size_t bufferSize;
+    ASSERT_EQ(AV_ERR_OK, OH_AVDemuxer_SeekToTime(demuxer, 130604 / THOUSAND, SEEK_MODE_NEXT_SYNC));
+    while (!videoIsEnd) {
+        trackFormat = OH_AVSource_GetTrackFormat(source, 1);
+        ASSERT_NE(trackFormat, nullptr);
+        ASSERT_TRUE(OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType));
+        ASSERT_EQ(AV_ERR_OK,OH_AVDemuxer_ReadSampleBuffer(demuxer, 1, avBuffer));
+        ASSERT_NE(avBuffer, nullptr);
+        ASSERT_EQ(AV_ERR_OK, OH_AVBuffer_GetBufferAttr(avBuffer, &bufferAttr));
+        if (trackType == MEDIA_TYPE_AUXILIARY) {
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &trackRefType));
+            ASSERT_EQ(0, strcmp(trackRefType, TRACK_REF_TYPE_DEPTH.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_TRACK_DESCRIPTION, &trackdescription));
+            ASSERT_EQ(0, strcmp(trackdescription, AUXILIARY_DEPTH_TRACK_KEY.c_str()));
+            ASSERT_TRUE(OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &trackIdsDepth, &bufferSize));
+            ASSERT_EQ(3, bufferSize);
+            ASSERT_EQ(0, trackIdsDepth[0]);
+            ASSERT_EQ(2, trackIdsDepth[1]);
+            ASSERT_EQ(3, trackIdsDepth[2]);
+            SetVideoValue(bufferAttr, videoIsEnd, videoFrame, vKeyCount);
+        }
+        OH_AVFormat_Destroy(trackFormat);
+        trackFormat = nullptr;
+    }
+    ASSERT_EQ(videoFrame, 425);
+    if (fd >= 0) {
+        close(fd);
+        fd = -1;
+    }
+}
+
