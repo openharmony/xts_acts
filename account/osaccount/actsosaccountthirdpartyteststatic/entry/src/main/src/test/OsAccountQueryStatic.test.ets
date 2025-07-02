@@ -45,9 +45,9 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
             hilog.info(domain, tag, "====>get localId err: " + JSON.stringify(err));
             hilog.info(domain, tag, "====>localId obtained by uid:" + localId);
             try {
-              if (err && localId) {
+              if (err) {
                 expect(err?.code + '' == '0').assertTrue();
-                expect(localId + '' == '0').assertTrue();
+                expect(localId as int + '' == '0').assertTrue();
                 hilog.info(domain, tag, "====>ActsOsAccountQueryIdFormUid_0100 end====");
               } else {
                 hilog.info(domain, tag, '====>getOsAccountLocalIdForUid fail');
@@ -79,7 +79,7 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
         try {
           let localId: int = await accountManager.getOsAccountLocalIdForUid(3058);
           hilog.info(domain, tag, "====>localId obtained by uid:" + localId);
-          expect(localId + '' == '0').assertTrue();
+          expect(localId as int + '' == '0').assertTrue();
           hilog.info(domain, tag, "====>ActsOsAccountQueryIdFormUid_0200 end====");
           done();
         } catch (err: BusinessError<void>) {
@@ -142,7 +142,7 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
           hilog.info(domain, tag, "====>localId obtained by uid:" + localId);
           expect().assertFail();
           done();
-        } catch (err: BusinessError) {
+        } catch (err: BusinessError<void>) {
           hilog.info(domain, tag, "====>get localId by uid err:" + JSON.stringify(err));
           expect(err.code + '' == '12300002').assertTrue();
           hilog.info(domain, tag, "====>ActsOsAccountQueryIdFormUid_0400 end====");
@@ -163,11 +163,11 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
         hilog.info(domain, tag, "====>ActsOsAccountQueryIdFormUidSync_0100 start====");
         try {
           let localId: int = accountManager.getOsAccountLocalIdForUidSync(3058);
-          hilog.info(domain, tag, 'getOsAccountLocalIdForUidSync successfully, localId: ' + localId);
-          expect(localId + '' == '0').assertTrue();
+          hilog.info(domain, tag, '====>getOsAccountLocalIdForUidSync successfully, localId: ' + localId);
+          expect(localId as int + '' == '0').assertTrue();
           hilog.info(domain, tag, "====>ActsOsAccountQueryIdFormUidSync_0100 end====");
           done();
-        } catch (err: BusinessError) {
+        } catch (err: BusinessError<void>) {
           hilog.info(domain, tag, "====>get localId err: " + JSON.stringify(err));
           hilog.info(domain, tag, "====>ActsOsAccountQueryIdFormUidSync_0100 end====");
           expect().assertFalse()
@@ -192,7 +192,7 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
           hilog.info(domain, tag, "====>getOsAccountLocalIdForUidSync localId: " + localId);
           expect().assertFail();
           done();
-        } catch (err: BusinessError) {
+        } catch (err: BusinessError<void>) {
           hilog.info(domain, tag, "====>get localId err: " + JSON.stringify(err));
           expect(err.code + '' == '12300002').assertTrue();
           hilog.info(domain, tag, "====>ActsOsAccountQueryIdFormUidSync_0200 end====");
@@ -216,9 +216,9 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
             hilog.info(domain, tag, "====>get localId err: " + JSON.stringify(err));
             hilog.info(domain, tag, "====>getOsAccountLocalId localId: " + localId);
             try {
-              if (err && localId) {
+              if (err) {
                 expect(err?.code + '' == '0').assertTrue();
-                expect(localId + '' == '100').assertTrue();
+                expect(localId as int + '' == '100').assertTrue();
                 hilog.info(domain, tag, "====>ActsOsAccountQueryIdFormProcess_0100 end====");
               } else {
                 hilog.info(domain, tag, '====>getOsAccountLocalId fail');
@@ -250,7 +250,7 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
         try {
           let localId: int = await accountManager.getOsAccountLocalId();
           hilog.info(domain, tag, "====>getOsAccountLocalId localId: " + localId);
-          expect(localId + '' == '100').assertTrue();
+          expect(localId as int + '' == '100').assertTrue();
           hilog.info(domain, tag, "====>ActsOsAccountQueryIdFormProcess_0200 end====");
           done();
         } catch (err: BusinessError<void>) {
@@ -276,7 +276,7 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
             hilog.info(domain, tag, "====>get type err: " + JSON.stringify(err));
             hilog.info(domain, tag, "====>getOsAccountType type: " + accountType);
             try {
-              if (err && accountType) {
+              if (err) {
                 expect(err?.code + '' == '0').assertTrue();
                 expect(accountType as osAccount.OsAccountType == osAccount.OsAccountType.ADMIN).assertTrue();
                 hilog.info(domain, tag, "====>ActsOsAccountgetType_0100 end====");
@@ -310,7 +310,7 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
         try {
           let accountType: osAccount.OsAccountType = await accountManager.getOsAccountType();
           hilog.info(domain, tag, "====>getOsAccountType type: " + accountType);
-          expect(accountType == osAccount.OsAccountType.ADMIN).assertTrue();
+          expect(accountType as osAccount.OsAccountType == osAccount.OsAccountType.ADMIN).assertTrue();
           hilog.info(domain, tag, "====>ActsOsAccountgetType_0200 end====");
           done();
         } catch (err: BusinessError<void>) {
@@ -336,7 +336,7 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
             hilog.info(domain, tag, "====>getActivatedOsAccountIds_0100 dataArray: " + dataArray);
             hilog.info(domain, tag, "====>getActivatedOsAccountIds_0100 err :" + JSON.stringify(err));
             try {
-              if (err && dataArray) {
+              if (err) {
                 expect(dataArray!.length + '' == '1').assertTrue();
                 expect(err?.code + '' == '0').assertTrue();
                 hilog.info(domain, tag, "====>ActsOsAccountGetActivedOsAccountIdsStatic_0100 end====");
@@ -370,9 +370,9 @@ export default function ActsOsAccountThirdPartyTest_third_4_Static() {
         try {
           let dataArray: Array<int> = await accountManager.getActivatedOsAccountLocalIds();
           hilog.info(domain, tag, "====>ActsOsAccountGetActivedOsAccountIds_0200 data: " + dataArray);
-          expect(dataArray.length + '' == '1').assertTrue();
+          expect(dataArray!.length + '' == '1').assertTrue();
           done();
-        } catch (err: BusinessError) {
+        } catch (err: BusinessError<void>) {
           hilog.info(domain, tag, "====>ActsOsAccountGetActivedOsAccountIds_0200 err: " + JSON.stringify(err));
           expect().assertFail();
           done();
