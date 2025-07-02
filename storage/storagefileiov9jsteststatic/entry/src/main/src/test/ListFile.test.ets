@@ -1021,12 +1021,15 @@ export default function fileIOListfile() {
           recursion: false,
           filter: filter
         }, (err: BusinessError | null) => {
-          expect(false).assertTrue();
+          if(err?.code != 0) {
+            hilog.info(domain, tag, '%{public}s', 'fileIO_test_listfile_async_static_012 error' + JSON.stringify(err));
+            expect(err?.code == 13900020 && err?.message == 'Invalid argument').assertTrue();
+            fs.rmdirSync(dpath);
+          }
         });
       } catch (e: BusinessError) {
-        fs.rmdirSync(dpath);
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_listfile_async_static_012 end error' + JSON.stringify(e));
-        expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+        expect(false).assertTrue();
       }
     });
 
@@ -1040,7 +1043,7 @@ export default function fileIOListfile() {
      * @tc.level Level 3
      * @tc.require
      */
-    it('fileIO_test_listfile_async_static_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void) : Promise<void> => {
+    it('fileIO_test_listfile_async_static_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () : Promise<void> => {
       let dpath = await Utils.nextFileName('fileIO_test_listfile_async_static_013');
       let fapth1 = dpath + '/listfile_async_013.txt';
       let fapth2 = dpath + '/listfile_async_013.doc';
@@ -1067,10 +1070,9 @@ export default function fileIOListfile() {
         });
         expect(false).assertTrue();
       } catch (err: BusinessError) {
-        fs.rmdirSync(dpath);
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_listfile_async_static_013 end error' + JSON.stringify(err));
         expect(err.code == 13900020 && err.message == 'Invalid argument').assertTrue();
-        done();
+        fs.rmdirSync(dpath);
       }
     });
 

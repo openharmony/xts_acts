@@ -57,7 +57,7 @@ function startWatcher(testNum: string, eventCode: number, watchPath: string): Te
   return ret;
 }
 
-export default function fileIOFdopenStream() {
+export default function fileIOWatcher() {
   describe('fileIO_fs_watcher', (): void => {
 
     /**
