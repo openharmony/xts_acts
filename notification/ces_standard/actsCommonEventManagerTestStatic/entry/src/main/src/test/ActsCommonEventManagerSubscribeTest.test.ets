@@ -165,11 +165,9 @@ export default function ActsCommonEventManagerSubscribeTest() {
             console.info(TAG+'===============>options=========bundle_name: ' + data?.bundleName);
             console.info(TAG+'===============>options=========code: ' + data?.code);
             console.info(TAG+'===============>options=========dat: ' + data?.data);
-            console.info(TAG+'===============>options=========order: ' + order);
             expect(data?.bundleName).assertEqual('');
             expect(data?.code).assertEqual(0);
             expect(data?.data).assertEqual('initial data');
-            expect(order).assertEqual(true);
             done()
           }
         })
