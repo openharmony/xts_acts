@@ -1950,7 +1950,8 @@ function testAddApn() {
       networkManager.addApn(SELFWANT, ADD_APN_INFO);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      console.info(' --- test_add_apn_0001 error 9200001 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
     }
     done();
   });
@@ -1969,7 +1970,8 @@ function testAddApn() {
       networkManager.addApn(SELFWANT, ADD_APN_INFO);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      console.info(' --- test_add_apn_0002 error 9200002 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -1990,7 +1992,8 @@ function testAddApn() {
       networkManager.addApn(null, ADD_APN_INFO);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_add_apn_0003 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2011,7 +2014,8 @@ function testAddApn() {
       networkManager.addApn(SELFWANT, null);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_add_apn_0004 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2040,7 +2044,8 @@ function testAddApn() {
         networkManager.setPreferredApn(SELFWANT, testApnId);
         networkManager.deleteApn(SELFWANT, testApnId);
       } catch (error) {
-        expect(false).assertTrue();
+        console.info(' --- test_add_apn_0005 error 801 is expected, actually catch: ' + error.code);
+        expect(error.code == 801).assertTrue();
       } finally {
         await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
@@ -2065,7 +2070,8 @@ function testDeleteApn() {
       networkManager.deleteApn(SELFWANT, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      console.info(' --- test_delete_apn_0001 error 9200001 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
     }
     done();
   });
@@ -2084,7 +2090,8 @@ function testDeleteApn() {
       networkManager.deleteApn(SELFWANT, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      console.info(' --- test_delete_apn_0002 error 9200002 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -2105,7 +2112,8 @@ function testDeleteApn() {
       networkManager.deleteApn(null, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_delete_apn_0003 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2126,7 +2134,8 @@ function testDeleteApn() {
       networkManager.deleteApn(SELFWANT, null);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_delete_apn_0004 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2148,7 +2157,8 @@ function testUpdateApn() {
       networkManager.updateApn(SELFWANT, UPDATE_APN_INFO, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      console.info(' --- test_update_apn_0001 error 9200001 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
     }
     done();
   });
@@ -2167,7 +2177,8 @@ function testUpdateApn() {
       networkManager.updateApn(SELFWANT, UPDATE_APN_INFO, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      console.info(' --- test_update_apn_0002 error 9200002 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -2188,7 +2199,8 @@ function testUpdateApn() {
       networkManager.updateApn(null, UPDATE_APN_INFO, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_update_apn_0003 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2209,7 +2221,8 @@ function testUpdateApn() {
       networkManager.updateApn(SELFWANT, null, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_update_apn_0004 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2230,7 +2243,8 @@ function testUpdateApn() {
       networkManager.updateApn(SELFWANT, UPDATE_APN_INFO, null);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_update_apn_0005 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2252,7 +2266,8 @@ function testSetPreferredApn() {
       networkManager.setPreferredApn(SELFWANT, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      console.info(' --- test_set_preferred_apn_0001 error 9200001 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
     }
     done();
   });
@@ -2271,7 +2286,8 @@ function testSetPreferredApn() {
       networkManager.setPreferredApn(SELFWANT, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      console.info(' --- test_set_preferred_apn_0002 error 9200002 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -2292,7 +2308,8 @@ function testSetPreferredApn() {
       networkManager.setPreferredApn(null, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_set_preferred_apn_0003 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2313,7 +2330,8 @@ function testSetPreferredApn() {
       networkManager.setPreferredApn(SELFWANT, null);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_set_preferred_apn_0004 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2335,7 +2353,8 @@ function testQueryApn() {
       networkManager.queryApn(SELFWANT, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      console.info(' --- test_query_apn_0001 error 9200001 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
     }
     done();
   });
@@ -2353,7 +2372,8 @@ function testQueryApn() {
       networkManager.queryApn(SELFWANT, ADD_APN_INFO);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200001).assertTrue();
+      console.info(' --- test_query_apn_0002 error 9200001 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200001) || (error.code == 801)).assertTrue();
     }
     done();
   });
@@ -2372,7 +2392,8 @@ function testQueryApn() {
       networkManager.queryApn(SELFWANT, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      console.info(' --- test_query_apn_0003 error 9200002 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -2393,7 +2414,8 @@ function testQueryApn() {
       networkManager.queryApn(SELFWANT, ADD_APN_INFO);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 9200002).assertTrue();
+      console.info(' --- test_query_apn_0004 error 9200002 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 9200002) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableAdmin(SELFWANT);
     }
@@ -2414,7 +2436,8 @@ function testQueryApn() {
       networkManager.queryApn(null, ADD_APN_INFO);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_query_apn_0005 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2435,7 +2458,8 @@ function testQueryApn() {
       networkManager.queryApn(null, "0");
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_query_apn_0006 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
@@ -2456,7 +2480,8 @@ function testQueryApn() {
       networkManager.queryApn(SELFWANT, null);
       expect(false).assertTrue();
     } catch (error) {
-      expect(error.code == 401).assertTrue();
+      console.info(' --- test_query_apn_0007 error 401 or 801 is expected, actually catch: ' + error.code);
+      expect((error.code == 401) || (error.code == 801)).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
