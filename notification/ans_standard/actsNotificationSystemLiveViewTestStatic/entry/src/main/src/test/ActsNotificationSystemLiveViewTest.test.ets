@@ -1997,5 +1997,30 @@ export default function ActsNotificationSystemLiveViewTest() {
 
     })
 
+    /*
+     * @tc.number: Sub_Notification_Ans_Enable_Query_Static_0200
+     * @tc.name: Sub_Notification_Ans_Enable_Query_Static_0200
+     * @tc.desc: test function isNotificationEnabled no parameter
+     */
+    it('Sub_Notification_Ans_Enable_Query_Static_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        let TAG = 'Sub_Notification_Ans_Enable_Query_Static_0200'
+        console.info(`${TAG} Sub_Notification_Ans_Enable_Query_Static_0200 START`);
+
+        notificationManager.isNotificationEnabled((err: BusinessError | null, data: boolean|undefined): void => {
+          if (err) {
+            console.info(`${TAG} isNotificationEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
+            expect(false).assertTrue()
+            done()
+          } else {
+            console.info(`${TAG} isNotificationEnabled AsyncCallback success ${data}`)
+            expect(true).assertTrue()
+            done()
+          }
+        });
+
+        console.info(`${TAG} Sub_Notification_Ans_Enable_Query_Static_0200 END`);
+      })
+
   })
 }

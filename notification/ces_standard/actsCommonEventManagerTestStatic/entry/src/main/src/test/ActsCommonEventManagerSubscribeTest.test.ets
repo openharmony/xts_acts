@@ -148,6 +148,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
           data: "initial data",
           isOrdered: true,
           isSticky: false,
+          subscriberPermissions:new Array<string>('publish_event_subscriberPermissions'),
         }
 
         let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
@@ -161,6 +162,14 @@ export default function ActsCommonEventManagerSubscribeTest() {
             expect(false).assertTrue()
             done()
           } else {
+            console.info(TAG+'===============>options=========bundle_name: ' + data?.bundleName);
+            console.info(TAG+'===============>options=========code: ' + data?.code);
+            console.info(TAG+'===============>options=========dat: ' + data?.data);
+            console.info(TAG+'===============>options=========order: ' + order);
+            expect(data?.bundleName).assertEqual('');
+            expect(data?.code).assertEqual(0);
+            expect(data?.data).assertEqual('initial data');
+            expect(order).assertEqual(true);
             done()
           }
         })
