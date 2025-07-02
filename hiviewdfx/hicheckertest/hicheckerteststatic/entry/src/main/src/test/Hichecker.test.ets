@@ -27,18 +27,18 @@ export default function hicheckerTest() {
 
   afterAll(():void => {
     hilog.info(domain, tag, 'HiCheckerTest afterAll called');
-    hichecker.removeRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-    hichecker.removeRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK);
-    hichecker.removeRule(hichecker.RULE_CAUTION_PRINT_LOG);
-    hichecker.removeRule(hichecker.RULE_CAUTION_TRIGGER_CRASH);
+    hichecker.removeCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+    hichecker.removeCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK);
+    hichecker.removeCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
+    hichecker.removeCheckRule(hichecker.RULE_CAUTION_TRIGGER_CRASH);
   })
 
   beforeEach(():void => {
     hilog.info(domain, tag, 'HiCheckerTest beforeEach called');
-    hichecker.removeRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-    hichecker.removeRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK);
-    hichecker.removeRule(hichecker.RULE_CAUTION_PRINT_LOG);
-    hichecker.removeRule(hichecker.RULE_CAUTION_TRIGGER_CRASH);
+    hichecker.removeCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+    hichecker.removeCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK);
+    hichecker.removeCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
+    hichecker.removeCheckRule(hichecker.RULE_CAUTION_TRIGGER_CRASH);
   })
 
   afterEach(():void => {
@@ -53,8 +53,8 @@ export default function hicheckerTest() {
      */
     it('DFX_DFR_Hichecker_Interface_Static_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (): void => {
       hilog.info(domain, tag, 'DFX_DFR_Hichecker_Interface_Static_0100 start');
-      hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-      let tmp: boolean = hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+      hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+      let tmp: boolean = hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
       hilog.info(domain, tag, 'add rule success!');
       expect(tmp).assertEqual(true);
     })
@@ -66,12 +66,12 @@ export default function hicheckerTest() {
      */
     it('DFX_DFR_Hichecker_Interface_Static_0500', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (): void => {
       hilog.info(domain, tag, 'DFX_DFR_Hichecker_Interface_Static_0500 start');
-      hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-      hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
+      hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+      hichecker.addCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
       hilog.info(domain, tag, 'add rule success');
-      expect(hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertEqual(true);
-      expect(hichecker.contains(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK)).assertEqual(true);
-      expect(hichecker.contains(hichecker.RULE_CAUTION_PRINT_LOG)).assertEqual(true);
+      expect(hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertEqual(true);
+      expect(hichecker.containsCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK)).assertEqual(true);
+      expect(hichecker.containsCheckRule(hichecker.RULE_CAUTION_PRINT_LOG)).assertEqual(true);
       let tmp: bigint = (hichecker.RULE_THREAD_CHECK_SLOW_PROCESS |
                          hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK |
                          hichecker.RULE_CAUTION_PRINT_LOG);
@@ -86,15 +86,15 @@ export default function hicheckerTest() {
      */
     it('DFX_DFR_Hichecker_Interface_Static_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (): void => {
       hilog.info(domain, tag, 'DFX_DFR_Hichecker_Interface_Static_0200 start');
-      hichecker.addRule(-1n);
+      hichecker.addCheckRule(-1n);
       hilog.info(domain, tag, 'add wrong rule!');
-      expect(hichecker.contains(-1n)).assertEqual(false);
-      hichecker.addRule(0n);
+      expect(hichecker.containsCheckRule(-1n)).assertEqual(false);
+      hichecker.addCheckRule(0n);
       hilog.info(domain, tag, 'add wrong rule!');
-      expect(hichecker.contains(0n)).assertEqual(false);
-      hichecker.addRule(999999n);
+      expect(hichecker.containsCheckRule(0n)).assertEqual(false);
+      hichecker.addCheckRule(999999n);
       hilog.info(domain, tag, 'add wrong rule!');
-      expect(hichecker.contains(999999n)).assertEqual(false);
+      expect(hichecker.containsCheckRule(999999n)).assertEqual(false);
     })
 
     /**
@@ -104,11 +104,11 @@ export default function hicheckerTest() {
      */
     it('DFX_DFR_Hichecker_Interface_Static_1200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (): void => {
       hilog.info(domain, tag, 'DFX_DFR_Hichecker_Interface_Static_1200 start');
-      hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-      expect(hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertEqual(true);
+      hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+      expect(hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertEqual(true);
       hilog.info(domain, tag, 'add rule success!');
-      hichecker.removeRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-      expect(hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertEqual(false);
+      hichecker.removeCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+      expect(hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertEqual(false);
     })
 
     /**
@@ -118,13 +118,13 @@ export default function hicheckerTest() {
      */
     it('DFX_DFR_Hichecker_Interface_Static_0800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (): void => {
       hilog.info(domain, tag, 'DFX_DFR_Hichecker_Interface_Static_0800 start');
-      hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-      hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
+      hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+      hichecker.addCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
       hilog.info(domain, tag, 'add rule success!');
       let tmp: bigint = (hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
-      hichecker.removeRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+      hichecker.removeCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
       expect(hichecker.getRule() == tmp).assertEqual(true);
-      hichecker.removeRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
+      hichecker.removeCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
       expect(hichecker.getRule() == 0n).assertEqual(true);
     })
 
@@ -135,16 +135,16 @@ export default function hicheckerTest() {
      */
     it('DFX_DFR_Hichecker_Interface_Static_1300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (): void => {
       hilog.info(domain, tag, 'DFX_DFR_Hichecker_Interface_Static_1300 start');
-      hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-      hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
+      hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+      hichecker.addCheckRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
       hilog.info(domain, tag, 'add rule success!');
       let tmp : bigint = (hichecker.RULE_THREAD_CHECK_SLOW_PROCESS |
                           hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
-      hichecker.removeRule(-1n);
+      hichecker.removeCheckRule(-1n);
       expect(hichecker.getRule() == tmp).assertEqual(true);
-      hichecker.removeRule(0n);
+      hichecker.removeCheckRule(0n);
       expect(hichecker.getRule() == tmp).assertEqual(true);
-      hichecker.removeRule(999999n);
+      hichecker.removeCheckRule(999999n);
       expect(hichecker.getRule() == tmp).assertEqual(true);
     })
 
