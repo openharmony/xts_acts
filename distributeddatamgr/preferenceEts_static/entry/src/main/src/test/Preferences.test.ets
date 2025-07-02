@@ -277,7 +277,7 @@ export default function preferenceTest() {
             expect(3.0).assertEqual(ret);
 
             await mPreferences.flush();
-            mPreferences.delete(KEY_TEST_FLOAT_ELEMENT, (err: Error | undefined) :void => {
+            mPreferences.delete(KEY_TEST_FLOAT_ELEMENT, (err: BusinessError<void>|null) => {
                 if (err) {
                     hilog.info(domain, tag, '%{public}s', "Failed to delete the key KEY_TEST_STRING_ELEMENT. err =" + err);
                     expect(!err).assertTrue();
@@ -342,7 +342,7 @@ export default function preferenceTest() {
                     expect(preferences != null).assertTrue();
                 }
             })
-            dataPreferences.removePreferencesFromCache(context, NAME, (err: BusinessError<void>|null, data: Object) : void => {
+            dataPreferences.removePreferencesFromCache(context, NAME, (err: BusinessError<void>, data : Object) : void => {
                 if(err != null){
                     hilog.info(domain, tag, '%{public}s', TAG + "Remove preferences from cache error: " + err)
                     expect(false).assertTrue();
@@ -378,7 +378,7 @@ export default function preferenceTest() {
             mPreferences.putSync(KEY_TEST_STRING_ELEMENT, 'test');
             mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue");
 
-            mPreferences.flush((err: BusinessError<void> | null) => {
+            mPreferences.flush((err: BusinessError<void>|null) => {
                 if (err) {
                     console.log("flush err.");
                     expect().assertFail();
@@ -558,7 +558,7 @@ export default function preferenceTest() {
                     expect(preferences != null).assertTrue();
                 }
             })
-            dataPreferences.deletePreferences(context, NAME, (err: BusinessError<void>|null, data: Object) : void => {
+            dataPreferences.deletePreferences(context, NAME, (err: BusinessError<void>, data : Object|undefined) : void => {
                 if(err != null){
                     hilog.info(domain, tag, '%{public}s', TAG + "Delete preferences err: " + err)
                     expect(false).assertTrue();
@@ -607,7 +607,7 @@ export default function preferenceTest() {
             mPreferences.clearSync();
             mPreferences.putSync(KEY_TEST_STRING_ELEMENT, 'test')
             mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue")
-            mPreferences.flush((err: BusinessError<void>|null, val: Object):void => {
+            mPreferences.flush((err: BusinessError<void>|null, val: Object|undefined):void => {
                 if (err) {
                     console.log("flush err.");
                     expect().assertFail();
@@ -645,7 +645,7 @@ export default function preferenceTest() {
 
             await mPreferences.flush();
 
-            mPreferences.getAll(err: BusinessError<void> | undefined, value: Object | undefined) => {
+            mPreferences.getAll((err: BusinessError<void>|null, value: Object|undefined) => {
                 let obj = value as Record<string, object>;
                 expect(false).assertEqual(obj.get(KEY_TEST_BOOLEAN_ELEMENT));
                 expect("123").assertEqual(obj.get(KEY_TEST_STRING_ELEMENT));
