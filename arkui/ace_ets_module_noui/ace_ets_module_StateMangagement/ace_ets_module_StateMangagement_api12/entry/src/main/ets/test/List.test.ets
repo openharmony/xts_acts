@@ -202,7 +202,10 @@ import RepeatTest0020 from './RepeatTest/RepeatTest0020.test';
 import LazyForEachInterface from './LazyForEach/LazyForEachInterface.test';
 import RepeatTest0010 from './RepeatTest/RepeatTest0010.test';
 import RepeatTest0400 from './RepeatTest/RepeatTest0400.test';
-
+import RepeatwithAnimateTo from './RepeatTest/RepeatwithAnimateTo.test';
+import LazyForEach001 from './LazyForEach/LazyForEach001.test';
+import IfElse006 from './IfElseTest/IfElse006.test';
+import ForEach001 from './foreachTest/ForEach001.test';
 export default function testsuite() {
     ExtendTrackTest();
     Extend0010TestJsunit();
@@ -393,4 +396,8 @@ export default function testsuite() {
 	  RepeatTest0020();
     RepeatTest0010();
     RepeatTest0400();
+    RepeatwithAnimateTo();
+    ForEach001();
+    IfElse006();
+    LazyForEach001();
 }
