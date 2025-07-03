@@ -67,7 +67,6 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Sub_Notification_Ans_Subscriber_Subscribe_Static_2700
      * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_2700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_2700'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2700 START`)
@@ -105,7 +104,6 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Sub_Notification_Ans_Subscriber_Subscribe_Static_2800
      * @tc.desc      : getSubscribeInfo(): Promise<CommonEventSubscribeInfo>
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_2800', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_2800'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2800 START`)
@@ -140,7 +138,6 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Sub_Notification_Ans_Subscriber_Subscribe_Static_2900
      * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_2900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_2900'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2900 START`)
@@ -179,7 +176,6 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Sub_Notification_Ans_Subscriber_Subscribe_Static_3000
      * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_3000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_3000'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_3000 START`)
@@ -215,11 +211,10 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Sub_Notification_Ces_Subscriber_Subscribe_Static_0900
      * @tc.desc      : isOrderedCommonEvent(callback: AsyncCallback<boolean>): void
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ces_Subscriber_Subscribe_Static_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ces_Subscriber_Subscribe_Static_0900'
       console.info(`${TAG} Sub_Notification_Ces_Subscriber_Subscribe_Static_0900 START`)
-      await Utils.msSleep(5000);
+      await Utils.msSleep(2000);
       CommonEventSubscriberInfo.events[0] = 'publish_event_0500'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0500'
       CommonEventSubscriberInfo.priority = 10
@@ -290,11 +285,10 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Sub_Notification_Ces_Publish_CommonEvent_Static_8350
      * @tc.desc      : isOrderedCommonEvent(): Promise<boolean>
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ces_Publish_CommonEvent_Static_8350', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ces_Publish_CommonEvent_Static_8350'
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_Static_8350 START`)
-      await Utils.msSleep(5000);
+      await Utils.msSleep(1000);
       CommonEventSubscriberInfo.events[0] = 'publish_event_0600'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0600'
       CommonEventSubscriberInfo.priority = 10
@@ -365,11 +359,10 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Sub_Notification_Ces_Publish_CommonEvent_Static_8250
      * @tc.desc      : iisStickyCommonEvent(callback: AsyncCallback<boolean>): void
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ces_Publish_CommonEvent_Static_8250', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ces_Publish_CommonEvent_Static_8250'
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_Static_8250 START`)
-      await Utils.msSleep(5000);
+      await Utils.msSleep(1000);
       CommonEventSubscriberInfo.events[0] = 'publish_event_0700'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0700'
       CommonEventSubscriberInfo.priority = 10
@@ -440,11 +433,10 @@ export default function ActsSubscriberTestUnorder() {
      * @tc.name      : Sub_Notification_Ces_Publish_CommonEvent_Static_8300
      * @tc.desc      : isStickyCommonEvent(): Promise<boolean>
      */
-    //问题单号：DTS2025061412066
     it('Sub_Notification_Ces_Publish_CommonEvent_Static_8300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ces_Publish_CommonEvent_Static_8300'
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_Static_8300 START`)
-      await Utils.msSleep(5000);
+      await Utils.msSleep(1000);
       CommonEventSubscriberInfo.events[0] = 'publish_event_0800'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0800'
       CommonEventSubscriberInfo.priority = 10
@@ -515,15 +507,15 @@ export default function ActsSubscriberTestUnorder() {
     it('Sub_Notification_Ces_Subscriber_Subscribe_Static_0800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ces_Subscriber_Subscribe_Static_0800'
       hilog.info(DOMAIN_NUMBER, TAG,`Sub_Notification_Ces_Subscriber_Subscribe_Static_0800 START`)
+      let subscriber: commonEventManager.CommonEventSubscriber
       let CommonEventSubscriberInfo : commonEventManager.CommonEventSubscribeInfo = {
         events: new Array<string>('event'),
         publisherPermission: '',
         publisherDeviceId: '',
-        userId: 100,
         priority: 1000
       }
 
-      await Utils.msSleep(5000)
+      await Utils.msSleep(500)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0900'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0900'
       CommonEventSubscriberInfo.priority = 10
@@ -531,7 +523,7 @@ export default function ActsSubscriberTestUnorder() {
       let CommonEventPublishData : commonEventManager.CommonEventPublishData= {
         code: 0,
         data: "initial_data",
-        subscriberPermissions:new Array<string>('publish_event_0900_subscriberPermissions'),
+        subscriberPermissions:new Array<string>(''),
         bundleName:bundle_name,
         isOrdered:false,
         isSticky:false,
@@ -539,42 +531,48 @@ export default function ActsSubscriberTestUnorder() {
         'key1':'parameters_0100'
       }as Record<string, Object>
       }
-      let CommonEventSubscriber =await commonEventManager.createSubscriber(CommonEventSubscriberInfo)
-      if (CommonEventSubscriber == undefined) {
-        hilog.info(DOMAIN_NUMBER, TAG,`createSubscriber failed! Err.Info ===> ${CommonEventSubscriber}`)
-        expect(false).assertTrue()
-        done()
-      } else {
-        hilog.info(DOMAIN_NUMBER, TAG,`createSubscriber successed! Subscriber.Info ===>${CommonEventSubscriber}`)
-        expect(true).assertTrue()
-      }
+      hilog.info(DOMAIN_NUMBER, TAG, ` CommonEventSubscriber ===> start`)
+      await commonEventManager.createSubscriber(CommonEventSubscriberInfo).then((commonEventSubscriber: commonEventManager.CommonEventSubscriber|undefined): void => {
+        hilog.info(DOMAIN_NUMBER, TAG, `Sub_Notification_Ces_Subscriber_Subscribe_Static_0800 success`)
+        if(commonEventSubscriber !== undefined){
+          subscriber = commonEventSubscriber
+          hilog.info(DOMAIN_NUMBER, TAG, `Sub_Notification_Ces_Subscriber_Subscribe_Static_0800 commonEventSubscriber111111 success`)
+          commonEventManager.subscribe(subscriber, (err:BusinessError | null,CommonEventData:commonEventManager.CommonEventData|undefined) => {
+            hilog.info(DOMAIN_NUMBER, TAG, `Sub_Notification_Ces_Subscriber_Subscribe_Static_0800 subscribe222222 success`)
+            if (err) {
+              hilog.info(DOMAIN_NUMBER, TAG, ` subscribe failed! Err.Info ===>  + ${err?.code}`)
+              expect(false).assertTrue()
+              done()
+            } else {
+              hilog.info(DOMAIN_NUMBER, TAG,` subscribe successed! CommonEventData.Info ===> `+ CommonEventData)
+              if (CommonEventData == undefined) {
+                hilog.info(DOMAIN_NUMBER, TAG,`subscribe failed! Err.Info ===> ${CommonEventData}`)
+                expect(false).assertTrue()
+                done()
+              } else {
+                hilog.info(DOMAIN_NUMBER, TAG,`subscribe successed! CommonEventData.Info ===>${CommonEventData}`)
+                expect(CommonEventData?.code).assertEqual(0)
+                expect(CommonEventData?.data).assertEqual("initial_data")
+                expect(CommonEventData?.parameters?.['key1']).assertEqual('parameters_0100')
+                expect(true).assertTrue()
+                done()
+              }
+            }
+          })
 
-      commonEventManager.subscribe(CommonEventSubscriber, (err:BusinessError | null,CommonEventData:commonEventManager.CommonEventData|undefined) => {
-        if (err) {
-          hilog.info(DOMAIN_NUMBER, TAG, ` subscribe failed! Err.Info ===>  + ${err?.code}`)
+        }else{
           expect(false).assertTrue()
           done()
-        } else {
-          hilog.info(DOMAIN_NUMBER, TAG,` subscribe successed! CommonEventData.Info ===> `+ CommonEventData)
-          if (CommonEventData == undefined) {
-            hilog.info(DOMAIN_NUMBER, TAG,`subscribe failed! Err.Info ===> ${CommonEventData}`)
-            expect(false).assertTrue()
-            done()
-          } else {
-            hilog.info(DOMAIN_NUMBER, TAG,`subscribe successed! CommonEventData.Info ===>${CommonEventData}`)
-            expect(CommonEventData?.code).assertEqual(0)
-            expect(CommonEventData?.data).assertEqual("initial_data")
-            let parameters = CommonEventData?.parameters?.['key1'] == undefined ? 'parameters_0100' : CommonEventData?.parameters?.['key1'];
-            expect(parameters).assertEqual('parameters_0100')
-            expect(true).assertTrue()
-          }
-          expect(true).assertTrue()
-          done()
         }
+      }).catch((err) => {
+        hilog.info(DOMAIN_NUMBER, TAG, `Sub_Notification_Ans_Subscriber_Subscribe_Static_1600 err, `)
+        expect(false).assertTrue()
+        done()
       })
 
+      await Utils.msSleep(1000)
       commonEventManager.publish('publish_event_0900', CommonEventPublishData, (err:BusinessError | null) => {
-        if (err?.code) {
+        if (err) {
           hilog.info(DOMAIN_NUMBER, TAG, `publish failed! event.Info ===> + ${err?.code}`)
           expect(false).assertTrue()
           done()
@@ -583,7 +581,6 @@ export default function ActsSubscriberTestUnorder() {
           expect(true).assertTrue()
         }
       })
-
       await Utils.msSleep(2000)
       hilog.info(DOMAIN_NUMBER, TAG,` Sub_Notification_Ces_Subscriber_Subscribe_Static_0800 END`)
     })

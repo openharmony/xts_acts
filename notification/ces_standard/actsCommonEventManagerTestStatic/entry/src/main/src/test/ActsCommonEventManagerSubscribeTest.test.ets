@@ -54,7 +54,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
       hilog.info(domain, TAG, '%{public}s', 'beforeAll end');
     })
 
-    //问题单号：DTS2025061412066
+  
     /*
      * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_1900
      * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_1900
@@ -159,7 +159,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 END`)
     })
 
-    //问题单号：DTS2025061412066
+  
     /*
      * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
      * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
