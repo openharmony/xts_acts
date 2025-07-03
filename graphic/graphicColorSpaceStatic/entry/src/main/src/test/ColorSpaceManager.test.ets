@@ -325,5 +325,100 @@ export default function colorSpaceManagerTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_011
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_011
+     * @tc.desc: color space API ArkTS1.2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_011', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+      console.info('test SUB_GRAPHIC_COLOR_SPACE_API_static_011 begin');
+      try {
+        let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.UNKNOWN);
+        let colorSpaceName = csManager.getColorSpaceName();
+        console.info("the name is " + colorSpaceName);
+        expect().assertFail();
+        done();
+      } catch (err: Error) {
+        console.log('www data lxt test enum value of ColorSpace Manager not support error ' + JSON.stringify(err));
+        expect(err.code == 18600001).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_012
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_012
+     * @tc.desc: color space API ArkTS1.2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_012', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+      console.info('test SUB_GRAPHIC_COLOR_SPACE_API_static_012 begin');
+      try {
+        let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.CUSTOM);
+        expect().assertFail();
+        done();
+      } catch (err: Error) {
+        console.log('test enum value of ColorSpace Manager not support error ' + JSON.stringify(err));
+        expect(err.code == 18600001).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_013
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_013
+     * @tc.desc: color space API ArkTS1.2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_013', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+      console.info('test SUB_GRAPHIC_COLOR_SPACE_API_static_013 begin');
+      try {
+        let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.UNKNOWN);
+        let num = csManager.getGamma();
+        console.info("the name is " + num);
+        expect().assertFail();
+        done();
+      } catch (err: Error) {
+        console.log('test enum value of ColorSpace Manager not support error ' + JSON.stringify(err));
+        expect(err.code == 18600001).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number: SUB_GRAPHIC_COLOR_SPACE_API_static_014
+     * @tc.name: SUB_GRAPHIC_COLOR_SPACE_API_static_014
+     * @tc.desc: color space API ArkTS1.2
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUB_GRAPHIC_COLOR_SPACE_API_static_014', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0,
+      async (done: () => void): Promise<void> => {
+      console.info('test SUB_GRAPHIC_COLOR_SPACE_API_static_012 begin');
+      try {
+        let csManager = colorSpaceManager.create(colorSpaceManager.ColorSpace.CUSTOM);
+        let wpNum: number[] = csManager.getWhitePoint();
+        console.info("the name is " + wpNum);
+        expect().assertFail();
+        done();
+      } catch (err: Error) {
+        console.log('test enum value of ColorSpace Manager not support error ' + JSON.stringify(err));
+        expect(err.code == 18600001).assertTrue();
+        done();
+      }
+    })
+
   })
 }
