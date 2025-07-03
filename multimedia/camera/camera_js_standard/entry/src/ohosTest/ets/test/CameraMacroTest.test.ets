@@ -380,7 +380,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_IS_MACRO_SUPPORTED_0100
-     * @tc.name      : Create photo session issupported macro
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_IS_MACRO_SUPPORTED_0100
      * @tc.desc      : Create photo session issupported macro
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -409,7 +409,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_0100
-     * @tc.name      : Create photo session enable macro true when isSupported is true
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_0100
      * @tc.desc      : Create photo session enable macro true when isSupported is true
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -441,7 +441,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_0200
-     * @tc.name      : Create photo session enable macro false when isSupported is true
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_0200
      * @tc.desc      : Create photo session enable macro false when isSupported is true
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -473,7 +473,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_ERRORCODE_0100
-     * @tc.name      : Create photo session enable macro true when isSupported is false 
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_ERRORCODE_0100 
      * @tc.desc      : Create photo session enable macro true when isSupported is false
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -505,7 +505,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_ERRORCODE_0200
-     * @tc.name      : Create photo session enable macro false when isSupported is false 
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_ERRORCODE_0200 
      * @tc.desc      : Create photo session enable macro false when isSupported is false
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -537,7 +537,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_ERRORCODE_0300
-     * @tc.name      : Create photo session enable macro  when Session is not commitconfig 
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_ERRORCODE_0300 
      * @tc.desc      : Create photo session enable macro  when Session is not commitconfig 
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -584,10 +584,9 @@ export default function CameraPhotoSessionTest() {
         done();
     })
 
-    //sdd
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_IS_MACRO_SUPPORTED_0100
-     * @tc.name      : Create video session issupported macro
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_IS_MACRO_SUPPORTED_0100
      * @tc.desc      : Create video session issupported macro
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -616,7 +615,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_0100
-     * @tc.name      : Create video session enable macro true when isSupported is true
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_0100
      * @tc.desc      : Create video session enable macro true when isSupported is true
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -648,7 +647,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_0200
-     * @tc.name      : Create video session enable macro false when isSupported is true
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_0200
      * @tc.desc      : Create video session enable macro false when isSupported is true
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -680,7 +679,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_ERRORCODE_0100
-     * @tc.name      : Create video session enable macro true when isSupported is false 
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_ERRORCODE_0100 
      * @tc.desc      : Create video session enable macro true when isSupported is false
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -712,7 +711,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_ERRORCODE_0200
-     * @tc.name      : Create video session enable macro false when isSupported is false 
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_ERRORCODE_0200
      * @tc.desc      : Create video session enable macro false when isSupported is false
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -744,7 +743,7 @@ export default function CameraPhotoSessionTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_ERRORCODE_0300
-     * @tc.name      : Create video session enable macro  when Session is not commitconfig 
+     * @tc.name      : SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_ERRORCODE_0300 
      * @tc.desc      : Create video session enable macro  when Session is not commitconfig 
      * @tc.size      : MEDIUM
      * @tc.type      : Function
