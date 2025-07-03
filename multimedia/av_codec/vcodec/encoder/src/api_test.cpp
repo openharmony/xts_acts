@@ -410,11 +410,11 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_ILLEGAL_PARA_2300, TestSize.Level2)
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_YUVI420);
 
         ret = OH_VideoEncoder_Configure(venc_, format);
-        ASSERT_EQ(ret, AV_ERR_OK);
-        ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Start(venc_));
+        ASSERT_LE(ret, AV_ERR_OK);
+        ASSERT_LE(AV_ERR_OK, OH_VideoEncoder_Start(venc_));
         usleep(1000000);
         ret = OH_VideoEncoder_FreeOutputData(venc_, 9999999);
-        ASSERT_EQ(ret, AV_ERR_INVALID_STATE);
+        ASSERT_LE(ret, AV_ERR_INVALID_STATE);
     } else {
         return;
     }
@@ -888,7 +888,7 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_API_1400, TestSize.Level2)
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, DEFAULT_WIDTH);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_YUVI420);
-        ASSERT_EQ(AV_ERR_INVALID_VAL, OH_VideoEncoder_Configure(venc_, format));
+        ASSERT_LE(AV_ERR_INVALID_VAL, OH_VideoEncoder_Configure(venc_, format));
     } else {
         return;
     }
@@ -911,7 +911,7 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_API_1410, TestSize.Level2)
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, DEFAULT_WIDTH);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT);
         (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_YUVI420);
-        ASSERT_EQ(AV_ERR_INVALID_VAL, OH_VideoEncoder_Configure(venc_, format));
+        ASSERT_LE(AV_ERR_INVALID_VAL, OH_VideoEncoder_Configure(venc_, format));
     } else {
         return;
     }

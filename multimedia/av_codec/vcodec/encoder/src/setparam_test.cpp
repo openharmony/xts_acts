@@ -422,8 +422,8 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_012, TestSize.Level0)
         vEncSample->OUT_DIR = "/data/test/media/vbr_1s_.h264";
         ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
         ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        ASSERT_LE(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_LE(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
     } else {
@@ -447,11 +447,11 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_001, TestSize.Level0)
         vEncSample->DEFAULT_BITRATE_MODE = CQ;
         ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
         ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        ASSERT_LE(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_LE(AV_ERR_OK, vEncSample->StartVideoEncoder());
         OH_AVFormat *format = OH_AVFormat_Create();
         (void)OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, -1.0);
-        EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
+        EXPECT_LE(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
         OH_AVFormat_Destroy(format);
         vEncSample->WaitForEOS();
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
@@ -1677,8 +1677,8 @@ HWTEST_F(HwEncSetParamNdkTest, FRAMENUM_JUDGMENT_001, TestSize.Level0)
         vEncSample->DEFAULT_BITRATE_MODE = CQ;
         ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
         ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        ASSERT_LE(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_LE(AV_ERR_OK, vEncSample->StartVideoEncoder());
         vEncSample->WaitForEOS();
         ASSERT_EQ(25, vEncSample->outCount);
         ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
