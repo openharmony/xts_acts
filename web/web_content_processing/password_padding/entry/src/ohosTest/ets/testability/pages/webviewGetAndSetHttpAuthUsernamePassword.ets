@@ -32,7 +32,6 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
   usernamePassword: string[] = [];
   @State emitKey: string = '';
   @State isReceive: number = -1;
-  @State isPageEnd: number = -1;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -63,9 +62,6 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
 
           webview.WebDataBase.deleteHttpAuthCredentials();
           await waitForExist(()=>this.isReceive, this.emitKey, 0);
-          await waitForExist(()=>this.isPageEnd, this.emitKey, 0);
-          this.isReceive = -1;
-          this.isPageEnd = -1;
           switch (this.emitKey) {
             case 'emitWebviewGetAndSetHttpAuthUsernamePassword': {
               try {
@@ -209,10 +205,6 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
       }
       Web({ src: 'www.example.com', controller: this.controller })
         .databaseAccess(true)
-        .onPageEnd((event) => {
-          console.log('web pageEnd==>' + event.url);
-          this.isPageEnd = 0;
-        })
     }
   }
 }
