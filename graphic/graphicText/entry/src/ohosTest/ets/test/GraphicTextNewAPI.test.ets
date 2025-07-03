@@ -297,6 +297,7 @@ export default function graphicTextNewAPI() {
         };
         let myParagraphStyle: text.ParagraphStyle = {
           textStyle: myTextStyle,
+          verticalAlign: text.TextVerticalAlign.TOP,
         }
         let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
         let textData = "测试 loadFontSync 加载字体HarmonyClock_01.ttf";
@@ -338,6 +339,7 @@ export default function graphicTextNewAPI() {
         };
         let myParagraphStyle: text.ParagraphStyle = {
           textStyle: myTextStyle,
+          verticalAlign: text.TextVerticalAlign.CENTER,
         }
         let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
         let textData = "测试 loadFontSync 加载字体HarmonyClock_01.ttf";
@@ -419,6 +421,7 @@ export default function graphicTextNewAPI() {
         };
         let myParagraphStyle: text.ParagraphStyle = {
           textStyle: myTextStyle,
+          verticalAlign: text.TextVerticalAlign.BOTTOM,
         }
         let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
         let textData = "测试 loadFontSync 加载字体HarmonyClock_01.ttf";
@@ -474,6 +477,56 @@ export default function graphicTextNewAPI() {
           console.info('www data test error ' + msg + err);
           expect().assertFail();
         }
+        done();
+      } catch(err){
+        console.info(msg + 'test error' + err);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : graphicTextNewAPI_0900
+     * @tc.name      : graphicTextNewAPI_0900
+     * @tc.desc      : text newAPI
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it('graphicTextNewAPI_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done:Function)=> {
+      let msg  = "====graphicTextNewAPI_0900===="
+      let fontCollection: text.FontCollection = new text.FontCollection();
+      try {
+        let fontFamilies: Array<string> = ["Clock_01"]
+        let myTextStyle: text.TextStyle = {
+          fontFamilies: fontFamilies,
+        };
+        let myParagraphStyle: text.ParagraphStyle = {
+          textStyle: myTextStyle,
+          verticalAlign: text.TextVerticalAlign.BASELINE,
+        }
+        let myPlaceholderSpan: text.PlaceholderSpan = {
+          width: 22,
+          height: 33,
+          align: text.PlaceholderAlignment.FOLLOW_PARAGRAPH,
+          baseline: text.TextBaseline.ALPHABETIC,
+          baselineOffset: 66
+        };
+        let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+        let textData = "测试 loadFontSync 加载字体HarmonyClock_01.ttf";
+        paragraphBuilder.addText(textData);
+        paragraphBuilder.addPlaceholder(myPlaceholderSpan);
+        expect(true).assertTrue();
+        let paragraph: text.Paragraph = paragraphBuilder.build();
+        try {
+          text.setTextUndefinedGlyphDisplay(text.TextUndefinedGlyphDisplay.USE_DEFAULT);
+          expect(true).assertTrue();
+        } catch (err) {
+          console.info('www data test error ' + msg + err);
+          expect().assertFail();
+        }
+        paragraph.layoutSync(600);
+        expect(true).assertTrue();
         done();
       } catch(err){
         console.info(msg + 'test error' + err);

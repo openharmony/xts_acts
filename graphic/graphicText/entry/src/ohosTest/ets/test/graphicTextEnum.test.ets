@@ -333,10 +333,33 @@ export default function graphicTextEnum() {
         expect(3).assertEqual(text.PlaceholderAlignment.TOP_OF_ROW_BOX);
         expect(4).assertEqual(text.PlaceholderAlignment.BOTTOM_OF_ROW_BOX);
         expect(5).assertEqual(text.PlaceholderAlignment.CENTER_OF_ROW_BOX);
+        expect(6).assertEqual(text.PlaceholderAlignment.FOLLOW_PARAGRAPH);
       } catch (err) {
         console.info(msg + 'test enum value of PlaceholderAlignment error ' + JSON.stringify(err));
         expect().assertFail();
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_014
+     * @tc.name      : testTextVerticalAlign
+     * @tc.desc      : To test the enum value of PlaceholderAlignment.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTextVerticalAlign', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async ()=> {
+      let msg = "testTextVerticalAlign"
+      console.info(msg + 'begin');
+      try {
+        expect(0).assertEqual(text.TextVerticalAlign.BASELINE);
+        expect(1).assertEqual(text.TextVerticalAlign.BOTTOM);
+        expect(2).assertEqual(text.TextVerticalAlign.CENTER);
+        expect(3).assertEqual(text.TextVerticalAlign.TOP);
+      } catch (err) {
+        console.info(msg + 'test enum value of testTextVerticalAlign error ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+
   })
 }
