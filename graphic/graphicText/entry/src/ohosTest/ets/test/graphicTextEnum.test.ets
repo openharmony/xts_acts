@@ -353,7 +353,7 @@ export default function graphicTextEnum() {
       try {
         expect(0).assertEqual(text.TextVerticalAlign.BASELINE);
         expect(1).assertEqual(text.TextVerticalAlign.BOTTOM);
-        expect(2).assertEqual(text.TextVerticalAlign.BOTTOM);
+        expect(2).assertEqual(text.TextVerticalAlign.CENTER);
         expect(3).assertEqual(text.TextVerticalAlign.TOP);
       } catch (err) {
         console.info(msg + 'test enum value of testTextVerticalAlign error ' + JSON.stringify(err));
