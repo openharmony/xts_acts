@@ -365,9 +365,9 @@ export default function intelligenceTest() {
 
       if (currentDeviceIsPc) {
         intelligence.getTextEmbeddingModel(textConfig)
-          .then((data) => {
+          .then(async (data) => {
             console.info(TAG + "get result:" + data);
-            data.loadModel();
+            await data.loadModel();
             let text = 'text';
             data.getEmbedding(text)
             .then((loadData) => {
@@ -408,9 +408,9 @@ export default function intelligenceTest() {
 
       if (currentDeviceIsPc) {
         intelligence.getTextEmbeddingModel(textConfig)
-        .then((data) => {
+        .then(async (data) => {
           console.info(TAG + "get result: " + data);
-          data.loadModel();
+          await data.loadModel();
           let batchTexts = ['11', '22', '33'];
           data.getEmbedding(batchTexts)
           .then((loadData) => {
@@ -540,9 +540,9 @@ export default function intelligenceTest() {
 
       if (currentDeviceIsPc) {
         intelligence.getImageEmbeddingModel(imageConfig)
-          .then((data) => {
+          .then(async (data) => {
             console.info(TAG + "get result :" + data);
-            data.loadModel();
+            await data.loadModel();
             data.getEmbedding('111.jpg')
             .then((loadData) => {
               console.info(TAG + "getEmbedding result 1200 :" + loadData);
@@ -708,9 +708,9 @@ export default function intelligenceTest() {
       console.info(TAG + "intelligenceApiTest2900 start");
       if (currentDeviceIsPc) {
         intelligence.getImageEmbeddingModel(imageConfig)
-          .then((data) => {
+          .then(async (data) => {
             console.info(TAG + "get result :" + data);
-            data.loadModel();
+            await data.loadModel();
             data.getEmbedding(undefined)
               .then((loadData) => {
                 console.info(TAG + "getEmbedding result 1200 :" + loadData);
