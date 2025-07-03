@@ -607,7 +607,7 @@ export default function CameraPhotoSessionTest() {
         try {
             let isSupportedMacro =  mCameraSession.isMacroSupported();
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_IS_MACRO_SUPPORTED_0100 Success isSupportedMacro = "+ isSupportedMacro );
-            if (isSupportedMacro == true || isSupportedMacro == flase){
+            if (isSupportedMacro == true || isSupportedMacro == false) {
                 expect(true).assertTrue();
             } else {
                 expect(true).assertFalse();
