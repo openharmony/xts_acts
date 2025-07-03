@@ -1111,7 +1111,7 @@ export default function abilityTest() {
      * @tc.level     : Level2
      */
 
-    it('SUB_MULTIMEDIA_AVSESSION_SETCALLMETADATA_PROMISE_5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+    it('SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATE_5200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       await session.destroy()
       await sleep(500)
       await controller.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
@@ -1467,7 +1467,7 @@ export default function abilityTest() {
       */
     it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_CALLBACK_5600', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         try {
-            session.stopCasting((err:BusinessError) => {
+            await session.stopCasting((err:BusinessError) => {
               if (err) {
                   console.info(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
               } else {
@@ -1496,7 +1496,7 @@ export default function abilityTest() {
       */
     it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_5700', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
         try {
-            session.stopCasting().then(() => {
+            await session.stopCasting().then(() => {
               console.info('stopCasting successfully');
             }).catch((err: BusinessError) => {
               console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -1525,7 +1525,7 @@ export default function abilityTest() {
               await controller.destroy()
             }
             let aVCastController: avSession.AVCastController;
-            session.getAVCastController().then((avcontroller: avSession.AVCastController) => {
+            await session.getAVCastController().then((avcontroller: avSession.AVCastController) => {
                 aVCastController = avcontroller;
                 console.info(`getAVCastController : SUCCESS : sessionid `);
             }).catch((err: BusinessError) => {
@@ -1556,7 +1556,7 @@ export default function abilityTest() {
               await controller.destroy()
             }
             let aVCastController: avSession.AVCastController;
-            session.getAVCastController((err: BusinessError, avcontroller: avSession.AVCastController) => {
+            await session.getAVCastController((err: BusinessError, avcontroller: avSession.AVCastController) => {
               if (err) {
                 console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
               } else {
@@ -1893,7 +1893,7 @@ export default function abilityTest() {
               '═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟ ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬\n'
         };
         try {
-            session.setAVMetadata(metadata, (err:BusinessError) => {
+            await session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
@@ -1948,7 +1948,7 @@ export default function abilityTest() {
               '\\\'\r\n\t\b\\\f\v\\\x11\\\u1111'
         };
         try {
-            session.setAVMetadata(metadata, (err:BusinessError) => {
+            await session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
@@ -1991,12 +1991,12 @@ export default function abilityTest() {
             singleLyricText:''
         };
         try {
-            session.setAVMetadata(metadata, (err:BusinessError) => {
+            await session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
-                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                    await controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
                         if (err) {
                             console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
                             expect(false).assertTrue();
@@ -2036,12 +2036,12 @@ export default function abilityTest() {
             singleLyricText:str.substring(0,40959)
         };
         try {
-            session.setAVMetadata(metadata, (err:BusinessError) => {
+            await session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
-                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                    await controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
                         if (err) {
                             console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
                             expect(false).assertTrue();
@@ -2081,13 +2081,13 @@ export default function abilityTest() {
             singleLyricText:str.substring(0,40960)
         };
         try {
-            session.setAVMetadata(metadata, (err:BusinessError) => {
+            await session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(err.code).assertEqual(401);
                     done();
                 } else {
-                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                    await controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
                         if (err) {
                             console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
                             expect(false).assertTrue();
@@ -2125,13 +2125,13 @@ export default function abilityTest() {
             filter : avSession.ProtocolType.TYPE_CAST_PLUS_AUDIO
         };
         try {
-            session.setAVMetadata(metadata, (err:BusinessError) => {
+            await session.setAVMetadata(metadata, (err:BusinessError) => {
                 if (err) {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(err.code).assertEqual(401);
                     done();
                 } else {
-                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                    await controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
                         if (err) {
                             console.info(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
                             expect(false).assertTrue();
@@ -2201,7 +2201,7 @@ export default function abilityTest() {
 
     it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_2200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try{
-         session.getOutputDevice().then((device_Info: avSession.OutputDeviceInfo) => {
+         await session.getOutputDevice().then((device_Info: avSession.OutputDeviceInfo) => {
             console.info('Get device successfully');
             let deviceInfo: avSession.DeviceInfo = device_Info.devices[0];
             console.info(`getOutputDevice successfully ${JSON.stringify(deviceInfo)}`);
@@ -2239,7 +2239,7 @@ export default function abilityTest() {
 
     it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_2300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       try{
-         session.getOutputDevice((err: BusinessError, device_Info: avSession.OutputDeviceInfo) => {
+         await session.getOutputDevice((err: BusinessError, device_Info: avSession.OutputDeviceInfo) => {
           if (err) {
             console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
@@ -2301,8 +2301,15 @@ export default function abilityTest() {
         description: queueItemDescription_2
       };
       let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-      session.setAVQueueItems(queueItemsArray).then(() => {
+      await session.setAVQueueItems(queueItemsArray).then(() => {
         console.info('SetAVQueueItems successfully');
+        controller.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
+          console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
+          expect(items[0].description?.pcmSrc).assertEqual(queueItem_1.description?.pcmSrc);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+        });
       }).catch((err: BusinessError) => {
         console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
         expect(false).assertTrue();
@@ -2346,8 +2353,15 @@ export default function abilityTest() {
         description: queueItemDescription_2
       };
       let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-      session.setAVQueueItems(queueItemsArray).then(() => {
+      await session.setAVQueueItems(queueItemsArray).then(() => {
         console.info('SetAVQueueItems successfully');
+        controller.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
+          console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
+          expect(items[0].description?.pcmSrc).assertEqual(queueItem_1.description?.pcmSrc);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+        });
       }).catch((err: BusinessError) => {
         console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
         expect(false).assertTrue();
@@ -2378,7 +2392,7 @@ export default function abilityTest() {
         itemId: 1,
         description: queueItemDescription_1
       };
-      session.setAVQueueItems(queueItem_1).then(() => {
+      await session.setAVQueueItems(queueItem_1).then(() => {
         console.info('SetAVQueueItems successfully');
       }).catch((err: BusinessError) => {
         console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -2423,11 +2437,18 @@ export default function abilityTest() {
         description: queueItemDescription_2
       };
       let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-      session.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+      await session.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
         if (err) {
           console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
         } else {
+          controller.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
+            console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
+            expect(items[0].description?.pcmSrc).assertEqual(queueItem_1.description?.pcmSrc);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+          });
           console.info('SetAVQueueItems successfully');
         }
         done();
@@ -2470,12 +2491,19 @@ export default function abilityTest() {
         description: queueItemDescription_2
       };
       let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-      session.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+      await session.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
         if (err) {
           console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
         } else {
           console.info('SetAVQueueItems successfully');
+          controller.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
+            console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
+            expect(items[0].description?.pcmSrc).assertEqual(queueItem_1.description?.pcmSrc);
+            done();
+          }).catch((err: BusinessError) => {
+            console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+          });
         }
         done();
       });
@@ -2504,7 +2532,7 @@ export default function abilityTest() {
         itemId: 1,
         description: queueItemDescription_1
       };
-      session.setAVQueueItems(queueItem_1, (err: BusinessError) => {
+      await session.setAVQueueItems(queueItem_1, (err: BusinessError) => {
         if (err) {
           console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
           expect(err.code).assertEqual(401);
@@ -2513,6 +2541,50 @@ export default function abilityTest() {
         }
         done();
       });
+      done();
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0900
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0900
+    * @tc.desc      : Testing sendCommonCommand errcode 6600102
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 4
+    */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_0900', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      await session.destroy();
+      let commandName = "my_command";
+      await controller.sendCommonCommand(commandName, {command : "This is my command"}, (err: BusinessError) => {
+        if (err) {
+          console.error(`SendCommonCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+          expect(err.code).assertEqual(6600102);
+        }
+      })
+      await sleep(500);
+      done();
+    })
+
+
+   /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_1100
+    * @tc.name      : SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_1100
+    * @tc.desc      : Testing sendCommonCommand errcode 6600102
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 4
+    */
+    it('SUB_MULTIMEDIA_AVSESSION_SENDCOMMONCOMMAND_ERRORCODE_1100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      await session.destroy();
+      let commandName = "my_command";
+      await controller.sendCommonCommand(commandName, {command : "This is my command"}).then(() => {
+        console.info('SendCommonCommand successfully');
+      }).catch((err: BusinessError) => {
+        console.error(`SendCommonCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+        expect(err.code).assertEqual(6600102);
+      })
+      await sleep(500);
       done();
     })
 
