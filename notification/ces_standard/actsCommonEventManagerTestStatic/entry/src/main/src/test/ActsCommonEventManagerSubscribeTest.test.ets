@@ -54,7 +54,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
       hilog.info(domain, TAG, '%{public}s', 'beforeAll end');
     })
 
-    //问题单号：DTS2025061412066
+  
     /*
      * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_1900
      * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_1900
@@ -80,170 +80,331 @@ export default function ActsCommonEventManagerSubscribeTest() {
             expect(false).assertTrue()
             done()
           } else {
-            console.info(TAG +
-              `Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 createSubscriber success ${commonEventSubscriber}`)
-            if (commonEventSubscriber !== undefined) {
+            console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 createSubscriber success ${commonEventSubscriber}`)
+            if(commonEventSubscriber !== undefined){
               subscriber = commonEventSubscriber
-            } else {
+            }else{
               expect(false).assertTrue()
               done()
             }
-          }
-          })
-        } catch (err: BusinessError) {
-          console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 failed, code is ${err.code}, message is ${err.message}`)
-          expect(false).assertTrue()
-          done()
-        }
+            expect(true).assertTrue()
 
-        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 END`)
-      })
-
-      //问题单号：DTS2025061412066
-      /*
-       * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
-       * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
-       * @tc.desc: verify the promise function
-       */
-      it('Sub_Notification_Ans_Subscriber_Subscribe_Static_2000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-        let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_2000'
-        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 START`)
-
-        let subscriber:commonEventManager.CommonEventSubscriber
-
-        let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
-          events: ["event10"]
-        }
-
-        try {
-          commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber|undefined) => {
-            if (err) {
-              console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 createSubscriber err, error code: ${err.code}, message: ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            } else {
-              console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 createSubscriber success ${commonEventSubscriber}`)
-              expect(true).assertTrue()
-            }
-          })
-        } catch (err: BusinessError) {
-          console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 failed, code is ${err.code}, message is ${err.message}`)
-          expect(false).assertTrue()
-          done()
-        }
-        console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 END`)
-      })
-
-      //问题单号：DTS2025061412066
-      /*
-       * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
-       * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
-       * @tc.desc: verify the callback function
-       */
-      it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100 START`)
-
-        let options:commonEventManager.CommonEventPublishData = {
-          code: 0,
-          data: "initial data",
-          isOrdered: true,
-          isSticky: false,
-          subscriberPermissions:new Array<string>('publish_event_subscriberPermissions'),
-        }
-
-        let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
-          events: ["eventname"],
-          priority:100
-        };
-
-        let subscriber = commonEventManager.createSubscriberSync(subscribeInfo)
-        commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
-          if (err) {
-            expect(false).assertTrue()
-            done()
-          } else {
-            console.info(TAG+'===============>options=========bundle_name: ' + data?.bundleName);
-            console.info(TAG+'===============>options=========code: ' + data?.code);
-            console.info(TAG+'===============>options=========dat: ' + data?.data);
-            expect(data?.bundleName).assertEqual('');
-            expect(data?.code).assertEqual(0);
-            expect(data?.data).assertEqual('initial data');
-            done()
-          }
-        })
-
-        try {
-          setTimeout(()=>{
-            commonEventManager.publish("eventname", options, (err: BusinessError|null)=> {
+            subscriber.isStickyCommonEvent((err: BusinessError | null, isSticky:boolean|undefined) => {
               if (err) {
-                console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+                console.info(TAG+`isStickyCommonEvent_9 err ${err}`)
                 expect(false).assertTrue()
                 done()
               } else {
-                console.info(TAG+`publish success`)
+                console.info(TAG+`isStickyCommonEvent_9 success ${isSticky}`)
+                expect(true).assertTrue()
               }
-            });
-          }, 1000);
-        } catch (err: BusinessError) {
-          console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+            })
+
+            subscriber.isOrderedCommonEvent((err: BusinessError | null, isOrdered:boolean|undefined) => {
+              if (err) {
+                console.info(TAG+`isOrderedCommonEvent_9 err ${err}`)
+                expect(false).assertTrue()
+                done()
+              } else {
+                console.info(TAG+`isOrderedCommonEvent_9 success ${isOrdered}`)
+                if (isOrdered == true) {
+                  subscriber.abortCommonEvent((err: BusinessError | null) => {
+                    if (err) {
+                      console.info(TAG+`abortCommonEvent_9 err ${err}`)
+                      expect(false).assertTrue()
+                      done()
+                    } else {
+                      console.info(TAG+`abortCommonEvent_9 success`)
+                      expect(true).assertTrue()
+                    }
+                  })
+                }
+                else {
+                  expect(true).assertTrue()
+                }
+              }
+            })
+
+            subscriber.getAbortCommonEvent((err: BusinessError | null, abortEvent:boolean|undefined) => {
+              if (err) {
+                console.info(TAG+`getAbortCommonEvent_9 err ${err}`)
+                expect(false).assertTrue()
+                done()
+              } else {
+                console.info(TAG+`getAbortCommonEvent_9 success ${abortEvent}`)
+                expect(true).assertTrue()
+              }
+            })
+
+            subscriber.clearAbortCommonEvent((err: BusinessError | null) => {
+              if (err) {
+                console.info(TAG+`clearAbortCommonEvent_9 err ${err}`)
+                expect(false).assertTrue()
+                done()
+              } else {
+                console.info(TAG+`clearAbortCommonEvent_9 success`)
+                expect(true).assertTrue()
+                done()
+              }
+            })
+
+          }
+        })
+      } catch (err: BusinessError) {
+        console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 failed, code is ${err.code}, message is ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      }
+
+      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1900 END`)
+    })
+
+  
+    /*
+     * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
+     * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_2000
+     * @tc.desc: verify the promise function
+     */
+    it('Sub_Notification_Ans_Subscriber_Subscribe_Static_2000', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
+      let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_2000'
+      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 START`)
+
+      let subscriber:commonEventManager.CommonEventSubscriber
+
+      let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
+        events: ["event10"]
+      }
+
+      try {
+        commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber|undefined) => {
+          if (err) {
+            console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 createSubscriber err, error code: ${err.code}, message: ${err.message}`)
+            expect(false).assertTrue()
+            done()
+          } else {
+            console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 createSubscriber success ${commonEventSubscriber}`)
+            if(commonEventSubscriber !== undefined){
+              subscriber = commonEventSubscriber
+            }else{
+              expect(false).assertTrue()
+              done()
+            }
+            expect(true).assertTrue()
+
+            await subscriber.isStickyCommonEvent().then((isSticky:boolean) => {
+              console.info(TAG+`isStickyCommonEvent_10 success ${isSticky}`)
+              expect(true).assertTrue()
+            }).catch((err: BusinessError):void => {
+              console.info(TAG+`isStickyCommonEvent_10 err ${err}`)
+              expect(false).assertTrue()
+              done()
+            })
+
+            await subscriber.isOrderedCommonEvent().then((isOrdered:boolean) => {
+              console.info(TAG+`isOrderedCommonEvent_10 success ${isOrdered}`)
+              expect(true).assertTrue()
+            }).catch((err: BusinessError):void => {
+              console.info(TAG+`isOrderedCommonEvent_10 err ${err}`)
+              expect(false).assertTrue()
+              done()
+            })
+
+            await subscriber.abortCommonEvent().then(() => {
+              console.info(TAG+`abortCommonEvent_10 success`)
+              expect(true).assertTrue()
+            }).catch((err: BusinessError):void => {
+              console.info(TAG+`abortCommonEvent_10 err ${err}`)
+              expect(false).assertTrue()
+              done()
+            })
+
+            await subscriber.getAbortCommonEvent().then((abortEvent:boolean) => {
+              console.info(TAG+`getAbortCommonEvent_10 success ${abortEvent}`)
+              expect(true).assertTrue()
+            }).catch((err: BusinessError):void => {
+              console.info(TAG+`getAbortCommonEvent_10 err ${err}`)
+              expect(false).assertTrue()
+              done()
+            })
+
+            await subscriber.clearAbortCommonEvent().then(() => {
+              console.info(TAG+`clearAbortCommonEvent_10 success`)
+              expect(true).assertTrue()
+              done()
+            }).catch((err: BusinessError):void => {
+              console.info(TAG+`clearAbortCommonEvent_10 err ${err}`)
+              expect(false).assertTrue()
+              done()
+            })
+
+          }
+        })
+      } catch (err: BusinessError) {
+        console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 failed, code is ${err.code}, message is ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      }
+      console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 END`)
+    })
+
+
+    /*
+     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
+     * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
+     * @tc.desc: verify the callback function
+     */
+    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100 START`)
+
+      let options:commonEventManager.CommonEventPublishData = {
+        code: 0,
+        data: "initial data",
+        isOrdered: true,
+        isSticky: false,
+        subscriberPermissions:new Array<string>('publish_event_subscriberPermissions'),
+      }
+
+      let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
+        events: ["eventname"],
+        priority:100
+      };
+
+      let subscriber = commonEventManager.createSubscriberSync(subscribeInfo)
+      commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
+        if (err) {
+          expect(false).assertTrue()
+          done()
+        } else {
+          if (data !== undefined) {
+            console.info(TAG+'===============>options=========bundle_name: ' + data?.bundleName);
+            console.info(TAG+'===============>options=========code: ' + data?.code);
+            console.info(TAG+'===============>options=========data: ' + data?.data);
+            expect(data?.bundleName).assertEqual('');
+            expect(data?.code).assertEqual(0);
+            expect(data?.data).assertEqual('initial data');
+          }
+
+          let code1 = subscriber.getCodeSync();
+          expect(code1).assertEqual(0);
+          console.info(TAG+`getCodeSync before setCodeSync, code is ${code1}`)
+
+          subscriber.setCodeSync(1);
+          let code2 = subscriber.getCodeSync();
+          console.info(TAG+`getCodeSync after setCodeSync, code is ${code2}`)
+          expect(code2).assertEqual(1);
+
+          let data1 = subscriber.getDataSync();
+          expect(data1).assertEqual("initial data");
+          console.info(TAG+`getDataSync before setDataSync, data1 is ${data1}`)
+
+          subscriber.setDataSync("data change");
+          let data2 = subscriber.getDataSync();
+          expect(data2).assertEqual("data change");
+          console.info(TAG+`getDataSync after setDataSync, data is ${data2}`)
+
+          subscriber.setCodeAndDataSync(2, "setCodeAndDataSync")
+          let code3 = subscriber.getCodeSync()
+          expect(code3).assertEqual(2);
+          console.info(TAG+`getCodeSync after setCodeAndDataSync, code is ${code3}`)
+
+          let data3 = subscriber.getDataSync();
+          expect(data3).assertEqual("setCodeAndDataSync");
+          console.info(TAG+`getDataSync after setCodeAndDataSync, data is ${data3}`)
+
+          let isorder = subscriber.isOrderedCommonEventSync();
+          expect(isorder).assertEqual(true)
+          console.info(TAG+`isOrderedCommonEventSync, isorder is ${isorder}`)
+
+
+          let isSticky = subscriber.isStickyCommonEventSync();
+          expect(isSticky).assertEqual(false)
+          console.info(TAG+`isStickyCommonEventSync, isStickyCommonEventSync is ${isSticky}`)
+
+          subscriber.abortCommonEventSync();
+          let isaborted = subscriber.getAbortCommonEventSync();
+          expect(isaborted).assertEqual(true)
+          console.info(TAG+`getAbortCommonEventSync isaborted ${isaborted}`)
+          subscriber.clearAbortCommonEventSync()
+
+          done()
         }
       })
 
-      //问题单号：DTS2025061412066
-      /*
-       * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
-       * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
-       * @tc.desc: verify the callback function
-       */
+      try {
+        setTimeout(()=>{
+          commonEventManager.publish("eventname", options, (err: BusinessError | null)=> {
+            if (err) {
+              console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+              expect(false).assertTrue()
+              done()
+            } else {
+              console.info(TAG+`publish success`)
+            }
+          });
+        }, 1000);
+      } catch (err: BusinessError) {
+        console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+      }
+    })
 
-      it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 START`)
 
-        let options:commonEventManager.CommonEventPublishData = {
-          code: 0,
-          data: "initial data",
+    /*
+     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
+     * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
+     * @tc.desc: verify the callback function
+     */
+
+    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 START`)
+
+      let options:commonEventManager.CommonEventPublishData = {
+        code: 0,
+        data: "initial data",
+      }
+
+      let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
+        events: ["eventname2"],
+        priority: 100
+      };
+
+      let subscriber = commonEventManager.createSubscriberSync(subscribeInfo)
+      commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
+        if (err) {
+          console.error(TAG+`subscribe failed, code is ${err.code}, message is ${err.message}`)
+          expect(false).assertTrue()
+          done()
+        } else {
+          let info = subscriber.getSubscribeInfoSync();
+          expect(info.priority).assertEqual(100)
+          expect(info.userId).assertEqual(-3)
+          done()
         }
+      })
 
-        let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
-          events: ["eventname2"],
-          priority: 100
-        };
-
-        let subscriber = commonEventManager.createSubscriberSync(subscribeInfo)
-        commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
-          if (err) {
-            console.error(TAG+`subscribe failed, code is ${err.code}, message is ${err.message}`)
-            expect(false).assertTrue()
-            done()
-          } else {
-            done()
-          }
-        })
-
-        let publishCB=(err: BusinessError | null)=> {
-          if (err) {
-            console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
-            expect(false).assertTrue()
-            done()
-          } else {
-            console.info(TAG+`publish success`)
-          }
-        }
-
-        try {
-          setTimeout(()=>{
-            commonEventManager.publish("eventname2", options, publishCB);
-          }, 1000);
-        } catch (err: BusinessError) {
+      let publishCB=(err: BusinessError|null)=> {
+        if (err) {
           console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
           expect(false).assertTrue()
           done()
+        } else {
+          console.info(TAG+`publish success`)
         }
+      }
 
-        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 END`)
-      })
+      try {
+        setTimeout(()=>{
+          commonEventManager.publish("eventname2", options, publishCB);
+        }, 1000);
+      } catch (err: BusinessError) {
+        console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+        expect(false).assertTrue()
+        done()
+      }
 
-      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST END`)
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 END`)
     })
-  }
+
+    console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST END`)
+  })
+}
 
