@@ -16,6 +16,7 @@
 import Utils from '../../test/Utils';
 import events_emitter from '@ohos.events.emitter';
 import webView from '@ohos.web.webview';
+import { waitForExist} from '../../test/WaitTest';
 
 @Entry
 @Component
@@ -23,6 +24,7 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
   controller: webView.WebviewController = new webView.WebviewController();
   scroller: Scroller = new Scroller();
   @State emitKey: string = "";
+  @State isReceive: number = -1;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -37,6 +39,7 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
       console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.emitKey = eventData.data.ACTION;
+        this.isReceive = 0;
       }
     }
   }
@@ -46,6 +49,7 @@ struct webviewGetAndSetHttpAuthUsernamePassword {
       Row() {
         Button("web click").key('webcomponentScrollBy').onClick(async () => {
           console.info("key==>" + this.emitKey)
+          await waitForExist(()=>this.isReceive, this.emitKey, 0);
           switch (this.emitKey) {
             case "emitScrollBarKeep001": {
               await Utils.sleep(2000);
