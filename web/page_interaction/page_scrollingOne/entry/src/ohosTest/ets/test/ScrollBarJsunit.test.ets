@@ -85,6 +85,7 @@ export default function ActsAceWebviewScrollBar() {
     it('testScrollBarKeep001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async  (done: Function) => {
       emitKey="emitScrollBarKeep001";
       Utils.emitEvent(emitKey, 10);
+      await Utils.sleep(2000);
       Utils.registerEvent("testScrollBarKeep001","BarState.Auto",20250701,done);
       sendEventByKey('webcomponentScrollBy',10,'');
     });
@@ -92,6 +93,7 @@ export default function ActsAceWebviewScrollBar() {
     it('testScrollBarKeep002', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async  (done: Function) =>{
       emitKey="emitScrollBarKeep002";
       Utils.emitEvent(emitKey, 10);
+      await Utils.sleep(2000);
       Utils.registerEvent("testScrollBarKeep002","ScrollDirection.Vertical",20250702,done);
       sendEventByKey('webcomponentScrollBy',10,'');
     });
