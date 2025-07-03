@@ -341,7 +341,7 @@ export default function graphicTextEnum() {
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_014
-     * @tc.name      : testPlaceholderAlignment
+     * @tc.name      : testTextVerticalAlign
      * @tc.desc      : To test the enum value of PlaceholderAlignment.
      * @tc.size      : MediumTest
      * @tc.type      : Function
