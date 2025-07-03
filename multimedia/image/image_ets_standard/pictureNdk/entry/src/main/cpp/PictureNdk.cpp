@@ -51,6 +51,7 @@
 #define MAX_STRING_SIZE 128
 #define MAX_PATH_SIZE 1024
 #define MAX_EXIF_KEY_SIZE 190
+#define MAX_BUFFER_SIZE 512
 #define RGBA_1010102 10
 #define YCBCR_P010 10
 #define YCRCB_P010 10
@@ -86,6 +87,8 @@ static const char *AUX_INFO_WIDTH = "width";
 static const char *AUX_INFO_HEIGHT = "height";
 static const char *AUX_INFO_ROW_STRIDE = "rowStride";
 static const char *AUX_INFO_PIXEL_FORMAT = "pixelFormat";
+static const char *INFO_WIDTH = "width";
+static const char *INFO_HEIGHT = "height";
 static std::string exifPropertyKeyList[MAX_EXIF_KEY_SIZE] = {};
 static std::string fragmentPropertyKeyList[] = {
     "XInOriginal", "YInOriginal", "FragmentImageWidth", "FragmentImageHeight"};
@@ -2775,6 +2778,392 @@ static napi_value setAllExifKey(napi_env env, napi_callback_info info)
     return result;
 }
 
+namespace GifTestFunction {
+
+    napi_value getJsResult(napi_env env, int result)
+    {
+        napi_value resultNapi = nullptr;
+        napi_create_int32(env, result, &resultNapi);
+        return resultNapi;
+    }
+
+    static napi_value CreateFromUri(napi_env env, napi_callback_info info) {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_1] = {0};
+        size_t argCount = NUM_1;
+    
+        napi_get_undefined(env, &result);
+    
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+            OH_LOG_ERROR(LOG_APP, "CreateFromUri: failed to get input arguments!");
+            return result;
+        }
+    
+        const size_t maxUrlLen = MAX_BUFFER_SIZE;
+        char url[maxUrlLen];
+        size_t urlSize = 0;
+        napi_get_value_string_utf8(env, argValue[NUM_0], url, maxUrlLen, &urlSize);
+
+        OH_ImageSourceNative *res = nullptr;
+        Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromUri(url, urlSize, &res);
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreateFromUri failed, errcode is: %{public}d!", errCode);
+            napi_create_int32(env, errCode, &result);
+            return result;
+        }
+    
+        napi_status status = napi_create_external(env, reinterpret_cast<void *>(res), nullptr, nullptr, &result);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Failed to create external object");
+            return nullptr;
+        }
+        return result;
+    }
+
+    static napi_value GetAllFrameCount(napi_env env, napi_callback_info info)
+    {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_1] = {NUM_0};
+        size_t argCount = NUM_1;
+    
+        napi_get_undefined(env, &result);
+    
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+            OH_LOG_ERROR(LOG_APP, "GetAllFrameCount: failed to get input arguments!");
+            return result;
+        }
+    
+        void *ptr = nullptr;
+        napi_get_value_external(env, argValue[NUM_0], &ptr);
+        OH_ImageSourceNative *imageSource = reinterpret_cast<OH_ImageSourceNative *>(ptr);
+        if (imageSource == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "imageSource is nullptr!");
+            return getJsResult(env, IMAGE_BAD_PARAMETER);
+        }
+
+        uint32_t frameCount = NUM_0;
+        Image_ErrorCode errCode = OH_ImageSourceNative_GetFrameCount(imageSource, &frameCount);
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetFrameCount failed, errCode: %{public}d.", errCode);
+            return getJsResult(env, errCode);
+        }
+        OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_CreatePictureAtIndex get picture all frames is %{public}d.",
+            frameCount);
+        napi_create_uint32(env, frameCount, &result);
+        return result;
+    }
+
+    static napi_value CreatePictureAtIndexByImageSource(napi_env env, napi_callback_info info)
+    {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_2] = {NUM_0};
+        size_t argCount = NUM_2;
+    
+        napi_get_undefined(env, &result);
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+            OH_LOG_ERROR(LOG_APP, "CreatePictureAtIndexByImageSource: failed to get input arguments!");
+            return result;
+        }
+    
+        void *ptr = nullptr;
+        napi_get_value_external(env, argValue[NUM_0], &ptr);
+        OH_ImageSourceNative *imageSource = reinterpret_cast<OH_ImageSourceNative *>(ptr);
+        if (imageSource == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "imageSource is nullptr!");
+            return getJsResult(env, IMAGE_BAD_PARAMETER);
+        }
+    
+        uint32_t index = NUM_0;
+        napi_get_value_uint32(env, argValue[NUM_1], &index);
+    
+        OH_PictureNative *picture = nullptr;
+        Image_ErrorCode errCode = OH_ImageSourceNative_CreatePictureAtIndex(imageSource, index, &picture);
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreatePicture failed, errCode is: %{public}d!", errCode);
+            return getJsResult(env, errCode);
+        }
+    
+        napi_status status = napi_create_external(env, reinterpret_cast<void *>(picture), nullptr, nullptr, &result);
+        if (status != napi_ok) {
+            OH_LOG_ERROR(LOG_APP, "Failed to create external object!");
+            return nullptr;
+        }
+        return result;
+    }
+
+    static napi_value GetMainPixelmapInfo(napi_env env, napi_callback_info info)
+    {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_1] = {NUM_0};
+        size_t argCount = NUM_1;
+    
+        napi_get_undefined(env, &result);
+    
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+            OH_LOG_ERROR(LOG_APP, "GetMainPixelmapInfo: failed to get input arguments!");
+            return result;
+        }
+    
+        void *ptr = nullptr;
+        napi_get_value_external(env, argValue[NUM_0], &ptr);
+        OH_PictureNative *picture = reinterpret_cast<OH_PictureNative *>(ptr);
+    
+        OH_PixelmapNative *mainPixelmap = nullptr;
+        Image_ErrorCode errCode = OH_PictureNative_GetMainPixelmap(picture, &mainPixelmap);
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "get main picleMap failed, errcode is: %{public}d!", errCode);
+            return getJsResult(env, errCode);
+        }
+
+        OH_Pixelmap_ImageInfo *imageInfo = nullptr;
+        OH_PixelmapImageInfo_Create(&imageInfo);
+        if (OH_PixelmapNative_GetImageInfo(mainPixelmap, imageInfo) != IMAGE_SUCCESS) {
+            napi_throw_error(env, nullptr, "OH_PixelmapNative_GetImageInfo failed");
+            return result;
+        }
+        uint32_t width;
+        if (OH_PixelmapImageInfo_GetWidth(imageInfo, &width) != IMAGE_SUCCESS) {
+            napi_throw_error(env, nullptr, "OH_PixelmapImageInfo_GetWidth failed");
+            return result;
+        }
+        uint32_t height;
+        if (OH_PixelmapImageInfo_GetHeight(imageInfo, &height) != IMAGE_SUCCESS) {
+            napi_throw_error(env, nullptr, "OH_PixelmapImageInfo_GetHeight failed");
+            return result;
+        }
+    
+        napi_create_object(env, &result);
+        SetUint32NamedProperty(env, result, INFO_WIDTH, width);
+        SetUint32NamedProperty(env, result, INFO_HEIGHT, height);
+        IMG_NAPI_RELEASE_PTR(mainPixelmap, OH_PixelmapNative_Release(mainPixelmap));
+        IMG_NAPI_RELEASE_PTR(imageInfo, OH_PixelmapImageInfo_Release(imageInfo));
+        return result;
+    }
+
+    static napi_value GetImageInfo(napi_env env, napi_callback_info info) {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_2] = {0};
+        size_t argCount = NUM_2;
+
+        napi_get_undefined(env, &result);
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+            OH_LOG_ERROR(LOG_APP, "GetImageInfo: failed to get input arguments!");
+            return result;
+        }
+
+        void *ptr = nullptr;
+        napi_status status = napi_get_value_external(env, argValue[NUM_0], &ptr);
+        OH_ImageSourceNative *imageSource = reinterpret_cast<OH_ImageSourceNative *>(ptr);
+        if (imageSource == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "metadata is nullptr!");
+            return getJsResult(env, IMAGE_BAD_PARAMETER);
+        }
+
+        int32_t index = 0;
+        status = napi_get_value_int32(env, argValue[NUM_1], &index);
+
+        OH_ImageSource_Info *imageInfo = nullptr;
+        OH_ImageSourceInfo_Create(&imageInfo);
+        Image_ErrorCode errCode = OH_ImageSourceNative_GetImageInfo(imageSource, index, imageInfo);
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetImageInfo failed, errcode is: %{public}d!",
+                errCode);
+            return getJsResult(env, errCode);
+        }
+
+        uint32_t width = 0;
+        if (OH_ImageSourceInfo_GetWidth(imageInfo, &width) != IMAGE_SUCCESS) {
+            napi_throw_error(env, nullptr, "OH_PixelmapImageInfo_GetWidth failed");
+            return result;
+        }
+        uint32_t height = 0;
+        if (OH_ImageSourceInfo_GetHeight(imageInfo, &height) != IMAGE_SUCCESS) {
+            napi_throw_error(env, nullptr, "OH_PixelmapImageInfo_GetHeight failed");
+            return result;
+        }
+        napi_create_object(env, &result);
+        SetUint32NamedProperty(env, result, INFO_WIDTH, width);
+        SetUint32NamedProperty(env, result, INFO_HEIGHT, height);
+        IMG_NAPI_RELEASE_PTR(imageInfo, OH_ImageSourceInfo_Release(imageInfo));
+        return result;
+    }
+
+    static napi_value MetadataGetProperty(napi_env env, napi_callback_info info)
+    {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_2] = {0};
+        size_t argCount = NUM_2;
+    
+        napi_get_undefined(env, &result);
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+            OH_LOG_ERROR(LOG_APP, "MetadataGetProperty: failed to get input arguments!");
+            return result;
+        }
+
+        void *ptr = nullptr;
+        napi_get_value_external(env, argValue[NUM_0], &ptr);
+        OH_PictureNative *picture = reinterpret_cast<OH_PictureNative *>(ptr);
+        if (picture == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "picture is nullptr!");
+            return getJsResult(env, IMAGE_BAD_PARAMETER);
+        }
+
+        OH_PictureMetadata *metadata = nullptr;
+        Image_ErrorCode errCode = OH_PictureNative_GetMetadata(picture, Image_MetadataType::GIF_METADATA, &metadata);
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_PictureNative_GetMetadata get GIF_METADATA failed, errCode is: %{public}d.",
+                errCode);
+            return getJsResult(env, errCode);
+        }
+
+        char key[MAX_STRING_SIZE] = {NUM_0};
+        size_t keySize = NUM_0;
+        napi_get_value_string_utf8(env, argValue[NUM_1], key, MAX_STRING_SIZE, &keySize);
+
+        Image_String imageKey = {key, keySize};
+        Image_String imageValue;
+        OH_LOG_INFO(LOG_APP, "MetadataGetProperty key is: %{public}s, keySize: %{public}zu!", key, keySize);
+        errCode = OH_PictureMetadata_GetProperty(metadata, &imageKey, &imageValue);
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_PictureMetadata_GetProperty failed, errCode is: %{public}d!", errCode);
+            return getJsResult(env, errCode);
+        } else {
+            OH_LOG_INFO(LOG_APP, "OH_PictureMetadata_GetProperty get property succ!");
+        }
+        napi_create_string_utf8(env, (const char *)imageValue.data, imageValue.size, &result);
+        IMG_NAPI_RELEASE_PTR(metadata, OH_PictureMetadata_Release(metadata));
+        return result;
+    }
+
+    static napi_value MetadataSetProperty(napi_env env, napi_callback_info info)
+    {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_3] = {0};
+        size_t argCount = NUM_3;
+    
+        napi_get_undefined(env, &result);
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_3) {
+            OH_LOG_ERROR(LOG_APP, "MetadataSetProperty: failed to get input arguments!");
+            return result;
+        }
+
+        void *ptr = nullptr;
+        napi_get_value_external(env, argValue[NUM_0], &ptr);
+        OH_PictureNative *picture = reinterpret_cast<OH_PictureNative *>(ptr);
+        if (picture == nullptr) {
+            OH_LOG_ERROR(LOG_APP, "picture is nullptr!");
+            return getJsResult(env, IMAGE_BAD_PARAMETER);
+        }
+
+        OH_PictureMetadata *metadata = nullptr;
+        Image_ErrorCode errCode = OH_PictureNative_GetMetadata(picture, Image_MetadataType::GIF_METADATA, &metadata);
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_PictureNative_GetMetadata get GIF_METADATA failed, errCode is: %{public}d.",
+                errCode);
+            return getJsResult(env, errCode);
+        }
+
+        char key[MAX_STRING_SIZE] = {0};
+        size_t keySize = NUM_0;
+        napi_get_value_string_utf8(env, argValue[NUM_1], key, MAX_STRING_SIZE, &keySize);
+    
+        char value[MAX_STRING_SIZE] = {0};
+        size_t valueSize = NUM_0;
+        napi_get_value_string_utf8(env, argValue[NUM_2], value, MAX_STRING_SIZE, &valueSize);
+
+        Image_String imageKey = {key, keySize};
+        Image_String imageValue = {value, valueSize};
+        errCode = OH_PictureMetadata_SetProperty(metadata, &imageKey, &imageValue);
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_PictureMetadata_SetProperty failed, errCode is: %{public}d", errCode);
+            return getJsResult(env, errCode);
+        } else {
+            OH_LOG_INFO(LOG_APP, "OH_PictureMetadata_SetProperty set property succ!");
+        }
+
+        if (OH_PictureNative_SetMetadata(picture, Image_MetadataType::GIF_METADATA, metadata) != IMAGE_SUCCESS) {
+            napi_throw_error(env, nullptr, "OH_PictureNative_SetMetadata failed");
+            return result;
+        }
+
+        IMG_NAPI_RELEASE_PTR(metadata, OH_PictureMetadata_Release(metadata));
+        napi_create_int32(env, IMAGE_SUCCESS, &result);
+        return result;
+    }
+
+    static napi_value CreatePictureAtIndexByImageSourceError(napi_env env, napi_callback_info info)
+    {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_2] = {nullptr};
+        size_t argCount = NUM_2;
+
+        napi_get_undefined(env, &result);
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+            OH_LOG_ERROR(LOG_APP, "imageArriveOn_Error, the input parameters are smaller than the required parameters");
+            return result;
+        }
+
+        void *ptr = nullptr;
+        napi_get_value_external(env, argValue[NUM_0], &ptr);
+        OH_ImageSourceNative *imageSource = reinterpret_cast<OH_ImageSourceNative *>(ptr);
+        bool flag = false;
+        napi_get_value_bool(env, argValue[NUM_1], &flag);
+
+        Image_ErrorCode errCode;
+        if (flag) {
+            OH_PictureNative *picture = nullptr;
+            errCode = OH_ImageSourceNative_CreatePictureAtIndex(nullptr, NUM_0, &picture);
+        } else {
+            errCode = OH_ImageSourceNative_CreatePictureAtIndex(imageSource, NUM_0, nullptr);
+        }
+
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreatePicture failed, errCode is: %{public}d!", errCode);
+        } else {
+            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreatePicture Succ!");
+        }
+        return getJsResult(env, errCode);
+    }
+
+    static napi_value ImageSourceRelease(napi_env env, napi_callback_info info)
+    {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_1] = {0};
+        size_t argCount = NUM_1;
+
+        napi_get_undefined(env, &result);
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+            OH_LOG_ERROR(LOG_APP, "ImageSourceRelease: failed to get input arguments!");
+            return result;
+        }
+
+        void *ptr = nullptr;
+        napi_status status = napi_get_value_external(env, argValue[NUM_0], &ptr);
+        OH_ImageSourceNative *imageSource = reinterpret_cast<OH_ImageSourceNative *>(ptr);
+        IMG_NAPI_RELEASE_PTR(imageSource, OH_ImageSourceNative_Release(imageSource));
+        return getJsResult(env, IMAGE_SUCCESS);
+    }
+
+    static napi_value PictureRelease(napi_env env, napi_callback_info info)
+    {
+        napi_value result = nullptr;
+        napi_value argValue[NUM_1] = {0};
+        size_t argCount = NUM_1;
+
+        napi_get_undefined(env, &result);
+        if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+            OH_LOG_ERROR(LOG_APP, "PictureRelease: failed to get input arguments!");
+            return result;
+        }
+
+        void *ptr = nullptr;
+        napi_status status = napi_get_value_external(env, argValue[NUM_0], &ptr);
+        OH_PictureNative *picture = reinterpret_cast<OH_PictureNative *>(ptr);
+        IMG_NAPI_RELEASE_PTR(picture, OH_PictureNative_Release(picture));
+        return getJsResult(env, IMAGE_SUCCESS);
+    }
+} // namespace GifTestFunction
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -2919,7 +3308,24 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testPackPictureToFile", nullptr, TestPackPictureToFile, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testPackPictureToData", nullptr, TestPackPictureToData, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"setAllExifKey", nullptr, setAllExifKey, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"setAllExifKey", nullptr, setAllExifKey, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"CreateFromUri", nullptr, GifTestFunction::CreateFromUri, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetImageInfo", nullptr, GifTestFunction::GetImageInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"CreatePictureAtIndexByImageSource", nullptr, GifTestFunction::CreatePictureAtIndexByImageSource, nullptr,
+            nullptr, nullptr, napi_default, nullptr},
+        {"GetAllFrameCount", nullptr, GifTestFunction::GetAllFrameCount, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"GifMetadataGetProperty", nullptr, GifTestFunction::MetadataGetProperty, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"GifMetadataSetProperty", nullptr, GifTestFunction::MetadataSetProperty, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"GifGetMainPixelmapInfo", nullptr, GifTestFunction::GetMainPixelmapInfo, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"CreatePictureAtIndexByImageSourceError", nullptr, GifTestFunction::CreatePictureAtIndexByImageSourceError,
+            nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ImageSourceRelease", nullptr, GifTestFunction::ImageSourceRelease, nullptr, nullptr, nullptr, napi_default,
+            nullptr},
+        {"PictureRelease", nullptr, GifTestFunction::PictureRelease, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

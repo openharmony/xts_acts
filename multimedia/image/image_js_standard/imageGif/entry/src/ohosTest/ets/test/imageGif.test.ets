@@ -15,6 +15,8 @@
 
 import image from "@ohos.multimedia.image";
 import fileio from "@ohos.fileio";
+import hilog from '@ohos.hilog';
+import rpc from '@ohos.rpc';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level } from "@ohos/hypium";
 import featureAbility from "@ohos.ability.featureAbility";
 import { BusinessError } from '@ohos.base';
@@ -25,10 +27,15 @@ const EXPECTFRAMECOUNT = 3;
 const ERR_CODE = 62980149;
 const ERR_CODE1 = 62980096;
 const ERR_CODE2 = 62980118;
+const DECODE_FAILED = 7700301;
+const UNSUPPORTED_MIMETYPE = 7700102;
+const IMAGE_TOO_LARGE = 7700103;
+const UNSUPPORTED_OPTIONS = 7700203;
 let filePath: ESObject;
 let fdNumber: number;
 let globalImagesource: image.ImageSource;
 let globalPacker: image.ImagePacker;
+let isSupportHEICDecode: boolean;
 
 interface Options {
   sampleSize: number,
@@ -50,6 +57,25 @@ interface Size {
   height: number
 }
 
+class Logger {
+  testNum: string;
+
+  constructor(testNum: string) {
+    this.testNum = testNum;
+  }
+
+  log(msg: string) {
+    hilog.info(0x0000, "imagePicture", 'case: %{public}s msg:%{public}s', this.testNum, msg);
+  }
+}
+
+let sleep = async (delay: number): Promise<void> => {
+  return new Promise((resolve, _) => {
+    setTimeout(async () => {
+      resolve();
+    }, delay);
+  });
+};
 
 async function getFd(fileName: string) {
   let context: ESObject = await AppStorage.get('thisContext');
@@ -71,6 +97,11 @@ async function getFd(fileName: string) {
     });
 }
 
+async function getFilePath(fileName: string): Promise<string> {
+  let context: ESObject = await AppStorage.get('thisContext');
+  let filePath = context.filesDir + "/" + fileName;
+  return filePath;
+}
 
 async function packingPromise(done:Function, testNum:string, pixelmap:ESObject) {
   const imagePackerApi = image.createImagePacker();
@@ -368,6 +399,147 @@ async function createPixelMapListErrCallBack(done:Function, testNum:string, picN
   }
 }
 
+async function checkPictureAtIndex(
+  logger: Logger,
+  index: number,
+  imageSource: image.ImageSource,
+  picture: image.Picture,
+  delayTimeList: Array<number>,
+  disposalTypeList: Array<number>
+): Promise<boolean> {
+  let metadata: image.Metadata = await picture.getMetadata(image.MetadataType.GIF_METADATA);
+  let delayTime: Record<string, string | null> = await metadata.getProperties([image.GifPropertyKey.GIF_DELAY_TIME]);
+  let disposalType: Record<string, string | null> = await metadata.getProperties([image.GifPropertyKey.GIF_DISPOSAL_TYPE]);
+
+  let mainPixelMap: image.PixelMap = picture.getMainPixelmap();
+  let srcImageInfo: image.ImageInfo = await imageSource.getImageInfo();
+  let dstImageInfo: image.ImageInfo = await mainPixelMap.getImageInfo();
+  let ret = (delayTime[image.GifPropertyKey.GIF_DELAY_TIME] == delayTimeList[index].toString()) &&
+    (disposalType[image.GifPropertyKey.GIF_DISPOSAL_TYPE] == disposalTypeList[index].toString()) &&
+    (srcImageInfo.size.width == dstImageInfo.size.width) &&
+    (srcImageInfo.size.height == dstImageInfo.size.height);
+  logger.log(`index is: ${index}, compare result is: ${ret}`);
+  if (!ret) {
+    logger.log(`delayTimeList is: ${delayTimeList[index]}, disposalTypeList is: ${disposalTypeList[index]}.`);
+    logger.log("metadata delayTime is: " + delayTime[image.GifPropertyKey.GIF_DELAY_TIME] + ", disposalType is: " +
+      disposalType[image.GifPropertyKey.GIF_DISPOSAL_TYPE]);
+    logger.log(`srcImageInfo is: ${JSON.stringify(srcImageInfo)}, dstImageInfo is: ${JSON.stringify(dstImageInfo)}`);
+  }
+  picture?.release();
+  mainPixelMap?.release();
+  return ret;
+}
+
+async function gifIncompleteFrameTest(logger: Logger, fileName: string): Promise<boolean> {
+  let filePath = await getFilePath(fileName);
+  logger.log("filePath is: " + filePath);
+  try {
+    let imageSource: image.ImageSource = image.createImageSource(filePath);
+    let frameCount: number = await imageSource.getFrameCount();
+    let delayTimeList: Array<number> = await imageSource.getDelayTimeList();
+    let disposalTypeList: Array<number> = await imageSource.getDisposalTypeList();
+    logger.log("get frameCount num is: " + frameCount);
+    let ret: boolean = true;
+    for (let index = 0; index < frameCount; index++) {
+      let picture: image.Picture = await imageSource.createPictureAtIndex(index);
+      let temp = await checkPictureAtIndex(logger, index, imageSource, picture, delayTimeList, disposalTypeList);
+      ret = ret && temp;
+    }
+    imageSource?.release();
+    return ret;
+  } catch (error) {
+    logger.log("gifInCompleteFrameTest failed error is: " + JSON.stringify(error));
+    return false;
+  }
+}
+
+async function gifInCompleteFrameTestError(logger: Logger, fileName: string, errorCode: number): Promise<boolean> {
+  if (fileName.endsWith(".heic") && !isSupportHEICDecode) {
+    logger.log("device is not support decode heic!");
+    return true;
+  }
+
+  let filePath = await getFilePath(fileName);
+  try {
+    let imageSourceApi = image.createImageSource(filePath);
+    let frameCount: number = await imageSourceApi.getFrameCount();
+    logger.log("get frameCount num is: " + frameCount);
+    for (let index = 0; index < frameCount; index++) {
+      let picture: image.Picture = await imageSourceApi.createPictureAtIndex(index);
+      if (picture == undefined) {
+        logger.log("index is: " + index + ", picture is undefined!");
+      }
+      picture?.release();
+    }
+    logger.log("createPictureAtIndex is succ!");
+    return false;
+  } catch (error) {
+    logger.log("gifInCompleteFrameTestError failed error is: " + JSON.stringify(error));
+    return (error.code == errorCode);
+  }
+}
+
+class MySequence implements rpc.Parcelable {
+  picture_: image.Picture;
+
+  constructor(conPicture: image.Picture) {
+    this.picture_ = conPicture;
+  }
+
+  marshalling(messageSequence: rpc.MessageSequence) {
+    this.picture_.marshalling(messageSequence);
+    return true;
+  }
+
+  unmarshalling(messageSequence: rpc.MessageSequence): boolean {
+    let picture: image.Picture = image.createPictureFromParcel(messageSequence)
+    this.picture_ = picture;
+    return true;
+  }
+}
+
+async function gifInCompleteFrameTestMarshalling(logger: Logger, picture: image.Picture): Promise<boolean> {
+  try {
+    let parcelable: MySequence = new MySequence(picture);
+    let data: rpc.MessageSequence = rpc.MessageSequence.create();
+    data.writeParcelable(parcelable);
+    let ret: MySequence = new MySequence(picture);
+    data.readParcelable(ret);
+    await sleep(500);
+
+    let marshallingMetadata = await picture.getMetadata(image.MetadataType.GIF_METADATA);
+    let unmarshallingMetadata = await ret.picture_.getMetadata(image.MetadataType.GIF_METADATA);
+    let marshallingProperties = await marshallingMetadata.getAllProperties();
+    let unmarshallingProperties = await unmarshallingMetadata.getAllProperties();
+    logger.log(`marshalling properties: ` + JSON.stringify(marshallingProperties));
+    logger.log(`unmarshalling properties: ` + JSON.stringify(unmarshallingProperties));
+    picture?.release();
+    return (JSON.stringify(marshallingProperties) == JSON.stringify(unmarshallingProperties));
+  } catch (error) {
+    picture?.release();
+    logger.log("test marshlling failed error is: " + JSON.stringify(error));
+    return false;
+  }
+}
+
+async function gifInCompleteFrameMetadataTest(logger: Logger, picture: image.Picture, modifyProperties: Record<string, string | null>): Promise<boolean> {
+  try {
+    let metadata = await picture.getMetadata(image.MetadataType.GIF_METADATA);
+    await metadata.setProperties(modifyProperties);
+    await picture.setMetadata(image.MetadataType.GIF_METADATA, metadata);
+    let dataAfterSet = await picture.getMetadata(image.MetadataType.GIF_METADATA);
+    let data = await dataAfterSet.getAllProperties();
+    logger.log("modifyProperties is: " + JSON.stringify(modifyProperties));
+    logger.log("after data is: " + JSON.stringify(data));
+    picture?.release();
+    return (JSON.stringify(modifyProperties) == JSON.stringify(data));
+  } catch (error) {
+    picture?.release();
+    logger.log("test metadata failed error is: " + JSON.stringify(error));
+    return false;
+  }
+}
+
 
 export default function imageGif() {
   describe("imageGif", () => {
@@ -375,6 +547,9 @@ export default function imageGif() {
 
     beforeAll(async () => {
       console.info("beforeAll case");
+      let filesDir = await getFilePath("test.jpg");
+      isSupportHEICDecode =
+        image.createImageSource(filesDir).supportedFormats.includes("image/heic");
     });
 
     beforeEach(() => {
@@ -813,6 +988,165 @@ export default function imageGif() {
 
       createPixelMapListErrCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_CREATEPIXELMAPLIST_ERR_CALLBACK_0400",
         "moving_test.gif", decodeOpts, checkErrCode);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0100
+     * @tc.desc      : test gif incomplete frame
+     *                 1.create imagesource
+     *                 2.createPictureAtIndex
+     *                 3.getDelayTimeList
+     *                 4.getDisposalType
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0100", Level.LEVEL0, async (done:() => void)=>{
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0100");
+      let ret = await gifIncompleteFrameTest(logger, "moving_test.gif");
+      expect(ret).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0200
+     * @tc.desc      : test gif incomplete frame
+     *                 1.create imagesource
+     *                 2.createPictureAtIndex
+     *                 3.test marshalling
+     *                 4.compare picture gif metadata properties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0200", Level.LEVEL0, async (done:() => void)=>{
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0200");
+      let filePath = await getFilePath("moving_test.gif");
+      try {
+        let imageSourceApi = image.createImageSource(filePath);
+        let picture: image.Picture = await imageSourceApi.createPictureAtIndex(0);
+        let ret = await gifInCompleteFrameTestMarshalling(logger, picture);
+        expect(ret).assertTrue();
+        done();
+      } catch (error) {
+        logger.log("error is: " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0300
+     * @tc.desc      : test gif incomplete frame
+     *                 1.create imagesource
+     *                 2.createPictureAtIndex
+     *                 3.compare picture gif metadata properties
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0300", Level.LEVEL0, async (done:() => void)=>{
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_0300");
+      let filePath = await getFilePath("moving_test.gif");
+      try {
+        let imageSourceApi = image.createImageSource(filePath);
+        let picture: image.Picture = await imageSourceApi.createPictureAtIndex(0);
+        let modifyProperties: Record<string, string | null> = {"GifDelayTime":"100", "GifDisposalType":"2"};
+        let ret = await gifInCompleteFrameMetadataTest(logger, picture, modifyProperties);
+        expect(ret).assertTrue();
+        done();
+      } catch (error) {
+        logger.log("error is: " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0100
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0100
+     * @tc.desc      : test gif incomplete frame error
+     *                 1.create imagesource
+     *                 2.createPictureAtIndex
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0100", Level.LEVEL0, async (done:() => void)=>{
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0100");
+      let ret = await gifInCompleteFrameTestError(logger, "incomplete_test.gif", DECODE_FAILED);
+      expect(ret).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0200
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0200
+     * @tc.desc      : test gif incomplete frame error
+     *                 1.create imagesource
+     *                 2.createPictureAtIndex
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0200", Level.LEVEL0, async (done:() => void)=>{
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0200");
+      let fileList: Array<string> = ["test.jpg", "0801_sdr2.heic", "test.bmp", "test_dng.dng", "test.png"];
+      let ret = true;
+      for (let index = 0; index < fileList.length; index++) {
+        let temp = await gifInCompleteFrameTestError(logger, fileList[index], UNSUPPORTED_MIMETYPE);
+        logger.log(`index is: ${index}, retult is: ${temp}!`);
+        ret = ret && temp;
+      }
+      expect(ret).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0300
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0300
+     * @tc.desc      : test gif incomplete frame error
+     *                 1.create imagesource
+     *                 2.createPictureAtIndex
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0300", Level.LEVEL0, async (done:() => void)=>{
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0300");
+      let ret = await gifInCompleteFrameTestError(logger, "fake_large_size_test.gif", IMAGE_TOO_LARGE);
+      expect(ret).assertTrue();
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0400
+     * @tc.name      : SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0400
+     * @tc.desc      : test gif incomplete frame error
+     *                 1.create imagesource
+     *                 2.createPictureAtIndex
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0400", Level.LEVEL0, async (done:() => void)=>{
+      let logger = new Logger("SUB_MULTIMEDIA_IMAGE_GIF_INCOMPLETE_FRAME_ERROR_0400");
+      try {
+        let filePath = await getFilePath("moving_test.gif");
+        let imageSourceApi = image.createImageSource(filePath);
+        let frameCount: number = await imageSourceApi.getFrameCount();
+        let picture: image.Picture = await imageSourceApi.createPictureAtIndex(frameCount);
+        logger.log("createPictureAtIndex is succ!");
+        expect().assertFail();
+        done();
+      } catch (error) {
+        logger.log("createPictureAtIndex failed, error is: " + JSON.stringify(error));
+        expect(error.code == UNSUPPORTED_OPTIONS).assertTrue();
+        done();
+      }
     });
   });
 }
