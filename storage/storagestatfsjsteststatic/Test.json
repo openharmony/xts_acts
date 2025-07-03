@@ -5,7 +5,8 @@
         "test-timeout": "60000",
         "shell-timeout": "60000",
         "bundle-name": "ohos.acts.storage.statfs.static",
-        "module-name": "entry"
+        "module-name": "entry",
+        "testcase-timeout": 15000
     },
     "kits": [
         {
