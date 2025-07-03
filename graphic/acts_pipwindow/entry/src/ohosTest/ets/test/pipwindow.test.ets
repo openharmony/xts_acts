@@ -3366,7 +3366,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         context: context1,
         componentController: mXComponentController,
         navigationId: navId,
-        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
         contentWidth: 500,
         contentHeight: 500
       };
