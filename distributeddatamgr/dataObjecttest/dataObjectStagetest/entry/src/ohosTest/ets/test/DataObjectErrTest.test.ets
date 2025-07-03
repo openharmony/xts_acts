@@ -271,7 +271,7 @@ export default function DataObjectErrTest() {
 
       try {
         g_object.bindAssetStore('attachment', bindInfo, (err: BusinessError) => {
-          if (currentDeviceIsTv) {
+          if (currentDeviceIsTv && err) {
             console.info(TAG + 'bindAssetStore fail.Code: ' + err.code + ',message: ' + err.message);
             expect(err.code).assertEqual('801');
           } else if (!currentDeviceIsTv && err) {
