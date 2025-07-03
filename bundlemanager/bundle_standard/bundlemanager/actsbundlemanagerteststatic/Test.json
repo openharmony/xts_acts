@@ -2,16 +2,17 @@
     "description": "Configuration for ActsBundleMgrStageEtsTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
-        "bundle-name": "ohos.acts.bms.stage.test.static",
+        "test-timeout": "600000",
+        "shell-timeout": "600000",
+        "bundle-name": "ohos.acts.bundle.test.static",
         "module-name": "entry",
-        "testcase-timeout": 240000
+        "testcase-timeout": 240000,
+        "compile-mode":"esmodule"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsBmsContextmenuStaticTest.hap"
+                "ActsBundleMgrStaticTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
