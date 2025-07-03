@@ -38,11 +38,11 @@ class EntryAbility extends UIAbility {
   onForeground() {
     hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onForeground');
     if (this.context) {
-      hilog.info(0x0000, 'testTag EntryAbility', 'context ok'+JSON.stringify(this.context));
-    }else{
-      hilog.info(0x0000, 'testTag EntryAbility', 'context is undefined');
+      hilog.info(0x0000, 'testTag EntryAbility','context ok' + JSON.stringify(this.context));
+      AppStorage.setOrCreate<string>("dir", this.context.cacheDir);
+    } else {
+      hilog.info(0x0000,'testTag EntryAbility', 'context is undefined');
     }
-    AppStorage.setOrCreate<common.UIAbilityContext>("UIAbilityContext", this.context)
   }
 
   onBackground() {

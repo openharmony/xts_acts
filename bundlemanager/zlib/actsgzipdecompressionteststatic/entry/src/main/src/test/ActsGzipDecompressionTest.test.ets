@@ -37,17 +37,13 @@ export default function ActsGzipDecompressionTest() {
       hilog.info(domain, tag, 'ActsZlibTest abilityDelegator success');
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.acts.gzipdecompressiontest.static");
       await Utils.msSleep(3000);
-      context = AppStorage.get<common.UIAbilityContext>("context") as common.UIAbilityContext;
+      let dirAll = AppStorage.get<string|undefined>("dir");
+      if(dirAll) {
+        dir = dirAll!;
+      }
+      hilog.info(domain, tag, 'ActsZlibTest dir: ' + dir);
       hilog.info(domain, tag, 'beforeAll end');
     })
-    beforeEach(() => {
-      if (context) {
-        hilog.info(domain, tag, 'ActsZlibTest context: '+ context);
-        let cacheDir = context.cacheDir
-        dir = cacheDir
-        hilog.info(domain, tag, 'ActsZlibTest dir: '+ dir);
-      }
-    });
 
     /**
      * @tc.number     : SUB_Bundlemanager_Bundle_Framework_GzipDecompressionAbilityTest_static_4000
@@ -66,23 +62,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile, options).then((): Promise<void> => {
-          console.info('compressFile level success.');
+          hilog.info(domain, tag, 'GzipDecompressionAbilityTest_static_4000 compressFile level success.');
           try {
             let data: boolean = fileIo.accessSync(outFile);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4000 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile level errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile level errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile level errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile level errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -105,23 +101,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile1, options1).then((): Promise<void> => {
-          console.info('compressFile1 level success.');
+          hilog.info(domain, tag, 'compressFile1 level success.');
           try {
             let data: boolean = fileIo.accessSync(outFile1);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4010 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile1 levelerrData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile1 levelerrData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile1 levelerrData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile1 levelerrData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -144,23 +140,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile2, options2).then((): Promise<void> => {
-          console.info('compressFile2 level success.');
+          hilog.info(domain, tag, 'compressFile2 level success.');
           try {
             let data: boolean = fileIo.accessSync(outFile2);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4020 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile2 level errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile2 level errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile2 level errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile2 level errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -183,23 +179,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile3, options3).then((): Promise<void> => {
-          console.info('compressFile3 level success.');
+          hilog.info(domain, tag, 'compressFile3 level success.');
           try {
             let data: boolean = fileIo.accessSync(outFile3);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4030 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile3 level errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile3 level errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile3 level errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile3 level errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -222,23 +218,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile4, options4).then((): Promise<void> => {
-          console.info('compressFile4 memLevel success.');
+          hilog.info(domain, tag, 'compressFile4 memLevel success.');
           try {
             let data: boolean = fileIo.accessSync(outFile4);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4040 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile4 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile4 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile4 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile4 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -261,23 +257,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile5, options5).then((): Promise<void> => {
-          console.info('compressFile5 memLevel success.');
+          hilog.info(domain, tag, 'compressFile5 memLevel success.');
           try {
             let data: boolean = fileIo.accessSync(outFile5);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4050 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile5 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile5 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile5 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile5 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -300,23 +296,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile6, options6).then((): Promise<void> => {
-          console.info('compressFile6 memLevel success.');
+          hilog.info(domain, tag, 'compressFile6 memLevel success.');
           try {
             let data: boolean = fileIo.accessSync(outFile6);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4060 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile6 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile6 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile6 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile6 memLevel errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -343,23 +339,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile7, options7).then((): Promise<void> => {
-          console.info('compressFile7 strategy success.');
+          hilog.info(domain, tag, 'compressFile7 strategy success.');
           try {
             let data: boolean = fileIo.accessSync(outFile7);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4070 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile7 strategy errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile7 strategy errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile7 strategy errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile7 strategy errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -382,23 +378,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile8, options8).then((): Promise<void> => {
-          console.info('compressFile8 strategy success.');
+          hilog.info(domain, tag, 'compressFile8 strategy success.');
           try {
             let data: boolean = fileIo.accessSync(outFile8);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4080 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile8 strategy errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile8 strategy errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile8 strategy errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile8 strategy errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -421,23 +417,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile9, options9).then((): Promise<void> => {
-          console.info('compressFile9 strategy success.');
+          hilog.info(domain, tag, 'compressFile9 strategy success.');
           try {
             let data: boolean = fileIo.accessSync(outFile9);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4090 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile9 strategy errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4090 compressFile9 strategy errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile9 strategy errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4090 compressFile9 strategy errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -460,23 +456,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile10, options10).then((): Promise<void> => {
-          console.info('compressFile10 strategy success.');
+          hilog.info(domain, tag, 'compressFile10 strategy success.');
           try {
             let data: boolean = fileIo.accessSync(outFile10);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4100 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile10 strategy errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile10 strategy errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error(`compressFile10 strategy errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `compressFile10 strategy errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
@@ -501,23 +497,23 @@ export default function ActsGzipDecompressionTest() {
       };
       try {
         zlib.compressFile(inFile, outFile11, options11).then((): Promise<void> => {
-          console.info('compressFile options success.');
+          hilog.info(domain, tag, 'GzipDecompressionAbilityTest_static_4110 compressFile options success.');
           try {
             let data: boolean = fileIo.accessSync(outFile11);
             expect(data).assertTrue();
             done();
           } catch(error: BusinessError) {
-            console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+            hilog.error(domain, tag, `GzipDecompressionAbilityTest_static_4110 accessSync failed with errCode:${error.code}  message:${error.message}`);
             expect().assertFail();
             done();
           }
         }).catch((errData: BusinessError): void => {
-          console.error(`compressFile options errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `compressFile11 options errData is errCode:${errData.code}  message:${errData.message}`);
           expect().assertFail();
           done();
         })
       } catch (errData: BusinessError) {
-        console.error( `compressFile options errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag,  `compressFile11 options errData is errCode:${errData.code}  message:${errData.message}`);
         expect().assertFail();
         done();
       }
