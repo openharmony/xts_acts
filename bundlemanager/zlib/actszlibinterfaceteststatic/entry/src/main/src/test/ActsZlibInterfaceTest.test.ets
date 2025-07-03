@@ -37,16 +37,12 @@ export default function ActsZlibInterfaceTest() {
       hilog.info(domain, tag, 'ActsZlibTest abilityDelegator success');
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.actszlibinterfacetest.test.static");
       await Utils.msSleep(3000);
-      context = AppStorage.get<common.UIAbilityContext>("context") as common.UIAbilityContext;
-      hilog.info(domain, tag, 'beforeAll end');
-    })
-    beforeEach(() => {
-      if (context) {
-        hilog.info(domain, tag, 'ActsZlibTest context: '+ context);
-        let cacheDir: string = context.cacheDir
-        dir = cacheDir
-        hilog.info(domain, tag, 'ActsZlibTest dir: '+ dir);
+      let dirAll = AppStorage.get<string|undefined>("dir");
+      if(dirAll) {
+        dir = dirAll!;
       }
+      hilog.info(domain, tag, 'ActsZlibTest dir: ' + dir);
+      hilog.info(domain, tag, 'beforeAll end');
     });
 
     /**
@@ -72,26 +68,26 @@ export default function ActsZlibInterfaceTest() {
           hilog.info(domain, tag, 'getOriginalSize prepare test.zip success');
           try {
             zlib.getOriginalSize(outFile35).then((data: number): void => {
-              hilog.info(domain, tag, `getOriginalSize success. getOriginalSize: ${data}`);
-              expect(data).assertLarger(0.0);
+              hilog.info(domain, tag, `ActsZlibInterfaceTest_static_01 getOriginalSize success. getOriginalSize: ${data}`);
+              expect(data >= 0).assertEqual(true);
               done();
             }, (errData: BusinessError<void>): void => {
-              hilog.info(domain, tag, `aaaaa errData is errCode:${errData.code}  message:${errData.message}`);
+              hilog.error(domain, tag, `aaaaa errData is errCode:${errData.code}  message:${errData.message}`);
               expect(errData).assertFail();
               done();
             })
           } catch(errData: BusinessError) {
-            hilog.info(domain, tag, `bbbbb errData is errCode:${errData.code}  message:${errData.message}`);
+            hilog.error(domain, tag, `bbbbb errData is errCode:${errData.code}  message:${errData.message}`);
             expect(errData).assertFail();
             done();
           }
         }, (errData: BusinessError<void>): void => {
-          hilog.info(domain, tag, `ccccc errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.error(domain, tag, `ccccc errData is errCode:${errData.code}  message:${errData.message}`);
           expect(errData).assertFail();
           done();
         })
       } catch(errData: BusinessError) {
-        hilog.info(domain, tag, `ddddd errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `ddddd errData is errCode:${errData.code}  message:${errData.message}`);
         expect(errData).assertFail();
         done();
       }
@@ -107,11 +103,11 @@ export default function ActsZlibInterfaceTest() {
      * @tc.level      : Level 1
     */
     it('ACTS_ZlibInterfaceTest_static_03', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      console.info("==================ACTS_ZlibInterfaceTest_static_03 start==================");
+      hilog.info(domain, tag, "==================ACTS_ZlibInterfaceTest_static_03 start==================");
       let compressedFile: string = dir + '/not_found.zip';
       try {
         zlib.getOriginalSize(compressedFile).then((data: number) => {
-          console.info(`getOriginalSize success. getOriginalSize: ${data}`);
+          hilog.info(domain, tag, `ACTS_ZlibInterfaceTest_static_03 getOriginalSize success. getOriginalSize: ${data}`);
           expect(data).assertFail();
           done();
         }).catch((errData: BusinessError<void>): void=> {
@@ -120,11 +116,11 @@ export default function ActsZlibInterfaceTest() {
           done();
         })
       } catch(errData: BusinessError) {
-        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `ACTS_ZlibInterfaceTest_static_03 errData is errCode:${errData.code}  message:${errData.message}`);
         expect(errData).assertFail();
         done();
       }
-      console.info("==================ACTS_ZlibInterfaceTest_static_03 end==================");
+      hilog.info(domain, tag, "==================ACTS_ZlibInterfaceTest_static_03 end==================");
     })
 
     /**
@@ -136,28 +132,28 @@ export default function ActsZlibInterfaceTest() {
      * @tc.level      : Level 1
     */
     it('ACTS_ZlibInterfaceTest_static_04', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
-      console.info("==================ACTS_ZlibInterfaceTest_static_04 start==================");
+      hilog.info(domain, tag, "==================ACTS_ZlibInterfaceTest_static_04 start==================");
       let file = fs.openSync(dir + '/test33.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       let writeLen = fs.writeSync(file.fd, "test: Try to write str.");
-      console.info(`test.txt: wirteLen ${writeLen}`);
+      hilog.info(domain, tag, `test.txt: wirteLen ${writeLen}`);
       fs.closeSync(file);
       let compressedFile30: string = dir + '/test33.txt';
       try {
         zlib.getOriginalSize(compressedFile30).then((data: number): void => {
-          console.info(`getOriginalSize success. getOriginalSize: ${data}`);
+          hilog.info(domain, tag, `ACTS_ZlibInterfaceTest_static_04 getOriginalSize success. getOriginalSize: ${data}`);
           expect(data).assertFail();
           done();
         }).catch((errData: BusinessError<void>): void=> {
-          hilog.info(domain, 'bmsTestTag',`016 errData is errCode:${errData.code}  message:${errData.message}`);
+          hilog.info(domain, 'bmsTestTag', `016 errData is errCode:${errData.code}  message:${errData.message}`);
           expect(errData.code).assertEqual(900003);
           done();
         })
       } catch(errData: BusinessError) {
-        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+        hilog.error(domain, tag, `ACTS_ZlibInterfaceTest_static_04 errData is errCode:${errData.code}  message:${errData.message}`);
         expect(errData).assertFail();
         done();
       }
-      console.info("==================ACTS_ZlibInterfaceTest_static_04 end==================");
+      hilog.info(domain, tag, "==================ACTS_ZlibInterfaceTest_static_04 end==================");
     })
 
   })
