@@ -19,6 +19,7 @@ group("actsstartabilityinnewprocesstest") {
     deps = [
       "ActsStartAbilityInNewProcessRely:ActsStartAbilityInNewProcessRely",
       "ActsStartAbilityInNewProcessTest:ActsStartAbilityInNewProcessTest",
+      "ActsStartAbilityInNewProcessTestStatic:ActsStartAbilityInNewProcessStaticTest",
     ]
   }
 }
