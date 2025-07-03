@@ -1293,10 +1293,13 @@ export default function CameraErrorCodeUsecaseTest() {
       createOutput();
       cameraObj.sessionAddPreviewOutput();
       cameraObj.sessionAddPhotoOutput();
+      let sessionIsMacroSupported = cameraObj.sessionIsMacroSupported(0);
+      if (sessionIsMacroSupported) {
       let ret = cameraObj.sessionEnableMacro(0, true);
-      if (ret != 0) {
-        console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_MACRO_PROMISE_006 ERRORCODE: " + ret);
-        expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
+        if (ret != 0) {
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_MACRO_PROMISE_006 ERRORCODE: " + ret);
+            expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
+        }
       }
     });
   })
