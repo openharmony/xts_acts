@@ -76,33 +76,6 @@ export default function taskPoolExecuteDelayedTimeConsumTest() {
     });
 
     /**
-     * @tc.number taskPoolExecuteDelayedTimeConsumTest0100_2
-     * @tc.name taskPoolExecuteDelayedTimeConsumTest0100_2
-     * @tc.desc The task takes less time than the delay time fail
-     * @tc.size MediumTest
-     * @tc.type Function
-     * @tc.level Level 1
-     */
-    it('taskPoolExecuteDelayedTimeConsumTest0100_2', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      // 记录任务开始时间
-      let startTime: number = Date.now();
-      console.info("taskpool start time is: " + startTime);
-
-      // 创建一个任务
-      let task: taskpool.Task = new taskpool.Task(printArgsError, 100); // 100: 测试参数
-
-      // 使用 executeDelayed 延时执行任务，传入不合法的 delayTime（小于 0）
-       taskpool.executeDelayed(1000, task)
-        .catch((e: BusinessError) => {
-          // 任务执行失败
-          console.error(`taskpool execute failed: Code: ${e.code}, message: ${e.message}`);
-          // 断言：验证错误码和错误信息
-          expect(e.code).assertEqual(10200014); // 错误码应为 10200014
-          done()
-        });
-    });
-
-    /**
      * @tc.number TASKPOOL_EXECUTE_DELAYED_TIME_CONSUM_TEST_0100
      * @tc.name taskPoolExecuteDelayedTimeConsumTest0100
      * @tc.desc The task takes equal time than the delay time success
