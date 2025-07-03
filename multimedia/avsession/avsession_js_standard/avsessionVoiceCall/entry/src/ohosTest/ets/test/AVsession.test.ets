@@ -1996,7 +1996,7 @@ export default function abilityTest() {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
-                    await controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
                         if (err) {
                             console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
                             expect(false).assertTrue();
@@ -2041,7 +2041,7 @@ export default function abilityTest() {
                     console.info(`TestLog: Set singleLyricText error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
-                    await controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
                         if (err) {
                             console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
                             expect(false).assertTrue();
@@ -2087,7 +2087,7 @@ export default function abilityTest() {
                     expect(err.code).assertEqual(401);
                     done();
                 } else {
-                    await controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
                         if (err) {
                             console.info(`TestLog: Get singleLyricText error: code: ${err.code}, message: ${err.message}`);
                             expect(false).assertTrue();
