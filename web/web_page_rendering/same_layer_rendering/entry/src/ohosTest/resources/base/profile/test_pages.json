@@ -9,6 +9,7 @@
         "testability/pages/webViewObjectEmbed3",
         "testability/pages/webViewObjectEmbedEnhance",
         "testability/pages/webViewAvoidArea",
-        "testability/pages/webViewObjectPositionReport"
+        "testability/pages/webViewObjectPositionReport",
+		"testability/pages/WebViewSupportCssDisplayChange"
   ]
 }
