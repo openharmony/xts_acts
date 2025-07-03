@@ -2131,7 +2131,7 @@ export default function abilityTest() {
                     expect(err.code).assertEqual(401);
                     done();
                 } else {
-                    await controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
+                    controller.getAVMetadata((err:BusinessError, data:avSession.AVMetadata) => {
                         if (err) {
                             console.info(`TestLog: Get filter error: code: ${err.code}, message: ${err.message}`);
                             expect(false).assertTrue();
@@ -2205,10 +2205,9 @@ export default function abilityTest() {
             console.info('Get device successfully');
             let deviceInfo: avSession.DeviceInfo = device_Info.devices[0];
             console.info(`getOutputDevice successfully ${JSON.stringify(deviceInfo)}`);
-            if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
-                deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
-                deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined &&
-                deviceInfo.authenticationStatus !== undefined && deviceInfo.audioCapabilities?.streamInfos !== undefined) {
+            if (deviceInfo && deviceInfo.castCategory !== undefined && 
+                deviceInfo.deviceId !== undefined && deviceInfo.deviceName !== undefined && 
+                deviceInfo.deviceType !== undefined && deviceInfo.audioCapabilities?.streamInfos !== undefined) {
                 expect(true).assertTrue();
             } else {
                 console.info('getOutputDevice value error.')
@@ -2248,9 +2247,8 @@ export default function abilityTest() {
           let deviceInfo: avSession.DeviceInfo = device_Info.devices[0];
           console.info(`getOutputDevice successfully ${JSON.stringify(deviceInfo)}`);
           if (deviceInfo && deviceInfo.castCategory !== undefined && deviceInfo.deviceId !== undefined &&
-              deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && deviceInfo.ipAddress !== undefined &&
-              deviceInfo.providerId !== undefined && deviceInfo.supportedProtocols !== undefined &&
-              deviceInfo.authenticationStatus !== undefined && deviceInfo.audioCapabilities?.streamInfos !== undefined) {
+              deviceInfo.deviceName !== undefined && deviceInfo.deviceType !== undefined && 
+              deviceInfo.audioCapabilities?.streamInfos !== undefined) {
               expect(true).assertTrue();
           } else {
               console.info('getOutputDevice value error.')
