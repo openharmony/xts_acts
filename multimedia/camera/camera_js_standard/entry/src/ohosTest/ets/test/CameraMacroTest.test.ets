@@ -399,7 +399,11 @@ export default function CameraPhotoSessionTest() {
         try {
             let isSupportedMacro =  mCameraSession.isMacroSupported();
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_IS_MACRO_SUPPORTED_0100 Success isSupportedMacro = "+ isSupportedMacro );
-            expect(true).assertTrue();
+            if (isSupportedMacro == true || isSupportedMacro == false) {
+                expect(true).assertTrue();
+            } else {
+                expect(true).assertFalse();
+            }
         } catch (err) {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_IS_MACRO_SUPPORTED_0100 FAILED" + err.code);
             expect(true).assertFalse();
@@ -430,7 +434,6 @@ export default function CameraPhotoSessionTest() {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_0100 Success isSupportedMacro = "+ isSupportedMacro );
             if (isSupportedMacro) {
               mCameraSession.enableMacro(true);
-              expect(true).assertTrue();
             }
         } catch (err) {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_0100 FAILED" + err.code);
@@ -462,7 +465,6 @@ export default function CameraPhotoSessionTest() {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_0200 Success isSupportedMacro = "+ isSupportedMacro );
             if (isSupportedMacro) {
               mCameraSession.enableMacro(false);
-              expect(true).assertTrue();
             }
         } catch (err) {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_PHOTO_SESSION_ENABLE_MACRO_0200 FAILED" + err.code);
@@ -605,7 +607,11 @@ export default function CameraPhotoSessionTest() {
         try {
             let isSupportedMacro =  mCameraSession.isMacroSupported();
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_IS_MACRO_SUPPORTED_0100 Success isSupportedMacro = "+ isSupportedMacro );
-            expect(true).assertTrue();
+            if (isSupportedMacro == true || isSupportedMacro == flase){
+                expect(true).assertTrue();
+            } else {
+                expect(true).assertFalse();
+            }
         } catch (err) {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_IS_MACRO_SUPPORTED_0100 FAILED" + err.code);
             expect(true).assertFalse();
@@ -636,7 +642,6 @@ export default function CameraPhotoSessionTest() {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_0100 Success isSupportedMacro = "+ isSupportedMacro );
             if (isSupportedMacro) {
               mCameraSession.enableMacro(true);
-              expect(true).assertTrue();
             }
         } catch (err) {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_0100 FAILED" + err.code);
@@ -668,7 +673,6 @@ export default function CameraPhotoSessionTest() {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_0200 Success isSupportedMacro = "+ isSupportedMacro );
             if (isSupportedMacro) {
               mCameraSession.enableMacro(false);
-              expect(true).assertTrue();
             }
         } catch (err) {
             console.info(TAG + " SUB_MULTIMEDIA_CREATE_VIDEO_SESSION_ENABLE_MACRO_0200 FAILED" + err.code);
