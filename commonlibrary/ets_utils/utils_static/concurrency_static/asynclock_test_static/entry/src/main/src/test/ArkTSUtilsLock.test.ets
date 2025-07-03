@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect, Level, Size, TestType, xit } from "../../../hypium/index";
+import { describe, it, expect, Level, Size, TestType, xit, afterEach } from "../../../hypium/index";
 import { Sleep } from './utils/utils';
 import {
   exclusiveTask,
@@ -68,6 +68,9 @@ class Obj {
 
 export default function arkTSUtilsLockTest() {
   describe('arkTSUtilsLockTest', (): void => {
+    afterEach(() => {
+      await Sleep(20);
+    })
     /**
      * @tc.number    : SUB_RUNTIME_LANGUAGE_BACKEND_ARK_TS_UTILS_1200
      * @tc.name      : testTaskLocksQueryAll_static_0001
