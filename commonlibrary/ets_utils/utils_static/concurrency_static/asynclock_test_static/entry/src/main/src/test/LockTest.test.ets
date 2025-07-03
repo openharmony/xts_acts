@@ -250,21 +250,21 @@ export default function LockTest() {
         done();
       })
 
-    // /**
-    //  * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_013
-    //  * @tc.name: multipleWakeupTest
-    //  * @tc.desc: checks multiple wake ups
-    //  * @tc.author: konstantin-grebenschikov
-    //  * @tc.size: MediumTest
-    //  * @tc.type: Function
-    //  * @tc.level: Level 2
-    //  */
-    // it('multipleWakeupTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-    //   async (done: () => void): Promise<void> => {
-    //     let result = await multipleWakeupTest();
-    //     expect(result).assertEqual("PASSED");
-    //     done();
-    //   })
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_013
+     * @tc.name: multipleWakeupTest
+     * @tc.desc: checks multiple wake ups
+     * @tc.author: konstantin-grebenschikov
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('multipleWakeupTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+      async (done: () => void): Promise<void> => {
+        let result = await multipleWakeupTest();
+        expect(result).assertEqual("PASSED");
+        done();
+      })
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_014
@@ -313,21 +313,6 @@ export default function LockTest() {
         done();
       })
 
-    // /**
-    //  * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_017
-    //  * @tc.name: sequentialLockWorkerTest
-    //  * @tc.desc: checks sequentially acquiring locks in workers
-    //  * @tc.author: konstantin-grebenschikov
-    //  * @tc.size: MediumTest
-    //  * @tc.type: Function
-    //  * @tc.level: Level 2
-    //  */
-    // it('sequentialLockWorkerTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
-    //   async (done: () => void): Promise<void> => {
-    //     let result: Object = await sequentialLockWorkerTest();
-    //     expect(result).assertEqual("PASSED");
-    //     done();
-    //   })
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_018
