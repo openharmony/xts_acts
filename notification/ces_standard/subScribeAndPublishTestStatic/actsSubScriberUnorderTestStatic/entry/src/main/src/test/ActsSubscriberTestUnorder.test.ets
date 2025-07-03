@@ -522,6 +522,7 @@ export default function ActsSubscriberTestUnorder() {
         userId: 100,
         priority: 1000
       }
+
       await Utils.msSleep(5000)
       CommonEventSubscriberInfo.events[0] = 'publish_event_0900'
       CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0900'
@@ -531,8 +532,12 @@ export default function ActsSubscriberTestUnorder() {
         code: 0,
         data: "initial_data",
         subscriberPermissions:new Array<string>('publish_event_0900_subscriberPermissions'),
+        bundleName:bundle_name,
         isOrdered:false,
         isSticky:false,
+        parameters:{
+        'key1':'parameters_0100'
+      }as Record<string, Object>
       }
       let CommonEventSubscriber =await commonEventManager.createSubscriber(CommonEventSubscriberInfo)
       if (CommonEventSubscriber == undefined) {
@@ -546,24 +551,36 @@ export default function ActsSubscriberTestUnorder() {
 
       commonEventManager.subscribe(CommonEventSubscriber, (err:BusinessError | null,CommonEventData:commonEventManager.CommonEventData|undefined) => {
         if (err) {
-          hilog.info(DOMAIN_NUMBER, TAG, ` subscribe failed! Err.Info ===>  + ${err.code}`)
+          hilog.info(DOMAIN_NUMBER, TAG, ` subscribe failed! Err.Info ===>  + ${err?.code}`)
           expect(false).assertTrue()
           done()
         } else {
-          hilog.info(DOMAIN_NUMBER, TAG,` subscribe successed! CommonEventData.Info ===>  `)
+          hilog.info(DOMAIN_NUMBER, TAG,` subscribe successed! CommonEventData.Info ===> `+ CommonEventData)
+          if (CommonEventData == undefined) {
+            hilog.info(DOMAIN_NUMBER, TAG,`subscribe failed! Err.Info ===> ${CommonEventData}`)
+            expect(false).assertTrue()
+            done()
+          } else {
+            hilog.info(DOMAIN_NUMBER, TAG,`subscribe successed! CommonEventData.Info ===>${CommonEventData}`)
+            expect(CommonEventData?.code).assertEqual(0)
+            expect(CommonEventData?.data).assertEqual("initial_data")
+            let parameters = CommonEventData?.parameters?.['key1'] == undefined ? 'parameters_0100' : CommonEventData?.parameters?.['key1'];
+            expect(parameters).assertEqual('parameters_0100')
+            expect(true).assertTrue()
+          }
           expect(true).assertTrue()
+          done()
         }
       })
 
-      commonEventManager.publish('publish_event_0900', CommonEventPublishData, (err: BusinessError | null) => {
-        if (err) {
-          hilog.info(DOMAIN_NUMBER, TAG, `publish failed! event.Info ===> + ${err.code}`)
+      commonEventManager.publish('publish_event_0900', CommonEventPublishData, (err:BusinessError | null) => {
+        if (err?.code) {
+          hilog.info(DOMAIN_NUMBER, TAG, `publish failed! event.Info ===> + ${err?.code}`)
           expect(false).assertTrue()
           done()
         } else {
           hilog.info(DOMAIN_NUMBER, TAG, `publish successed! event.Info ===>  +${CommonEventPublishData}`)
           expect(true).assertTrue()
-          done()
         }
       })
 

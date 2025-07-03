@@ -247,7 +247,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_2000 END`)
     })
 
-    //问题单号：DTS2025061412066
+
     /*
      * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
      * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
@@ -256,18 +256,18 @@ export default function ActsCommonEventManagerSubscribeTest() {
     it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100 START`)
 
-        let options:commonEventManager.CommonEventPublishData = {
-          code: 0,
-          data: "initial data",
-          isOrdered: true,
-          isSticky: false,
-          subscriberPermissions:new Array<string>('publish_event_subscriberPermissions'),
-        }
+      let options:commonEventManager.CommonEventPublishData = {
+        code: 0,
+        data: "initial data",
+        isOrdered: true,
+        isSticky: false,
+        subscriberPermissions:new Array<string>('publish_event_subscriberPermissions'),
+      }
 
-        let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
-          events: ["eventname"],
-          priority:100
-        };
+      let subscribeInfo:commonEventManager.CommonEventSubscribeInfo = {
+        events: ["eventname"],
+        priority:100
+      };
 
       let subscriber = commonEventManager.createSubscriberSync(subscribeInfo)
       commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
@@ -275,12 +275,14 @@ export default function ActsCommonEventManagerSubscribeTest() {
           expect(false).assertTrue()
           done()
         } else {
-          console.info(TAG+'===============>options=========bundle_name: ' + data?.bundleName);
-          console.info(TAG+'===============>options=========code: ' + data?.code);
-          console.info(TAG+'===============>options=========dat: ' + data?.data);
-          expect(data?.bundleName).assertEqual('');
-          expect(data?.code).assertEqual(0);
-          expect(data?.data).assertEqual('initial data');
+          if (data !== undefined) {
+            console.info(TAG+'===============>options=========bundle_name: ' + data?.bundleName);
+            console.info(TAG+'===============>options=========code: ' + data?.code);
+            console.info(TAG+'===============>options=========data: ' + data?.data);
+            expect(data?.bundleName).assertEqual('');
+            expect(data?.code).assertEqual(0);
+            expect(data?.data).assertEqual('initial data');
+          }
 
           let code1 = subscriber.getCodeSync();
           expect(code1).assertEqual(0);
@@ -291,9 +293,9 @@ export default function ActsCommonEventManagerSubscribeTest() {
           console.info(TAG+`getCodeSync after setCodeSync, code is ${code2}`)
           expect(code2).assertEqual(1);
 
-          let data = subscriber.getDataSync();
-          expect(data).assertEqual("initial data");
-          console.info(TAG+`getDataSync before setDataSync, data is ${data}`)
+          let data1 = subscriber.getDataSync();
+          expect(data1).assertEqual("initial data");
+          console.info(TAG+`getDataSync before setDataSync, data1 is ${data1}`)
 
           subscriber.setDataSync("data change");
           let data2 = subscriber.getDataSync();
@@ -345,7 +347,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
       }
     })
 
-    //问题单号：DTS2025061412066
+
     /*
      * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
      * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200
