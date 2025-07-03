@@ -30,7 +30,7 @@ export default function AsyncLockTest() {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_001
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_0010
      * @tc.name: setDelayRequestAndCloseWorkerInstantlyTest
      * @tc.desc: checks the request in worker should be skipped and the request in main thread should be executed
      * @tc.author: liu-zelin
@@ -46,7 +46,7 @@ export default function AsyncLockTest() {
       });
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_002
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_0020
      * @tc.name: gcAfterLockAsyncTest
      * @tc.desc: checks that trigger gc immediately after call lockAsync
      * @tc.author: liu-zelin
@@ -54,7 +54,7 @@ export default function AsyncLockTest() {
      * @tc.type: Function
      * @tc.level: Level 2
      */
-    it('gcAfterLockAsyncTest0', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
+    it('gcAfterLockAsyncTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
       async (done: () => void): Promise<void> => {
         let result: Object = await gcAfterLockAsyncTest();
         expect(result).assertEqual("PASSED");
@@ -62,7 +62,7 @@ export default function AsyncLockTest() {
       })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_003
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_0030
      * @tc.name: timeoutLockWithEnvDestroyedTest
      * @tc.desc: checks that timeout callback and env destroyed are handled properly
      * @tc.author: diartyz
@@ -78,7 +78,7 @@ export default function AsyncLockTest() {
       })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_004
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_0040
      * @tc.name: pendingSharedRequestAfterGC
      * @tc.desc: checks that destruction of shared lock after gc
      * @tc.author: diartyz

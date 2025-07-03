@@ -250,15 +250,15 @@ export default function LockTest() {
         done();
       })
 
-    /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_013
-     * @tc.name: multipleWakeupTest
-     * @tc.desc: checks multiple wake ups
-     * @tc.author: konstantin-grebenschikov
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 2
-     */
+    // /**
+    //  * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_013
+    //  * @tc.name: multipleWakeupTest
+    //  * @tc.desc: checks multiple wake ups
+    //  * @tc.author: konstantin-grebenschikov
+    //  * @tc.size: MediumTest
+    //  * @tc.type: Function
+    //  * @tc.level: Level 2
+    //  */
     // it('multipleWakeupTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //     let result = await multipleWakeupTest();
@@ -313,15 +313,15 @@ export default function LockTest() {
         done();
       })
 
-    /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_017
-     * @tc.name: sequentialLockWorkerTest
-     * @tc.desc: checks sequentially acquiring locks in workers
-     * @tc.author: konstantin-grebenschikov
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 2
-     */
+    // /**
+    //  * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_017
+    //  * @tc.name: sequentialLockWorkerTest
+    //  * @tc.desc: checks sequentially acquiring locks in workers
+    //  * @tc.author: konstantin-grebenschikov
+    //  * @tc.size: MediumTest
+    //  * @tc.type: Function
+    //  * @tc.level: Level 2
+    //  */
     // it('sequentialLockWorkerTest', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2,
     //   async (done: () => void): Promise<void> => {
     //     let result: Object = await sequentialLockWorkerTest();
@@ -602,7 +602,7 @@ export default function LockTest() {
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_ASYNCLOCK_035
-     * @tc.name: doubleExitSharedLock
+     * @tc.name: doubleExitSharedLockTest
      * @tc.desc: checks that shared lock cannot be acquired in a worker after it is acquired twice in the main thread
      * @tc.author: udav
      * @tc.size: MediumTest
