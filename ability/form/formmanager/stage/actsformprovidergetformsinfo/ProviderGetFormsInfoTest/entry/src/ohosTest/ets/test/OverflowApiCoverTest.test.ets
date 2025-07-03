@@ -51,7 +51,8 @@ export default function OverflowApiCoverTest() {
         };
         let overflowInfo: formInfo.OverflowInfo = {
           area: rect,
-          duration: 3500
+          duration: 3500,
+          useDefaultAnimation: true
         };
         formProvider.requestOverflow("1", overflowInfo).then(() => {
           console.info('requestOverflow succeed');
@@ -153,8 +154,12 @@ export default function OverflowApiCoverTest() {
       let name: string = 'GetFormRect_Cover_0100';
       console.info(`${name} start`);
       try {
-        formProvider.getFormRect("1");
-        expect().not().assertFail();
+        formProvider.getFormRect("1").then(() => {
+          console.info('getFormRect succeed');
+          expect().not().assertFail();
+        }).catch((error: BusinessError) => {
+          expect(error.code).assertEqual(16501001);
+        })
       } catch (error) {
         expect().assertFail();
       }
