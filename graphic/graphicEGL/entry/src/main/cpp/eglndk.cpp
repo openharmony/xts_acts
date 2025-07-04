@@ -677,6 +677,46 @@ static napi_value EglSwapBuffersWithDamageKHRRect1(napi_env env, napi_callback_i
     return result;
 }
 
+static napi_value EglSwapBuffersWithDamageKHRRect2(napi_env env, napi_callback_info info)
+{
+    EGLDisplay m_eglDisplay = nullptr;
+    EGLConfig m_eglConf = nullptr;
+    EGLint numConfigs;
+    EGLint config_size = 1;
+    m_eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+    NAPI_ASSERT(env, m_eglDisplay != EGL_NO_DISPLAY, "eglGetDisplay error");
+    eglInitialize(m_eglDisplay, nullptr, nullptr);
+
+    eglChooseConfig(m_eglDisplay, confAttr, &m_eglConf, config_size, &numConfigs);
+
+    EGLSurface m_eglSurface = eglCreatePbufferSurface(m_eglDisplay, m_eglConf, surfaceAttr);
+    NAPI_ASSERT(env, m_eglSurface != EGL_NO_SURFACE, "eglCreatePbufferSurface error");
+    const EGLint ctxAttr[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE};
+    EGLContext m_eglCtx = eglCreateContext(m_eglDisplay, m_eglConf, EGL_NO_CONTEXT, ctxAttr);
+    EGLBoolean Ret = eglMakeCurrent(m_eglDisplay, m_eglSurface, m_eglSurface, m_eglCtx);
+    NAPI_ASSERT(env, Ret == TRUE, "eglMakeCurrent error");
+
+    EGLint rects[8] = {
+        10, 10, 100, 100, // fisrt damaged area, x,y,width,height
+        110, 110, 100, 100 // second damaged area, x,y,width,height
+    };
+    PFNEGLSWAPBUFFERSWITHDAMAGEKHRPROC eglSwapBuffersWithDamageKHR_ =
+        (PFNEGLSWAPBUFFERSWITHDAMAGEKHRPROC)eglGetProcAddress("eglSwapBuffersWithDamageKHR");
+    EGLint n_RectsDamageArea = 2;
+    if (eglSwapBuffersWithDamageKHR_) {
+        EGLBoolean ret = eglSwapBuffersWithDamageKHR_(m_eglDisplay, m_eglSurface, rects, n_RectsDamageArea);
+        NAPI_ASSERT(env, ret == EGL_TRUE, "eglSwapBuffersWithDamageKHR update area error");
+    }
+
+    eglDestroyContext(m_eglDisplay, m_eglCtx);
+    eglDestroySurface(m_eglDisplay, m_eglSurface);
+    eglReleaseThread();
+    eglTerminate(m_eglDisplay);
+    napi_value result = nullptr;
+    napi_create_int32(env, SUCCESS, &result);
+    return result;
+}
+
 static napi_value EglQueryContext(napi_env env, napi_callback_info info)
 {
     EGLDisplay m_eglDisplay = nullptr;
@@ -1431,6 +1471,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"eglMakeCurrent", nullptr, EglMakeCurrent, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"eglMakeCurrentAbnormal", nullptr, EglMakeCurrentAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"eglSwapBuffersWithDamageKHRRect1", nullptr, EglSwapBuffersWithDamageKHRRect1, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"eglSwapBuffersWithDamageKHRRect2", nullptr, EglSwapBuffersWithDamageKHRRect2, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"eglQueryContext", nullptr, EglQueryContext, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"eglQueryContextAbnormal", nullptr, EglQueryContextAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},

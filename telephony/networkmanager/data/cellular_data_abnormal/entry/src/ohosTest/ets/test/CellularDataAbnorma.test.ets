@@ -351,15 +351,15 @@ export default function ActsCellularDataAbnormalTest() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Data_IsCellularDataRoamingEnabledSync_0100
-     * @tc.name   : testTelephonyDataIsCellularDataEnabledSync0100
+     * @tc.number : SUB_Telephony_Data_IsCellularDataRoamingEnabledSync_0200
+     * @tc.name   : testTelephonyDataIsCellularDataEnabledSync0200
      * @tc.desc   : Sync checks if cellular data roaming service is enabled.
      * @tc.level  : Level 2
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
-    it('testTelephonyDataIsCellularDataEnabledSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
-      let caseName: string = 'testTelephonyDataIsCellularDataEnabledSync0100';
+    it('testTelephonyDataIsCellularDataEnabledSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      let caseName: string = 'testTelephonyDataIsCellularDataEnabledSync0200';
       console.info(`${caseName} test start `);
       try {
         let isEnabled: boolean = cellular.isCellularDataEnabledSync();
@@ -376,16 +376,16 @@ export default function ActsCellularDataAbnormalTest() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Data_IsCellularDataRoamingEnabledSync_0100
-     * @tc.name   : testTelephonyDataIsCellularDataRoamingEnabledSync0100
+     * @tc.number : SUB_Telephony_Data_IsCellularDataRoamingEnabledSync_0200
+     * @tc.name   : testTelephonyDataIsCellularDataRoamingEnabledSync0200
      * @tc.desc   : Sync checks if cellular data roaming service is enabled.
      * @tc.level  : Level 2
      * @tc.type   : Function
      * @tc.size   : MediumTest
      */
 
-    it('testTelephonyDataIsCellularDataRoamingEnabledSync0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
-      let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabledSync0100';
+    it('testTelephonyDataIsCellularDataRoamingEnabledSync0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, (done: Function) => {
+      let caseName: string = 'testTelephonyDataIsCellularDataRoamingEnabledSync0200';
       console.info(`${caseName} test start `);
       try {
         let isEnabled: boolean = Boolean(cellular.isCellularDataRoamingEnabledSync(0));

@@ -24,6 +24,11 @@ interface IAuxInfo {
   pixelFormat: image.PixelMapFormat;
 }
 
+interface InfoSize {
+  width: number;
+  height: number;
+}
+
 // For test
 export const releaseTestContext: () => void;
 export const createTestImagePacker: () => void;
@@ -132,3 +137,15 @@ export const testPackPictureToFile: (uri: string, arraySize: number, auxTypes: A
 export const testPackPictureToData: (uri: string, arraySize: number, auxTypes: Array<image.AuxiliaryPictureType>,
     dynamicRange: number, needpackExif: boolean, src: ArrayBuffer, format: string, mode: number) => number;
 export const setAllExifKey: (keySize: number, keys: Array<string>) => number;
+
+// test gif incomplete
+export const CreateFromUri: (uri: string) => image.ImageSource;
+export const GetImageInfo: (source: image.ImageSource, index:number) => InfoSize;
+export const CreatePictureAtIndexByImageSource: (imageSource: image.ImageSource, index: number) => image.Picture;
+export const GetAllFrameCount: (imageSource: image.ImageSource) => number;
+export const GifMetadataGetProperty: (picture: image.Picture, gifPropertyKey: image.GifPropertyKey) => string;
+export const GifMetadataSetProperty: (picture: image.Picture, gifPropertyKey: image.GifPropertyKey, value: string) => number;
+export const GifGetMainPixelmapInfo: (picture: image.Picture) => InfoSize;
+export const CreatePictureAtIndexByImageSourceError: (imageSource: image.ImageSource, flag: boolean) => number;
+export const ImageSourceRelease: (imageSource: image.ImageSource) => number;
+export const PictureRelease: (pciture: image.Picture) => number;
