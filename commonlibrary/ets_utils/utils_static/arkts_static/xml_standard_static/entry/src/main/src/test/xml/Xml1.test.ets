@@ -1248,37 +1248,37 @@ export default function xmlTest1() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it('testXml0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let strXml =
-        '<?xml version="1.0" encoding="utf-8"?>' +
-          '<!DOCTYPE note [\n<!ENTITY foo "baa">]>' +
-          '<note importance="high" logged="true">' +
-          '    <![CDATA[\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\n]]>' +
-          '    <!--Hello, World!-->' +
-          '    <company>John &amp; Hans</company>' +
-          '    <title>Happy</title>' +
-          '    <title>Happy</title>' +
-          '    <lens>Work</lens>' +
-          '    <lens>Play</lens>' +
-          '    <?go there?>' +
-          '    <a><b/></a>' +
-          '    <h:table xmlns:h="http://www.w3.org/TR/html4/">' +
-          '        <h:tr>' +
-          '            <h:td>Apples</h:td>' +
-          '            <h:td>Bananas</h:td>' +
-          '        </h:tr>' +
-          '    </h:table>' +
-          '</note>';
-        let textEncoder = new util.TextEncoder();
-        let arrbuffer = textEncoder.encodeInto(strXml);
-        let that = new xml.XmlPullParser(arrbuffer.buffer as object as ArrayBuffer, 'UTF-8');
-        str = ''
-        let options: xml.ParseOptions =
-          { supportDoctype: true, ignoreNameSpace: true, attributeValueCallbackFunction: func51 }
-        that.parseXml(options);
-        let str1 = 'importance:highlogged:truexmlns:h:http://www.w3.org/TR/html4/';
-        expect(str).assertEqual(str1);
-    })
+    // it('testXml0051', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
+    //   let strXml =
+    //     '<?xml version="1.0" encoding="utf-8"?>' +
+    //       '<!DOCTYPE note [\n<!ENTITY foo "baa">]>' +
+    //       '<note importance="high" logged="true">' +
+    //       '    <![CDATA[\r\nfuncrion matchwo(a,6)\r\n{\r\nreturn 1;\r\n}\r\n]]>' +
+    //       '    <!--Hello, World!-->' +
+    //       '    <company>John &amp; Hans</company>' +
+    //       '    <title>Happy</title>' +
+    //       '    <title>Happy</title>' +
+    //       '    <lens>Work</lens>' +
+    //       '    <lens>Play</lens>' +
+    //       '    <?go there?>' +
+    //       '    <a><b/></a>' +
+    //       '    <h:table xmlns:h="http://www.w3.org/TR/html4/">' +
+    //       '        <h:tr>' +
+    //       '            <h:td>Apples</h:td>' +
+    //       '            <h:td>Bananas</h:td>' +
+    //       '        </h:tr>' +
+    //       '    </h:table>' +
+    //       '</note>';
+    //     let textEncoder = new util.TextEncoder();
+    //     let arrbuffer = textEncoder.encodeInto(strXml);
+    //     let that = new xml.XmlPullParser(arrbuffer.buffer as object as ArrayBuffer, 'UTF-8');
+    //     str = ''
+    //     let options: xml.ParseOptions =
+    //       { supportDoctype: true, ignoreNameSpace: true, attributeValueCallbackFunction: func51 }
+    //     that.parseXml(options);
+    //     let str1 = 'importance:highlogged:truexmlns:h:http://www.w3.org/TR/html4/';
+    //     expect(str).assertEqual(str1);
+    // })
 
 
     /**

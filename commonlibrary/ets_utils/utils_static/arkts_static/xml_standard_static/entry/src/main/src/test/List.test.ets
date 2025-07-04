@@ -13,10 +13,12 @@
 * limitations under the License.
 */
 
-import xml1Test from './xml/Xml1.test';
-import xml2Test from './xml/Xml2.test';
+import xmlTest1 from './xml/Xml1.test';
+import xmlTest2 from './xml/Xml2.test';
+import dynamicXmlTest1 from './dynamicXml/DynamicXml1.test';
 
 export default function testsuite() {
-  xml1Test();
-  xml2Test();
+  xmlTest1();
+  xmlTest2();
+  dynamicXmlTest1()
 }

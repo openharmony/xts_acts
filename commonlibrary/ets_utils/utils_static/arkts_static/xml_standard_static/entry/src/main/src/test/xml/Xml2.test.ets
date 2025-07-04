@@ -62,7 +62,7 @@ export default function xmlTest2() {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XMLMETHOD_0100
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XMLMETHOD_0200
      * @tc.name: testXmlMethod002
      * @tc.desc: Writes the text.
      * @tc.size: MediumTest
@@ -87,7 +87,7 @@ export default function xmlTest2() {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XMLMETHOD_0100
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XMLMETHOD_0300
      * @tc.name: testXmlMethod003
      * @tc.desc: Writes the text.
      * @tc.size: MediumTest
@@ -112,7 +112,7 @@ export default function xmlTest2() {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XMLMETHOD_0100
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XMLMETHOD_0400
      * @tc.name: testXmlMethod004
      * @tc.desc: Writes the text.
      * @tc.size: MediumTest
@@ -137,7 +137,7 @@ export default function xmlTest2() {
     })
 
     /**
-     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XMLMETHOD_0100
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XMLMETHOD_0500
      * @tc.name: testXmlMethod005
      * @tc.desc: Writes the text.
      * @tc.size: MediumTest
@@ -458,7 +458,7 @@ export default function xmlTest2() {
       try {
         pullParse.parseXml(options);
         expect().assertFail();
-      } catch (e:BusinessError) {
+      } catch (e: BusinessError) {
         expect(e.toString()).assertEqual("BusinessError: Cannot find the ']]>' in xml string.");
         expect(e.code).assertEqual(401);
       }
@@ -484,7 +484,7 @@ export default function xmlTest2() {
       try {
         pullParse.parseXml(options);
         expect().assertFail();
-      } catch (e:BusinessError) {
+      } catch (e: BusinessError) {
         expect(e.toString()).assertEqual("BusinessError: Cannot find the ']]>' in xml string.");
         expect(e.code).assertEqual(401);
       }
@@ -512,7 +512,7 @@ export default function xmlTest2() {
       try {
         pullParse.parseXml(options);
         expect().assertFail();
-      } catch (e:BusinessError) {
+      } catch (e: BusinessError) {
         expect(e.toString()).assertEqual("BusinessError: Cannot find the '?>' in xml string.");
         expect(e.code).assertEqual(401);
       }
@@ -539,7 +539,7 @@ export default function xmlTest2() {
       try {
         pullParse.parseXml(options);
         expect().assertFail();
-      } catch (e:BusinessError) {
+      } catch (e: BusinessError) {
         expect(e.toString()).assertEqual("BusinessError: Cannot find the '?>' in xml string.");
         expect(e.code).assertEqual(401);
       }
@@ -567,7 +567,7 @@ export default function xmlTest2() {
       try {
         pullParse.parseXml(options);
         expect().assertFail();
-      } catch (e:BusinessError) {
+      } catch (e: BusinessError) {
         expect(e.toString()).assertEqual("BusinessError: Cannot find the '--' in xml string.");
         expect(e.code).assertEqual(401);
       }
