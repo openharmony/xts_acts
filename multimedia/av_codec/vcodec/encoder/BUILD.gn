@@ -59,7 +59,7 @@ ohos_moduletest_suite("ActsEncoderTest") {
       "./src/api_test.cpp",
       "./src/configure_test.cpp",
       "./src/func_test.cpp",
-
+      "./src/Func2Test.cpp",
       "./src/getparam_test.cpp",
       "./src/setparam_test.cpp",
       "./src/state_test.cpp",
