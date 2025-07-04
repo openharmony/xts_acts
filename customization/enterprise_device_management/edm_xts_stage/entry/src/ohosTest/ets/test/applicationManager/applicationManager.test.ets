@@ -1242,5 +1242,188 @@ export default function applicationManagerTest() {
       }
       done();
     })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_WITHDISALLOWMODIFY_001
+     * @tc.name      : test_addKeepAliveAppsWithDisallowModify_001
+     * @tc.desc      : test AddKeepAliveAppsWithDisallowModify method with unActive admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveAppsWithDisallowModify_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        let disallowModifty: boolean = true;
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID, disallowModifty);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_WITHDISALLOWMODIFY_002
+     * @tc.name      : test_addKeepAliveAppsWithDisallowModify_002
+     * @tc.desc      : test addKeepAliveAppsWithDisallowModify method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveAppsWithDisallowModify_002", Level.LEVEL2, async (done: Function) => {
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        let disallowModifty: boolean = true;
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID, disallowModifty);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_WITHDISALLOWMODIFY_003
+     * @tc.name      : test_addKeepAliveAppsWithDisallowModify_003
+     * @tc.desc      : test addKeepAliveAppsWithDisallowModify method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveAppsWithDisallowModify_003", Level.LEVEL2, async (done: Function) => {
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        let disallowModifty: boolean = true;
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, INVALID_USER_ID, disallowModifty);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_WITHDISALLOWMODIFY_004
+     * @tc.name      : test_addKeepAliveAppsWithDisallowModify_004
+     * @tc.desc      : test addKeepAliveAppsWithDisallowModify method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveAppsWithDisallowModify_004", Level.LEVEL2, async (done: Function) => {
+      if (sysDeviceInfo.deviceType != '2in1') {
+        done();
+        return;
+      }
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        let disallowModifty: boolean = true;
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID, disallowModifty);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9201005).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ADDKEEPALIVEAPPS_WITHDISALLOWMODIFY_005
+     * @tc.name      : test_addKeepAliveAppsWithDisallowModify_005
+     * @tc.desc      : test addKeepAliveAppsWithDisallowModify method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_addKeepAliveAppsWithDisallowModify_005", Level.LEVEL2, async (done: Function) => {
+      try {
+        let keepAliveApps: Array<string> = [TEST_BUNDLENAME];
+        let disallowModifty: boolean = true;
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        applicationManager.addDisallowedRunningBundlesSync(SELFWANT, keepAliveApps, DEFAULT_USER_ID);
+        applicationManager.addKeepAliveApps(SELFWANT, keepAliveApps, DEFAULT_USER_ID, disallowModifty);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200010).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ISMODITYKEEPALIVEAPP_001
+     * @tc.name      : test_isModifyKeepAliveAppsDisallowed_001
+     * @tc.desc      : test isModifyKeepAliveAppsDisallowed method with unActive admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_isModifyKeepAliveAppsDisallowed_001", Level.LEVEL2, async (done: Function) => {
+      try {
+        let keepAliveApp: string = TEST_BUNDLENAME;
+        let disallowModifty: boolean = true;
+        disallowModifty = applicationManager.isModifyKeepAliveAppsDisallowed(SELFWANT, DEFAULT_USER_ID, keepAliveApp);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200001).assertTrue();
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ISMODITYKEEPALIVEAPP_002
+     * @tc.name      : test_isModifyKeepAliveAppsDisallowed_002
+     * @tc.desc      : test isModifyKeepAliveAppsDisallowed method with normal admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_isModifyKeepAliveAppsDisallowed_002", Level.LEVEL2, async (done: Function) => {
+      try {
+        let keepAliveApp: string = TEST_BUNDLENAME;
+        let disallowModifty: boolean = true;
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_NORMAL);
+        disallowModifty = applicationManager.isModifyKeepAliveAppsDisallowed(SELFWANT, DEFAULT_USER_ID, keepAliveApp);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_CUSTOMIZATION_EDM_ISMODITYKEEPALIVEAPP_003
+     * @tc.name      : test_isModifyKeepAliveAppsDisallowed_003
+     * @tc.desc      : test isModifyKeepAliveAppsDisallowed method with super admin
+     * @tc.level     : Level 2
+     * @tc.type      : Function
+     * @tc.size      : MediumTest
+     */
+    it("test_isModifyKeepAliveAppsDisallowed_003", Level.LEVEL2, async (done: Function) => {
+      try {
+        let keepAliveApp: string = TEST_BUNDLENAME;
+        let disallowModifty: boolean = true;
+        await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+        disallowModifty = applicationManager.isModifyKeepAliveAppsDisallowed(null, DEFAULT_USER_ID, keepAliveApp);
+        expect(false).assertTrue();
+      } catch (error) {
+        expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
+      }
+      done();
+    })
   })
 }
