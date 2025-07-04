@@ -47,6 +47,7 @@ async function stopApplication(bundleName: string) {
 async function exitInputMethod() {
     let driver = Driver.create()
     let softKeyBoard = await driver.findComponent(ON.type('Canvas'))
+    console.log(`${TestTag},softKeyBoard: ${JSON.stringify(softKeyBoard)}`);
     if (softKeyBoard != null) {
         await driver.pressBack()
     }
@@ -151,6 +152,10 @@ export default function UiTest() {
             await exitInputMethod();
             await driver.delayMs(2000);
             let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             expect(await text1.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testDriverInputText over');
@@ -173,13 +178,23 @@ export default function UiTest() {
             await text.clearText();
             await driver.delayMs(2000);
             await exitInputMethod();
-            let center = await text.getBoundsCenter();
+            await driver.delayMs(2000);
+            let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            let center = await text1.getBoundsCenter();
             await driver.inputText(center, '长贵儿', {paste:false, addition:false});
             await driver.delayMs(2000)
             await exitInputMethod()
             await driver.delayMs(2000)
-            let text1 = await driver.findComponent(ON.type('TextInput'))
-            expect(await text1.getText() == '长贵儿').assertTrue()
+            let text2 = await driver.findComponent(ON.type('TextInput'))
+            if (text2 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text2 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
+            expect(await text2.getText() == '长贵儿').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testDriverInputText1 over');
         })
@@ -201,12 +216,22 @@ export default function UiTest() {
             await text.clearText()
             await driver.delayMs(2000)
             await exitInputMethod()
+            await driver.delayMs(1000)
+            text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             let center = await text.getBoundsCenter()
             await driver.inputText(center, '123', {paste:true, addition:false})
             await driver.delayMs(2000)
             await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             expect(await text1.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testDriverInputText2 over');
@@ -232,6 +257,10 @@ export default function UiTest() {
             await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             expect(await text1.getText() == 'Hello World123').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testDriverInputText3 over');
@@ -257,6 +286,10 @@ export default function UiTest() {
             await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             expect(await text1.getText() == 'Hello World123').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testDriverInputText4 over');
@@ -281,6 +314,10 @@ export default function UiTest() {
             await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             expect(await text1.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testComponentInputText over');
@@ -303,11 +340,21 @@ export default function UiTest() {
             await text.clearText()
             await driver.delayMs(2000)
             await exitInputMethod()
+            await driver.delayMs(2000)
+            text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             await text.inputText('长贵儿', {paste:false, addition:false})
             await driver.delayMs(2000)
             await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             expect(await text1.getText() == '长贵儿').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testComponentInputText1 over');
@@ -330,11 +377,21 @@ export default function UiTest() {
             await text.clearText()
             await driver.delayMs(2000)
             await exitInputMethod()
+            await driver.delayMs(2000)
+            text = await driver.findComponent(ON.type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             await text.inputText('123', {paste:true, addition:false})
             await driver.delayMs(2000)
             await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             expect(await text1.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testComponentInputText2 over');
@@ -359,6 +416,10 @@ export default function UiTest() {
             await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             expect(await text1.getText() == 'Hello World123').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testComponentInputText3 over');
@@ -383,6 +444,10 @@ export default function UiTest() {
             await exitInputMethod()
             await driver.delayMs(2000)
             let text1 = await driver.findComponent(ON.type('TextInput'))
+            if (text1 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                text1 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             expect(await text1.getText() == 'Hello World123').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testComponentInputText4 over');
@@ -877,12 +942,17 @@ export default function UiTest() {
                 let scorll = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('Scroll'))
                 text = await scorll.scrollSearch(ON.belongingDisplay(disPlay.id).type('TextInput'))
             }
-            let center = await text.getBoundsCenter()
             // set pasteBoard data
             await text.inputText('123')
             await driver.delayMs(1000)
             await exitInputMethod()
             await driver.delayMs(1000)
+            text = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('TextInput'))
+            if (text == null) {
+                let scorll = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('Scroll'))
+                text = await scorll.scrollSearch(ON.belongingDisplay(disPlay.id).type('TextInput'))
+            }
+            let center = await text.getBoundsCenter()
             await driver.click(center.x, center.y)
             await driver.delayMs(waitUiReadyMs)
             await driver.triggerCombineKeys(2072, 2017, 0, disPlay.id)
@@ -891,6 +961,10 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             // clear and paste
             let text2 = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('TextInput'))
+            if (text2 == null) {
+                let scorll = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('Scroll'))
+                text2 = await scorll.scrollSearch(ON.belongingDisplay(disPlay.id).type('TextInput'))
+            }
             await text2.clearText()
             await driver.delayMs(waitUiReadyMs)
             await driver.triggerCombineKeys(2072, 2038, 0, disPlay.id)
@@ -898,6 +972,10 @@ export default function UiTest() {
             await exitInputMethod()
             await driver.delayMs(1000)
             let text3 = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('TextInput'))
+            if (text3 == null) {
+                let scorll = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('Scroll'))
+                text3 = await scorll.scrollSearch(ON.belongingDisplay(disPlay.id).type('TextInput'))
+            }
             expect(await text3.getText() == '123').assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testTriggerCombineKeysWithId over');
@@ -2132,17 +2210,25 @@ export default function UiTest() {
                 let scorll = await driver.findComponent(ON.type('Scroll'))
                 inputText = await scorll.scrollSearch(ON.type('TextInput'))
             }
-            let input = await driver.findComponent(ON.type('TextInput'))
-            await input.clearText()
+            await inputText.clearText()
             await driver.delayMs(2000)
             await exitInputMethod()
             await driver.delayMs(waitUiReadyMs)
+            let input = await driver.findComponent(ON.type('TextInput'))
+            if (input == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                input = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             let center = await input.getBoundsCenter()
             await driver.inputText(center, '123')
             await driver.delayMs(2000)
             await exitInputMethod()
             await driver.delayMs(2000)
             let input_new = await driver.findComponent(ON.type('TextInput'))
+            if (input_new == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                input_new = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             let text = await input_new.getText()
             console.info("testInputText result :" + text)
             expect(text == '123').assertTrue()
@@ -2474,6 +2560,10 @@ export default function UiTest() {
             await exitInputMethod()
             await driver.delayMs(2000)
             let input_new = await driver.findComponent(ON.type('TextInput'))
+            if (input_new == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                input_new = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             let text = await input_new.getText()
             console.info("testInputText result :" + text)
             expect(text == '123').assertTrue()
@@ -2498,11 +2588,19 @@ export default function UiTest() {
             await exitInputMethod()
             await driver.delayMs(2000)
             let input2 = await driver.findComponent(ON.type('TextInput'))
+            if (input2 == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                input2 = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             await input2.clearText()
             await driver.delayMs(2000)
             await exitInputMethod()
             await driver.delayMs(waitUiReadyMs)
             let input_new = await driver.findComponent(ON.type('TextInput'))
+            if (input_new == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                input_new = await scorll.scrollSearch(ON.type('TextInput'))
+            }
             let text = await input_new.getText()
             console.info("testClearText result :" + text)
             expect(text).assertEqual('')
@@ -3489,7 +3587,7 @@ export default function UiTest() {
             }
             await stopApplication('com.uitestScene.acts')
         })
-        
+
         /*
          * @tc.number: uiTest_9044
          * @tc.name: testWindowMaximize
@@ -3553,6 +3651,10 @@ export default function UiTest() {
             await exitInputMethod()
             await driver.delayMs(2000)
             let input_new = await driver.findComponent(BY.type('TextInput'))
+            if (input_new == null) {
+                let scorll = await driver.findComponent(BY.type('Scroll'))
+                input_new = await scorll.scrollSearch(BY.type('TextInput'))
+            }
             let text = await input_new.getText()
             console.info("testInputText result :" + text)
             expect(text == '123').assertTrue()
