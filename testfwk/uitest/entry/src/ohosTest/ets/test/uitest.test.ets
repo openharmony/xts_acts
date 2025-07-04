@@ -469,13 +469,13 @@ export default function UiTest() {
             }
             await btn.longClick();
             try {
-                await driver.crownRotate(50);
+                await driver.crownRotate(150);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
                 expect(toastBtn == null).assertTrue();
                 await driver.delayMs(1000);
-                await driver.crownRotate(-50);
+                await driver.crownRotate(-250);
                 await driver.delayMs(1000);
                 let toastBtn1 = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
@@ -504,13 +504,13 @@ export default function UiTest() {
             }
             await btn.longClick();
             try {
-                await driver.crownRotate(50, 30);
+                await driver.crownRotate(150, 30);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
                 expect(toastBtn == null).assertTrue();
                 await driver.delayMs(1000);
-                await driver.crownRotate(-50, 30);
+                await driver.crownRotate(-250, 30);
                 await driver.delayMs(1000);
                 let toastBtn1 = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
@@ -886,7 +886,7 @@ export default function UiTest() {
             }
             await driver.fling(UiDirection.DOWN, 39000, disPlay.id)
             await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponents(ON.belongingDisplay(disPlay.id).text('next page'))
+            let button = await driver.findComponents(ON.belongingDisplay(disPlay.id).text('toast'))
             expect (button).assertNull()
             await driver.fling(UiDirection.LEFT, 39000, disPlay.id)
             await driver.delayMs(waitUiReadyMs)
@@ -936,7 +936,9 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let disPlay = display.getDefaultDisplaySync();
             console.log(`${TestTag}, testTriggerCombineKeysWithId disPlay is: ${JSON.stringify(disPlay)}`);
-            await driver.delayMs(1000)
+            await driver.delayMs(1000);
+            await exitInputMethod();
+            await driver.delayMs(1000);
             let text = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('TextInput'))
             if (text == null) {
                 let scorll = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('Scroll'))
