@@ -27,6 +27,7 @@ import {
 import xml from '@ohos.xml'
 import util from '@ohos.util'
 import { BusinessError } from '@ohos.base';
+import Utils from '../Util.test';
 
 
 let str = "";
@@ -34,7 +35,9 @@ let strAttr = "";
 
 export default function xmlTest1() {
   describe('xmlTest1', (): void => {
-
+    afterEach(() => {
+      await Utils.msSleep(10)
+    })
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_XML_0100
      * @tc.name: testXml0001
