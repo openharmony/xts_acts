@@ -202,16 +202,18 @@ export default function actsWifiManagerFunctionsTest() {
          */
         it("getScanInfoListTest", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> => {
             try{
-                let info: Array<wifiManager.WifiScanInfo> = wifiManager.getScanInfoList();
-                hilog.info(domain, tag, "getScanInfoList:" + JSON.stringify(info));
-                hilog.info(domain, tag, "getScanInfoList0:" + info[0]);
-                hilog.info(domain, tag, "bssid:" + info[0].bssid);
-                hilog.info(domain, tag, "securityType:" + info[0].securityType);
-                hilog.info(domain, tag, "rssi:" + info[0].rssi);
-                hilog.info(domain, tag, "ssid:" + info[0].ssid);
-                hilog.info(domain, tag, "band:" + info[0].band);
-                hilog.info(domain, tag, "supportedWifiCategory:" + info[0].supportedWifiCategory);
-                expect(true).assertEqual(info != null);
+                let infos: Array<wifiManager.WifiScanInfo> = wifiManager.getScanInfoList();
+                if (infos != null) {
+                    hilog.info(domain, tag, "bssid:" + infos[0]?.bssid);
+                    hilog.info(domain, tag, "securityType:" + infos[0]?.securityType);
+                    hilog.info(domain, tag, "rssi:" + infos[0]?.rssi);
+                    hilog.info(domain, tag, "ssid:" + infos[0]?.ssid);
+                    hilog.info(domain, tag, "band:" + infos[0]?.band);
+                    hilog.info(domain, tag, "supportedWifiCategory:" + infos[0].supportedWifiCategory);
+                    expect(true).assertEqual(infos != null);
+                } else {
+                    expect().assertFail();
+                }
             }catch(err: BusinessError){
                 hilog.info(domain, tag, "getScanInfoList get error:" + JSON.stringify(err));
                 hilog.info(domain, tag, "getScanInfoList get errCode:" + err.code + ",errMessage:" + err.message);
@@ -293,6 +295,119 @@ export default function actsWifiManagerFunctionsTest() {
             } catch (err: BusinessError) {
                 hilog.info(domain, tag, "get error:" + JSON.stringify(err));
                 hilog.info(domain, tag, "getSignalLevel get errCode:" + err.code + ",errMessage:" + err.message);
+                if (err.code == 801) {
+                    hilog.info(domain, tag, 'api is not support');
+                    expect(true).assertEqual(err.code == 801);
+                } else {
+                    expect().assertFail();
+                }
+            }
+            done();
+        })
+
+        /*
+         * @tc.number: getLinkedInfoPromiseTest
+         * @tc.name: getLinkedInfoPromiseTest
+         * @tc.desc: Test getLinkedInfoPromiseTest API functionality
+         * @tc.level: Level 0
+         * @tc.type: Function
+         * @tc.size: MEDIUMTEST
+         */
+        it("getLinkedInfoPromiseTest", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> => {
+            try {
+                await wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
+                    hilog.info(domain, tag, 'getLinkedInfo promise success result:' + JSON.stringify(data));
+                    hilog.info(domain, tag, 'getLinkedInfo promise success result rssi:' + data.rssi);
+                    hilog.info(domain, tag, 'getLinkedInfo promise success result ssid:' + data.ssid);
+                    hilog.info(domain, tag, 'getLinkedInfo promise success result bssid:' + data.bssid);
+                    hilog.info(domain, tag, 'getLinkedInfo promise success result connState:' + data.connState);
+                    hilog.info(domain, tag, 'getLinkedInfo promise success result macAddress:' + data.macAddress);
+                    hilog.info(domain, tag, 'getLinkedInfo promise success result band:' + data.band);
+                    hilog.info(domain, tag, 'getLinkedInfo promise success result supportedWifiCategory:' + data.supportedWifiCategory);
+                    expect(true).assertEqual(data != null);
+                });
+            } catch (err: BusinessError) {
+                hilog.info(domain, tag, "get error:" + JSON.stringify(err));
+                hilog.info(domain, tag, "getLinkedInfo promise get errCode:" + err.code + ",errMessage:" + err.message);
+                if (err.code == 801) {
+                    hilog.info(domain, tag, 'api is not support');
+                    expect(true).assertEqual(err.code == 801);
+                } else {
+                    expect().assertFail();
+                }
+            }
+            done();
+        })
+
+        /*
+         * @tc.number: getLinkedInfoCallbackTest
+         * @tc.name: getLinkedInfoCallbackTest
+         * @tc.desc: Test getLinkedInfoCallbackTest API functionality
+         * @tc.level: Level 0
+         * @tc.type: Function
+         * @tc.size: MEDIUMTEST
+         */
+        it("getLinkedInfoCallbackTest", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> => {
+            wifiManager.getLinkedInfo((err: BusinessError | null, data: wifiManager.WifiLinkedInfo| undefined) => {
+                try {
+                    if (err != null) {
+                        hilog.info(domain, tag, "get error:" + JSON.stringify(err));
+                        hilog.info(domain, tag, "getLinkedInfo promise get errCode:" + err?.code + ",errMessage:" + err?.message);
+                        if (err?.code == 801) {
+                            hilog.info(domain, tag, 'api is not support');
+                            expect(true).assertEqual(err?.code == 801);
+                            done();
+                        } else {
+                            expect().assertFail();
+                            done();
+                        }
+                    } else {
+                        if (data != null) {
+                            hilog.info(domain, tag, 'getLinkedInfo callback success result:' + JSON.stringify(data));
+                            hilog.info(domain, tag, 'getLinkedInfo callback success result rssi:' + data?.rssi);
+                            hilog.info(domain, tag, 'getLinkedInfo callback success result ssid:' + data?.ssid);
+                            hilog.info(domain, tag, 'getLinkedInfo callback success result bssid:' + data?.bssid);
+                            hilog.info(domain, tag, 'getLinkedInfo callback success result connState:' + data?.connState);
+                            hilog.info(domain, tag, 'getLinkedInfo callback success result macAddress:' + data?.macAddress);
+                            hilog.info(domain, tag, 'getLinkedInfo callback success result band:' + data?.band);
+                            hilog.info(domain, tag, 'getLinkedInfo callback success result supportedWifiCategory:' + data?.supportedWifiCategory);
+                            done();
+                        } else {
+                            hilog.info(domain, tag, 'getLinkedInfo callback success result:' + JSON.stringify(data));
+                            done();
+                        }
+                    }
+                } catch (err :BusinessError) {
+                    hilog.info(domain, tag, 'use callback api get err:' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                }
+            })
+            done();
+        })
+
+        /*
+         * @tc.number: getLinkedInfoSyncTest
+         * @tc.name: getLinkedInfoSyncTest
+         * @tc.desc: Test getLinkedInfoSyncTest API functionality
+         * @tc.level: Level 0
+         * @tc.type: Function
+         * @tc.size: MEDIUMTEST
+         */
+        it("getLinkedInfoSyncTest", TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL0, async (done: () => void): Promise<void> => {
+            try {
+                let infoSync: wifiManager.WifiLinkedInfo = wifiManager.getLinkedInfoSync();
+                hilog.info(domain, tag, 'getLinkedInfoSync success result:' + JSON.stringify(infoSync));
+                hilog.info(domain, tag, 'getLinkedInfoSync success result rssi:' + infoSync.rssi);
+                hilog.info(domain, tag, 'getLinkedInfoSync success result ssid:' + infoSync.ssid);
+                hilog.info(domain, tag, 'getLinkedInfoSync success result bssid:' + infoSync.bssid);
+                hilog.info(domain, tag, 'getLinkedInfoSync success result connState:' + infoSync.connState);
+                hilog.info(domain, tag, 'getLinkedInfoSync success result macAddress:' + infoSync.macAddress);
+                hilog.info(domain, tag, 'getLinkedInfoSync success result band:' + infoSync.band);
+                hilog.info(domain, tag, 'getLinkedInfoSync success result supportedWifiCategory:' + infoSync.supportedWifiCategory);
+            } catch (err: BusinessError) {
+                hilog.info(domain, tag, "get error:" + JSON.stringify(err));
+                hilog.info(domain, tag, "getLinkedInfoSync get errCode:" + err.code + ",errMessage:" + err.message);
                 if (err.code == 801) {
                     hilog.info(domain, tag, 'api is not support');
                     expect(true).assertEqual(err.code == 801);
