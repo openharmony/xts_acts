@@ -23,6 +23,7 @@ group("security") {
       "accesstokenNDKTest:ActsAccessTokenNDKTest",
       "accessTokenTestStatic:ActsAccessTokenStaticTest",
       "requestPermissionsFromUserTestStatic:ActsRequestPermissionsFromUserStaticTest",
+      "requestPermissionOnSettingStaticTest:ActsRequestPermissionsOnSettingStaticTest",
       "asset",
       "certificate_framework",
       "certificate_manager",
