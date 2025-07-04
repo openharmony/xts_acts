@@ -18,7 +18,7 @@ import { ColorMetrics } from '@ohos.arkui.node';
 @Component
 struct RichEditorApi6 {
   controller: RichEditorController = new RichEditorController()
-  @State height1:string|number = '80%'
+  @State height1:string|number = '90%'
   @State height2:number = 100
   @State supportAvoidance:boolean = true;
 
