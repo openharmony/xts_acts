@@ -44,7 +44,7 @@ export default function WebViewJavaScriptProxyAndOnPageVisible() {
       });
       await Utils.msSleep(2000)
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.open.harmony.actsaceloadstatusenhancedtesttwo.static")
-      await Utils.msSleep(2000)
+      await Utils.msSleep(5000)
       console.log('beforeAll end,%s', 'Succeed!')
     });
     beforeEach(async () => {

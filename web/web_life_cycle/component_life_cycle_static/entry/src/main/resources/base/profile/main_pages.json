@@ -1,5 +1,6 @@
 {
   "src": [
-    "pages/componentLifeCycleTestOne"
+    "pages/componentLifeCycleTestOne",
+    "pages/webViewSharedRenderProcessToken"
   ]
 }

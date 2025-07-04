@@ -44,7 +44,7 @@ export default function componentLifeCycleTestOne() {
       });
       await Utils.msSleep(2000)
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.weblifecycleone.test.static")
-      await Utils.msSleep(2000)
+      await Utils.msSleep(5000)
       console.log('beforeAll end,%s', 'Succeed!')
     });
 
@@ -78,6 +78,11 @@ export default function componentLifeCycleTestOne() {
       Utils.registerEvent("onActive", "index", 8, done); //依赖用例执行顺序，在onInactive之后执行则为"index"
       inspector.sendEventByKey('HttpAuthHandlerButton', 10, '');
       await Utils.msSleep(5000);
+
+      // 最后一个用例运行完，切换页面为下一个测试套做准备
+      Utils.emitEvent("emitonSwitchNextPage", 10)
+      await Utils.msSleep(2000);
+      inspector.sendEventByKey('HttpAuthHandlerButton', 10, '');
       done();
     })
   })
