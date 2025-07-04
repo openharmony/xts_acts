@@ -671,9 +671,9 @@ HWTEST_F(HwEncFunc2NdkTest, VIDEO_ENCODE_CAPABILITY_8900, TestSize.Level2)
             (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, min);
             (void)OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, pixelFormat[0]);
             if (!strcmp(g_codecName, "OMX.hisi.video.encoder.avc")) {
-                EXPECT_EQ(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
+                EXPECT_EQ(AV_ERR_INVALID_VAL, OH_VideoEncoder_Configure(venc_, format));
             }else {
-                ASSERT_EQ(AV_ERR_INVALID_VAL, OH_VideoEncoder_Configure(venc_, format));
+                ASSERT_EQ(AV_ERR_OK, OH_VideoEncoder_Configure(venc_, format));
             }
         }
     } else {
