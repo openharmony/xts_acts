@@ -972,6 +972,7 @@ export default function ImageReceiverNDKTest() {
             console.info(mylog + " start");
             const receiver: image.ImageReceiver = arriveOnNdkTest.createReceiver();
             expect(arriveOnNdkTest.imageArriveOff(receiver, CALLBACK_FUC_01) == PARA_ERROR_CODE).assertTrue();
+            arriveOnNdkTest.releaseImageReceiver(receiver);
             console.info(mylog + " end");
             done();
         });
