@@ -17,6 +17,7 @@
 
 import dataManagerHasCartTest from './DataManagerHasCard.test';
 import dataManagerEmptyTest from './DataManagerEmpty.test';
+import CallUXUsabilityOptimizationTest from './CallSettingSyncCheck.test';
 import EmptyTest from './Empty.test';
 import data from '@ohos.telephony.data';
 import sim from '@ohos.telephony.sim';
@@ -25,12 +26,13 @@ let simState: sim.SimState = sim.getSimStateSync(0);
 export default function testsuite() {
   if (sim.getMaxSimCount()!=0){
     if(sim.hasSimCardSync(0) && simState != sim.SimState.SIM_STATE_UNKNOWN){
-      let isEnabled: boolean = data.isCellularDataRoamingEnabledSync(0);
       let isOpen: boolean = data.isCellularDataEnabledSync()
-      if(isEnabled && isOpen )
+      if( isOpen ){
         dataManagerHasCartTest();
-      else
+        CallUXUsabilityOptimizationTest();
+      }else{
         EmptyTest()
+      } 
     } else {
       dataManagerEmptyTest();
     }
