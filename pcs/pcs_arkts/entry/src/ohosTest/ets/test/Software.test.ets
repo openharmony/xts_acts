@@ -138,7 +138,7 @@ export default function softwareTest() {
         i18n.System.setAppPreferredLanguage('en')
         expect(i18n.System.getAppPreferredLanguage()).assertEqual('en')
       } catch (error) {
-        expect(false).assertTrue()q
+        expect(false).assertTrue()
       }
       await driver.delayMs(1000)
       text = await scroll.scrollSearch(ON.id('multilingualText').inWindow('com.acts.pcs.arktstest'))
