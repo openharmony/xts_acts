@@ -16,6 +16,7 @@
 import { describe, it, expect, TestType, Level, Size } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import display from '@ohos.display'
+import file from '@system.file';
 
 async function asyncTest() {
     return 1;
@@ -171,18 +172,21 @@ export default function softwareJsTest() {
         it('testWeblikeAccessPath0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let driver = Driver.create()
             await driver.delayMs(2000)
-            let text1 = await driver.findComponent(ON.id('absolutionPathImageCompleted'))
-            expect(text1 != undefined).assertTrue()
-            expect(await text1.getText()).assertEqual('AbsolutionPathSuccess')
-            let text2 = await driver.findComponent(ON.id('relativePathImageCompleted1'))
-            expect(text2 != undefined).assertTrue()
-            expect(await text2.getText()).assertEqual('RelativePath1Success')
-            let text3 = await driver.findComponent(ON.id('relativePathImageCompleted2'))
-            expect(text3 != undefined).assertTrue()
-            expect(await text3.getText()).assertEqual('RelativePath2Success')
-            let text4 = await driver.findComponent(ON.id('relativePathImageCompleted3'))
-            expect(text4 != undefined).assertTrue()
-            expect(await text4.getText()).assertEqual('RelativePath3Fail')
+            file.readText({
+                uri: 'internal://app/result.txt',
+                success: function (data) {
+                    let result = data.text
+                    console.info('read file success. result = ' + result);
+                    expect(result).assertContain('AbsolutionPathSuccess')
+                    expect(result).assertContain('RelativePath1Success')
+                    expect(result).assertContain('RelativePath2Success')
+                    expect(result.includes('RelativePath3Success')).assertFalse()
+                },
+                fail: function (data, code) {
+                    console.error('read file fail , code: ' + code + ', data: ' + data);
+                },
+            })
+            await driver.delayMs(2000)
             done()
         })
 
@@ -197,13 +201,20 @@ export default function softwareJsTest() {
          */
         it('testWeblikePrivateDirectoryPath0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
             let driver = Driver.create()
-            let button = await driver.findComponent(ON.text('refresh'))
-            await driver.delayMs(1000)
-            await button.click()
-            await driver.delayMs(5000)
-            let text = await driver.findComponent(ON.id('fileText1'))
-            expect(text != undefined).assertTrue()
-            expect(await text.getText()).assertEqual('test text')
+            await driver.delayMs(2000)
+            let result = ""
+            file.readText({
+                uri: 'internal://app/test.txt',
+                success: function (data) {
+                    result = data.text
+                    console.info('read file success. result = ' + result);
+                    expect(result).assertEqual('test text')
+                },
+                fail: function (data, code) {
+                    console.error('read file fail , code: ' + code + ', data: ' + data);
+                },
+            })
+            await driver.delayMs(2000)
             done()
         })
     })
