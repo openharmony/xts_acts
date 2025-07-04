@@ -249,11 +249,12 @@ export default function ActsCommonEventManagerSubscribeTest() {
 
     //问题单号：DTS2025061412066
     /*
-     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
-     * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100
+     * @tc.number: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1100
+     * @tc.name: SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1100
      * @tc.desc: verify the callback function
      */
-    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
+    it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1100', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
+      let TAG:string = 'SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1100'
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_Static_1100 START`)
 
       let options:commonEventManager.CommonEventPublishData = {
@@ -345,6 +346,7 @@ export default function ActsCommonEventManagerSubscribeTest() {
      */
 
     it('SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL2, async (done: () => void): Promise<void> => {
+      let TAG:string = 'SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200'
       console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBE_MANAGER_TEST_Static_1200 START`)
 
       let options:commonEventManager.CommonEventPublishData = {

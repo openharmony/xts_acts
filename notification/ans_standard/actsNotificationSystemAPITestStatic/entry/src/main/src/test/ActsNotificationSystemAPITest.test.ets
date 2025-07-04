@@ -381,7 +381,7 @@ export default function ActsNotificationSystemAPITest() {
         console.info(`${TAG} Sub_Notification_Ans_Enable_Query_Static_0200 START`);
 
         notificationManager.isNotificationEnabled((err: BusinessError | null, data: boolean|undefined): void => {
-          if (err && err.code !== 0) {
+          if (err) {
             console.info(`${TAG} isNotificationEnabled AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(false).assertTrue()
             done()

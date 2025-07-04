@@ -358,7 +358,7 @@ export default function ActsCommonEventManagerTest() {
 
     })
 
-    /*
+/*
      * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_1700
      * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_1700
      * @tc.desc: verify the callback function
@@ -366,6 +366,12 @@ export default function ActsCommonEventManagerTest() {
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_1700', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_1700'
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1700 START`)
+      let options:commonEventManager.CommonEventPublishData = {
+        code: 0,
+        data: "initial data",
+        isOrdered: true,
+        isSticky: false,
+      }
 
       let subscriber: commonEventManager.CommonEventSubscriber
 
@@ -387,92 +393,118 @@ export default function ActsCommonEventManagerTest() {
               expect(false).assertTrue()
               done()
             }
-            expect(true).assertTrue()
-            done()
 
-            subscriber.setCode(1, (err: BusinessError | null) => {
+            commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
               if (err) {
-                console.info(TAG+`setCode_1 err, error code: ${err.code}, message: ${err.message}`)
                 expect(false).assertTrue()
                 done()
               } else {
-                console.info(TAG+`setCode_1 success `)
-                expect(true).assertTrue()
-                subscriber.getCode((err: BusinessError | null, Code:number|undefined) => {
+                subscriber.setCode(1, (err: BusinessError | null) => {
                   if (err) {
-                    console.info(TAG+`getCode_1 err, error code: ${err.code}, message: ${err.message}`)
+                    console.info(TAG+`setCode_1 err, error code: ${err.code}, message: ${err.message}`)
                     expect(false).assertTrue()
                     done()
                   } else {
-                    console.info(TAG+`getCode_1 success ${Code}`)
-                    expect(Code).assertEqual(1)
+                    console.info(TAG+`setCode_1 success `)
+                    expect(true).assertTrue()
+                    subscriber.getCode((err: BusinessError | null, Code:number|undefined) => {
+                      if (err) {
+                        console.info(TAG+`getCode_1 err, error code: ${err.code}, message: ${err.message}`)
+                        expect(false).assertTrue()
+                        done()
+                      } else {
+                        console.info(TAG+`getCode_1 success ${Code}`)
+                        expect(Code).assertEqual(1)
+                      }
+                    })
+                  }
+                })
+
+                subscriber.setData('data01', (err: BusinessError | null) => {
+                  if (err) {
+                    console.info(TAG+`setData_1 err, error code: ${err.code}, message: ${err.message}`)
+                    expect(false).assertTrue()
+                    done()
+                  } else {
+                    console.info(TAG+`setData_1 success `)
+                    expect(true).assertTrue()
+                    subscriber.getData((err: BusinessError | null, data:string|undefined) => {
+                      if (err) {
+                        console.info(TAG+`getData_1 err, error code: ${err.code}, message: ${err.message}`)
+                        expect(false).assertTrue()
+                        done()
+                      } else {
+                        console.info(TAG+`getData_1 success ${data}`)
+                        expect(data).assertEqual('data01')
+                      }
+                    })
+                  }
+                })
+                subscriber.setCodeAndData(1, 'data01', (err: BusinessError | null) => {
+                  if (err) {
+                    console.info(TAG+`setCodeAndData_1 err, error code: ${err.code}, message: ${err.message}`)
+                    expect(false).assertTrue()
+                    done()
+                  } else {
+                    console.info(TAG+`setCodeAndData_1 success `)
+                    expect(true).assertTrue()
+                  }
+                })
+
+                subscriber.getSubscribeInfo((err: BusinessError | null, CommonEventSubscribeInfo:commonEventManager.CommonEventSubscribeInfo|undefined) => {
+                  if (err) {
+                    console.info(TAG+`getSubscribeInfo_1 err, error code: ${err.code}, message: ${err.message}`)
+                    expect(false).assertTrue()
+                    done()
+                  } else {
+                    console.info(TAG+`getSubscribeInfo_1 success`)
+                    expect(true).assertTrue()
+                  }
+                })
+
+                subscriber.clearAbortCommonEvent((err: BusinessError | null) => {
+                  if (err) {
+                    console.info(TAG+`clearAbortCommonEvent_1 err ${err}`)
+                    expect(false).assertTrue()
+                    done()
+                  } else {
+                    console.info(TAG+`clearAbortCommonEvent_1 success`)
+                    expect(true).assertTrue()
+                  }
+                })
+                for(let i = 0; i<500; i++){
+                  for(let j = 0; j<500; j++){
+                  }
+                }
+                subscriber.finishCommonEvent((err: BusinessError | null) => {
+                  if (err) {
+                    console.info(TAG+`finishCommonEvent_1 err, error code: ${err.code}, message: ${err.message}`)
+                    expect(false).assertTrue()
+                    done()
+                  } else {
+                    console.info(TAG+`finishCommonEvent_1 success `)
+                    expect(true).assertTrue()
+                    await Utils.msSleep(200)
                     done()
                   }
                 })
               }
             })
-
-            subscriber.setData('data01', (err: BusinessError | null) => {
-              if (err) {
-                console.info(TAG+`setData_1 err, error code: ${err.code}, message: ${err.message}`)
-                expect(false).assertTrue()
-                done()
-              } else {
-                console.info(TAG+`setData_1 success `)
-                expect(true).assertTrue()
-                done()
-                subscriber.getData((err: BusinessError | null, data:string|undefined) => {
-                  if (err) {
-                    console.info(TAG+`getData_1 err, error code: ${err.code}, message: ${err.message}`)
-                    expect(false).assertTrue()
-                    done()
-                  } else {
-                    console.info(TAG+`getData_1 success ${data}`)
-                    expect(data).assertEqual('data01')
-                    done()
-                  }
-                })
-              }
-            })
-
-            subscriber.setCodeAndData(2, 'data02', (err: BusinessError | null) => {
-              if (err) {
-                console.info(TAG+`setCodeAndData_1 err, error code: ${err.code}, message: ${err.message}`)
-                expect(false).assertTrue()
-                done()
-              } else {
-                console.info(TAG+`setCodeAndData_1 success `)
-                expect(true).assertTrue()
-                done()
-              }
-            })
-
-            subscriber.getSubscribeInfo((err: BusinessError | null, CommonEventSubscribeInfo:commonEventManager.CommonEventSubscribeInfo|undefined) => {
-              if (err) {
-                console.info(TAG+`getSubscribeInfo_1 err, error code: ${err.code}, message: ${err.message}`)
-                expect(false).assertTrue()
-                done()
-              } else {
-                console.info(TAG+`getSubscribeInfo_1 success`)
-                expect(true).assertTrue()
-                done()
-              }
-            })
-
-            subscriber.finishCommonEvent((err: BusinessError | null) => {
-              if (err) {
-                console.info(TAG+`finishCommonEvent_1 err, error code: ${err.code}, message: ${err.message}`)
-                expect(false).assertTrue()
-                done()
-              } else {
-                console.info(TAG+`finishCommonEvent_1 success `)
-                expect(true).assertTrue()
-                done()
-              }
-            })
-
           }
         })
+
+        setTimeout(()=>{
+          commonEventManager.publish("event07", options, (err: BusinessError | null)=> {
+            if (err) {
+              console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+              expect(false).assertTrue()
+              done()
+            } else {
+              console.info(TAG+`publish success`)
+            }
+          });
+        }, 1000);
+
       } catch (err:BusinessError) {
         console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1700 failed, catch error code: ${err.code}, message: ${err.message}`)
         expect(false).assertTrue()
@@ -482,7 +514,7 @@ export default function ActsCommonEventManagerTest() {
 
     })
 
-    //问题单号：DTS2025061412066
+    
     /*
      * @tc.number: Sub_Notification_Ans_Subscriber_Subscribe_Static_1800
      * @tc.name: Sub_Notification_Ans_Subscriber_Subscribe_Static_1800
@@ -490,7 +522,14 @@ export default function ActsCommonEventManagerTest() {
      */
     it('Sub_Notification_Ans_Subscriber_Subscribe_Static_1800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
       let TAG:string = 'Sub_Notification_Ans_Subscriber_Subscribe_Static_1800'
+      await Utils.msSleep(3000)
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1800 START`)
+      let options:commonEventManager.CommonEventPublishData = {
+        code: 0,
+        data: "initial data",
+        isOrdered: true,
+        isSticky: false,
+      }
 
       let subscriber: commonEventManager.CommonEventSubscriber
 
@@ -512,73 +551,91 @@ export default function ActsCommonEventManagerTest() {
               expect(false).assertTrue()
               done()
             }
-            expect(true).assertTrue()
 
-            await subscriber.setCode(3).then(() => {
-              console.info(TAG+`setCode_2 success `)
-              expect(true).assertTrue()
-            }).catch((err:BusinessError):void => {
-              console.info(TAG+`setCode_2 err, error code: ${err.code}, message: ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            })
-
-            await subscriber.getCode().then((Code:number) => {
-              console.info(TAG+`getCode_2 success ${Code}`)
-              expect(Code).assertEqual(3)
-            }).catch((err:BusinessError):void => {
-              console.info(TAG+`getCode_2 err, error code: ${err.code}, message: ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            })
-
-            await subscriber.setData('data03').then(() => {
-              console.info(TAG+`setData_2 success `)
-              expect(true).assertTrue()
-              subscriber.getData().then((data:string) => {
-                console.info(TAG+`getData_2 success ${data}`)
-                expect(data).assertEqual('data03')
-              }).catch((err:BusinessError):void => {
-                console.info(TAG+`getData_2 err, error code: ${err.code}, message: ${err.message}`)
+            commonEventManager.subscribe(subscriber, (err: BusinessError | null, data: commonEventManager.CommonEventData|undefined)=> {
+              if (err) {
                 expect(false).assertTrue()
                 done()
-              })
-            }).catch((err:BusinessError):void => {
-              console.info(TAG+`setData_2 err, error code: ${err.code}, message: ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            })
+              } else {
+                expect(true).assertTrue()
+                await subscriber.setCode(3).then(() => {
+                  console.info(TAG+`setCode_2 success `)
+                  expect(true).assertTrue()
+                }).catch((err:BusinessError):void => {
+                  console.info(TAG+`setCode_2 err, error code: ${err.code}, message: ${err.message}`)
+                  expect(false).assertTrue()
+                  done()
+                })
 
-            await subscriber.setCodeAndData(4, 'data04').then(() => {
-              console.info(TAG+`setCodeAndData_2 success `)
-              expect(true).assertTrue()
-            }).catch((err:BusinessError):void => {
-              console.info(TAG+`setCodeAndData_2 err, error code: ${err.code}, message: ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            })
+                await subscriber.getCode().then((Code:number) => {
+                  console.info(TAG+`getCode_2 success ${Code}`)
+                  expect(Code).assertEqual(3)
+                }).catch((err:BusinessError):void => {
+                  console.info(TAG+`getCode_2 err, error code: ${err.code}, message: ${err.message}`)
+                  expect(false).assertTrue()
+                  done()
+                })
 
-            await subscriber.getSubscribeInfo().then((CommonEventSubscribeInfo:commonEventManager.CommonEventSubscribeInfo) => {
-              console.info(TAG+`getSubscribeInfo_2 success `)
-              expect(true).assertTrue()
-            }).catch((err:BusinessError):void => {
-              console.info(TAG+`getSubscribeInfo_2 err, error code: ${err.code}, message: ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            })
+                await subscriber.setData('data03').then(() => {
+                  console.info(TAG+`setData_2 success `)
+                  expect(true).assertTrue()
+                  subscriber.getData().then((data:string) => {
+                    console.info(TAG+`getData_2 success ${data}`)
+                    expect(data).assertEqual('data03')
+                  }).catch((err:BusinessError):void => {
+                    console.info(TAG+`getData_2 err, error code: ${err.code}, message: ${err.message}`)
+                    expect(false).assertTrue()
+                    done()
+                  })
+                }).catch((err:BusinessError):void => {
+                  console.info(TAG+`setData_2 err, error code: ${err.code}, message: ${err.message}`)
+                  expect(false).assertTrue()
+                  done()
+                })
 
-            await subscriber.finishCommonEvent().then(() => {
-              console.info(TAG+`finishCommonEvent_2 success `)
-              expect(true).assertTrue()
-              done()
-            }).catch((err:BusinessError):void => {
-              console.info(TAG+`finishCommonEvent_2 err, error code: ${err.code}, message: ${err.message}`)
-              expect(false).assertTrue()
-              done()
-            })
+                await subscriber.setCodeAndData(4, 'data04').then(() => {
+                  console.info(TAG+`setCodeAndData_2 success `)
+                  expect(true).assertTrue()
+                }).catch((err:BusinessError):void => {
+                  console.info(TAG+`setCodeAndData_2 err, error code: ${err.code}, message: ${err.message}`)
+                  expect(false).assertTrue()
+                  done()
+                })
 
+                await subscriber.getSubscribeInfo().then((CommonEventSubscribeInfo:commonEventManager.CommonEventSubscribeInfo) => {
+                  console.info(TAG+`getSubscribeInfo_2 success `)
+                  expect(true).assertTrue()
+                }).catch((err:BusinessError):void => {
+                  console.info(TAG+`getSubscribeInfo_2 err, error code: ${err.code}, message: ${err.message}`)
+                  expect(false).assertTrue()
+                  done()
+                })
+
+                await subscriber.finishCommonEvent().then(() => {
+                  console.info(TAG+`finishCommonEvent_2 success `)
+                  expect(true).assertTrue()
+                  done()
+                }).catch((err:BusinessError):void => {
+                  console.info(TAG+`finishCommonEvent_2 err, error code: ${err.code}, message: ${err.message}`)
+                  expect(false).assertTrue()
+                  done()
+                })
+              }
+            })
           }
         })
+
+        setTimeout(()=>{
+          commonEventManager.publish("event08", options, (err: BusinessError | null)=> {
+            if (err) {
+              console.error(TAG+`publish failed, code is ${err.code}, message is ${err.message}`)
+              expect(false).assertTrue()
+              done()
+            } else {
+              console.info(TAG+`publish success`)
+            }
+          });
+        }, 1000);
       } catch (err:BusinessError) {
         console.info(TAG+`Sub_Notification_Ans_Subscriber_Subscribe_Static_1800 failed, catch error code: ${err.code}, message: ${err.message}`)
         expect(false).assertTrue()
@@ -586,6 +643,7 @@ export default function ActsCommonEventManagerTest() {
       }
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_Static_1800 END`)
     })
+
 
     console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_TEST END`)
 
