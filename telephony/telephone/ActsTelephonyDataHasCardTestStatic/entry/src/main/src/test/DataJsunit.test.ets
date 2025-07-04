@@ -101,7 +101,7 @@ export default function dataJsunit() {
         });
 
         /**
-         * @tc.number  Telephony_Data_DataFlowType_DATA_FLOW_TYPE_UP
+         * @tc.number  Telephony_Data_DataFlowType_DATA_FLOW_TYPE_UP_DOWN
          * @tc.name    testTelephonyDataDataFlowTypeTest0400
          * @tc.desc    Enum value test
          * @tc.size  : MediumTest
