@@ -37,7 +37,7 @@ export default function dataNoCardTest() {
             let caseName: string = 'testTelephonyDataGetCellularDataState_static_0400';
             hilog.info(domain, tag, '%{public}s', caseName+ ' start');
             try{
-                data.getCellularDataState((err: BusinessError, data: data.DataConnectState) => {
+                data.getCellularDataState((err: BusinessError<void>|null, data: data.DataConnectState| undefined) => {
                     if (err?.code != 0) {
                         hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
                         ExpectFail();
