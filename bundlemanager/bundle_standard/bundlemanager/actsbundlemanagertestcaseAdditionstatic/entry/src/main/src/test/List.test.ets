@@ -14,8 +14,12 @@
  */
 import ErrcodeTest from "./ErrorCodeTestStatic.test";
 import GetBundleInfo from "./GetBundleInfo.test";
+import getBundleInfoForSelf from "./GetBundleInfoForSelf.test";
+import getAppCloneIdentity from "./GetAppClonedentity.test";
 
 export default function testsuite() {
   ErrcodeTest();
   GetBundleInfo();
+  getBundleInfoForSelf();
+  getAppCloneIdentity();
 }
