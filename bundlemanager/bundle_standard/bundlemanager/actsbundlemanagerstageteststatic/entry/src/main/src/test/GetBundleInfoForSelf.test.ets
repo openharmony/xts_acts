@@ -1096,5 +1096,34 @@ export default function getBundleInfoForSelf() {
             done();
           })
       })
+
+    /*
+    * @tc.number: Sub_Bms_Framework_Query_AppInfo_5760
+    * @tc.name: getBundleInfoForSelfPermissionPro
+    * @tc.desc: Test getBundleInfoForSelf with permission flag(by promise).
+    */
+    it('getBundleInfoForSelfPermissionPro', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
+      async (done: () => void): Promise<void> => {
+        await bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION)
+          .then((data: BundleInfo) => {
+            hilog.info(domain, tag, 'getBundleInfoForSelfPermissionPro  ====> start');
+            expect(data.name).assertEqual("ohos.acts.bundle.stage.test.static");
+            expect(data.signatureInfo).assertEqual(null);
+            expect(data.minCompatibleVersionCode).assertEqual(1000000);
+            expect(data.versionName).assertEqual("1.0.0");
+            expect(data.versionCode).assertEqual(1000000);
+            expect(data.vendor).assertEqual("example");
+            expect(data.targetVersion).assertEqual(20);
+            expect(data.permissionGrantStates[1]).assertEqual(bundle.PermissionGrantState.PERMISSION_DENIED);
+            expect(data.permissionGrantStates[0]).assertEqual(bundle.PermissionGrantState.PERMISSION_GRANTED);
+            hilog.info(domain, tag, 'getBundleInfoForSelfPermissionPro  ====> end');
+            done();
+          })
+          .catch((err: BusinessError): void => {
+            console.log('getBundleInfoForSelfPermissionPro  ====> err', JSON.stringify(err));
+            expect(err).assertFail();
+            done();
+          })
+      })
   })
 }
