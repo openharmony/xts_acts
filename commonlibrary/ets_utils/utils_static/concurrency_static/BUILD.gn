@@ -20,6 +20,7 @@ group("concurrency_static") {
       "sharedarraybuffer_test_static:ActsSharedArrayBufferStaticTest",
       "taskpool_sendable_test_static:ActsTaskpoolSendableStaticTest",
       "asynclock_test_static:ActsAsyncLockStaticTest",
+      "eaworker_test_static:ActsEAWorkerStaticTest",
     ]
   }
 }
