@@ -884,6 +884,52 @@ static napi_value OhAvTransCodeConfigSetDstFileType(napi_env env, napi_callback_
     return result;
 }
 
+static napi_value OhAvTransCodeConfigEnableBFrame(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int32_t srcFd = PARAM_0;
+    int64_t srcOffset = PARAM_0;
+    int64_t length = PARAM_0;
+    int32_t dstFd = PARAM_0;
+    bool enableBFrame = false;
+    size_t argc = PARAM_5;
+    napi_value args[PARAM_5] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    napi_get_value_int32(env, args[PARAM_0], &srcFd);
+    napi_get_value_int64(env, args[PARAM_1], &srcOffset);
+    napi_get_value_int64(env, args[PARAM_2], &length);
+    napi_get_value_int32(env, args[PARAM_3], &dstFd);
+    napi_get_value_bool(env, args[PARAM_4], &enableBFrame);
+    NdkAVTransCoderUser *transcoderUser = new NdkAVTransCoderUser();
+    transcoderUser->InitTransCoder(srcFd, srcOffset, length, dstFd);
+    OH_AVErrCode errCode = OH_AVTranscoderConfig_EnableBFrame(transcoderUser->config, enableBFrame);
+    if (errCode != AV_ERR_OK) {
+        LOGE("OH_AVTranscoderConfig_EnableBFrame failed, error code: %{public}d", errCode);
+        napi_create_int32(env, errCode, &result);
+        delete transcoderUser;
+        return result;
+    }
+    errCode = OH_AVTranscoder_Prepare(transcoderUser->transcoder, transcoderUser->config);
+    if (errCode != AV_ERR_OK) {
+        LOGE("OH_AVTranscoder_Prepare failed, error code: %{public}d", errCode);
+        napi_create_int32(env, errCode, &result);
+        delete transcoderUser;
+        return result;
+    }
+    errCode = OH_AVTranscoder_Start(transcoderUser->transcoder);
+    if (errCode != AV_ERR_OK) {
+        LOGE("OH_AVTranscoder_Start failed, error code: %{public}d", errCode);
+        napi_create_int32(env, errCode, &result);
+        delete transcoderUser;
+        return result;
+    }
+    int32_t backParam = waitAvTransCoderStateChange(transcoderUser, AVTRANSCODER_COMPLETED);
+    LOG("Transcoder OhAvTransCodeConfigEnableBFrame ret %{public}d", backParam);
+    napi_create_int32(env, backParam, &result);
+    delete transcoderUser;
+    return result;
+}
+
 static napi_value OhAvTransCodeConfigSetDstFileTypeError(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -1164,6 +1210,8 @@ static napi_value Init(napi_env env, napi_value exports)
     {"AvTransCodeConfigSetDstAudioBitrate", nullptr, OhAvTransCodeConfigSetDstAudioBitrate, nullptr,
         nullptr, nullptr, napi_default, nullptr},
     {"AvTransCodeConfigSetDstVideoBitrate", nullptr, OhAvTransCodeConfigSetDstVideoBitrate, nullptr,
+        nullptr, nullptr, napi_default, nullptr},
+    {"AvTransCodeConfigEnableBFrame", nullptr, OhAvTransCodeConfigEnableBFrame, nullptr,
         nullptr, nullptr, napi_default, nullptr},
     {"AvTransCodeConfigSetDstVideoResolution", nullptr, OhAvTransCodeConfigSetDstVideoResolution, nullptr,
         nullptr, nullptr, napi_default, nullptr},

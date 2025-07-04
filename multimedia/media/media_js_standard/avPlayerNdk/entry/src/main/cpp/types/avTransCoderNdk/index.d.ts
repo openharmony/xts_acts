@@ -44,6 +44,8 @@ export const AvTransCodeConfigSetDstAudioBitrate: (srcFd: number, srcOffset: num
     bitrate: number) => AvTransCoderResult;
 export const AvTransCodeConfigSetDstVideoBitrate: (srcFd: number, srcOffset: number, srcLength: number, dstFd: number,
     bitrate: number) => number;
+export const AvTransCodeConfigEnableBFrame: (srcFd: number, srcOffset: number, srcLength: number, dstFd: number,
+    enableBFrame: boolean) => number;
 export const AvTransCodeConfigSetDstVideoResolution: (srcFd: number, srcOffset: number, srcLength: number, dstFd: number,
     width: number, height: number) => number;
 export const AvTransCoderErrorCode: (srcFd: number, srcOffset: number, srcLength: number) => number;

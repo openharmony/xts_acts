@@ -1777,5 +1777,25 @@ export default function AVTransCoderNdkTest() {
       expect(ret).assertEqual(OH_AVErrCode.AV_ERR_OK);
       done();
     });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVTRANSCODER_CONFIG_ENABLE_B_FRAME_0001
+     * @tc.name       : testOhAvTransCoderEnableBFrame0001
+     * @tc.desc       : Test OH_AVTranscoderConfig_EnableBFrame with enableBFrame.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvTransCoderEnableBFrame0001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
+      let avFd = await getRawFd(VIDEO_AVC_AUDIO_AAC);
+      let dstFd = await getFileFd('testOhAvTransCoderEnableBFrame0001_output_video.mp4');
+      let enableBFrame = true;
+      let ret: number = avTransCoderNdk.AvTransCodeConfigEnableBFrame(avFd.fd, avFd.offset, avFd.length, dstFd.fd, enableBFrame);
+      console.log('case testOhAvTransCoderEnableBFrame0001 ret ' + ret);
+      await closeRawFd(VIDEO_AVC_AUDIO_AAC);
+      await closeFileFd(dstFd.fd);
+      expect(ret).assertEqual(0);
+      done();
+    });
   })
 }

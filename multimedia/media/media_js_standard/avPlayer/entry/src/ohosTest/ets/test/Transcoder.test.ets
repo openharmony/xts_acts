@@ -53,6 +53,17 @@ let avTranscoderConfig: media.AVTranscoderConfig = {
   videoFrameHeight: 480,
 }
 
+let enableBFrameConfig: media.AVTranscoderConfig = {
+  audioBitrate: 200000,
+  audioCodec: media.CodecMimeType.AUDIO_AAC,
+  fileFormat: media.ContainerFormatType.CFT_MPEG_4,
+  videoBitrate: 3000000,
+  videoCodec: media.CodecMimeType.VIDEO_AVC,
+  videoFrameWidth: 720,
+  videoFrameHeight: 480,
+  enableBFrame: true,
+};
+
 async function closeRawFd(fileName: string) {
   globalThis.abilityContext.resourceManager.closeRawFd(fileName)
     .then(() => {
@@ -392,6 +403,46 @@ export default function AVTransCoderTest() {
         END_EVENT);
       toNextStep(avTranscoder, avTranscoderConfig, PAUSE_TIME, mySteps, done)
       console.info('SUB_MULTIMEDIA_AVTANSCODER_0200 end');
+    });
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_AVTANSCODER_0300
+    * @tc.name      : SUB_MULTIMEDIA_AVTANSCODER_0300
+    * @tc.desc      : Transcoder config-prepare-release
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_AVTANSCODER_0300', Level.LEVEL0, async (done: Function) => {
+      console.info('SUB_MULTIMEDIA_AVTANSCODER_0300 start');
+      outputName = resourceName();
+      pauseProgress = 30;
+      inputName = "H264_AAC.mp4";
+      await getfdScrAndfdDst();
+      let mySteps = new Array(
+        // create
+        CREATEAVTRANSCODER_PROMISE_EVENT, SETONCALLBACK_EVENT, SET_SRC_AND_DST,
+        // prepare
+        PREPAREAVTRANSCODER_PROMISE_EVENT,
+        // start Transcoder
+        STARTAVTRANSCODER_PROMISE_EVENT,
+        // pause Transcoder
+        PAUSEAVTRANSCODER_PROMISE_EVENT,
+        // resume Transcoder
+        RESUMEAVTRANSCODER_PROMISE_EVENT,
+        // cancel Transcoder
+        CANCELAVTRANSCODER_PROMISE_EVENT,
+        // release Transcoder
+        RELEASEAVTRANSCODER_PROMISE_EVENT,
+        // end
+        END_EVENT);
+      try {
+        toNextStep(avTranscoder, enableBFrameConfig, PAUSE_TIME, mySteps, done)
+        console.info('SUB_MULTIMEDIA_AVTANSCODER_0300 end');
+      } catch (err) {
+        console.error(`AVTranscoder failed, code is ${err.code}, message is ${err.message}`);
+        expect().assertFail();
+        done();
+      }
     });
   })
 }
