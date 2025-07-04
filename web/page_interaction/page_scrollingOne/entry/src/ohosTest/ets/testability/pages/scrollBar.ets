@@ -16,7 +16,7 @@
 import Utils from '../../test/Utils';
 import events_emitter from '@ohos.events.emitter';
 import webView from '@ohos.web.webview';
-import { waitForExist} from '../../test/WaitTest';
+import { waitForExist} from '../../test/WaitTest.test';
 
 @Entry
 @Component
