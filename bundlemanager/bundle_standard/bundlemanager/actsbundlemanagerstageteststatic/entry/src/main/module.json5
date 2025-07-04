@@ -337,6 +337,16 @@
           ],
           "when": "always"
         }
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
+        "reason": "$string:permission_reason",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
       }
     ],
     "metadata": [

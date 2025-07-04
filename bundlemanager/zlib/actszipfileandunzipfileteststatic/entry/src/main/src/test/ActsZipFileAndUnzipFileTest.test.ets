@@ -159,7 +159,7 @@ export default function ActsZlibTest() {
         let zipDest: string = dir + "/noneexist.zip";
         let unzipdir: string = dir + "/decompressFileInFileNotExist";
         zlib.decompressFile(zipDest, unzipdir, {
-          strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED}).then(() => {
+          strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_HUFFMAN_ONLY}).then(() => {
           expect().assertFail();
           done();
         }).catch((err: BusinessError): void => {
@@ -168,7 +168,7 @@ export default function ActsZlibTest() {
           done();
         })
         zlib.decompressFile(zipDest, unzipdir, {
-          strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
+          strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_HUFFMAN_ONLY
         }, (err: BusinessError): void => {
           if(err){
             hilog.info(domain, 'bmsTestTag',"008 decompress fail: " + JSON.stringify(err));
@@ -278,7 +278,7 @@ export default function ActsZlibTest() {
       let path22 = dir;
       let zipDest22 = dir + "/test20.zip";
       let unzipdir22 = dir + "/test20";
-      zlib.compressFile(path22, zipDest22, {
+      await zlib.compressFile(path22, zipDest22, {
         level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
         memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
         strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY
@@ -287,7 +287,6 @@ export default function ActsZlibTest() {
         try {
           let data: boolean = fileIo.accessSync(zipDest22);
           expect(data).assertTrue();
-          done();
         } catch(error: BusinessError) {
           console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
           expect().assertFail();
@@ -298,7 +297,22 @@ export default function ActsZlibTest() {
         expect().assertFail();
         done()
       })
-      zlib.decompressFile(zipDest22, unzipdir22, {
+      await Utils.msSleep(1000);
+      await fileIo.mkdir(unzipdir22).then(() =>{
+        console.info("fileio mkdir successfully");
+        try {
+          let data: boolean = fileIo.accessSync(unzipdir22);
+          expect(data).assertTrue();
+        } catch(error: BusinessError) {
+          console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+          expect().assertFail();
+        }
+      }).catch((err: BusinessError): void => {
+        console.info("fileio mkdir failed with error:" + err);
+        expect(err).assertFail();
+      });
+      await Utils.msSleep(1000);
+      await zlib.decompressFile(zipDest22, unzipdir22, {
         level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
         memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
         strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY
@@ -307,7 +321,6 @@ export default function ActsZlibTest() {
         try {
           let data: boolean = fileIo.accessSync(unzipdir22);
           expect(data).assertTrue();
-          done();
         } catch(error: BusinessError) {
           console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
           expect().assertFail();
@@ -327,7 +340,8 @@ export default function ActsZlibTest() {
         memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
         strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY
       };
-      zlib.compressFiles([fpath25, pathDir25, pathDir25], zippath25, options).then(() => {
+      await Utils.msSleep(1000);
+      await zlib.compressFiles([fpath25, pathDir25, pathDir25], zippath25, options).then(() => {
         hilog.info(domain, tag, 'compressFiles prepare test.zip success');
         try {
           let data: boolean = fileIo.accessSync(zippath25);
@@ -345,6 +359,42 @@ export default function ActsZlibTest() {
       })
     })
 
+    /*
+     * @tc.number: Sub_Bms_Zlib_Uncompress_Unusual_static_0310
+     * @tc.name: decompressFileInputNotZipPro1_static
+     * @tc.desc: test decompressFile when input file is not zip (promise). 900003
+    */
+    it('decompressFileInputNotZipPro1_static', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
+      console.info("==================decompressFileInputNotZipPro1_static start==================");
+      let path13: string = dir;
+      let zipDest1: string = dir + "/decompressFileInputNotZipPro1.text";
+      let unzipdir1: string = dir + "/decompressFileInputNotZipPro1";
+      await fileIo.mkdir(unzipdir1).then(() =>{
+        console.info("fileio mkdir successfully");
+        try {
+          let data: boolean = fileIo.accessSync(unzipdir1);
+          expect(data).assertTrue();
+        } catch(error: BusinessError) {
+          console.error(`accessSync failed with errCode:${error.code}  message:${error.message}`);
+          expect().assertFail();
+        }
+      }).catch((err: BusinessError): void => {
+        console.info("fileio mkdir failed with error:" + err);
+        expect(err).assertFail();
+      });
+      try {
+        zlib.decompressFile(path13, unzipdir1, (err: BusinessError): void => {
+          hilog.info(domain, 'bmsTestTag',"010 decompress fail: " + JSON.stringify(err));
+          expect(err?.code).assertEqual(INPUT_FILE_NOT_ZIP);
+          done();
+        })
+      } catch (err: BusinessError) {
+        console.info("decompressFileInputNotZipPro catch1 : " + JSON.stringify(err));
+        expect().assertFail();
+      }
+      done();
+      console.info("==================decompressFileInputNotZipPro1_static end==================");
+    })
   })
 }
 
