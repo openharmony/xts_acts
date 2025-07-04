@@ -38,6 +38,7 @@ import CameraVideoQualityPrioritizationTest from './CameraVideoQualityPrioritiza
 import CameraNoPermissionErrorCodeTest from './CameraNoPermissionErrorCodeTest.test.ets'
 import CameraPhotoSessionTest from './CameraPhotoSessionTest.test.ets'
 import {CameraConcurrentTest,isSupportCameras} from './CameraConcurrentTest.test.ets'
+import CameraMacroTest from './CameraMacroTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
 
@@ -69,4 +70,5 @@ export default function cameraKit() {
   CameraVideoMirrorTest()
   CameraPhotoSessionTest()
   CameraConcurrentTest()
+  CameraMacroTest()
 }
