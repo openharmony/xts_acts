@@ -75,6 +75,171 @@ export default function TimezoneInI18nTest() {
     })
 
     /* *
+    * @tc.number  timezone_test_static_0600
+    * @tc.name    timezone_test_static_0600
+    * @tc.desc    test getRawOffset method get the getRawOffset value
+    */
+    it('timezone_test_static_0600', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_0600 ' + 'start');
+      let timezone = i18n.getTimeZone();
+      let value = timezone.getRawOffset();
+      console.log('timezone_test_static_0600 ' + value);
+      expect(value >= 0).assertEqual(true);
+    })
+
+    
+    /* *
+    * @tc.number  timezone_test_static_1000
+    * @tc.name    timezone_test_static_1000
+    * @tc.desc    test getDisplayName with timezone id,get the getID value
+    */
+    it('timezone_test_static_1000', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_1000 ' + 'start');
+      let timezone = i18n.getTimeZone('ACT');
+      let value = timezone.getDisplayName();
+      console.log('timezone_test_static_1000 ' + value);
+      expect(value).assertEqual('澳大利亚中部标准时间');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1100
+    * @tc.name    timezone_test_static_1100
+    * @tc.desc    get the getID value ,test getDisplayName with locale
+    */
+    it('timezone_test_static_1100', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_1100 ' + 'start');
+      let timezone = i18n.getTimeZone('Asia/Shanghai');
+      let value = timezone.getDisplayName('zh-CN');
+      console.log('timezone_test_static_1100 ' + value);
+      expect(value).assertEqual('中国标准时间');
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1200
+    * @tc.name    timezone_test_static_1200
+    * @tc.desc    test getDisplayName with locale get the getID value
+    */
+    it('timezone_test_static_1200', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_1200 ' + 'start');
+      let timezone = i18n.getTimeZone('Asia/Shanghai');
+      let value = timezone.getDisplayName('zh-CN', true);
+      console.log('timezone_test_static_1200 ' + value);
+      expect(value).assertEqual('中国标准时间');
+    })
+
+
+    /* *
+    * @tc.number  timezone_test_static_1500
+    * @tc.name    timezone_test_static_1500
+    * @tc.desc    test getRawOffset method with timezone id get the getRawOffset value
+    */
+    it('timezone_test_static_1500', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_1500 ' + 'start');
+      let timezone = i18n.getTimeZone('ACT');
+      let value = timezone.getRawOffset();
+      console.log('timezone_test_static_1500 ' + value);
+      expect(value > 0).assertEqual(true);
+    })
+
+     /* *
+    * @tc.number  timezone_test_static_1600
+    * @tc.name    timezone_test_static_1600
+    * @tc.desc    test getOffset method with timezone id, get the getOffset value
+    */
+    it('timezone_test_static_1600', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_1600 ' + 'start');
+      let timezone = i18n.getTimeZone('ACT');
+      let value = timezone.getOffset();
+      console.log('timezone_test_static_1600 ' + value);
+      expect(value > 0).assertEqual(true);
+    })
+
+    /* *
+    * @tc.number  timezone_test_static_1700
+    * @tc.name    timezone_test_static_1700
+    * @tc.desc    test getOffset method with date and timezone id param, get the getOffset value
+    */
+    it('timezone_test_static_1700', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_1700 ' + 'start');
+      let timezone = i18n.getTimeZone('ACT');
+      let value = timezone.getOffset(10540800000);
+      console.log('timezone_test_static_1700 ' + value);
+      expect(value > 0).assertEqual(true);
+    })
+
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1800
+    * @tc.name timezone_test_static_1800
+    * @tc.desc test getAvailableIDs method get the getAvailableIDs value
+    */
+    it('timezone_test_static_1800', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_1800 ' + 'start');
+      let value = i18n.TimeZone.getAvailableIDs();
+      console.log('timezone_test_static_1800 ' + value);
+      expect(value.length > 0).assertEqual(true);
+    })
+    
+    /* *
+     * @tc.number timezone_test_static_1900
+     * @tc.name   timezone_test_static_1900
+     * @tc.desc   test getAvailableZoneCityIDs method, get the getAvailableZoneCityIDs value
+     */
+    it('timezone_test_static_1900', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_1900 ' + 'start');
+      let value = i18n.TimeZone.getAvailableZoneCityIDs();
+      console.log('timezone_test_static_1900 ' + value);
+      expect(value.length > 0).assertEqual(true);
+    }) 
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_2040
+    * @tc.name   timezone_test_static_2040
+    * @tc.desc   test getCityDisplayName method with not exist cityid,get the getCityDisplayName value
+    */
+    it('timezone_test_static_2040', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_2040 ' + 'start');
+      let value = i18n.TimeZone.getCityDisplayName('abcd', 'en');
+      console.log('timezone_test_static_2040 ' + value);
+      expect(value).assertEqual('');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_2060
+    * @tc.name timezone_test_static_2060
+    * @tc.desc test getCityDisplayName method with not exist locale, get the getCityDisplayName value
+    */
+    it('timezone_test_static_2060', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_2060 ' + 'start');
+      let value = i18n.TimeZone.getCityDisplayName('Auckland', 'abc');
+      console.log('timezone_test_2060 ' + value);
+      expect(value).assertEqual('Auckland (New Zealand)');
+    })
+
+    /* *
+    * @tc.number timezone_test_static_2100
+    * @tc.name   timezone_test_static_2100
+    * @tc.desc  test getTimezoneFromCity method , get the getTimezoneFromCity value
+    */
+    it('timezone_test_static_2100', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_2100 ' + 'start');
+      let value = i18n.TimeZone.getTimezoneFromCity('Auckland');
+      console.log('timezone_test_static_2100 ' + value);
+      expect(value != null).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_2120
+    * @tc.name   timezone_test_static_2120
+    * @tc.desc test getTimezoneFromCity method with not exist cityid, get the getTimezoneFromCity value
+    */
+    it('timezone_test_static_2120', Level.LEVEL0, async (): Promise<void> => {
+      console.log('timezone_test_static_2120 ' + 'start');
+      let value = i18n.TimeZone.getTimezoneFromCity('abc');
+      console.log('timezone_test_static_2120 ' + value);
+      expect(value != null).assertTrue();
+    })
+
+    /* *
     * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_static_2200
     * @tc.name timezone_test_static_2200
     * @tc.desc get the getTimezonesByLocation value

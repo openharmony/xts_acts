@@ -104,7 +104,6 @@ export default function I18NTest() {
       expect(result[0].end == 19).assertTrue();
     })
 
-
     console.log('*************end I18NTest*************');
   })
 }

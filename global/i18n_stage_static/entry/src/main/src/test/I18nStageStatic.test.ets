@@ -627,6 +627,40 @@ export default function i18nStageTest() {
       expect('GBR').assertEqual(language);
     })
 
+   /**
+     * @tc.number   : testGetThreeLetterLanguage_static_0040
+     * @tc.name     : testGetThreeLetterLanguage_static_0040
+     * @tc.desc     : param value not valid
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testGetThreeLetterLanguage_static_0040', Level.LEVEL3, async (): Promise<void> => {
+      try {
+        let language: string = i18n.I18NUtil.getThreeLetterLanguage('bbb')
+      } catch (e: BusinessError) {
+        console.log('testGetThreeLetterLanguage_0030' + e.code + e.message);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
+    /**
+     * @tc.number   : testGetThreeLetterRegion_static_0040
+     * @tc.name     : testGetThreeLetterRegion_static_0040
+     * @tc.desc     : param value not valid
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('testGetThreeLetterRegion_static_0040', Level.LEVEL3, async (): Promise<void> => {
+      try {
+        let language: string = i18n.I18NUtil.getThreeLetterRegion('aa')
+      } catch (e: BusinessError) {
+        console.log('testGetThreeLetterRegion_static_0040' + e.code + e.message);
+        expect(e.code).assertEqual('890001');
+      }
+    })
+
     /**
      * @tc.number   : SUB_GLOBAL_I18N_getDisplayLanguage_static_0200
      * @tc.name     : SUB_GLOBAL_I18N_getDisplayLanguage_static_0200
