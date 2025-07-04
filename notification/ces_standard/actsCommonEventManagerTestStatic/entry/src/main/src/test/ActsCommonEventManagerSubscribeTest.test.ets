@@ -144,10 +144,19 @@ export default function ActsCommonEventManagerSubscribeTest() {
               } else {
                 console.info(TAG+`clearAbortCommonEvent_9 success`)
                 expect(true).assertTrue()
-                done()
               }
             })
 
+
+            await subscriber.finishCommonEvent().then(() => {
+              console.info(TAG+`finishCommonEvent_2 success `)
+              expect(true).assertTrue()
+              done()
+            }).catch((err:BusinessError):void => {
+              console.info(TAG+`finishCommonEvent_2 err, error code: ${err.code}, message: ${err.message}`)
+              expect(false).assertTrue()
+              done()
+            })
           }
         })
       } catch (err: BusinessError) {
@@ -230,9 +239,19 @@ export default function ActsCommonEventManagerSubscribeTest() {
             await subscriber.clearAbortCommonEvent().then(() => {
               console.info(TAG+`clearAbortCommonEvent_10 success`)
               expect(true).assertTrue()
-              done()
             }).catch((err: BusinessError):void => {
               console.info(TAG+`clearAbortCommonEvent_10 err ${err}`)
+              expect(false).assertTrue()
+              done()
+            })
+
+            
+            await subscriber.finishCommonEvent().then(() => {
+              console.info(TAG+`finishCommonEvent_2 success `)
+              expect(true).assertTrue()
+              done()
+            }).catch((err:BusinessError):void => {
+              console.info(TAG+`finishCommonEvent_2 err, error code: ${err.code}, message: ${err.message}`)
               expect(false).assertTrue()
               done()
             })

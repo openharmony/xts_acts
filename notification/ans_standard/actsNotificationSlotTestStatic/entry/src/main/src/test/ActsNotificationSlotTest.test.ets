@@ -1426,7 +1426,7 @@ export default function ActsNotificationSlotTest() {
             expect(false).assertTrue()
             done()
           } else {
-            console.info(`${TAG} getSlots AsyncCallback success:` + JSON.stringify(NotificationSlot))
+            console.info(`${TAG} getSlots AsyncCallback success:`)
             if(NotificationSlot !== undefined){
               for (let i = 0; i < NotificationSlot.length; i++) {
                 console.info(`${TAG} NotificationSlot[${i}].type:` + NotificationSlot[i].notificationType)
@@ -1515,7 +1515,7 @@ export default function ActsNotificationSlotTest() {
         await Utils.msSleep(1000)
 
         await notificationManager.getSlots().then((NotificationSlot: Array<notificationManager.NotificationSlot>) => {
-          console.info(`${TAG} getSlots Promise success:` + JSON.stringify(NotificationSlot))
+          console.info(`${TAG} getSlots Promise success:`)
           for (let i = 0; i < NotificationSlot.length; i++) {
             console.info(`${TAG} NotificationSlot[${i}].type:` + NotificationSlot[i].notificationType)
             let num = NotificationSlot[i].notificationType as notificationManager.SlotType
