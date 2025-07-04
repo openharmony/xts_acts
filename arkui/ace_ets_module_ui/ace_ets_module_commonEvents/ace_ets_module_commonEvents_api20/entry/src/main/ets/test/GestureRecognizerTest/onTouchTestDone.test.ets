@@ -18,6 +18,23 @@ import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
+async function clickAt(tap1: string, tap2?: string) {
+  let driver : Driver = await Driver.create()
+  await CommonFunc.sleep(1000);
+  let tap = await driver.findComponent(ON.id(tap1));
+  let tapRect = await tap.getBounds();
+  if (tap2) {
+    let tap2Object = await driver.findComponent(ON.id(tap2));
+    let tapRect2 = await tap2Object.getBounds();
+    console.info('tap1 click at: ' + Math.round(tapRect.left + (tapRect.right - tapRect.left)/2), Math.round(tapRect2.bottom + (tapRect.bottom - tapRect2.bottom)/2));
+    await driver.click(Math.round(tapRect.left + (tapRect.right - tapRect.left)/2), Math.round(tapRect2.bottom + (tapRect.bottom - tapRect2.bottom)/2));
+  } else {
+    console.info('tap1 click at: ' + Math.round(tapRect.left + (tapRect.right - tapRect.left)/2), Math.round(tapRect.top + (tapRect.bottom - tapRect.top)/2));
+    await driver.click(Math.round(tapRect.left + (tapRect.right - tapRect.left)/2), Math.round(tapRect.top + (tapRect.bottom - tapRect.top)/2));
+  }
+  await CommonFunc.sleep(500);
+}
+
 export default function onTouchTestDoneTest() {
   describe('onTouchTestDoneTest', () => {
     beforeEach(async (done: Function) => {
@@ -49,7 +66,7 @@ export default function onTouchTestDoneTest() {
     /**
      * @tc.number    onTouchTestDoneTest_0010
      * @tc.name      onTouchTestDoneTest_0010
-     * @tc.desc      onTouchTestDone.on test succ
+     * @tc.desc      onTouchTestDone prevent gesture tag: Null test
      * @tc.level:    Level 0
      */
     it('onTouchTestDoneTest_0010', Level.LEVEL0, async (done: Function) => {
@@ -64,41 +81,25 @@ export default function onTouchTestDoneTest() {
       console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Current prevent gesture tag: Null');
 
-      let tap = await driver.findComponent(ON.id('tap1'));
-      let tapRect = await tap.getBounds();
-      await driver.click(tapRect.left + 1, tapRect.bottom - 1);
-      console.info('[onTouchTestDoneTest_0010] click at: ' + tapRect.left + 1, tapRect.bottom - 1);
-      await CommonFunc.sleep(500);
+      await clickAt('tap1','tap2');
       strJson = getInspectorByKey('text');
       obj = JSON.parse(strJson);
       console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Current Gesture: Tap1');
 
-      tap = await driver.findComponent(ON.id('tap2'));
-      tapRect = await tap.getBounds();
-      await driver.click(tapRect.left + 1, tapRect.bottom - 1);
-      console.info('[onTouchTestDoneTest_0010] click at: ' + tapRect.left + 1, tapRect.bottom - 1);
-      await CommonFunc.sleep(500);
+      await clickAt('tap2','tap3');
       strJson = getInspectorByKey('text');
       obj = JSON.parse(strJson);
       console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Current Gesture: Tap2');
 
-      tap = await driver.findComponent(ON.id('tap3'));
-      tapRect = await tap.getBounds();
-      await driver.click(tapRect.left + 1, tapRect.bottom - 1);
-      console.info('[onTouchTestDoneTest_0010] click at: ' + tapRect.left + 1, tapRect.bottom - 1);
-      await CommonFunc.sleep(500);
+      await clickAt('tap3','tap4');
       strJson = getInspectorByKey('text');
       obj = JSON.parse(strJson);
       console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Current Gesture: Tap3');
 
-      tap = await driver.findComponent(ON.id('tap4'));
-      tapRect = await tap.getBounds();
-      await driver.click(tapRect.left + 1, tapRect.bottom - 1);
-      console.info('[onTouchTestDoneTest_0010] click at: ' + tapRect.left + 1, tapRect.bottom - 1);
-      await CommonFunc.sleep(500);
+      await clickAt('tap4');
       strJson = getInspectorByKey('text');
       obj = JSON.parse(strJson);
       console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
@@ -111,7 +112,7 @@ export default function onTouchTestDoneTest() {
     /**
      * @tc.number    onTouchTestDoneTest_0020
      * @tc.name      onTouchTestDoneTest_0020
-     * @tc.desc      onTouchTestDone.off test succ
+     * @tc.desc      onTouchTestDone prevent gesture tag: Tap2 test
      * @tc.level:    Level 0
      */
     it('onTouchTestDoneTest_0020', Level.LEVEL0, async (done: Function) => {
@@ -127,47 +128,31 @@ export default function onTouchTestDoneTest() {
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('currentTag');
       let obj: ESObject = JSON.parse(strJson);
-      console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
+      console.info('[onTouchTestDoneTest_0020] Obj: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Current prevent gesture tag: Tap2');
 
-      let tap = await driver.findComponent(ON.id('tap1'));
-      let tapRect = await tap.getBounds();
-      await driver.click(tapRect.left + 1, tapRect.bottom - 1);
-      console.info('[onTouchTestDoneTest_0010] click at: ' + tapRect.left + 1, tapRect.bottom - 1);
-      await CommonFunc.sleep(500);
+      await clickAt('tap1','tap2');
       strJson = getInspectorByKey('text');
       obj = JSON.parse(strJson);
-      console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
+      console.info('[onTouchTestDoneTest_0020] Obj: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Current Gesture: Tap1');
 
-      tap = await driver.findComponent(ON.id('tap2'));
-      tapRect = await tap.getBounds();
-      await driver.click(tapRect.left + 1, tapRect.bottom - 1);
-      console.info('[onTouchTestDoneTest_0010] click at: ' + tapRect.left + 1, tapRect.bottom - 1);
-      await CommonFunc.sleep(500);
+      await clickAt('tap2','tap3');
       strJson = getInspectorByKey('text');
       obj = JSON.parse(strJson);
-      console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
+      console.info('[onTouchTestDoneTest_0020] Obj: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Current Gesture: Tap1');
 
-      tap = await driver.findComponent(ON.id('tap3'));
-      tapRect = await tap.getBounds();
-      await driver.click(tapRect.left + 1, tapRect.bottom - 1);
-      console.info('[onTouchTestDoneTest_0010] click at: ' + tapRect.left + 1, tapRect.bottom - 1);
-      await CommonFunc.sleep(500);
+      await clickAt('tap3','tap4');
       strJson = getInspectorByKey('text');
       obj = JSON.parse(strJson);
-      console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
+      console.info('[onTouchTestDoneTest_0020] Obj: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Current Gesture: Tap3');
 
-      tap = await driver.findComponent(ON.id('tap4'));
-      tapRect = await tap.getBounds();
-      await driver.click(tapRect.left + 1, tapRect.bottom - 1);
-      console.info('[onTouchTestDoneTest_0010] click at: ' + tapRect.left + 1, tapRect.bottom - 1);
-      await CommonFunc.sleep(500);
+      await clickAt('tap4');
       strJson = getInspectorByKey('text');
       obj = JSON.parse(strJson);
-      console.info('[onTouchTestDoneTest_0010] Obj: ' + JSON.stringify(obj.$attrs.content));
+      console.info('[onTouchTestDoneTest_0020] Obj: ' + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Current Gesture: Tap4');
       console.info('[onTouchTestDoneTest_0020] END');
       done();
