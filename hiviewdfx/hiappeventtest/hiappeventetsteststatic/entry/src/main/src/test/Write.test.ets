@@ -1398,6 +1398,35 @@ export default function writeTest() {
       }
     })
 
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_4500
+     * @tc.name testHiAppEventApi45
+     * @tc.desc HiAppEvent with predefined event and param.
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiAppEventApi45', Level.LEVEL3, ():void => {
+      console.info('testHiAppEventApi45 start');
+      hiAppEvent.write({
+        domain: "test_domain",
+        name: "test_name",
+        eventType: hiAppEvent.EventType.FAULT,
+        params: {
+          "USER_ID": hiAppEvent.param.USER_ID,
+          "DISTRIBUTED_SERVICE_NAME": hiAppEvent.param.DISTRIBUTED_SERVICE_NAME,
+          "DISTRIBUTED_SERVICE_INSTANCE_ID": hiAppEvent.param.DISTRIBUTED_SERVICE_INSTANCE_ID,
+        } as Record<string, number|string|boolean|(number|string|boolean)[]>
+      }, (err: BusinessError<void> | null) => {
+        if (err) {
+          hilog.error(domain, tag, `testHiAppEventApi45 > code: ${err.code}, message: ${err.message}`);
+          expect(err?.code == 0).assertTrue()
+          return;
+        }
+        console.log(`testHiAppEventApi45 success to write event`)
+      });
+      console.info('testHiAppEventApi45 end');
+    })
   })
   hilog.info(domain, tag, 'writeTest end');
 }
