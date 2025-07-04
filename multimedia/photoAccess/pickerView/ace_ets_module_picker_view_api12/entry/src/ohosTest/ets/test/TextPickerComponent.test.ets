@@ -2040,5 +2040,96 @@ export default function TextPicker() {
       console.info("testPicker43 finish");
       done();
     });
+
+    /**
+     * @tc.number    : testPicker44
+     * @tc.name      : testPicker44
+     * @tc.desc      : Testing RecentPhotoComponent(isAutoRefreshSupported)
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testPicker44', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let code: number = EventType.RECENT_PHOTO_INFO;
+      let recentPhotoOptions: RecentPhotoOptions = new RecentPhotoOptions();
+      recentPhotoOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_VIDEO_TYPE;
+      recentPhotoOptions.period = 0;
+      recentPhotoOptions.photoSource = PhotoSource.ALL;
+      recentPhotoOptions.isAutoRefreshSupported = true;
+      recentPhotoOptions.colorMode=PickerColorMode.LIGHT;
+      let callback = (event: events_emitter.EventData) => {
+        let baseItemInfo: BaseItemInfo = event?.data?.msg;
+        console.info('testPicker44 baseItemInfo =:' + JSON.stringify(baseItemInfo));
+        expect(baseItemInfo.uri).not().assertUndefined();
+        expect(baseItemInfo.mimeType).not().assertUndefined();
+        expect(baseItemInfo.width).not().assertUndefined();
+        expect(baseItemInfo.height).not().assertUndefined();
+        expect(baseItemInfo.size).not().assertUndefined();
+        expect(baseItemInfo.duration).not().assertUndefined();
+        done();
+      }
+      let event: events_emitter.InnerEvent = {
+        eventId: code,
+        priority: events_emitter.EventPriority.LOW
+      }
+      events_emitter.on(event, callback);
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RecentPhotoDemo',
+        params: {
+          eventId: code,
+          recentPhotoOptions: recentPhotoOptions,
+        }
+      }
+      await routeToUrl(options);
+      console.info('testPicker44 create');
+      let component: Component = await driver.findComponent(ON.id('recentPhoto'));
+      if (component === null) {
+        console.info('testPicker44 no recentPhoto');
+      } else {
+        await component.click();
+        await CommonFunc.sleep(2000);
+      }
+      router.back();
+      console.info("testPicker44 finish");
+      done();
+    });
+
+    /**
+     * @tc.number    : testPicker45
+     * @tc.name      : testPicker45
+     * @tc.desc      : Testing PhotoPickerComponent gridOffset
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testPicker45', Level.LEVEL0, async (done: Function) => {
+      if (!isExecutePicker) {
+        done();
+        return;
+      }
+      let code: number = EventType.PHOTO_PICKER_INFO;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      pickerOptions.gridStartOffset = 10;
+      pickerOptions.gridEndOffset = 10;
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker45 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).not().assertUndefined();
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+      router.back();
+      console.info("testPicker45 finish");
+      done();
+    });
   })
 }
