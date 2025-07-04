@@ -401,7 +401,7 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_ILLEGAL_PARA_2300, TestSize.Level2)
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
     const int32_t *pixelFormat = nullptr;
     uint32_t pixelFormatNum = 0;
-    if (cap) { 
+    if (cap) {
         ASSERT_EQ(AV_ERR_OK, OH_AVCapability_GetVideoSupportedPixelFormats(cap, &pixelFormat, &pixelFormatNum));
         if (pixelFormatNum > 0) {
             OH_AVErrCode ret = AV_ERR_OK;
