@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "shell-timeout": "180000",
-        "bundle-name": "com.example.data.static",
+        "bundle-name": "com.example.data.noCard.static",
         "module-name": "entry"
     },
     "kits": [

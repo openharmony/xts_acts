@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "com.example.data.static",
+    "bundleName": "com.example.data.noCard.static",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
