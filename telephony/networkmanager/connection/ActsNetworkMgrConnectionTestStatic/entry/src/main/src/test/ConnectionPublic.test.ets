@@ -633,6 +633,10 @@ export default function ConnectionPublicTest() {
       hilog.info(domain, tag, '%{public}s', caseName+ ' start');
       try {
         connection.getDefaultNet().then((data: connection.NetHandle) => {
+          let netBlockStatus: connection.NetBlockStatusInfo = {
+            netHandle: data,
+            blocked: true
+          }
           hilog.info(domain, tag, '%{public}s', caseName +':getDefaultNet: data-'+JSON.stringify(data));
           ExpectTrue(typeof data.netId == 'number');
           hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -1097,6 +1101,10 @@ export default function ConnectionPublicTest() {
       try {
          connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
+            let netConnectionProInfo: connection.NetConnectionPropertyInfo = {
+              netHandle: netHandle,
+              connectionProperties: data
+            }
             hilog.info(domain, tag, '%{public}s', caseName +': getConnectionProperties data ->'+JSON.stringify(data));
             ExpectTrue(data != undefined);
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
@@ -1642,6 +1650,10 @@ export default function ConnectionPublicTest() {
       try {
          connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
           connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
+            let netCapInfo: connection.NetCapabilityInfo= {
+              netHandle: netHandle,
+              netCap:data
+            }
             hilog.info(domain, tag, '%{public}s', caseName +': GetNetCapabilities data ->'+JSON.stringify(data));
             ExpectTrue(data != undefined);
             hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
