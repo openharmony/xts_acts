@@ -25,8 +25,8 @@ let COMMON_PARAMETER_CODE: number = 401;
 let PARAMETER_DEVICEID_TYPE_MSG: string = 'Parameter error. The type of deviceId must be number.';
 let PARAMETER_CALLBACK_TYPE_MSG: string = 'Parameter error. The type of callback must be function.';
 
-export default function MultimodalInputDeviceTest() {
-  describe("MultimodalInputDeviceTest", (): void => {
+export default function InputDeviceTest() {
+  describe("InputDeviceTest", (): void => {
     const ExpectTrue = (n: boolean) => {
       try {
         expect(n).assertTrue();
@@ -49,10 +49,10 @@ export default function MultimodalInputDeviceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_getDeviceInfo_0100", 0, async (done:()=>void) : Promise<void> => {
+    it("SUB_MMI_Input_Api_IptDev_getDeviceInfo_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       let caseName = "SUB_MMI_Input_Api_IptDev_getDeviceInfo_0100";
       try {
-        inputDevice.getDeviceInfo(1, (error: BusinessError | Object | undefined, deviceData: inputDevice.InputDeviceData) => {
+        inputDevice.getDeviceInfo(1, (error: BusinessError | Object | undefined, deviceData: inputDevice.InputDeviceData):void => {
           if (error) {
             hilog.info(domain, tag, `${caseName} Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
             ExpectFalse(true);
@@ -64,7 +64,7 @@ export default function MultimodalInputDeviceTest() {
             done();
           }
         });
-      } catch (error: BusinessError) {
+      } catch (error) {
         hilog.info(domain, tag,`${caseName} Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
@@ -79,7 +79,7 @@ export default function MultimodalInputDeviceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_getDeviceInfo_0200", 0, async (done:()=>void) : Promise<void> => {
+    it("SUB_MMI_Input_Api_IptDev_getDeviceInfo_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       let caseName = "SUB_MMI_Input_Api_IptDev_getDeviceInfo_0200";
       try {
         inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
@@ -87,7 +87,7 @@ export default function MultimodalInputDeviceTest() {
           ExpectTrue(typeof(deviceData) == 'object');
           done();
         });
-      } catch (error: BusinessError) {
+      } catch (error) {
         hilog.info(domain, tag, `${caseName} Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
@@ -102,10 +102,10 @@ export default function MultimodalInputDeviceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_getDeviceList_0100", 0, async (done:()=>void) : Promise<void> => {
+    it("SUB_MMI_Input_Api_IptDev_getDeviceList_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       let caseName = "SUB_MMI_Input_Api_IptDev_getDeviceList_0100";
       try {
-        inputDevice.getDeviceList((error: BusinessError | Object | undefined, ids: Array<Number>) => {
+        inputDevice.getDeviceList((error: BusinessError | Object | undefined, ids: Array<Number>):void => {
           if (error) {
             hilog.info(domain, tag, `${caseName} Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
             ExpectFalse(true);
@@ -116,7 +116,7 @@ export default function MultimodalInputDeviceTest() {
             done();
           }
         });
-      } catch (error: BusinessError) {
+      } catch (error) {
         hilog.info(domain, tag, `${caseName} Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
@@ -131,7 +131,7 @@ export default function MultimodalInputDeviceTest() {
      * @tc.type: Function
      * @tc.size: SmallTest
      */
-    it("SUB_MMI_Input_Api_IptDev_getDeviceList_0200", 0, async (done:()=>void) : Promise<void> => {
+    it("SUB_MMI_Input_Api_IptDev_getDeviceList_0200", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done:()=>void) : Promise<void> => {
       let caseName = "SUB_MMI_Input_Api_IptDev_getDeviceList_0200";
       try {
         inputDevice.getDeviceList().then((ids: Array<Number>) => {
@@ -139,11 +139,36 @@ export default function MultimodalInputDeviceTest() {
           ExpectTrue(Array.isArray(ids));
           done();
         });
-      } catch (error: BusinessError) {
+      } catch (error) {
         hilog.info(domain, tag, `${caseName} Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
         ExpectFalse(true);
         done();
       }
     });
+
+    /**
+     * @tc.number: SUB_MMI_Input_Api_IptDev_inputDeviceOn_0100
+     * @tc.name: SUB_MMI_Input_Api_IptDev_inputDeviceOn_0100
+     * @tc.desc: Test inputDevice on interface
+     * @tc.level 0
+     * @tc.type: Function
+     * @tc.size: SmallTest
+     */
+    it("SUB_MMI_Input_Api_IptDev_inputDeviceOn_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done:()=>void): Promise<void> => {
+      hilog.info(domain, tag, `InputDevice_on_test enter`);
+      let isPhysicalKeyboardExist = 0;
+      try {
+        inputDevice.on("change", (data): void => {
+          hilog.info(domain, tag, `InputDevice_on_test type: ${data.type}, deviceId: ${data.deviceId}`);
+          isPhysicalKeyboardExist++;
+          ExpectTrue(isPhysicalKeyboardExist == 1);
+        });
+      } catch (error) {
+        hilog.info(domain, tag, `InputDevice_on_test error`);
+        ExpectFalse(true);
+      }
+      done();
+      hilog.info(domain, tag, `InputDevice_on_test exit`);
+    })
   })
 }
