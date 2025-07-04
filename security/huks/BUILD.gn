@@ -17,6 +17,7 @@ group("huks") {
   if (is_standard_system) {
     deps = [
       "huks_ets_api12:ActsHuksEtsApi12FuncTest",
+      "huks_ets_api12_static:ActsHuksEtsApi12FuncStaticTest",
       "huks_js_api8:ActsHuksJsApi8FuncTest",
       "huks_js_api9:ActsHuksJsApi9FuncTest",
       "huks_napi_BasicTest:ActsHuksNAPITest",

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import PowerTest from './power.test.js'
-import RunningLockTest from './runningLock.test.js'
+import RunningLockTest from './RunningLock.test.js'
 export default function testsuite() {
     PowerTest()
     RunningLockTest()

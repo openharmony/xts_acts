@@ -46,10 +46,10 @@ export default function formLinkTest() {
             };
             let isChecked: boolean = false;
             subscriberForm = CommonEventManager.createSubscriberSync(formLinkTest_Event);
-            let formLinkCallBack = (_: BusinessError | null, data: CommonEventManager.CommonEventData) => {
+            let formLinkCallBack = (_: BusinessError | null, data: CommonEventManager.CommonEventData | undefined) => {
                 isChecked = true;
-                hilog.info(DOMAIN, TAG, 'FormLinkStaticTest001 FormLinkCallBack' + JSON.stringify(data));
-                expect(data.event).assertEqual("XTS_FormLinkTest_commonEvent");
+                hilog.info(DOMAIN, TAG, 'FormLinkStaticTest001 FormLinkCallBack');
+                expect(data?.event).assertEqual("XTS_FormLinkTest_commonEvent");
                 CommonEventManager.unsubscribe(subscriberForm, () => unsubscribeCallback("FormLinkStaticTest001"));
             }
             CommonEventManager.subscribe(subscriberForm, formLinkCallBack);

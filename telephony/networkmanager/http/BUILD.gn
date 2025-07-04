@@ -22,6 +22,10 @@ group("http") {
       "httpDataOptions:ActsNetworkManagerHttpDataOptionsTest",
       "httpRequest:ActsNetworkManagerHttpRequestTest",
       "httpRequestOnAndOff:ActsNetworkManagerHttpRequestOnAndOffTest",
+"ActsNetworkManagerHttpDataOptionsTestStatic:ActsNetworkManagerHttpDataOptionsStaticTest",
+"ActsNetworkManagerHttpRequestTestStatic:ActsNetworkManagerHttpRequestStaticTest",
+"ActsNetworkManagerHttpResponseTestStatic:ActsNetworkManagerHttpResponseStaticTest",
+"ActsNetworkMgrHttpNopTestStatic:ActsNetworkMgrHttpNopStaticTest"
     ]
   }
 }

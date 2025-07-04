@@ -55,9 +55,9 @@
   1. 修改`hvigor/hvigor-config.json5`文件
 
      ~~~
-       "hvigorVersion": "4.0.5",
+       "hvigorVersion": "4.0.9",
        "dependencies": {
-         "@ohos/hvigor-ohos-plugin": "4.0.5"
+         "@ohos/hvigor-ohos-plugin": "4.0.9"
        },
      ~~~
 

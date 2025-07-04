@@ -23,6 +23,7 @@ group("distributeddatamgr") {
       "PasteboardNoPermissionstest:PasteboardNoPermissionstest",
       "Pasteboardjsapitest:ActsPasteBoardETSApiTest",
       "Pasteboardnapitest:ActsPasteboardNapiEtsTest",
+      "PasteboardTestStatic:ActsPasteboardStaticTest",
       "UDMFtest:UDMFtest",
       "crossplatform/preferencesetstest:ActsCrossplatformPreferencesTest",
       "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
@@ -39,6 +40,7 @@ group("distributeddatamgr") {
       "preferencesjstest/hap:preferences_js_test",
       "relationalStoretest:relationalStoretest",
       "relationalstoredatagroupidtest:ActsRelationalstoreDataGroupIdTest",
+      "RelationalStoreEtsTestStatic:ActsRelationalStoreEtsStaticTest",
     ]
   } else {
     deps = [

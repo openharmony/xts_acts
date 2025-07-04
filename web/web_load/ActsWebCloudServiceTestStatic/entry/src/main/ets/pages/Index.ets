@@ -79,12 +79,12 @@ struct MyStateSample {
         .onBlur(() => {
           hilog.info(0x0000, 'testTag', "onBlur==>")
         })
-        // .onClick(async () => {
         .onClick((e: ClickEvent) => {
           hilog.info(0x0000, 'testTag', "key==>" + this.clickEvent);
           switch (this.clickEvent) {
             case "OnPageBegin": {
               try {
+                this.webviewController.loadUrl("resource://rawfile/first.html")
                 Utils.emitEvent(this.pageBegin, 100);
               } catch (error) {
                 hilog.info(0x0000, 'testTag', 'ErrorCode: error');
@@ -93,11 +93,10 @@ struct MyStateSample {
             }
             case "OnPageEnd": {
               try {
-                this.pageEnd = ''
-                this.webviewController.loadUrl("resource://rawfile/second.html")
+                this.webviewController.loadUrl("resource://rawfile/first.html")
                 setTimeout(() => {
                   Utils.emitEvent(this.pageEnd, 101);
-                }, 2000)
+                }, 1000)
               } catch (error) {
                 hilog.info(0x0000, 'testTag', 'ErrorCode: error');
               }
@@ -105,7 +104,6 @@ struct MyStateSample {
             }
             case "OnProgressChange": {
               try {
-                this.progress = ''
                 this.webviewController.loadUrl("resource://rawfile/second.html")
                 setTimeout(() => {
                   Utils.emitEvent(this.progress, 102);
@@ -122,7 +120,6 @@ struct MyStateSample {
             case "OnErrorReceive": {
               try {
                 setTimeout(() => {
-                  this.errorReceive = ''
                   this.webviewController.loadUrl("https://untrusted-root.badssl.com/")
                 }, 2000)
                 setTimeout(() => {
@@ -341,23 +338,19 @@ struct MyStateSample {
             }
             case "CookieManager": {
               try {
-                let result: string = "";
                 webView.WebCookieManager.saveCookieAsync((error) => {
                   if (error) {
                     hilog.info(0x0000, 'testTag', 'error=' + error);
                   }
-                  result += "done";
                 })
                 webView.WebCookieManager.clearAllCookies((error) => {
                   if (error) {
                     hilog.info(0x0000, 'testTag', 'error=' + error);
                   }
-                  result += "*done";
                 })
                 webView.WebCookieManager.saveCookieAsync()
                   .then(() => {
                     hilog.info(0x0000, 'testTag', 'saveCookieAsyncCallback success!');
-                    result += "*done";
                   })
                   .catch((error?: Object) => {
                     hilog.info(0x0000, 'testTag', 'error=' + error);
@@ -365,14 +358,13 @@ struct MyStateSample {
                 webView.WebCookieManager.clearAllCookies()
                   .then(() => {
                     hilog.info(0x0000, 'testTag', 'clearCookieAsyncCallback success!');
-                    result += "*done";
                   })
                   .catch((error?: Object) => {
                     hilog.info(0x0000, 'testTag', 'error=' + error);
                   });
                 setTimeout(() => {
-                  Utils.emitEvent(result, 126);
-                }, 2000)
+                  Utils.emitEvent("done", 126);
+                }, 1000)
               } catch (error) {
                 hilog.info(0x0000, 'testTag', 'ErrorCode: error');
               }
@@ -441,7 +433,7 @@ struct MyStateSample {
         })
         .onProgressChange((event: OnProgressChangeEvent): void => {
           if (event) {
-            this.progress = event.newProgress + ""
+            this.progress = "onProgressChange"
             hilog.info(0x0000, 'testTag', 'onProgressChange==> event.progress:' + event.newProgress)
           }
         })

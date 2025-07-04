@@ -73,11 +73,11 @@ export default function RunningLockPermissionTest() {
         hilog.info(domain, tag, `${TAG} start`);
         try {
           runningLock.create(TAG, runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL,
-            (error: BusinessError, lock?: runningLock.RunningLock) => {
+            (error: BusinessError | null, lock: runningLock.RunningLock | undefined) => {
               hilog.info(domain, tag, `${TAG} lock:${lock}`);
               if (lock === undefined) {
                 hilog.error(domain, tag, `${TAG} e: ${JSON.stringify(error)}`);
-                expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+                expect(error?.code).assertEqual(PERMISSION_DENIED_CODE);
                 done();
               } else {
                 expect().assertFail();

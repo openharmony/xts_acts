@@ -10,17 +10,17 @@ class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onCreate');
     hilog.info(0x0000, 'testTag EntryAbility', 'launchParam: ' + JSON.stringify(launchParam));
-    AppStorage.setOrCreate<AbilityConstant.LaunchParam>("launchParam",  launchParam);
+    AppStorage.setOrCreate<AbilityConstant.LaunchParam>("launchParam",  launchParam, Type.from<AbilityConstant.LaunchParam>());
     hilog.info(0x0000, 'testTag EntryAbility', 'launchParam.lastExitDetailInfo: ' + JSON.stringify(launchParam.lastExitDetailInfo));
     let Info = launchParam.lastExitDetailInfo as AbilityConstant.LastExitDetailInfo;
-    AppStorage.setOrCreate<AbilityConstant.LastExitDetailInfo>("lastExitDetailInfo", Info);
+    AppStorage.setOrCreate<AbilityConstant.LastExitDetailInfo>("lastExitDetailInfo", Info, Type.from<AbilityConstant.LastExitDetailInfo>());
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onWindowStageCreate');
-    windowStage.loadContent('pages/Index', (err: BusinessError<void>): void => {
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
       hilog.info(0x0000, 'testTag EntryAbility', 'loadContent entering');
-      if (err.code) {
+      if (err?.code) {
         hilog.info(0x0000, 'testTag EntryAbility', 'loadContent error');
         return;
       }

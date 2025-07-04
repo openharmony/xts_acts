@@ -22,7 +22,7 @@ group("security") {
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
       "accesstokenNDKTest:ActsAccessTokenNDKTest",
       "accessTokenTestStatic:ActsAccessTokenStaticTest",
-      "requestPermissionsFromUserStaticTest:ActsRequestPermissionsFromUserStaticTest",
+      "requestPermissionsFromUserTestStatic:ActsRequestPermissionsFromUserStaticTest",
       "requestPermissionOnSettingStaticTest:ActsRequestPermissionsOnSettingStaticTest",
       "asset",
       "certificate_framework",

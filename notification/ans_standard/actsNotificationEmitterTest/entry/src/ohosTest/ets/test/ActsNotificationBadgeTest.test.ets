@@ -392,9 +392,9 @@ export default function ActsNotificationEmitterTest() {
      * @tc.desc   : test once interface success
      * @tc.size   : Large-scaleTest
      * @tc.type   : Interface
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      */
-    it('testEmitterOncetwoEmittwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOncetwoEmittwo', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOncetwoEmittwo';
       let eventId22 = 'eventId22'
       let innerEvent22: notificationemitter.InnerEvent = {
@@ -641,9 +641,9 @@ export default function ActsNotificationEmitterTest() {
      * @tc.desc   : test off interface success
      * @tc.size   : Large-scaleTest
      * @tc.type   : Interface
-     * @tc.level  : Level 3
+     * @tc.level  : Level 0
      */
-    it('testEmitterOntwoOfftwo', Level.LEVEL2, (done: Function) => {
+    it('testEmitterOntwoOfftwo', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'testEmitterOntwoOfftwo';
       let eventId34 = 'eventId34'
       let innerEvent34: notificationemitter.InnerEvent = {
@@ -2804,9 +2804,9 @@ export default function ActsNotificationEmitterTest() {
     * @tc.desc   : test on interface success
     * @tc.size   : Large-scaleTest
     * @tc.type   : Interface
-    * @tc.level  : Level 3
+    * @tc.level  : Level 0
     */
-    it('testDeserializeEmitterTwoOnTwoEmitNoEventData', Level.LEVEL2, (done: Function) => {
+    it('testDeserializeEmitterTwoOnTwoEmitNoEventData', Level.LEVEL0, (done: Function) => {
       const TEST_CASE_NAME = 'testDeserializeEmitterTwoOnTwoEmitNoEventData';
       let count: number = 0;
       let oncallback1 = () => {

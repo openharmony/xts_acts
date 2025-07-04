@@ -52,6 +52,33 @@ export default function appManagerStaticTest() {
     });
 
    /**
+     * @tc.number: System_API_Test_App_Manager_Static_1800
+     * @tc.name: System_API_Test_App_Manager_Static_1800
+     * @tc.desc: Test the third-party application without permission call killProcessesByBundleName will be blocked
+     * @tc.level 3
+     */
+    it('System_API_Test_App_Manager_Static_1800', TestType.FUNCTION|Size.MEDIUMTEST|Level.LEVEL3, async (done: () => void): Promise<void> => {
+      let bundleName = "com.example.systemapitest.static";
+      try {
+        appManager.killProcessesByBundleName(bundleName, false, 0).then(() => {
+          hilog.info(domain, tag, 'System_API_Test_App_Manager_Static_1800 killProcessesByBundleName success.');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError): void => {
+          hilog.info(domain, tag, `System_API_Test_App_Manager_Static_1800 killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
+          expect(err.code).assertEqual(16000050);
+          done();
+        });
+      } catch (paramError: BusinessError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        hilog.info(domain, tag, `System_API_Test_App_Manager_Static_1800 [appManager] error: ${code}, ${message}`);
+        expect(paramError.code).assertEqual(16000050);
+        done();
+      }
+    });
+
+   /**
      * @tc.number: Public_API_Test_App_Manager_Static_0100
      * @tc.name: Public_API_Test_App_Manager_Static_0100
      * @tc.desc: Test the third-party application get ProcessState enum will be right

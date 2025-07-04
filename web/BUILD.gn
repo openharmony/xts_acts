@@ -25,5 +25,7 @@ group("web") {
     "web_page_document_processing:webPageDocumentProcessing",
     "web_page_rendering:webPageRenderingTest",
     "web_security_privacy:WebSecurityPrivacy",
+    "web_storage:WebStorage",
+    "web_device:WebDeviceService",
   ]
 }

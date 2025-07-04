@@ -13,12 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-# xts_acts_arkts1.2/powermgr/display_manager/ActsPowerMgrDisplayStaticTest
-ohos_js_app_static_suite("ActsPowerMgrDisplayStaticTest") {
+# xts_acts_arkts1.2/powermgr/display_manager/ActsPowermgrDisplayStaticTest
+ohos_js_app_static_suite("powermgr_display_static_test") {
 #   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsPowerMgrDisplayStaticTest"
+  hap_name = "ActsPowermgrDisplayStaticTest"
   part_name = "display_manager"
   subsystem_name = "powermgr"
 }

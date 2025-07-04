@@ -17,9 +17,12 @@ group("cryptoFramework") {
   if (is_standard_system) {
     deps = [
       "js_api10_test_oh41:ActsCryptoFrameworkAPI10JSFuncTest",
+      "js_api10_test_oh41_static:ActsCryptoFrameworkAPI10JSFuncStaticTest",
       "js_api10_test_oh50:ActsCryptoFrameworkAPI12JSFuncTest",
+      "js_api10_test_oh50_static:ActsCryptoFrameworkAPI12JSFuncStaticTest",
       "js_api_test_oh40:ActsCryptoFrameworkTwoJSNormalTest",
       "js_api_test_oh41:ActsCryptoFrameworkThreeJSFuncTest",
+      "js_api_test_oh41_static:ActsCryptoFrameworkThreeJSFuncStaticTest",
       "js_api_test_one:ActsCryptoFrameworkJSNormalTest",
     ]
   }

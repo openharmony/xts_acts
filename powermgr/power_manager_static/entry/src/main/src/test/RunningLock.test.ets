@@ -113,7 +113,7 @@ export default function RunningLockTest() {
         hilog.info(domain, tag, `${TAG} start`);
         try {
           runningLock.create(TAG, runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL,
-            (error: BusinessError, lock: runningLock.RunningLock) => {
+            (error: BusinessError | null, lock: runningLock.RunningLock | undefined) => {
               if (lock !== null && lock !== undefined) {
                 hilog.info(domain, tag, `${TAG} lock: ${JSON.stringify(lock)}`);
                 expect(lock).not().assertUndefined();
@@ -145,7 +145,7 @@ export default function RunningLockTest() {
         hilog.info(domain, tag, `${TAG} start`);
         try {
           runningLock.create(TAG, runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL,
-            (error: BusinessError, lock: runningLock.RunningLock) => {
+            (error: BusinessError | null, lock: runningLock.RunningLock | undefined) => {
               if (lock !== null && lock !== undefined) {
                 hilog.info(domain, tag, `${TAG} lock: ${JSON.stringify(lock)}`);
                 expect(lock).not().assertUndefined();
@@ -194,6 +194,30 @@ export default function RunningLockTest() {
         } catch (e : BusinessError) {
           hilog.error(domain, tag, `${TAG} e: ${JSON.stringify(e)}`);
           expect().assertFail();
+          done();
+        }
+      })
+
+    /**
+     * @tc.number SUB_PowerSystem_RunningLock_ETSTest_0060
+     * @tc.name testRunningLockTest_static_0600
+     * @tc.desc RunningLock isSupported
+     * @tc.level: Level 3
+     * @tc.type: Function
+     * @tc.size: MediumTest
+     */
+    it("testRunningLockTest_static_0600", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        let TAG: string = 'testRunningLockTest_static_0600';
+        hilog.info(domain, tag, `${TAG} start`);
+        try {
+          let runningLockType = runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL;
+          let isSupported = runningLock.isSupported(runningLockType);
+          expect(isSupported).assertTrue();
+          console.info(TAG + ' end');
+          done();
+        } catch (e) {
+          hilog.error(domain, tag, '%{public}s', JSON.stringify(e));
           done();
         }
       })

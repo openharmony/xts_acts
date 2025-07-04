@@ -4,13 +4,14 @@
         "type": "OHJSUnitTest",
         "test-timeout": "800000",
         "shell-timeout": "800000",
+		"testcase-timeout": "800000",
         "bundle-name": "com.buffer.standard.static",
 		"module-name": "entry"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActBufferStatic.hap"
+                "ActsBufferStaticTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

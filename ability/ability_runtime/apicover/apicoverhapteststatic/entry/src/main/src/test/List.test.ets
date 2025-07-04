@@ -13,8 +13,12 @@
  * limitations under the License.
  */
 
+import ApiCoverStaticTest from './ApiCoverAbilityStatic.test';
 import EnumerationStaticTest from './EnumerationStatic.test';
+import verificationStaticTest from './VerificationTestStatic.test';
 
 export default function testsuite() {
+    ApiCoverStaticTest();
     EnumerationStaticTest();
+    verificationStaticTest();
 }

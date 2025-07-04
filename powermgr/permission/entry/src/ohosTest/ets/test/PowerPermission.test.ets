@@ -43,11 +43,11 @@ export default function PowerPermissionTest() {
      * @tc.number  PowerPermissionTest_0100
      * @tc.name   testPowerPermissionTest_0100
      * @tc.desc    Function test
-     * @tc.level: Level 3
+     * @tc.level: Level 0
      * @tc.type: Function
      * @tc.size: MediumTest
      */
-    it('PowerPermissionTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('PowerPermissionTest_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
       let TAG = 'PowerPermissionTest_0100'
       try {
         power.rebootDevice('reboot_test');
