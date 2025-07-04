@@ -499,12 +499,8 @@ export default function ActsSubscriberTestUnorder() {
       console.info(`${TAG} Sub_Notification_Ces_Publish_CommonEvent_Static_8300 END`)
     })
 
+
     /*
-     * @tc.number    : Sub_Notification_Ces_Subscriber_Subscribe_Static_0800
-     * @tc.name      : Sub_Notification_Ces_Subscriber_Subscribe_Static_0800
-     * @tc.desc      : CommonEventPublishData
-     */
-        /*
      * @tc.number    : Sub_Notification_Ces_Subscriber_Subscribe_Static_0800
      * @tc.name      : Sub_Notification_Ces_Subscriber_Subscribe_Static_0800
      * @tc.desc      : CommonEventPublishData
