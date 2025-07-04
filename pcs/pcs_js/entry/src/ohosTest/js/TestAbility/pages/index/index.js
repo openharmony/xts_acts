@@ -32,19 +32,19 @@ export default {
     },
     onComplete1(event) {
         this.absolutionPathImageComplete = 'AbsolutionPathSuccess'
-        this.appendToFile(this.absolutionPathImageComplete + "+")
+        this.appendToFile(this.absolutionPathImageComplete + '+')
     },
     onComplete2(event) {
         this.relativePathImageCompleted1 = 'RelativePath1Success'
-        this.appendToFile(this.relativePathImageCompleted1 + "+")
+        this.appendToFile(this.relativePathImageCompleted1 + '+')
     },
     onComplete3(event) {
         this.relativePathImageCompleted2 = 'RelativePath2Success'
-        this.appendToFile(this.relativePathImageCompleted2 + "+")
+        this.appendToFile(this.relativePathImageCompleted2 + '+')
     },
     onComplete4(event) {
         this.relativePathImageCompleted3 = 'RelativePath3Success'
-        this.appendToFile(this.relativePathImageCompleted3 + "+")
+        this.appendToFile(this.relativePathImageCompleted3 + '+')
     },
     writeText1() {
         file.writeText({
