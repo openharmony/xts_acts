@@ -485,6 +485,37 @@ export default function fileIOListfile() {
     });
 
     /**
+     * @tc.number SUB_DF_FILEIO_LISTFILE_SYNC_1600
+     * @tc.name fileIO_test_listfile_sync_static_016
+     * @tc.desc Test listFileSync() interfaces.
+     * Not a directory.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_test_listfile_sync_static_016', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
+      let dpath = await Utils.nextFileName('fileIO_test_listfile_sync_static_016');
+      expect(await Utils.prepareFile(dpath, FILE_CONTENT)).assertTrue();
+
+      try {
+        let filter: Filter = {
+          mimeType: [".txt"]
+        };
+
+        let dirents = fs.listFileSync(dpath, {
+          listNum: 2,
+          recursion: false,
+          filter: filter,
+        });
+        expect(false).assertTrue();
+      } catch (err: BusinessError) {
+        hilog.info(domain, tag, '%{public}s', 'fileIO_test_listfile_sync_static_016 end error' + JSON.stringify(err));
+        expect(err.code == 13900018 && err.message == 'Not a directory').assertTrue();
+      }
+    });
+
+    /**
      * @tc.number SUB_DF_FILEIO_LISTFILE_ASYNC_0000
      * @tc.name fileIO_test_listfile_async_static_000
      * @tc.desc Test listFile() interface. Callback.
