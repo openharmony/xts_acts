@@ -1277,5 +1277,30 @@ export default function CameraErrorCodeUsecaseTest() {
       }
       expect(true).assertTrue();
     });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_MACRO_PROMISE_006
+     * @tc.name      : SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_MACRO_PROMISE_006
+     * @tc.desc      : capturesession sessionEnableMacro api errorcode 7400103
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_MACRO_PROMISE_006', Level.LEVEL0, async () => {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_MACRO_PROMISE_006--------------");
+      createCameraSessionInstance();
+      cameraObj.sessionAddInput();
+      createOutput();
+      cameraObj.sessionAddPreviewOutput();
+      cameraObj.sessionAddPhotoOutput();
+      let sessionIsMacroSupported = cameraObj.sessionIsMacroSupported(0);
+      if (sessionIsMacroSupported) {
+      let ret = cameraObj.sessionEnableMacro(0, true);
+        if (ret != 0) {
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SESSION_ENABLE_MACRO_PROMISE_006 ERRORCODE: " + ret);
+            expect(ret == Camera_ErrorCode.CAMERA_SESSION_NOT_CONFIG).assertTrue();
+        }
+      }
+    });
   })
 }
