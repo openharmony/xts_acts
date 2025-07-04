@@ -113,7 +113,7 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0012, TestSize.Level1)
     if (!access("/system/lib64/media/", 0)) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
         if (capability) {
-            ASSERT_LE(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
+            ASSERT_LE(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_TEMPORAL_SCALABILITY));
         }
     } else {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
@@ -145,7 +145,7 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0014, TestSize.Level1)
     if (!access("/system/lib64/media/", 0)) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
         if (capability) {
-            ASSERT_LE(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE));
+            ASSERT_LE(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE));
         }
     } else {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
@@ -201,7 +201,7 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0017, TestSize.Level1)
     if (!access("/system/lib64/media/", 0)) {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
         if (capability) {
-            ASSERT_LE(true, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
+            ASSERT_LE(false, OH_AVCapability_IsFeatureSupported(capability, VIDEO_LOW_LATENCY));
         }
     } else {
         OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
@@ -278,7 +278,8 @@ HWTEST_F(HwCapabilityNdkTest, VIDEO_TEMPORAL_ENCODE_API_0022, TestSize.Level1)
         if (capability) {
             format = OH_AVCapability_GetFeatureProperties(capability, VIDEO_ENCODER_LONG_TERM_REFERENCE);
             int ltrnum = 0;
-            ASSERT_LE(false, (format, OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT, &ltrnum));
+            ASSERT_LE(false,
+                OH_AVFormat_GetIntValue(format, OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT, &ltrnum));
             EXPECT_LE(ltrnum, 10);
         }
     } else {
