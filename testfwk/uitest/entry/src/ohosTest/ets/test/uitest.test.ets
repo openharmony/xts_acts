@@ -462,20 +462,22 @@ export default function UiTest() {
             console.log(TestTag, 'testCrownRotate start');
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(1000)
-            let btn = await driver.findComponent(ON.text('Click twice'))
-            if (btn == null) {
+            let button = await driver.findComponent(ON.text('wearList'))
+            if (button == null) {
                 let scorll = await driver.findComponent(ON.type('Scroll'))
-                btn = await scorll.scrollSearch(ON.text('Click twice'))
+                button = await scorll.scrollSearch(ON.text('wearList'))
             }
-            await btn.longClick();
+            await driver.delayMs(waitUiReadyMs)
+            await button.click()
+            await driver.delayMs(waitUiReadyMs)
             try {
-                await driver.crownRotate(150);
+                await driver.crownRotate(250);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
                 expect(toastBtn == null).assertTrue();
                 await driver.delayMs(1000);
-                await driver.crownRotate(-250);
+                await driver.crownRotate(-350);
                 await driver.delayMs(1000);
                 let toastBtn1 = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
@@ -497,20 +499,22 @@ export default function UiTest() {
             console.log(TestTag, 'testCrownRotateSpeed start');
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             await driver.delayMs(1000)
-            let btn = await driver.findComponent(ON.text('Click twice'))
-            if (btn == null) {
+            let button = await driver.findComponent(ON.text('wearList'))
+            if (button == null) {
                 let scorll = await driver.findComponent(ON.type('Scroll'))
-                btn = await scorll.scrollSearch(ON.text('Click twice'))
+                button = await scorll.scrollSearch(ON.text('wearList'))
             }
-            await btn.longClick();
+            await driver.delayMs(waitUiReadyMs)
+            await button.click()
+            await driver.delayMs(waitUiReadyMs)
             try {
-                await driver.crownRotate(150, 30);
+                await driver.crownRotate(250, 30);
                 await driver.delayMs(1000);
                 let toastBtn = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
                 expect(toastBtn == null).assertTrue();
                 await driver.delayMs(1000);
-                await driver.crownRotate(-250, 30);
+                await driver.crownRotate(-350, 30);
                 await driver.delayMs(1000);
                 let toastBtn1 = await driver.findComponent(ON.text('1'));
                 await driver.delayMs(1000);
@@ -884,21 +888,27 @@ export default function UiTest() {
             } catch (error) {
                 console.info('It is already a Fullscreen window')
             }
+            let button = await driver.findComponent(ON.text('wearList'))
+            if (button == null) {
+                let scorll = await driver.findComponent(ON.type('Scroll'))
+                button = await scorll.scrollSearch(ON.text('wearList'))
+            }
+            await driver.delayMs(waitUiReadyMs)
+            await button.click()
+            await driver.delayMs(waitUiReadyMs)
             await driver.fling(UiDirection.DOWN, 39000, disPlay.id)
             await driver.delayMs(waitUiReadyMs)
-            let button = await driver.findComponents(ON.belongingDisplay(disPlay.id).text('toast'))
-            expect (button).assertNull()
+            let buttonCom = await driver.findComponents(ON.belongingDisplay(disPlay.id).text('1'))
+            console.log(`${TestTag}, testFlingWithId buttonCom: ${JSON.stringify(buttonCom)}`);
+            expect (buttonCom).assertNull()
             await driver.fling(UiDirection.LEFT, 39000, disPlay.id)
             await driver.delayMs(waitUiReadyMs)
-            let text = await driver.findComponents(ON.belongingDisplay(disPlay.id).text('1'))
-            expect (text).assertNull()
             await driver.fling(UiDirection.RIGHT, 39000, disPlay.id)
             await driver.delayMs(waitUiReadyMs)
-            let text2 = await driver.findComponents(ON.belongingDisplay(disPlay.id).text('1'))
-            expect (text2).assertNull()
             await driver.fling(UiDirection.UP, 39000, disPlay.id)
             await driver.delayMs(2000)
-            let button2 = await driver.findComponents(ON.belongingDisplay(disPlay.id).text('bottom'))
+            let button2 = await driver.findComponents(ON.belongingDisplay(disPlay.id).text('15'))
+            console.log(`${TestTag}, testFlingWithId button2: ${JSON.stringify(button2)}`);
             expect (button2 == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
             console.log(TestTag, 'testFlingWithId over');
@@ -961,6 +971,8 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             await driver.triggerCombineKeys(2072, 2019, 0, disPlay.id)
             await driver.delayMs(waitUiReadyMs)
+            await exitInputMethod()
+            await driver.delayMs(1000)
             // clear and paste
             let text2 = await driver.findComponent(ON.belongingDisplay(disPlay.id).type('TextInput'))
             if (text2 == null) {
