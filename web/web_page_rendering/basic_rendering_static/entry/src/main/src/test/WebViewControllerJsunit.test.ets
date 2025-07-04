@@ -43,7 +43,7 @@ export default function webViewControllerJsunit() {
       });
       await Utils.msSleep(2000)
       abilityDelegator.executeShellCommand("aa start -a EntryAbility -b com.open.harmony.basicrenderingtest.static")
-      await Utils.msSleep(2000)
+      await Utils.msSleep(5000)
       console.log('beforeAll end,%s', 'Succeed!')
     });
     afterEach(async () => {

@@ -21,7 +21,6 @@ class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag EntryAbility', 'loadContent error');
         return;
       }
-      hilog.info(0x0000, 'testTag EntryAbility', 'loadContent ok'+JSON.stringify(this.context));
       hilog.info(0x0000, 'testTag EntryAbility', 'onWindowStageCreate ok');
     });
   }
@@ -38,7 +37,6 @@ class EntryAbility extends UIAbility {
   onForeground() {
     hilog.info(0x0000, 'testTag EntryAbility', 'EntryAbility onForeground');
     if (this.context) {
-      hilog.info(0x0000, 'testTag EntryAbility', 'context ok'+JSON.stringify(this.context));
     }else{
       hilog.info(0x0000, 'testTag EntryAbility', 'context is undefined');
     }
