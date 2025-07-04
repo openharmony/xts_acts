@@ -48,22 +48,17 @@ struct certChainData {
 
             case "certChainData01": {
               let driver = Driver.create();
-              await Utils.sleep(2000);
-              let button = await driver.findComponent(ON.id('toggleButton'));
-              await button.click()
-              await Utils.sleep(2000);
+              await Utils.sleep(3000);
+              this.show = false
+              await Utils.sleep(3000);
               let buttonOne = await driver.findComponent(ON.text('确定'));
               await buttonOne.click()
               await Utils.sleep(2000);
               break;
             }
-
-
           }
         }).margin(10)
-        Button('切换Web').onClick(() => {
-          this.show = false
-        }).key('toggleButton')
+ 
       }
       if(this.show) {
         Web({ src: 'www.example.com', controller: this.controller })
