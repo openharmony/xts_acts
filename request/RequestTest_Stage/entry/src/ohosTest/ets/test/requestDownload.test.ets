@@ -951,6 +951,47 @@ export default function requestDownloadJSUnit() {
     });
 
     /**
+     * @tc.number  SUB_Misc_Request_DownloadManagement_0014
+     * @tc.name    SUB_Misc_Request_DownloadManagement_0014
+     * @tc.desc    error config of the download task
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_Request_DownloadManagement_0014', Level.LEVEL2, async (done: Function) => {
+      console.info("====>---------------------SUB_Misc_Request_DownloadManagement_0014 is starting---------------------");
+      let downloadFilePath = `/data/app/el2/100/base/com.example.myapplication/haps/entry_test/cache/SUB_Misc_Request_DownloadManagement_0014.txt`
+      console.info("====>downloadFileConfig: " + `${downloadFilePath}`);
+      let downloadFileConfig: request.DownloadConfig = {
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+      }
+      try {
+        request.downloadFile(baseContext, downloadFileConfig, (err: BusinessError, downloadTask: request.DownloadTask) => {
+          try {
+            console.info("====>SUB_Misc_Request_DownloadManagement_0014 callback");
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.info("====>SUB_Misc_Request_DownloadManagement_0014 err: " + JSON.stringify(err));
+            done();
+          }
+        });
+      } catch (err) {
+        console.info("====>SUB_Misc_Request_DownloadManagement_0014 create error: " + JSON.stringify(err));
+        expect(err.code).assertEqual(13400001);
+        done();
+      }
+    });
+
+    /**
      * @tc.number SUB_Misc_Request_DownloadManagement_0005
      * @tc.desc Starts a download session.
      * @tc.size      MEDIUMTEST
@@ -974,6 +1015,43 @@ export default function requestDownloadJSUnit() {
         expect().assertFail();
       } catch (err) {
         console.info("====>SUB_Misc_Request_DownloadManagement_0005 except error: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number  SUB_Misc_Request_DownloadManagement_0015
+     * @tc.name    SUB_Misc_Request_DownloadManagement_0015
+     * @tc.desc    param error.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_Request_DownloadManagement_0015', Level.LEVEL2, async (done: Function) => {
+      console.info("====>SUB_Misc_Request_DownloadManagement_0015 is starting");
+      let downloadFileConfig: request.DownloadConfig = {
+        url: '/downloadTest/releases/download/v1.0/test.apk',
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        filePath: "downloadFilePath",
+        title: 'XTS download test!',
+        background: false
+      }
+      try {
+        request.downloadFile(baseContext, downloadFileConfig, (err: BusinessError, downloadTask: request.DownloadTask) => {
+          try {
+            console.info("====>SUB_Misc_Request_DownloadManagement_0015 callback");
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.info("====>SUB_Misc_Request_DownloadManagement_0015 err: " + JSON.stringify(err));
+            done();
+          }
+        })
+      } catch (err) {
+        console.info("====>SUB_Misc_Request_DownloadManagement_0005 param error: " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
         done();
       }

@@ -693,6 +693,57 @@ export default function requestDownloadOneJSUnitTest() {
     });
 
     /**
+     * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0070
+     * @tc.name      SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0070
+     * @tc.desc      error param.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0070', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0070 is starting-----------------------");
+      try {
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0070 remove");
+        request.agent.remove(undefined, (err: BusinessError) => {
+          try {
+            console.info("====>SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0070 create callback");
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.info("====>SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0070 err: " + JSON.stringify(err));
+            done();
+          }
+        });
+      } catch (err) {
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_remove_callback_0070 catch error: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_Remove_Download_Promise_0070
+     * @tc.name      SUB_Misc_REQUEST_Remove_Download_Promise_0070
+     * @tc.desc      error param.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_Remove_Download_Promise_0070', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Download_Promise_0070 is starting-----------------------");
+      try {
+        console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0070 remove");
+        await request.agent.remove(undefined);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>SUB_Misc_REQUEST_Remove_Download_Promise_0070 catch error: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0030
      * @tc.name    SUB_Misc_REQUEST_Create_Promise_0030
      * @tc.desc      remove a download session.
