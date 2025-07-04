@@ -401,10 +401,10 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_ILLEGAL_PARA_2300, TestSize.Level2)
     cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
     const int32_t *pixelFormat = nullptr;
     uint32_t pixelFormatNum = 0;
-    if (cap) {
-        OH_AVErrCode ret = AV_ERR_OK;
-        ret = OH_AVCapability_GetVideoSupportedPixelFormats(cap, &pixelFormat, &pixelFormatNum);
+    if (cap) { 
+        ASSERT_EQ(AV_ERR_OK, OH_AVCapability_GetVideoSupportedPixelFormats(cap, &pixelFormat, &pixelFormatNum));
         if (pixelFormatNum > 0) {
+            OH_AVErrCode ret = AV_ERR_OK;
             venc_ = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
             ASSERT_NE(nullptr, venc_);
             format = OH_AVFormat_Create();
@@ -887,7 +887,7 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_API_1400, TestSize.Level2)
     const int32_t *pixelFormat = nullptr;
     uint32_t pixelFormatNum = 0;
     if (cap) {
-        ret = OH_AVCapability_GetVideoSupportedPixelFormats(cap, &pixelFormat, &pixelFormatNum);
+        ASSERT_EQ(AV_ERR_OK, OH_AVCapability_GetVideoSupportedPixelFormats(cap, &pixelFormat, &pixelFormatNum));
         if (pixelFormatNum > 0) {
             venc_ = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
             ASSERT_NE(nullptr, venc_);
@@ -915,7 +915,7 @@ HWTEST_F(HwEncApiNdkTest, VIDEO_ENCODE_API_1410, TestSize.Level2)
     const int32_t *pixelFormat = nullptr;
     uint32_t pixelFormatNum = 0;
     if (cap) {
-        ret = OH_AVCapability_GetVideoSupportedPixelFormats(cap, &pixelFormat, &pixelFormatNum);
+        ASSERT_EQ(AV_ERR_OK, OH_AVCapability_GetVideoSupportedPixelFormats(cap, &pixelFormat, &pixelFormatNum));
         if (pixelFormatNum > 0) {
             venc_ = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
             ASSERT_NE(nullptr, venc_);
