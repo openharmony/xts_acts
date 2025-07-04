@@ -3366,7 +3366,7 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
         context: context1,
         componentController: mXComponentController,
         navigationId: navId,
-        templateType: pipWindow.PiPTemplateType.VIDEO_LIVE,
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
         contentWidth: 500,
         contentHeight: 500
       };
@@ -3397,8 +3397,9 @@ export default function pipWindowTest(context1: common.BaseContext, windowStage:
             await driver.findComponent(ON.id('SCBPipSceneOverlay')).then(async (component) => {
               await component.click();
               await sleep(1000);
-              await driver.click(x, bottom - 98);
-              console.log(`${message} click position x: ${x}, y: ${bottom - 98}`);
+              let button2 = await driver.findComponent(ON.id('control_play'));
+              console.log(`${message} button2: ${JSON.stringify(button2)}`);
+              await button2.click();
             })
             await sleep(1000);
             expect(controlParam.controlType).assertEqual(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE);
