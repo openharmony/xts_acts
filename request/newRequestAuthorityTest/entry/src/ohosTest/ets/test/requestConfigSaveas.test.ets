@@ -608,6 +608,44 @@ export default function requestConfigSavesTest() {
     });
 
     /*
+     * @tc.number: SUB_Request_Agent_TaskSaveas_1010
+     * @tc.name: different saveas of config
+     * @tc.desc: request config saveas validate
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_TaskSaveas_1010', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_TaskSaveas_1010 is starting-----------------------");
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: '/data/storage/el2/base',
+        network: request.agent.Network.WIFI,
+        overwrite: true,
+        mode:request.agent.Mode.FOREGROUND
+      };
+      try {
+        request.agent.create(baseContext, config, (err: BusinessError, task: request.agent.Task) => {
+          try {
+            console.info("====>SUB_Request_Agent_TaskSaveas_1010 create callback");
+            expect().assertFail();
+            done();
+          }catch (err) {
+            console.info("====>SUB_Request_Agent_TaskSaveas_1010 err: " + JSON.stringify(err));
+            done();
+          }
+        });
+      } catch (err) {
+        console.info("====>SUB_Request_Agent_TaskSaveas_1010 create err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(13400001);
+        done();
+      }
+    });
+
+    /*
      * @tc.number: SUB_Request_Agent_TaskSaveas_1100
      * @tc.name: different saveas of config
      * @tc.desc: request config saveas validate
@@ -1427,6 +1465,55 @@ export default function requestConfigSavesTest() {
           await task.start();
         } catch (err) {
           console.info("====>SUB_Request_Agent_ContinueDown_0300 catch err: " + JSON.stringify(err));
+          await removeTask(task);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_ContinueDown_0310
+     * @tc.name SUB_Request_Agent_ContinueDown_0310
+     * @tc.desc  After the download is completed, resume the breakpoint transmission
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_ContinueDown_0310', Level.LEVEL2, async (done: Function) => {
+      console.info("====>-----------------------SUB_Request_Agent_ContinueDown_0310 is starting-----------------------");
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/murphy1984/download/releases/download/V1/test.hap',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_ContinueDown_0310.txt',
+        network: request.agent.Network.WIFI,
+        overwrite: true,
+        mode:request.agent.Mode.FOREGROUND
+      };
+      request.agent.create(baseContext, config, async (err, task) => {
+        let on_completedCallback = async (pro: request.agent.Progress) => {
+          task.off('completed', on_completedCallback);
+          task.start(async (err: BusinessError) => {
+            try {
+              console.info("====>SUB_Request_Agent_ContinueDown_0310 start err: " + JSON.stringify(err));
+              expect(err.code).assertEqual(21900007);
+              done();
+            }catch (err) {
+              console.info("====>SUB_Request_Agent_ContinueDown_0310 code err: " + JSON.stringify(err));
+              done();
+            }
+          });
+        }
+        try {
+          if(err){
+            console.info("====>SUB_Request_Agent_ContinueDown_0310 create err: " + JSON.stringify(err));
+            expect().assertFail();
+          }
+          task.on('completed', on_completedCallback);
+          await task.start();
+        } catch (err) {
+          console.info("====>SUB_Request_Agent_ContinueDown_0310 catch err: " + JSON.stringify(err));
           await removeTask(task);
           done();
         }
