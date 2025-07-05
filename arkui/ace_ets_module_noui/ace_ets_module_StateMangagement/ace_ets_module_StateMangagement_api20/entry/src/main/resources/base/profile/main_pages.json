@@ -1,0 +1,10 @@
+{
+  "src": [
+    "MainAbility/pages/index/index",
+    "MainAbility/pages/consume/Consume0020",
+    "MainAbility/pages/consume/Consume0030",
+    "MainAbility/pages/consume/Consume0040",
+    "MainAbility/pages/consume/Consume0050",
+    "MainAbility/pages/consume/Consume0060"
+  ]
+}
