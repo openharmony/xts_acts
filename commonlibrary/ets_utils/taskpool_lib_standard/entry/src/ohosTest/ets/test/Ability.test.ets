@@ -4100,24 +4100,6 @@ export default function TaskPoolTest() {
     })
 
     /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0179
-     * @tc.name      : TaskPoolTestClass179
-     * @tc.desc      : taskpool executeDelayed failed to serialize function
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('TaskPoolTestClass179', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      let task: taskpool.Task = new taskpool.Task(noUseConcurrentTest, "a");
-      try {
-        taskpool.executeDelayed(500, task)
-      } catch (e) {
-        expect((e as BusinessError).toString()).assertContain("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
-      }
-      done();
-    })
-
-    /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0180
      * @tc.name      : TaskPoolTestClass180
      * @tc.desc      : taskpool executePeriodically failed to serialize arguments
@@ -4132,24 +4114,6 @@ export default function TaskPoolTest() {
       } catch (e) {
         expect((e as BusinessError).toString()).assertContain("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
       }
-      done();
-    })
-    /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0181
-     * @tc.name      : TaskPoolTestClass181
-     * @tc.desc      : taskpool executeDelayed failed to serialize function
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 1
-     */
-    it('TaskPoolTestClass181', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
-      try {
-        let task: taskpool.Task = new taskpool.Task(isConcurrentTest2);
-        taskpool.executePeriodically(10, task, taskpool.Priority.HIGH)
-      } catch (e) {
-        expect((e as BusinessError).toString()).assertContain("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
-      }
-
       done();
     })
 

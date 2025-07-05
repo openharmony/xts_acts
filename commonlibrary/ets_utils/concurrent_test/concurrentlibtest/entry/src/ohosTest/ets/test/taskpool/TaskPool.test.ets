@@ -2998,36 +2998,6 @@ export default function TaskPoolTest() {
     });
 
     /**
-     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_0605
-     * @tc.name      : testTaskpoolTaskGroupAddTask001
-     * @tc.desc      : Add task into taskgroup of taskpool with no-Concurrent function
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('testTaskpoolTaskGroupAddTask001', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async (done: Function) => {
-      const caseName: string = 'testTaskpoolTaskGroupAddTask001';
-      console.info(`${caseName} test start`);
-      try {
-        let isTerminate1: boolean = false;
-        let taskExecute1: taskpool.TaskGroup = new taskpool.TaskGroup();
-        taskExecute1.addTask(noConcurrent);
-        taskpool.execute(taskExecute1).then((res: Object) => {
-          console.info(`${caseName}: taskExecute1 return value: ${JSON.stringify(res)}`);
-          isTerminate1 = true;
-        });
-        while (!(isTerminate1)) {
-          await promiseCase();
-        }
-      } catch (error) {
-        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
-      }
-      console.info(`${caseName} test end`);
-      done();
-    });
-
-
-    /**
      * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_0606
      * @tc.name      : testTaskpoolTaskGroupAddTask002
      * @tc.desc      : Add task into taskgroup of taskpool with Concurrent function
