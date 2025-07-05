@@ -198,13 +198,12 @@ struct DraggingSizeChangeEffectExample {
       .justifyContent(FlexAlign.SpaceBetween)
 
     Scroll() {
-          Column() {
+          Column({space: "2%"}) {
             Text("sizeChangeEffect: DEFAULT，长按弹出菜单，拖拽移动后菜单预览图直接到最终跟手图")
-              .margin({ top: 10 }).width('100%').height('5%')
+              .width('100%')
             Image($r('app.media.image'))
-              .width('30%')
+              .width('25%')
               .height('15%')
-              .margin({ top: 10 })
               .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
                 preview: this.MyMenuPreviewSame
               })
@@ -220,11 +219,10 @@ struct DraggingSizeChangeEffectExample {
               })
 
             Text("sizeChangeEffect: SIZE_TRANSITION，长按弹出菜单，拖拽移动后菜单预览图过渡到跟手图，有缩放无叠加效果")
-              .margin({ top: 10 }).width('100%').height('5%')
+              .width('100%')
             Image($r('app.media.image'))
-              .width('30%')
+              .width('25%')
               .height('15%')
-              .margin({ top: 10 })
               .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
                 preview: this.MyMenuPreviewSame
               })
@@ -240,11 +238,10 @@ struct DraggingSizeChangeEffectExample {
               })
 
             Text("sizeChangeEffect: SIZE_CONTENT_TRANSITION，长按弹出菜单，拖拽移动后菜单预览图和拖拽跟手图两层叠加过渡")
-              .margin({ top: 10 }).width('100%').height('5%')
+              .width('100%')
             Image($r('app.media.image'))
-              .width('30%')
+              .width('25%')
               .height('15%')
-              .margin({ top: 10 })
               .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
                 preview: this.MyMenuPreview
               })
@@ -260,11 +257,10 @@ struct DraggingSizeChangeEffectExample {
               })
 
             Text("ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW,长按弹出菜单，拖拽移动以拖拽预览图初始尺寸计算跟手点位置")
-              .margin({ top: 10 }).width('100%').height('5%')
+              .width('100%')
             Image($r('app.media.image'))
-              .width('30%')
+              .width('25%')
               .height('15%')
-              .margin({ top: 10 })
               .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
                 preview: this.MyMenuPreview
               })
@@ -281,10 +277,11 @@ struct DraggingSizeChangeEffectExample {
                   this.dragSuccess = true
                 }
               })
-          }.height('80%')
+          }.height('100%')
           .width('100%')
           .backgroundColor(Color.White)
-      }
+      }.height('80%')
+       .width('100%')
       Row() {
         this.PassBtn($r('app.string.btn_fullscreen'), true);
         Button() {
