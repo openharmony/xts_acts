@@ -1,0 +1,17 @@
+{
+  "src": [
+    "MainAbility/pages/index/index",
+    "MainAbility/pages/ImageSpan/ImageLoadResult",
+    "MainAbility/pages/Search/SearchEnterKeyType",
+    "MainAbility/pages/Search/SearchFontFeature",
+    "MainAbility/pages/Search/SearchType",
+    "MainAbility/pages/SymbolGlyph/BounceSymbolEffect",
+    "MainAbility/pages/Text/textAreaInputTest",
+    "MainAbility/pages/Text/TextDecorationStyleTest",
+    "MainAbility/pages/TextInput/ContentType",
+    "MainAbility/pages/TextInput/fontFeature",
+    "MainAbility/pages/RichEditor/RichEditorEKeyboardTest",
+    "MainAbility/pages/RichEditor/RichEditorSymbolSpanStyleTest",
+    "MainAbility/pages/RichEditor/textShadowTest"
+  ]
+}
