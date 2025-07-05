@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
-import { contextConstant } from '@kit.AbilityKit';
+import contextConstant from '@ohos.app.ability.contextConstant';
 import data_preferences from '@ohos.data.preferences';
 import common from "@ohos.app.ability.common"
 import { BusinessError } from '@ohos.base';
