@@ -1,0 +1,132 @@
+/*
+ * Copyright (C) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import huks from '@ohos.security.huks';
+import { GetAesGcmOptions } from '../options/CipherOptions';
+import { GetAesGenerateOption, GetEccGenerateOption } from '../options/GenerateKeyOptions';
+import { GetAesImportData } from '../options/ImportOptions';
+import { CipherData, DoCipher } from './CipherUtil';
+import { StringToUint8Array } from './CommonUtil';
+import { MergeOption, SetParam } from './HuksOptionUtil';
+
+let mask = [0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000];
+let NONCE = StringToUint8Array("120123456789");
+let AAD = StringToUint8Array("1601234567890123");
+
+function assignLength(length: int, arrayBuf: Uint8Array, startIndex: int): int {
+  let index: int = startIndex;
+  for (let i: int = 0; i < 4; i++) {
+    arrayBuf[index++] = (length & mask[i]) >> (i * 8);
+  }
+  return 4;
+}
+
+function assignData(data: Uint8Array, arrayBuf: Uint8Array, startIndex: int): int {
+  let index: int = startIndex;
+  for (let i: int = 0; i < data.length; i++) {
+    arrayBuf[index++] = data[i];
+  }
+  return Double.toInt(data.length);
+}
+
+function BuildWrappedData(plainKeySize: int, pubKey: Uint8Array, aad: Uint8Array, nonce: Uint8Array, kekEncryptedData: Uint8Array,
+  agreeKeyEncryptedData: Uint8Array): Uint8Array {
+  let FILED_LENGTH: int = 4;
+  let TAG_SIZE: int = 16;
+  let plainKeySizeBuff = new Uint8Array(4);
+  assignLength(plainKeySize, plainKeySizeBuff, 0);
+  let kekEncryptedDataAad = kekEncryptedData.slice(kekEncryptedData.length - aad.length, kekEncryptedData.length);
+  kekEncryptedData = kekEncryptedData.slice(0, kekEncryptedData.length - aad.length);
+  let agreeKeyEncryptedDataAad = agreeKeyEncryptedData.slice(agreeKeyEncryptedData.length - aad.length, agreeKeyEncryptedData.length);
+  agreeKeyEncryptedData = agreeKeyEncryptedData.slice(0, agreeKeyEncryptedData.length - aad.length);
+
+  let wrappedData = new Uint8Array(
+    FILED_LENGTH + pubKey.length +
+      FILED_LENGTH + aad.length +
+      FILED_LENGTH + nonce.length +
+      FILED_LENGTH + TAG_SIZE +
+      FILED_LENGTH + agreeKeyEncryptedData.length +
+      FILED_LENGTH + aad.length +
+      FILED_LENGTH + nonce.length +
+      FILED_LENGTH + TAG_SIZE +
+      FILED_LENGTH + plainKeySizeBuff.length +
+      FILED_LENGTH + kekEncryptedData.length
+  );
+  let index: int = 0;
+  index += assignLength(Double.toInt(pubKey.length), wrappedData, index); // 4
+  index += assignData(pubKey, wrappedData, index); // 91
+  index += assignLength(Double.toInt(AAD.length), wrappedData, index); // 4
+  index += assignData(AAD, wrappedData, index); // 16
+  index += assignLength(Double.toInt(nonce.length), wrappedData, index); // 4
+  index += assignData(nonce, wrappedData, index); // 12
+  index += assignLength(Double.toInt(agreeKeyEncryptedDataAad.length), wrappedData, index); // 4
+  index += assignData(agreeKeyEncryptedDataAad, wrappedData, index); // 16
+  index += assignLength(Double.toInt(agreeKeyEncryptedData.length), wrappedData, index); // 4
+  index += assignData(agreeKeyEncryptedData, wrappedData, index); // 32
+  index += assignLength(Double.toInt(AAD.length), wrappedData, index); // 4
+  index += assignData(AAD, wrappedData, index); // 16
+  index += assignLength(Double.toInt(nonce.length), wrappedData, index); // 4
+  index += assignData(nonce, wrappedData, index); // 12
+  index += assignLength(Double.toInt(kekEncryptedDataAad.length), wrappedData, index); // 4
+  index += assignData(kekEncryptedDataAad, wrappedData, index); // 16
+  index += assignLength(Double.toInt(plainKeySizeBuff.length), wrappedData, index); // 4
+  index += assignData(plainKeySizeBuff, wrappedData, index); // 4
+  index += assignLength(Double.toInt(kekEncryptedData.length), wrappedData, index); // 4
+  index += assignData(kekEncryptedData, wrappedData, index); // 24
+  return wrappedData;
+}
+
+export async function BuildWrappedKeyData(deviceAPubKeyData: Uint8Array): Promise<Uint8Array> {
+  let kekSize = 256;
+  let kekAlias = "kekAlias";
+  let genKekKeyOptions = GetAesGenerateOption(kekSize);
+  let kekData = GetAesImportData(kekSize);
+  genKekKeyOptions.inData = kekData;
+  await huks.importKeyItem(kekAlias, genKekKeyOptions);
+  let plainKeySize = 192;
+  let plainKeyData = GetAesImportData(plainKeySize);
+  let kekEncryptData: CipherData = {
+    updateDataArr: null,
+    finishData: plainKeyData
+  }
+  let kekEncryptOptions = MergeOption(GetAesGenerateOption(kekSize), GetAesGcmOptions());
+  let kekEncryptedData = (await DoCipher(kekAlias, kekEncryptOptions, kekEncryptData)).finishData as Uint8Array;
+  let keyPairSize = 256;
+  let keyPairAlias = "deviceBKeyPairAlias";
+  let genKeyPairOptions = GetEccGenerateOption(keyPairSize);
+  SetParam(genKeyPairOptions, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE);
+  await huks.generateKeyItem(keyPairAlias, genKeyPairOptions);
+  let agreeKeySize = 256;
+  let agreeKeyAlias = "agreeKeyAlias";
+  let agreeInitOption = GetEccGenerateOption(keyPairSize);
+  SetParam(agreeInitOption, huks.HuksTag.HUKS_TAG_ALGORITHM, huks.HuksKeyAlg.HUKS_ALG_ECDH);
+  SetParam(agreeInitOption, huks.HuksTag.HUKS_TAG_PURPOSE, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE);
+  SetParam(agreeInitOption, huks.HuksTag.HUKS_TAG_DERIVE_KEY_SIZE, agreeKeySize / 8);
+  agreeInitOption.inData = deviceAPubKeyData;
+  let agreeFinishOption = GetAesGenerateOption(agreeKeySize);
+  SetParam(agreeFinishOption, huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG, huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS);
+  SetParam(agreeFinishOption, huks.HuksTag.HUKS_TAG_KEY_ALIAS, StringToUint8Array(agreeKeyAlias));
+  let handle = (await huks.initSession(keyPairAlias, agreeInitOption)).handle as long;
+  await huks.updateSession(handle, agreeInitOption);
+  await huks.finishSession(handle, agreeFinishOption);
+  let agreeKeyEnceyptData: CipherData = {
+    updateDataArr: null,
+    finishData: kekData
+  }
+  let agreeKeyEncryptOptions = MergeOption(GetAesGenerateOption(agreeKeySize), GetAesGcmOptions());
+  let agreeKeyEncryptedData = (await DoCipher(agreeKeyAlias, agreeKeyEncryptOptions, agreeKeyEnceyptData)).finishData as Uint8Array;
+  let deviceBPubKeyData = (await huks.exportKeyItem(keyPairAlias, genKeyPairOptions)).outData as Uint8Array;
+  return BuildWrappedData(plainKeySize, deviceBPubKeyData, AAD, NONCE, kekEncryptedData, agreeKeyEncryptedData);
+}
