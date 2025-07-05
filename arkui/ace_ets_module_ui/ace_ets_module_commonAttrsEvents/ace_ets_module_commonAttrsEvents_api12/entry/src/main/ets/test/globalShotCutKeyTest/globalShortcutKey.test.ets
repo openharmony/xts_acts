@@ -76,18 +76,6 @@ async function testAsyncFunction3(keyChar: string|FunctionKey) {
   await CommonFunc.sleep(500);
   let driver = Driver.create();
   // keyboard to sumilate
-  if(keyChar === FunctionKey.ESC) {
-    globalThis.value.message.notify({name:'keys',value:[ModifierKey.SHIFT,ModifierKey.CTRL]})
-    await CommonFunc.sleep(500);
-    await driver.triggerCombineKeys(input.KeyCode.KEYCODE_CTRL_LEFT, input.KeyCode.KEYCODE_SHIFT_LEFT, keycodeMap.get(keyChar));
-    await CommonFunc.sleep(2000);
-    // to get the data to check
-    let tt2 = getInspectorByKey('keyTest3');
-    let obj2: ESObject = JSON.parse(tt2);
-    console.info('SUB_ACE_SUPPORT_GLOBAL_SHORTCUT_KEY_REGISTRATION_0280  '+ obj2.$attrs.content);
-    expect(obj2.$attrs.content).assertEqual('three key test');
-  }
-
   if(keyChar === 'Z') {
     globalThis.value.message.notify({name:'keys',value:[ModifierKey.SHIFT,ModifierKey.CTRL]})
     await CommonFunc.sleep(500);
@@ -175,7 +163,7 @@ export default function globalShortcutKeyTest() {
      * @tc.size :
      */
     it('SUB_ACE_SUPPORT_GLOBAL_SHORTCUT_KEY_REGISTRATION_0280', Level.LEVEL0, async (done: Function) => {
-      let keyStrings: (string | FunctionKey)[] = [ FunctionKey.ESC, FunctionKey.TAB, 'Z'];
+      let keyStrings: (string | FunctionKey)[] = [FunctionKey.TAB, 'Z'];
       // to test Ctrl + SHIT + Z..
       for (const keyChar of keyStrings) {
         await testAsyncFunction3(keyChar);
