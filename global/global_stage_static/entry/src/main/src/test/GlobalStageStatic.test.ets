@@ -410,12 +410,52 @@ export default function globalStageTest() {
         res.getColorSync({
           bundleName: "com.example.global_stage.static",
           moduleName: "entry_test",
-          id: 0x21000014
+          id: 0x01000006
         });
       } catch (err: BusinessError) {
         console.log('getColorByNameSync_test_static_006 err.code' + err.code);
         console.log('getColorByNameSync_test_static_006 err.message' + err.message);
         expect(JSON.stringify(err.code)).assertEqual('9001002');
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number  SUB_GLOBAL_GETCOLORSYNC_STAGE_JS_static_0200
+     * @tc.name    getColorSync_test_static_0200
+     * @tc.desc    get the sync color in promise mode
+     */
+    it('getColorSync_test_static_0200', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      try {
+        res.getColorSync({
+          bundleName: "com.example.global_stage.static",
+          moduleName: "entry",
+          id: 0x01234567
+        });
+      } catch (err: BusinessError) {
+        console.log('getColorSync_test_static_0200 err.code' + err.code);
+        console.log('getColorSync_test_static_0200 err.message' + err.message);
+        expect(JSON.stringify(err.code)).assertEqual('9001001');
+        done();
+      }
+    })
+
+    /* *
+     * @tc.number  SUB_GLOBAL_GETCOLORSYNC_STAGE_JS_static_0300
+     * @tc.name    getColorSync_test_static_0300
+     * @tc.desc    get the sync color in promise mode
+     */
+    it('getColorSync_test_static_0300', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      try {
+        res.getColorSync({
+          bundleName: "com.example.global_stage.static",
+          moduleName: "entry",
+          id: 0x01000033
+        });
+      } catch (err: BusinessError) {
+        console.log('getColorSync_test_static_0300 err.code' + err.code);
+        console.log('getColorSync_test_static_0300 err.message' + err.message);
+        expect(JSON.stringify(err.code)).assertEqual('9001006');
         done();
       }
     })
@@ -449,6 +489,23 @@ export default function globalStageTest() {
       console.log('getMediaByNameSync_stagetest_static_0100 1' + value);
       expect(value !== null).assertTrue();
       done();
+    })
+    /**
+     * @tc.number    : SUB_GLOBAL_GETMEDIABYNAMESYNC_STAGE_static_0200
+     * @tc.name      : getMediaByNameSync_stagetest_static_0200
+     * @tc.desc      : error code 9001003 by name
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('getMediaByNameSync_stagetest_static_0200', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      try{
+        res.getMediaByNameSync('invalidName', 0);
+      } catch (error: BusinessError) {
+        console.log('getMediaByNameSync_stagetest_static_0200 error code:' + error.code);
+        expect(error.code).assertEqual(9001003);
+        done();
+      }
     })
 
     /**
@@ -1300,6 +1357,45 @@ export default function globalStageTest() {
     })
 
     /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_static_0050
+     * @tc.name      : resourceManager_test_getSymbol_static_0050
+     * @tc.desc      : getSymbol resource resId invalid
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('resourceManager_test_getSymbol_static_0050', Level.LEVEL3, () => {
+      try {
+        let value = res.getSymbol(0x01000002);
+        console.log('resourceManager_test_getSymbol_static_0050:' + value);
+      } catch (error: BusinessError) {
+        console.log('resourceManager_test_getSymbol_static_0050_errorCode' + error.code);
+        console.log('resourceManager_test_getSymbol_static_0050_errorMessage' + error.message);
+        expect(error.code == 9001002).assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_static_0060
+     * @tc.name      : resourceManager_test_getSymbol_static_0060
+     * @tc.desc      : getSymbol resource resource re-ref too much by resId
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('resourceManager_test_getSymbol_static_0060', Level.LEVEL3, () => {
+      try {
+        let value = res.getSymbol(0x0100003e);
+        console.log('resourceManager_test_getSymbol_static_0060:' + value);
+      } catch (error: BusinessError) {
+        console.log('resourceManager_test_getSymbol_static_0060' + error.code);
+        console.log('resourceManager_test_getSymbol_0060_errorMessage' + error.message);
+        expect(error.code == 9001006).assertTrue();
+      }
+    })
+
+
+    /**
      * @tc.number    : SUB_GLOBAL_getSymbol_static_0070
      * @tc.name      : resourceManager_test_getSymbol_static_0070
      * @tc.desc      : getSymbol normal resource object
@@ -1386,6 +1482,29 @@ export default function globalStageTest() {
     })
 
     /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_static_0120
+     * @tc.name      : resourceManager_test_getSymbol_static_0120
+     * @tc.desc      : getSymbol resource re-ref too much by resource object
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('resourceManager_test_getSymbol_static_0120', Level.LEVEL3, async (): Promise<void> => {
+      let resource: resourceManager.Resource = {
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x01000040
+      };
+      try {
+        let value = res.getSymbol(resource);
+        console.log('resourceManager_test_getSymbol_static_0120:' + value);
+      } catch (e: BusinessError) {
+        console.log('resourceManager_test_getSymbol_static_0120_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_static_0120_errorMessage' + e.message);
+        expect(e.code == 9001006).assertTrue();
+      }
+    })
+    /**
      * @tc.number    : SUB_GLOBAL_getSymbol_static_0140
      * @tc.name      : resourceManager_test_getSymbol_static_0140
      * @tc.desc      : getSymbolByName reference resource
@@ -1415,6 +1534,25 @@ export default function globalStageTest() {
         console.log('resourceManager_test_getSymbol_static_0160_errorCode' + e.code);
         console.log('resourceManager_test_getSymbol_static_0160_errorMessage' + e.message);
         expect(e.code == 9001003).assertTrue();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_static_0180
+     * @tc.name      : resourceManager_test_getSymbol_static_0180
+     * @tc.desc      : getSymbolByName resource re-ref too much
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('resourceManager_test_getSymbol_static_0180', Level.LEVEL3, async (): Promise<void> => {
+      try {
+        let value = res.getSymbolByName('symbolTestB');
+        console.log('resourceManager_test_getSymbol_static_0180:' + value);
+      } catch (e: BusinessError) {
+        console.log('resourceManager_test_getSymbol_static_0180_errorCode' + e.code);
+        console.log('resourceManager_test_getSymbol_static_0180_errorMessage' + e.message);
+        expect(e.code == 9001006).assertTrue();
       }
     })
 
@@ -1463,6 +1601,27 @@ export default function globalStageTest() {
       let value = res.getSymbolByName('symbolTest2');
       console.log('resourceManager_test_getSymbol_static_0210:' + value);
       expect(value == 983041).assertTrue();
+    })
+
+    /**
+     * @tc.number    : SUB_GLOBAL_getSymbol_static_0220
+     * @tc.name      : resourceManager_test_getSymbol_static_0220
+     * @tc.desc      : Test params type
+     * @tc.size      : Medium Test
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('resourceManager_test_getSymbol_static_0220', Level.LEVEL2, async (): Promise<void> => {
+      let resource: resourceManager.Resource = {
+        bundleName: 'com.example.myapplication',
+        moduleName: 'entry',
+        id: 0xF0003,
+        params: ["sdfd", 123],
+        type: 10001,
+      }
+      let value = res.getSymbol(resource);
+      console.log('resourceManager_test_getSymbol_static_0070:' + value);
+      expect(value == 983043).assertTrue();
     })
 
     /**
@@ -2716,6 +2875,24 @@ export default function globalStageTest() {
       }
     })
 
+     /**
+     * @tc.number   : getBoolean_test_static_0100
+     * @tc.name     : getBoolean_test_static_0100
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_static_0100', Level.LEVEL3, async (): Promise<void> => {
+      try {
+        res.getBoolean(0x01000031)
+      } catch (err) {
+        let error = err as BusinessError
+        console.log('getBoolean_test_static_0100 error code:' + error.code);
+        expect(error.code).assertEqual(9001006);
+      }
+    })
+
     /**
      * @tc.number   : getBoolean_test_static_0200
      * @tc.name     : getBoolean_test_static_0200
@@ -2731,6 +2908,92 @@ export default function globalStageTest() {
         let error = err as BusinessError
         console.log('getBoolean_test_static_0200 error code:' + error.code);
         expect(error.code).assertEqual(9001001);
+      }
+    })
+/**
+     * @tc.number   : getBoolean_test_static_0300
+     * @tc.name     : getBoolean_test_static_0300
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_static_0300', Level.LEVEL3, async (): Promise<void> => {
+      let resource: resourceManager.Resource = {
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x01000031
+      };
+      try {
+        res.getBoolean(resource)
+      } catch (err) {
+        let error = err as BusinessError
+        console.log('getBoolean_test_static_0300 error code:' + error.code);
+        expect(error.code).assertEqual(9001006);
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_static_0400
+     * @tc.name     : getBoolean_test_static_0400
+     * @tc.desc     : errcode 9001001
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_static_0400', Level.LEVEL3, async (): Promise<void> => {
+      let resource: resourceManager.Resource = {
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x01234567
+      };
+      try {
+        res.getBoolean(resource)
+      } catch (err) {
+        let error = err as BusinessError
+        console.log('getBoolean_test_static_0400 error code:' + error.code);
+        expect(error.code).assertEqual(9001001);
+      }
+    })
+
+        /**
+     * @tc.number   : getBoolean_test_static_0500
+     * @tc.name     : getBoolean_test_static_0500
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_static_0500', Level.LEVEL3, async (): Promise<void> => {
+      try {
+        res.getBoolean(0x01000006)
+      } catch (err) {
+        let error = err as BusinessError
+        console.log('getBoolean_test_0500 error code:' + error.code);
+        expect(error.code).assertEqual(9001002);
+      }
+    })
+
+    /**
+     * @tc.number   : getBoolean_test_static_0600
+     * @tc.name     : getBoolean_test_static_0600
+     * @tc.desc     : errcode 9001002
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBoolean_test_static_0600', Level.LEVEL3, async (): Promise<void> => {
+      let resource: resourceManager.Resource = {
+        bundleName: "com.example.global_stage.static",
+        moduleName: "entry",
+        id: 0x01000006
+      };
+      try {
+        res.getBoolean(resource)
+      } catch (err) {
+        let error = err as BusinessError
+        console.log('getBoolean_test_static_0600 error code:' + error.code);
+        expect(error.code).assertEqual(9001002);
       }
     })
 
@@ -2749,6 +3012,24 @@ export default function globalStageTest() {
         let error = err as BusinessError
         console.log('getBooleanByName_test_static_0200 error code:' + error.code);
         expect(error.code).assertEqual(9001003);
+      }
+    })
+
+     /**
+     * @tc.number   : getBooleanByName_test_static_0200
+     * @tc.name     : getBooleanByName_test_static_0200
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getBooleanByName_test_static_0200', Level.LEVEL3, async (): Promise<void> => {
+      try {
+        res.getBooleanByName("boolean_4")
+      } catch (err) {
+        let error = err as BusinessError
+        console.log('getBooleanByName_test_0200 error code:' + error.code);
+        expect(error.code).assertEqual(9001006);
       }
     })
 
@@ -2796,7 +3077,7 @@ export default function globalStageTest() {
      */
     it('getNumber_test_static_0300', Level.LEVEL3, () => {
       try {
-        res.getNumber(0x01000039)
+        res.getNumber(0x0100003b)
       } catch (err: BusinessError) {
         hilog.info(0x0000, 'testTag', '%{public}s', 'getNumber_test_static_0300 error code:' + err.code);
         expect(JSON.stringify(err.code)).assertEqual('9001006');
@@ -2859,7 +3140,7 @@ export default function globalStageTest() {
       let resource: resourceManager.Resource = {
         bundleName: "com.example.global_stage.static",
         moduleName: "entry",
-        id: 0x01000039
+        id: 0x0100003b
       }
       try {
         res.getNumber(resource)
@@ -2884,6 +3165,24 @@ export default function globalStageTest() {
         let error = err as BusinessError
         console.log('getNumberByName_test_static_0100 error code:' + error.code);
         expect(error.code).assertEqual(9001003);
+      }
+    })
+
+    /**
+     * @tc.number   : getNumberByName_test_static_0200
+     * @tc.name     : getNumberByName_test_static_0200
+     * @tc.desc     : errcode 9001006
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getNumberByName_test_static_0200', Level.LEVEL3, async (): Promise<void> => {
+      try {
+        res.getNumberByName('float_loopA')
+      } catch (err) {
+        let error = err as BusinessError
+        console.log('getNumberByName_test_static_0200 error code:' + error.code);
+        expect(error.code).assertEqual(9001006);
       }
     })
 
@@ -3456,6 +3755,157 @@ export default function globalStageTest() {
         expect(JSON.stringify(error.code) == '9001005').assertTrue();
       }
     })
+
+    /**
+     * @tc.number   : getMediaBase64ByName_test_static_0500
+     * @tc.name     : getMediaBase64ByName_test_static_0500
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaBase64ByName_test_static_0500', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaBase64ByName('').then(() => {
+      }).catch((err: BusinessError): void => {
+        console.log('getMediaBase64ByName_test_static_0500 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaBase64ByName_test_static_0600
+     * @tc.name     : getMediaBase64ByName_test_static_0600
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaBase64ByName_test_static_0600', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaBase64ByName('', 0).then(() => {
+      }).catch((err: BusinessError): void => {
+        console.log('getMediaBase64ByName_test_static_0600 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+        /**
+     * @tc.number   : getMediaByName_test_static_0400
+     * @tc.name     : getMediaByName_test_static_0400
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaByName_test_static_0400', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaByName('', 0, (err: BusinessError<void> | null) => {
+        console.log('getMediaByName_test_static_0400 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaByName_test_static_0500
+     * @tc.name     : getMediaByName_test_static_0500
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaByName_test_static_0500', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaByName('').then(() => {
+      }).catch((err: BusinessError): void => {
+        console.log('getMediaByName_test_static_0500 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaByName_test_static_0600
+     * @tc.name     : getMediaByName_test_static_0600
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaByName_test_static_0600', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaByName('', 0).then(() => {
+      }).catch((err: BusinessError): void => {
+        console.log('getMediaByName_test_static_0600 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getMediaBase64ByName_test_static_0300
+     * @tc.name     : getMediaBase64ByName_test_static_0300
+     * @tc.desc     : errcode 9001003 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getMediaBase64ByName_test_static_0300', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getMediaBase64ByName('', (err: BusinessError<void> | null) => {
+        console.log('getMediaBase64ByName_test_static_0300 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayByName_stage_test_static_0400
+     * @tc.name     : getStringArrayByName_stage_test_static_0400
+     * @tc.desc     : errcode 9001006 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayByName_stage_test_static_0400', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayByName('sizeListThree').then(() => {
+      }).catch((err: BusinessError): void => {
+        console.log('getStringArrayByName_stage_test_static_0400 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayByName_stage_test_static_0200
+     * @tc.name     : getStringArrayByName_stage_test_static_0200
+     * @tc.desc     : errcode 9001006 in callback mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayByName_stage_test_static_0200', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayByName('sizeListThree', (err: BusinessError<void> | null) => {
+        console.log('getStringArrayByName_stage_test_static_0200 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001006);
+        done();
+      })
+    })
+
+    /**
+     * @tc.number   : getStringArrayByName_stage_test_static_0300
+     * @tc.name     : getStringArrayByName_stage_test_static_0300
+     * @tc.desc     : errcode 9001003 in promise mode
+     * @tc.size     : MEDIUM
+     * @tc.type     : Function
+     * @tc.level    : Level 3
+     */
+    it('getStringArrayByName_stage_test_static_0300', Level.LEVEL3, async (done: () => void): Promise<void> => {
+      res.getStringArrayByName('').then(() => {
+      }).catch((err: BusinessError): void => {
+        console.log('getStringArrayByName_stage_test_static_0300 error code:' + err?.code);
+        expect(err?.code).assertEqual(9001003);
+        done();
+      })
+    })
+
     console.log('*************end globalStageTest*************');
   })
 }

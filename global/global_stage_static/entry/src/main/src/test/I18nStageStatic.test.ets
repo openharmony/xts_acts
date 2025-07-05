@@ -127,6 +127,36 @@ export default function FivePointOne_resMgrStageTest() {
       expect(diff).assertEqual(1);
       done();
     })
+    
+    /**
+     * @tc.number    : SUB_GLOBAL_HOLIDAYMANAGER_STAGE_0100
+     * @tc.name      : HolidayManager_stagetest_static_0100
+     * @tc.desc      : HolidayManager
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('HolidayManager_stagetest_static_0100', Level.LEVEL0, async (done: () => void): Promise<void> => {
+      let holiday = new i18n.HolidayManager('/system/lib/US.ics');
+      console.log('HolidayManager_stagetest_static_0100 1' + holiday);
+      expect(holiday !== null).assertTrue();
+      let isHoliday = holiday.isHoliday();
+      console.log('HolidayManager_stagetest_static_0100 1' + isHoliday);
+      expect(isHoliday).assertFalse();
+      let item = holiday.getHolidayInfoItemArray(2023);
+      console.log('HolidayManager_stagetest_static_0100 1' + item.length);
+      for (let i = 0; i < item.length; i++) {
+        console.log('HolidayManager_stagetest_static_0100 baseName' + JSON.stringify(item[i].baseName));
+        console.log('HolidayManager_stagetest_static_0100 year' + JSON.stringify(item[i].year));
+        console.log('HolidayManager_stagetest_static_0100 month' + JSON.stringify(item[i].month));
+        console.log('HolidayManager_stagetest_static_0100 day' + JSON.stringify(item[i].day));
+        for (let j = 0; j < item[i].localNames!.length; j++) {
+          console.log('HolidayManager_stagetest_static_0100 language' + JSON.stringify(item[i].localNames![j].language));
+          console.log('HolidayManager_stagetest_static_0100 name' + JSON.stringify(item[i].localNames![j].name));
+        }
+      }
+      done();
+    })
 
     /**
      * @tc.number   :i18n_test_getBestMatchLocale_static_0010

@@ -547,6 +547,42 @@ export default function PhoneNumberFormatInI18nTest() {
       expect(value).assertEqual('+1626202337' + ran);
     })
 
+    /**
+     * @tc.number SUB_GLOBAL_I18N_PHONENUMBERFORMAT_JS_4000
+     * @tc.name i18n_phonenumberformat_test_static_4000
+     * @tc.desc test getLocationName method with +39... num in zh-CN locale,get the getLocationName value
+     */
+    it('i18n_phonenumberformat_test_static_4000', Level.LEVEL0, async (): Promise<void> => {
+      console.log('i18n_phonenumberformat_test_static_4000 ' + 'start');
+      let phonenumber = new i18n.PhoneNumberFormat('CN');
+      let ran = Math.ceil(Math.random() * 9);
+      console.log('i18n_phonenumberformat_test_static_4000 ' + ran);
+      let value = phonenumber.getLocationName('+39342652441' + ran, 'zh-CN');
+      console.log('i18n_phonenumberformat_test_static_4000 ' + value);
+      expect(value).assertEqual('意大利');
+      let value2 = phonenumber.getLocationName('+39 342652441' + ran, 'zh-CN');
+      console.log('i18n_phonenumberformat_test_static_4000 ' + value2);
+      expect(value2).assertEqual('意大利');
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_I18N_PHONENUMBERFORMAT_JS_4100
+     * @tc.name i18n_phonenumberformat_test_static_4100
+     * @tc.desc test getLocationName method with +34... num in zh-CN locale,get the getLocationName value
+     */
+    it('i18n_phonenumberformat_test_static_4100', Level.LEVEL0, async (): Promise<void> => {
+      console.log('i18n_phonenumberformat_test_static_4100 ' + 'start');
+      let phonenumber = new i18n.PhoneNumberFormat('CN');
+      let ran = Math.ceil(Math.random() * 9);
+      console.log('i18n_phonenumberformat_test_static_4100 ' + ran);
+      let value1 = phonenumber.getLocationName('+3460724205' + ran, 'zh-CN');
+      console.log('i18n_phonenumberformat_test_static_4100 ' + value1);
+      expect(value1).assertEqual('西班牙');
+      let value2 = phonenumber.getLocationName('+34 60724205' + ran, 'zh-CN');
+      console.log('i18n_phonenumberformat_test_static_4100 ' + value2);
+      expect(value2).assertEqual('西班牙');
+    })
+
     console.log('*************end PhoneNumberFormatInI18nTest*************');
   })
 }

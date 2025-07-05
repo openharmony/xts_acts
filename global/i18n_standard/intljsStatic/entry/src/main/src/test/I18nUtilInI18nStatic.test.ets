@@ -379,6 +379,54 @@ export default function I18NTest() {
       expect(value).assertEqual('1,000米');
     })
 
+    /* *
+    * @tc.number  i18n_i18nutil_test_staic_1600
+    * @tc.name    i18n_i18nutil_test_staic_1600
+    * @tc.desc    test getDateOrder method with zh param,get the DateOrder value
+    */
+    it('i18n_i18nutil_test_staic_1600', Level.LEVEL0, async (): Promise<void> => {
+      console.log('i18n_i18nutil_test_staic_1600 ' + 'start');
+      let value = i18n.I18NUtil.getDateOrder('zh');
+      console.log('i18n_i18nutil_test_staic_1600 ' + value);
+      expect(value).assertEqual('y-L-d');
+    })
+
+    /* *
+    * @tc.number  i18n_i18nutil_test_staic_1700
+    * @tc.name    i18n_i18nutil_test_staic_1700
+    * @tc.desc    test getDateOrder method with en param,get the DateOrder value
+    */
+    it('i18n_i18nutil_test_staic_1700', Level.LEVEL0, async (): Promise<void> => {
+      console.log('i18n_i18nutil_test_staic_1700 ' + 'start');
+      let value = i18n.I18NUtil.getDateOrder('en');
+      console.log('i18n_i18nutil_test_staic_1700 ' + value);
+      expect(value).assertEqual('LLL-d-y');
+    })
+
+    /* *
+    * @tc.number  i18n_i18nutil_test_staic_1800
+    * @tc.name    i18n_i18nutil_test_staic_1800
+    * @tc.desc    test getDateOrder method with th param,get the DateOrder value
+    */
+    it('i18n_i18nutil_test_staic_1800', Level.LEVEL0, async (): Promise<void> => {
+      console.log('i18n_i18nutil_test_staic_1800 ' + 'start');
+      let value = i18n.I18NUtil.getDateOrder('th');
+      console.log('i18n_i18nutil_test_staic_1800 ' + value);
+      expect(value).assertEqual('d-LLL-y');
+    })
+
+    /* *
+    * @tc.number  i18n_i18nutil_test_staic_1900
+    * @tc.name    i18n_i18nutil_test_staic_1900
+    * @tc.desc    test getDateOrder method with jp param,get the DateOrder value
+    */
+    it('i18n_i18nutil_test_staic_1900',Level.LEVEL0, async (): Promise<void> => {
+      console.log('i18n_i18nutil_test_staic_1900 ' + 'start');
+      let value = i18n.I18NUtil.getDateOrder('ja');
+      console.log('i18n_i18nutil_test_staic_1900 ' + value);
+      expect(value).assertEqual('y-LL-dd');
+    })
+
 
     console.log('*************end I18nUtilInI18nTest*************');
   })

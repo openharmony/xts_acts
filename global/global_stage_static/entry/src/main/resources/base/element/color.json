@@ -3,6 +3,14 @@
     {
       "name": "start_window_background",
       "value": "#FFFFFF"
+    },
+    {
+      "name": "loop_A",
+      "value": "$color:loop_B"
+    },
+    {
+      "name": "loop_B",
+      "value": "$color:loop_A"
     }
   ]
 }

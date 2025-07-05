@@ -127,6 +127,32 @@ export default function RelativeTimeFormatInIntlTest() {
     })
 
     /* *
+    * @tc.number  i18n_test_relativetimeformat_static_0400
+    * @tc.name    i18n_test_relativetimeformat_static_0400
+    * @tc.desc    format the relativetime with 100 second, get the formatToParts value, check the formatToParts value
+    */
+    it('i18n_test_relativetimeformat_static_0400', Level.LEVEL0,  async (): Promise<void> => {
+      console.log('i18n_test_relativetimeformat_static_0400 ' + 'start');
+      let relativetimefmt = new intl.RelativeTimeFormat('en');
+      let value = relativetimefmt.formatToParts(100,'second');
+      console.log('i18n_test_relativetimeformat_static_0400 ' + value.length + 'value');
+      expect(value.length>0).assertTrue();
+    })
+    
+    /* *
+    * @tc.number  i18n_test_relativetimeformat_static_0500
+    * @tc.name    i18n_test_relativetimeformat_static_0500
+    * @tc.desc    format the relativetime, get the locale options, check the relativetime
+    */
+    it('i18n_test_relativetimeformat_static_0500', Level.LEVEL0, async (): Promise<void> => {
+      console.log('i18n_test_relativetimeformat_static_0500 ' + 'start');
+      let relativetimefmt = new intl.RelativeTimeFormat('en');
+      let value = relativetimefmt.resolvedOptions();
+      console.log('i18n_test_relativetimeformat_static_0500 ' + value);
+      expect(value.locale).assertEqual('en');
+    })  
+
+    /* *
      * @tc.number  SUB_GLOBAL_I18N_JS_RELATIVETIMEFORMAT_0600
      * @tc.name    i18n_test_relativetimeformat_0600
      * @tc.desc    format the relativetime, get the style options

@@ -259,11 +259,10 @@ export default function CalendarIni18nTest() {
     it('i18n_calendar_test_static_1800', Level.LEVEL0, (): void => {
       hilog.info(domain, tag, '%{public}s', 'i18n_calendar_test_static_1800 start');
       let calendar: i18n.Calendar = i18n.getCalendar('zh');
-      // calendar.setTimeZone('Asia/Shanghai');
+      calendar.setTimeZone('Asia/Shanghai');
       let value: string = calendar.getTimeZone();
       hilog.info(domain, tag, '%{public}s', 'i18n_calendar_test_static_1800 ' + value);
-      // expect(value).assertEqual('Asia/Shanghai');
-      expect(value).assertEqual('CST');
+      expect(value).assertEqual('Asia/Shanghai');
     })
 
     /**
@@ -274,11 +273,10 @@ export default function CalendarIni18nTest() {
     it('i18n_calendar_test_static_1900', Level.LEVEL2, (): void => {
       hilog.info(domain, tag, '%{public}s', 'i18n_calendar_test_static_1900 start');
       let calendar: i18n.Calendar = i18n.getCalendar('zh');
-      // calendar.setTimeZone('AAA');
+      calendar.setTimeZone('AAA');
       let value: string = calendar.getTimeZone();
       hilog.info(domain, tag, '%{public}s', 'i18n_calendar_test_static_1900 ' + value);
-      // expect(value).assertEqual('Etc/Unknown');
-      expect(value).assertEqual('CST');
+      expect(value).assertEqual('Etc/Unknown');
     })
 
     /**
