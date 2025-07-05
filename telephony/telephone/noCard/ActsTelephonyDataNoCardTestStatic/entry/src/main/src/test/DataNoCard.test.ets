@@ -25,38 +25,7 @@ export default function dataNoCardTest() {
     describe("DataNoCardTest", (): void => {
         hilog.info(domain, tag, '%{public}s', 'describe start');
 
-        /* *
-          * @tc.number: SUB_Telephony_Data_GetCellularDataState_0400
-          * @tc.name  : testTelephonyDataGetCellularDataState_static_0400
-          * @tc.desc  : Get the connection status of a packet switched domain (PS domain).
-          * @tc.size  : MediumTest
-          * @tc.type  : Function
-          * @tc.level : level 3
-         */
-        it('testTelephonyDataGetCellularDataState_static_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: () => void): Promise<void> => {
-            let caseName: string = 'testTelephonyDataGetCellularDataState_static_0400';
-            hilog.info(domain, tag, '%{public}s', caseName+ ' start');
-            try{
-                data.getCellularDataState((err: BusinessError<void>|null, data: data.DataConnectState| undefined) => {
-                    if (err?.code != 0) {
-                        hilog.info(domain, tag, '%{public}s', caseName +'  get error is '+JSON.stringify(err));
-                        ExpectFail();
-                    } else {
-                        hilog.info(domain, tag, '%{public}s', caseName +': getCellularDataState ->'+JSON.stringify(data));
-                        ExpectTrue(true);
-                    }
-                    hilog.info(domain, tag, '%{public}s', caseName+ '---test end');
-                    done();
-                });
-            }catch(err){
-                hilog.info(domain, tag, '%{public}s', caseName+ ' catch error in '+ JSON.stringify(err))
-                ExpectFail();
-                hilog.info(domain, tag, '%{public}s', caseName+ ' end');
-                done();
-            }
-        })
-
-        /* *
+     /* *
          * @tc.number: SUB_Telephony_Data_GetCellularDataState_0800
          * @tc.name  : testTelephonyDataGetCellularDataState_static_0800
          * @tc.desc  : Get the connection status of a packet switched domain (PS domain).
