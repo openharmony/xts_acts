@@ -43,6 +43,7 @@ struct ScrollExample {
                   console.error(`showToast args error code is ${error.code}, message is ${error.message}`);
                 };
               })
+
             Button('dialog').fontSize(25).fontWeight(FontWeight.Bold)
               .onClick(() => {
                 console.info('dialog start')
@@ -167,6 +168,18 @@ struct ScrollExample {
               console.info('jump to scroll')
               router.push({ uri: 'pages/scroll' })
               console.info('jump to scroll over')
+            })
+            Button() {
+              Text('wearList')
+                .fontSize(25)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .margin({ top: 20 })
+            .onClick(() => {
+              console.info('jump to wearList')
+              router.push({ uri: 'pages/wearList' })
+              console.info('jump to wearList over')
             })
             Checkbox({ name: 'hi' })
               .size({ width: 30, height: 30 })
