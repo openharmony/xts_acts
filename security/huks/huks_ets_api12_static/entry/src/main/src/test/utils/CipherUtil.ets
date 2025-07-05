@@ -158,7 +158,7 @@ export function CompareCipherData(preData: CipherData, postData: CipherData): bo
     }
     let preDataArr = preData.updateDataArr as Array<Uint8Array>;
     let postDataArr = postData.updateDataArr as Array<Uint8Array>;
-    for (let i: int = 0; i < Double.toInt(preDataArr.length); i++) {
+    for (let i: int = 0; i < preDataArr.length; i++) {
       if (Uint8ArrayToString(postDataArr[i]) != Uint8ArrayToString(preDataArr[i])) {
         return false;
       }
