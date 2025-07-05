@@ -18,6 +18,7 @@ import hilog from '@ohos.hilog'
 import wantAgent from '@ohos.app.ability.wantAgent';
 import { WantAgent as _WantAgent } from '@ohos.app.ability.wantAgent';
 import { BusinessError } from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
 
 let domain: number = 0x0000;
 let tag: string = 'testTag';
@@ -401,75 +402,59 @@ export default function ActsNotificationWantAgentStaticTest() {
       })
 
     /*
-     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_5100
-     * @tc.name      : function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCallback<CompleteData>): void
-     * @tc.desc      : Triggers a WantAgent
+     * @tc.number    : Sub_Notification_Ans_WantAgent_Create_Static_5100
+     * @tc.name      : Sub_Notification_Ans_WantAgent_Create_Static_5100
+     * @tc.desc      : function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCallback<CompleteData>): void,Triggers a WantAgent
      */
-    // it('Sub_Notification_Ans_WantAgent_Create_5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
-    //   hilog.info(domain, tag, `Sub_Notification_Ans_WantAgent_Create_5100 START`)
-    //   WantAgentInfo.actionType = wantAgent.OperationType.START_ABILITY;
-    //   WantAgentInfo.actionFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG];
-    //   wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void>, data: _WantAgent) => {
-    //     if (err.code !== 0) {
-    //       hilog.info(domain, tag, `getWantAgent, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
-    //       expect().assertFail();
-    //       done()
-    //     } else {
-    //       let wantAgentData: _WantAgent = data
-    //       // hilog.info(domain, tag, 'getWantAgent AsyncCallback success: ' + JSON.stringify(data))
-    //       let triggerInfo: wantAgent.TriggerInfo = {
-    //         code: 0,
-    //         want: {
-    //           deviceId: "deviceId",
-    //           bundleName: "com.example.actsnotificationwantagent.static",
-    //           abilityName: "EntryAbility",
-    //           action: "action1",
-    //           entities: ["entity1"],
-    //           type: "MIMETYPE",
-    //           uri: "key={true,true,false}",
-    //           parameters: parameters,
-    //         } as Want,
-    //         permission: '',
-    //         startOptions: undefined,
-    //         extraInfo: Info,
-    //         extraInfos: Infos
-    //       }
-    //       wantAgent.trigger(wantAgentData, triggerInfo, (err: BusinessError<void>, data: wantAgent.CompleteData) => {
-    //         if (err.code !== 0) {
-    //           hilog.info(domain, tag, `trigger, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
-    //           expect().assertFail();
-    //           done()
-    //         } else {
-    //           hilog.info(domain, tag, `trigger ok!`);
-    //           hilog.info(0x0000, 'testTag', `trigger ok!`);
-    //           hilog.info(0x0000, 'testTag', 'bundleName ' + data.want.bundleName);
-    //           hilog.info(0x0000, 'testTag', 'abilityName ' + data.want.abilityName);
-    //           hilog.info(0x0000, 'testTag', 'deviceId ' + data.want.deviceId);
-    //           hilog.info(0x0000, 'testTag', 'uri ' + data.want.uri);
-    //           hilog.info(0x0000, 'testTag', 'type ' + data.want.type);
-    //           hilog.info(0x0000, 'testTag', 'flags ' + data.want.flags);
-    //           hilog.info(0x0000, 'testTag', 'action ' + data.want.action);
-    //           hilog.info(0x0000, 'testTag', 'parameters ' + data.want.parameters);
-    //           hilog.info(0x0000, 'testTag', 'entities ' + data.want.entities);
-    //           hilog.info(0x0000, 'testTag', 'moduleName ' + data.want.moduleName);
-    //           hilog.info(0x0000, 'testTag', `info ${data.info}`);
-    //           hilog.info(0x0000, 'testTag', `finalCode ${data.finalCode}`);
-    //           hilog.info(0x0000, 'testTag', `finalData ${data.finalData}`);
-    //           expect(typeof(data.info)).assertEqual('object')
-    //           expect(data.finalCode).assertEqual(0)
-    //           expect(data.finalData).assertEqual('')
-    //           expect(typeof(data.extraInfo)).assertEqual('object')
-    //           expect(data.want.deviceId).assertEqual('deviceId')
-    //           expect(data.want.bundleName).assertEqual('com.example.actsnotificationwantagent.static')
-    //           expect(data.want.abilityName).assertEqual('EntryAbility')
-    //           expect(typeof(data.want.parameters)).assertEqual('object')
-    //           done()
-    //         }
-    //       })
-    //     }
-    //   })
-    //   hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_5100 END')
-    // })
+    it('Sub_Notification_Ans_WantAgent_Create_Static_5100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: () => void): Promise<void> => {
+      hilog.info(domain, tag, `Sub_Notification_Ans_WantAgent_Create_Static_5100 START`)
+      WantAgentInfo.actionType = wantAgent.OperationType.START_ABILITY;
+      WantAgentInfo.actionFlags = [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG];
+      wantAgent.getWantAgent(WantAgentInfo, (err: BusinessError<void> | null, data: _WantAgent | undefined) => {
+        if (err?.code !== 0) {
+          hilog.info(domain, tag, `getWantAgent, code: ${JSON.stringify(err?.code)}, message: ${JSON.stringify(err?.message)}`);
+          expect().assertFail();
+          done()
+        } else {
+          let wantAgentData: _WantAgent = data as _WantAgent
+          let triggerInfo: wantAgent.TriggerInfo = {
+            code: 0,
+            want: {
+              deviceId: "deviceId",
+              bundleName: "com.example.actsnotificationwantagent.static",
+              abilityName: "EntryAbility",
+              action: "action1",
+              entities: ["entity1"],
+              type: "MIMETYPE",
+              uri: "key={true,true,false}",
+              parameters: parameters,
+            } as Want,
+            permission: '',
+            startOptions: undefined,
+            extraInfo: Info,
+            extraInfos: Infos
+          }
+          wantAgent.trigger(wantAgentData, triggerInfo, (err: BusinessError<void> | null, data: wantAgent.CompleteData | undefined) => {
+            if (err?.code !== 0) {
+              hilog.info(domain, tag, `trigger, code: ${JSON.stringify(err?.code)}, message: ${JSON.stringify(err?.message)}`);
+              expect().assertFail();
+              done()
+            } else {
+              hilog.info(domain, tag, `trigger ok!`);
+              expect(typeof(data?.info)).assertEqual('Object')
+              expect(data?.finalCode).assertEqual(0)
+              expect(data?.finalData).assertEqual('')
+              expect(typeof(data?.extraInfo)).assertEqual('Object')
+              expect(data?.want.deviceId).assertEqual('deviceId')
+              expect(data?.want.bundleName).assertEqual('com.example.actsnotificationwantagent.static')
+              expect(data?.want.abilityName).assertEqual('EntryAbility')
+              done()
+            }
+          })
+        }
+      })
+      hilog.info(domain, tag, 'Sub_Notification_Ans_WantAgent_Create_Static_5100 END')
+    })
 
   })
 }
