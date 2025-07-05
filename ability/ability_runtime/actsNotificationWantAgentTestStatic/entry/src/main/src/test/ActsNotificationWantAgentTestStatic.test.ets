@@ -441,13 +441,13 @@ export default function ActsNotificationWantAgentStaticTest() {
               done()
             } else {
               hilog.info(domain, tag, `trigger ok!`);
-              expect(typeof(data?.info)).assertEqual('Object')
+              expect(typeof(data?.info)).assertEqual('number')
               expect(data?.finalCode).assertEqual(0)
               expect(data?.finalData).assertEqual('')
-              expect(typeof(data?.extraInfo)).assertEqual('Object')
+              expect(typeof(data?.extraInfo)).assertEqual('object')
               expect(data?.want.deviceId).assertEqual('deviceId')
               expect(data?.want.bundleName).assertEqual('com.example.actsnotificationwantagent.static')
-              expect(data?.want.abilityName).assertEqual('EntryAbility')
+              expect(data?.want.abilityName).assertEqual('EntryAbility2')
               done()
             }
           })
