@@ -4,6 +4,7 @@
         "MainAbility/pages/DragEvent/DragModifier",
         "MainAbility/pages/DragEvent/normalDrag",
         "MainAbility/pages/DragEvent/dragSpringLoading",
-        "MainAbility/pages/frameNode/framenode"
+        "MainAbility/pages/frameNode/framenode",
+        "MainAbility/pages/DragEvent/enableInternalDropAnimation"
     ]
 }
