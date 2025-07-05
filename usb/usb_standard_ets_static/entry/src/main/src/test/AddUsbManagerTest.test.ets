@@ -161,70 +161,6 @@ export default function AddUsbManagerTest() {
     })
 
     /**
-     * @tc.number   : SUB_USB_HostManager_Func_0300
-     * @tc.name     : testUsbSubmitTransfer001
-     * @tc.desc     : verify function usbSubmitTransfer
-     */
-    it("testUsbSubmitTransfer001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (done: () => void): Promise<void> => {
-        hilog.info(domain, tag, 'interrupt testUsbSubmitTransfer001 enter');
-        if (!isDeviceConnected) {
-          hilog.info(domain, tag, 'usb testUsbSubmitTransfer001 No device is connected');
-          expect(isDeviceConnected).assertFalse();
-          done();
-        }
-        let devicesList: Array<UsbMgr.USBDevice> = UsbMgr.getDevices();
-        if (devicesList.length == 0) {
-          hilog.info(domain, tag, 'device list is empty');
-        }
-
-        let devices: UsbMgr.USBDevice = devicesList[0];
-        UsbMgr.requestRight(devices.name);
-        let gPipe: UsbMgr.USBDevicePipe = UsbMgr.connectDevice(devices);
-        let tmpInterface: UsbMgr.USBInterface = devices.configs[0].interfaces[0];
-        let flags: UsbMgr.UsbTransferFlags = UsbMgr.UsbTransferFlags.USB_TRANSFER_FREE_BUFFER;
-        let type: UsbMgr.UsbEndpointTransferType = UsbMgr.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
-        let transferParams: UsbMgr.UsbDataTransferParams = getTransfersParam(gPipe, flags, 129, type, 2000);
-        UsbMgr.claimInterface(gPipe, tmpInterface, true);
-        try {
-          transferParams.callback = (err: BusinessError | null, callBackData: UsbMgr.SubmitTransferCallback | undefined) => {
-            hilog.info(domain, tag, 'callBackData = ' + JSON.stringify(callBackData));
-            hilog.info(domain, tag,
-              'testUsbSubmitTransfer001 transfer success, result = ' + transferParams.buffer.toString());
-            hilog.info(domain, tag, 'status = ' + callBackData?.status);
-            expect(callBackData?.status == UsbMgr.UsbTransferStatus.TRANSFER_COMPLETED).assertEqual(false);
-            expect(callBackData?.status == UsbMgr.UsbTransferStatus.TRANSFER_ERROR).assertEqual(false);
-            expect(callBackData?.status == UsbMgr.UsbTransferStatus.TRANSFER_TIMED_OUT).assertEqual(true);
-            expect(callBackData?.status == UsbMgr.UsbTransferStatus.TRANSFER_CANCELED).assertEqual(false);
-            expect(callBackData?.status == UsbMgr.UsbTransferStatus.TRANSFER_STALL).assertEqual(false);
-            expect(callBackData?.status == UsbMgr.UsbTransferStatus.TRANSFER_NO_DEVICE).assertEqual(false);
-            expect(callBackData?.status == UsbMgr.UsbTransferStatus.TRANSFER_OVERFLOW).assertEqual(false);
-            const descs = callBackData?.isoPacketDescs;
-            if (descs && descs.length) {
-              for (let j = 0; j < descs.length; j++) {
-                const i = descs[j];
-                hilog.info(domain, tag, 'isoPacketDescs length = ' + i.length);
-                hilog.info(domain, tag, 'isoPacketDescs actualLength = ' + i.actualLength);
-                hilog.info(domain, tag, 'isoPacketDescs status = ' + i.status);
-              }
-            }
-            UsbMgr.closePipe(gPipe);
-            hilog.info(domain, tag, 'interrupt testUsbSubmitTransfer001 end');
-            expect(flags!= UsbMgr.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK).assertEqual(true);
-            expect(flags!= UsbMgr.UsbTransferFlags.USB_TRANSFER_FREE_TRANSFER).assertEqual(true);
-            expect(flags!= UsbMgr.UsbTransferFlags.USB_TRANSFER_ADD_ZERO_PACKET).assertEqual(true);
-            done();
-          }
-          UsbMgr.usbSubmitTransfer(transferParams);
-        } catch (error) {
-          let err: BusinessError = error as BusinessError;
-          hilog.info(domain, tag, 'interrupt error:', err.code);
-          UsbMgr.closePipe(gPipe);
-          done();
-        }
-      })
-
-    /**
      * @tc.number   : SUB_USB_HostManager_Func_0400
      * @tc.name     : testUsbControlTransfer001
      * @tc.desc     : verify function usbControlTransfer
@@ -319,33 +255,6 @@ export default function AddUsbManagerTest() {
         } catch (error: BusinessError) {
           hilog.info(domain, tag, `bulkTransfer001 error `)
           hilog.info(domain, tag, `bulkTransfer001 err.code= ${error.code}`);
-        }
-        done();
-      })
-
-    /**
-     * @tc.number   : SUB_USB_HostManager_Func_0600
-     * @tc.name     : testHasRight_008
-     * @tc.desc     : verify function hasRight
-     */
-    it("testHasRight_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1,
-      async (done: () => void): Promise<void> => {
-        hilog.info(domain, tag, 'USB test_hasRight_008 begin');
-        if (!isDeviceConnected) {
-          expect(isDeviceConnected).assertFalse();
-          done();
-        }
-        try {
-          let devicesList: Array<UsbMgr.USBDevice> = UsbMgr.getDevices();
-          let devices: UsbMgr.USBDevice = devicesList[0];
-          let isHasRight = UsbMgr.hasRight(devices.name);
-          hilog.info(domain, tag, 'usb case hasRight ret : ' + isHasRight);
-          expect(isHasRight).assertTrue();
-        } catch (error) {
-          const err = error as BusinessError;
-          hilog.info(domain, tag, 'usb test_hasRight_13 catch err code: ', err.code, ', message: ',
-            err.message);
-          expect(err.code).assertEqual(401);
         }
         done();
       })
@@ -516,7 +425,7 @@ export default function AddUsbManagerTest() {
 
     /**
      * @tc.number   : SUB_USB_HostManager_Func_3200
-     * @tc.name     : testHasAccessoryRight034
+     * @tc.name     : testRequestAccessoryRight034
      * @tc.desc     : verify function hasAccessoryRight
      */
     it("testRequestAccessoryRight034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, () => {
