@@ -26,7 +26,7 @@ export default function ActsNotificationBadgeTest() {
      * @tc.name: setBadgeNumber()
      * @tc.desc: verify the callback function of setBadgeNumber
      */
-    it('Sub_Notification_Ans_Corner_SetNum_0900', Level.LEVEL3, async (done: Function) => {
+    it('Sub_Notification_Ans_Corner_SetNum_0900', Level.LEVEL0, async (done: Function) => {
       try {
         notificationManager.setBadgeNumber(10, (err) => {
           if (err) {
@@ -56,7 +56,7 @@ export default function ActsNotificationBadgeTest() {
      * @tc.name: setBadgeNumber()
      * @tc.desc: verify the promise function of setBadgeNumber
      */
-    it('Sub_Notification_Ans_Corner_SetNum_1000', Level.LEVEL3, async (done: Function) => {
+    it('Sub_Notification_Ans_Corner_SetNum_1000', Level.LEVEL0, async (done: Function) => {
       try {
         await notificationManager.setBadgeNumber(10).then(() => {
           console.log("Sub_Notification_Ans_Corner_SetNum_1000 success")

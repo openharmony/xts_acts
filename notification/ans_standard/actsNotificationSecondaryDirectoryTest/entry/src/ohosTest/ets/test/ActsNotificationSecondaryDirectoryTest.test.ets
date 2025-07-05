@@ -28,6 +28,26 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
     let TAG = 'SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST START')
     let log = logGenerator(TAG);
+
+    beforeAll(async (done: () => void) => {
+      log('ActsNotificationSecondaryDirectoryTest beforeAll START');
+      await sleep(500);
+      let driver = Driver.create();
+      await sleep(500)
+      let button = await driver.findComponent(ON.type('Button').text('确定').within(ON.type('Dialog')));
+      log(`button is ${JSON.stringify(button)}`);
+      if (button !== null) {
+        await sleep(1000);
+        await button.click();
+        await sleep(1000);
+        done()
+      } else {
+        log('null button');
+        done()
+      }
+      log('ActsNotificationSecondaryDirectoryTest beforeAll end');
+    })
+
     afterEach(async (done: Function) => {
         console.info(`${TAG} afterEach START`)
         try{
@@ -47,6 +67,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
             expect(false).assertTrue()
             done()
         }
+        await sleep(500)
         console.info(`${TAG} afterEach END`)
       })
 
@@ -55,7 +76,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: NotificationRequest、NotificationContent、NotificationBasicContent
      * @tc.desc: use NotificationRequest type
      */
-    it('Sub_Notification_Ans_Publish_Publish_3850', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_3850', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3850 START`);
           let ctx: common.UIAbilityContext | undefined = AppStorage.get('ctx');
           notificationManager.requestEnableNotification(ctx).then(() => {
@@ -115,7 +136,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: NotificationLongTextContent 
      * @tc.desc: use NotificationLongTextContent type
      */
-    it('Sub_Notification_Ans_Publish_Publish_3950', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_3950', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3950 START`);
 
         let longContentText: notificationManager.NotificationLongTextContent = {
@@ -139,7 +160,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
         }
 
         try{
-            await notificationManager.publish(notificationRequest, (err) => {
+            notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -163,7 +184,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: NotificationBasicContent
      * @tc.desc: use NotificationBasicContent type
      */
-    it('Sub_Notification_Ans_Publish_Publish_4050', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4050', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4050 START`);
 
         let basicContent: notificationManager.NotificationBasicContent = {
@@ -184,7 +205,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4050 PUBLISH`);
         try{
-            await notificationManager.publish(notificationRequest, (err) => {
+            notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -208,7 +229,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: NotificationMultiLineContent
      * @tc.desc: use NotificationMultiLineContent type
      */
-    it('Sub_Notification_Ans_Publish_Publish_4150', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4150', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4150 START`);
 
         let multiLineContent: notificationManager.NotificationMultiLineContent = {
@@ -231,7 +252,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4150 PUBLISH`);
         try{
-            await notificationManager.publish(notificationRequest, (err) => {
+            notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -255,7 +276,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: NotificationActionButton、NotificationUserInput
      * @tc.desc: use NotificationActionButton type
      */
-    it('Sub_Notification_Ans_Publish_Publish_4250', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4250', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4250 START`);
 
         let agentInfo: wantagent.WantAgentInfo = {
@@ -303,7 +324,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4250 PUBLISH`);
         try{
-            await notificationManager.publish(notificationRequest, (err) => {
+            notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -357,7 +378,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4350 PUBLISH`);
         try{
-            await notificationManager.publish(notificationRequest, (err) => {
+            notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -381,7 +402,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: DistributedOptions
      * @tc.desc: use DistributedOptions type
      */
-    it('Sub_Notification_Ans_Publish_Publish_4450', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4450', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4450 START`);
 
         let options: notificationManager.DistributedOptions = {
@@ -408,7 +429,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
 
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4450 PUBLISH`);
         try{
-            await notificationManager.publish(notificationRequest, (err) => {
+            notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -432,7 +453,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: NotificationBasicContent
      * @tc.desc: use NotificationBasicContent type
      */
-    it('Sub_Notification_Ans_Publish_Publish_4550', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4550', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4550 START`);
 
         let picture_opts: image.InitializationOptions  = {
@@ -496,7 +517,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: NotificationMultiLineContent
      * @tc.desc: use NotificationMultiLineContent type
      */
-    it('Sub_Notification_Ans_Publish_Publish_4650', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4650', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4650 START`);
         try{
             await notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
@@ -537,7 +558,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: BundleOption
      * @tc.desc: use BundleOption type
      */
-    it('Sub_Notification_Ans_Publish_Publish_4750', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4750', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4750 START`);
 
         let bundleOpt: notificationManager.BundleOption = {
@@ -558,7 +579,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', () => {
      * @tc.name: NotificationFlags
      * @tc.desc: use NotificationFlags type
      */
-    it('Sub_Notification_Ans_Publish_Publish_4850', Level.LEVEL1, async (done: Function) => {
+    it('Sub_Notification_Ans_Publish_Publish_4850', Level.LEVEL0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4850 START`);
 
         let flags: notificationManager.NotificationFlags = {
