@@ -133,7 +133,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_278', Level.LEVEL0, (done: Function) => {
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_278', Level.LEVEL2, (done: Function) => {
       //构造commonEventManager.publish401错误码
       try {
         commonEventManager.publish("EVENT01", null);
@@ -356,7 +356,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_280', Level.LEVEL0, async (done: Function) => {
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_280', Level.LEVEL2, async (done: Function) => {
       let id = 1
       let label = "label"
       try {
@@ -414,7 +414,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_281', Level.LEVEL0, async (done: Function) => {
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_281', Level.LEVEL2, async (done: Function) => {
 
       try {
         notificationManager.addSlot(null, (err) => {
@@ -495,7 +495,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_284', Level.LEVEL0, async (done: () => void) => {
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_284', Level.LEVEL2, async (done: () => void) => {
       try {
         notificationManager.setBadgeNumber(null, (err) => {
           console.log(`setBadgeNumber failed, error code: ${err.code}, message: ${err.message}`)
@@ -776,7 +776,7 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', Level.LEVEL2, async (don
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', Level.LEVEL0, async (done: () => void) => {
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_283', Level.LEVEL2, async (done: () => void) => {
       notificationManager.openNotificationSettings(CustomGlobal.context).then(async () => {
         expect(true).assertTrue();
         await sleep(2000)
@@ -811,7 +811,7 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', Level.LEVEL2, async (don
      * @tc.name: commonEventManager.publish
      * @tc.desc: test function publishAsUser
      */
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_287', Level.LEVEL0, async (done: Function) => {
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_287', Level.LEVEL2, async (done: Function) => {
 
       let BundleOption: notification.BundleOption = {
         bundle: "com.example.secondaryDirectory",
@@ -847,7 +847,12 @@ it('Sub_Notification_Ces_Publish_CommonEvent_7900_282', Level.LEVEL2, async (don
       notification.remove(bundle, notificationKey, reason, removeCallback);
     });
 
-    it('Sub_Notification_Ces_Publish_CommonEvent_7900_288', Level.LEVEL0, async (done: Function) => {
+    /*
+     * @tc.number: Sub_Notification_Ces_Publish_CommonEvent_7900_288
+     * @tc.name: Sub_Notification_Ces_Publish_CommonEvent_7900_288
+     * @tc.desc: test function publishAsUser
+     */
+    it('Sub_Notification_Ces_Publish_CommonEvent_7900_288', Level.LEVEL2, async (done: Function) => {
 
       const TEST_SUITE_NAME = 'Sub_Notification'
       const TEST_CASE_NAME = 'Sub_Notification_Ces_Publish_CommonEvent_7900_287'

@@ -25,7 +25,7 @@ export default function ActsCommonEventManagerTest() {
      * @tc.name: publish(event: string, callback: AsyncCallback<void>): void
      * @tc.desc: verify the callback function of publish
      */
-    it('Sub_Notification_Ans_Publish_Publish_4700', Level.LEVEL3, async function (done) {
+    it('Sub_Notification_Ans_Publish_Publish_4700', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4700 START`)
       try {
         commonEventManager.publish("EVENT01", (err) => {
@@ -52,7 +52,7 @@ export default function ActsCommonEventManagerTest() {
      * @tc.name: publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
      * @tc.desc: publish options
      */
-    it('Sub_Notification_Ans_Publish_Publish_4800', Level.LEVEL3, async function (done) {
+    it('Sub_Notification_Ans_Publish_Publish_4800', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4800 START`)
       let options = {
         code: 0,
@@ -87,7 +87,7 @@ export default function ActsCommonEventManagerTest() {
      * @tc.name: createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback<CommonEventSubscriber>): void
      * @tc.desc: createSubscriber
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_1500', Level.LEVEL3, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_1500', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_1500 START`)
 
       let subscriber
@@ -124,7 +124,7 @@ export default function ActsCommonEventManagerTest() {
      * @tc.name: createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>
      * @tc.desc: createSubscriber
      */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_1600', Level.LEVEL3, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_1600', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_1600 START`)
 
       let subscriber
@@ -153,7 +153,7 @@ export default function ActsCommonEventManagerTest() {
     * @tc.name: subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void
     * @tc.desc: subscribe
     */
-    it('Sub_Notification_Ans_Subscriber_Subscribe_0400', Level.LEVEL3, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Subscribe_0400', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0400 START`)
 
       let subscriber
@@ -200,7 +200,7 @@ export default function ActsCommonEventManagerTest() {
 
     })
 
-    it('Sub_Notification_Ans_Subscriber_SubscribeToEvent_0401', Level.LEVEL3, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_SubscribeToEvent_0401', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Subscribe_0400 START`)
 
       let subscriber
@@ -255,7 +255,7 @@ export default function ActsCommonEventManagerTest() {
      * @tc.name: unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void
      * @tc.desc: unsubscribe
      */
-    it('Sub_Notification_Ans_Subscriber_Unsubscribe_0200', Level.LEVEL3, async function (done) {
+    it('Sub_Notification_Ans_Subscriber_Unsubscribe_0200', Level.LEVEL0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Subscriber_Unsubscribe_0200 START`)
       let subscriber
 
@@ -305,7 +305,7 @@ export default function ActsCommonEventManagerTest() {
                 expect(false).assertTrue()
                 done()
               }
-            },1000)
+            }, 1000)
             expect(true).assertTrue()
             done()
           }
@@ -348,7 +348,7 @@ export default function ActsCommonEventManagerTest() {
                 expect(false).assertTrue()
                 done()
               }
-            },1000)
+            }, 1000)
             expect(true).assertTrue()
             done()
           }
@@ -387,7 +387,7 @@ export default function ActsCommonEventManagerTest() {
             subscriber = commonEventSubscriber
             expect(true).assertTrue()
             done()
-            
+
             await subscriber.setCode(1, (err) => {
               if (err) {
                 console.info(`setCode_1 err, error code: ${err.code}, message: ${err.message}`)
