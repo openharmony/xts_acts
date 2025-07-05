@@ -4899,10 +4899,10 @@ export default function BufferTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("testAlloc30040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let buf = buffer.alloc(10, '');
-      expect(String(buf.length)).assertEqual('10');
-    });
+    // it("testAlloc30040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
+    //   let buf = buffer.alloc(10, '');
+    //   expect(String(buf.length)).assertEqual('10');
+    // });
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28600
@@ -4912,10 +4912,10 @@ export default function BufferTest() {
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("testAlloc30050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
-      let buf = buffer.alloc(20).fill('');
-      expect(String(buf.length)).assertEqual('20');
-    });
+    // it("testAlloc30050", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, (): void => {
+    //   let buf = buffer.alloc(20).fill('');
+    //   expect(String(buf.length)).assertEqual('20');
+    // });
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_28700

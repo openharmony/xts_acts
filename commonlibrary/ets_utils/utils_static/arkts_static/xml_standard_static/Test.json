@@ -1,17 +1,17 @@
 {
-    "description": "ur; test",
+    "description": "xml test",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "800000",
         "shell-timeout": "800000",
 		"testcase-timeout": "15000",
-        "bundle-name": "com.url.standard.static",
+        "bundle-name": "com.xml.standard.static",
 		"module-name": "entry"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsUrlStaticTest.hap"
+                "ActsXmlStaticTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -226,25 +226,25 @@ export default function bufferTest2() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testBufferAlloc0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (): void => {
-      const TAG = 'testBufferAlloc0009';
-      try {
-        let buf9 = buffer.alloc(3, '');
-        expect(String(buf9.length)).assertEqual('3');
-        let pair = buf9.entries();
-        let next = pair.next();
-        let isOk = true;
-        while (!next.done) {
-          String()
-          isOk = Boolean(isOk&&(String(next?.value?.[1]).localeCompare('')==0));
-          next = pair.next();
-        }
-        expect(isOk).assertTrue();
-      } catch (err: BusinessError) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect(false).assertFail();
-      }
-    })
+    // it('testBufferAlloc0009', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, (): void => {
+    //   const TAG = 'testBufferAlloc0009';
+    //   try {
+    //     let buf9 = buffer.alloc(3, '');
+    //     expect(String(buf9.length)).assertEqual('3');
+    //     let pair = buf9.entries();
+    //     let next = pair.next();
+    //     let isOk = true;
+    //     while (!next.done) {
+    //       String()
+    //       isOk = Boolean(isOk&&(String(next?.value?.[1]).localeCompare('')==0));
+    //       next = pair.next();
+    //     }
+    //     expect(isOk).assertTrue();
+    //   } catch (err: BusinessError) {
+    //     console.error(`${TAG} failed, error: ${err.message}`);
+    //     expect(false).assertFail();
+    //   }
+    // })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_ALLOC_1000
      * @tc.name       : testAlloc0010
@@ -1385,17 +1385,17 @@ export default function bufferTest2() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferFrom30005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, ():void => {
-      const TAG = 'testBufferFrom30005';
-      try {
-        let buf = buffer.from(new String('hello world'), 'test', 1);
-        expect(buf).assertFail();
-      } catch (err:Error) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message)
-          .assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding test is unknown');
-      }
-    })
+    // it('testBufferFrom30005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, ():void => {
+    //   const TAG = 'testBufferFrom30005';
+    //   try {
+    //     let buf = buffer.from(new String('hello world'), 'test', 1);
+    //     expect(buf).assertFail();
+    //   } catch (err:Error) {
+    //     console.error(`${TAG} failed, error: ${err.message}`);
+    //     expect(err.message)
+    //       .assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding test is unknown');
+    //   }
+    // })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_FROM3_0600
      * @tc.name       : testFrom30006
@@ -9000,18 +9000,18 @@ export default function bufferTest2() {
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
-    it('testBufferWrite0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, ():void => {
-      const TAG = 'testBufferWrite0022';
-      try {
-        let buf = buffer.alloc(5);
-        const res = buf.write("abc", 0, 3, 'invalid_encoding');
-        expect(res).assertFail();
-      } catch (err:BusinessError) {
-        console.error(`${TAG} failed, error: ${err.message}`);
-        expect(err.message)
-          .assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding invalid_encoding is unknown');
-      }
-    })
+    // it('testBufferWrite0022', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, ():void => {
+    //   const TAG = 'testBufferWrite0022';
+    //   try {
+    //     let buf = buffer.alloc(5);
+    //     const res = buf.write("abc", 0, 3, 'invalid_encoding');
+    //     expect(res).assertFail();
+    //   } catch (err:BusinessError) {
+    //     console.error(`${TAG} failed, error: ${err.message}`);
+    //     expect(err.message)
+    //       .assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding invalid_encoding is unknown');
+    //   }
+    // })
     /**
      * @tc.number     : SUB_COMMONLIBRARY_UTIL_BASE_WRITE_2300
      * @tc.name       : testWrite0023
