@@ -38,7 +38,7 @@ function assignData(data: Uint8Array, arrayBuf: Uint8Array, startIndex: int): in
   for (let i: int = 0; i < data.length; i++) {
     arrayBuf[index++] = data[i];
   }
-  return Double.toInt(data.length);
+  return data.length;
 }
 
 function BuildWrappedData(plainKeySize: int, pubKey: Uint8Array, aad: Uint8Array, nonce: Uint8Array, kekEncryptedData: Uint8Array,
@@ -65,25 +65,25 @@ function BuildWrappedData(plainKeySize: int, pubKey: Uint8Array, aad: Uint8Array
       FILED_LENGTH + kekEncryptedData.length
   );
   let index: int = 0;
-  index += assignLength(Double.toInt(pubKey.length), wrappedData, index); // 4
+  index += assignLength(pubKey.length, wrappedData, index); // 4
   index += assignData(pubKey, wrappedData, index); // 91
-  index += assignLength(Double.toInt(AAD.length), wrappedData, index); // 4
+  index += assignLength(AAD.length, wrappedData, index); // 4
   index += assignData(AAD, wrappedData, index); // 16
-  index += assignLength(Double.toInt(nonce.length), wrappedData, index); // 4
+  index += assignLength(nonce.length, wrappedData, index); // 4
   index += assignData(nonce, wrappedData, index); // 12
-  index += assignLength(Double.toInt(agreeKeyEncryptedDataAad.length), wrappedData, index); // 4
+  index += assignLength(agreeKeyEncryptedDataAad.length, wrappedData, index); // 4
   index += assignData(agreeKeyEncryptedDataAad, wrappedData, index); // 16
-  index += assignLength(Double.toInt(agreeKeyEncryptedData.length), wrappedData, index); // 4
+  index += assignLength(agreeKeyEncryptedData.length, wrappedData, index); // 4
   index += assignData(agreeKeyEncryptedData, wrappedData, index); // 32
-  index += assignLength(Double.toInt(AAD.length), wrappedData, index); // 4
+  index += assignLength(AAD.length, wrappedData, index); // 4
   index += assignData(AAD, wrappedData, index); // 16
-  index += assignLength(Double.toInt(nonce.length), wrappedData, index); // 4
+  index += assignLength(nonce.length, wrappedData, index); // 4
   index += assignData(nonce, wrappedData, index); // 12
-  index += assignLength(Double.toInt(kekEncryptedDataAad.length), wrappedData, index); // 4
+  index += assignLength(kekEncryptedDataAad.length, wrappedData, index); // 4
   index += assignData(kekEncryptedDataAad, wrappedData, index); // 16
-  index += assignLength(Double.toInt(plainKeySizeBuff.length), wrappedData, index); // 4
+  index += assignLength(plainKeySizeBuff.length, wrappedData, index); // 4
   index += assignData(plainKeySizeBuff, wrappedData, index); // 4
-  index += assignLength(Double.toInt(kekEncryptedData.length), wrappedData, index); // 4
+  index += assignLength(kekEncryptedData.length, wrappedData, index); // 4
   index += assignData(kekEncryptedData, wrappedData, index); // 24
   return wrappedData;
 }
