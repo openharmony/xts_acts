@@ -481,5 +481,63 @@ export default function PreferencesSyncTest() {
                 console.log("SUB_DDM_Preferences_removePreferencesFromCacheSync_0100 end.");
             });
         })
+
+        /**
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceGetallSyncest_3000
+         * @tc.name testPreferencesGetAll0100
+         * @tc.desc getAll sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+
+        it('testPreferencesGetAll0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async function (done) {
+        const key1 = '0';
+        const key2 = '1';
+        const key3 = '1234567890';
+        const key4 = '-1';
+        const key5 = '-1234567890';
+        const key6 = '0.0';
+        const key7 = '1.0';
+        const key8 = '3.14159';
+        const key9 = '00123';
+        const key10 = '0.00123';
+        const key11 = '123456789012345678901234567890';
+        const key12 = '-1234567890.12345678901234567890';
+        const key13 = '1.23e-10';
+        mPreferences.putSync(key1, KEY_TEST_INT_ELEMENT);
+        mPreferences.putSync(key2, KEY_TEST_INT_ELEMENT);
+        mPreferences.putSync(key3, KEY_TEST_INT_ELEMENT);
+        mPreferences.putSync(key4, KEY_TEST_INT_ELEMENT);
+        mPreferences.putSync(key5, KEY_TEST_INT_ELEMENT);
+        mPreferences.putSync(key6, KEY_TEST_STRING_ELEMENT);
+        mPreferences.putSync(key7, KEY_TEST_STRING_ELEMENT);
+        mPreferences.putSync(key8, KEY_TEST_STRING_ELEMENT);
+        mPreferences.putSync(key9, KEY_TEST_STRING_ELEMENT);
+        mPreferences.putSync(key10, KEY_TEST_STRING_ELEMENT);
+        mPreferences.putSync(key11, KEY_TEST_FLOAT_ELEMENT);
+        mPreferences.putSync(key12, KEY_TEST_FLOAT_ELEMENT);
+        mPreferences.putSync(key13, KEY_TEST_FLOAT_ELEMENT);
+        try {
+            let obj = mPreferences.getAllSync();
+            expect(KEY_TEST_INT_ELEMENT).assertEqual(obj[key1.toString()]);
+            expect(KEY_TEST_INT_ELEMENT).assertEqual(obj[key2.toString()]);
+            expect(KEY_TEST_INT_ELEMENT).assertEqual(obj[key3.toString()]);
+            expect(KEY_TEST_INT_ELEMENT).assertEqual(obj[key4.toString()]);
+            expect(KEY_TEST_INT_ELEMENT).assertEqual(obj[key5.toString()]);
+            expect(KEY_TEST_STRING_ELEMENT).assertEqual(obj[key6.toString()]);
+            expect(KEY_TEST_STRING_ELEMENT).assertEqual(obj[key7.toString()]);
+            expect(KEY_TEST_STRING_ELEMENT).assertEqual(obj[key8.toString()]);
+            expect(KEY_TEST_STRING_ELEMENT).assertEqual(obj[key9.toString()]);
+            expect(KEY_TEST_STRING_ELEMENT).assertEqual(obj[key10.toString()]);
+            expect(KEY_TEST_FLOAT_ELEMENT).assertEqual(obj[key11.toString()]);
+            expect(KEY_TEST_FLOAT_ELEMENT).assertEqual(obj[key12.toString()]);
+            expect(KEY_TEST_FLOAT_ELEMENT).assertEqual(obj[key13.toString()]);
+            done();
+        } catch (err) {
+            expect(false).assertTrue();
+            done();
+        }
     })
+}) 
 }

@@ -14,6 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from "@ohos/hypium";
+import contextConstant from '@ohos.app.ability.contextConstant';
 import data_preferences from '@ohos.data.preferences';
 import common from "@ohos.app.ability.common"
 import { BusinessError } from '@ohos.base';
@@ -254,6 +255,86 @@ export default function preferencesDataGroupIdSync() {
         done();
         console.log("SUB_DDM_Preferences_removePreferencesFromCacheSync_0100 end.");
       });
+    })
+
+    /**
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_2300
+     * @tc.name SUB_DDM_Preferences_PreferencesEl3_0100
+     * @tc.desc PreferencesSync interface PreferencesEl3 test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_DDM_Preferences_PreferencesEl3_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(TAG, 'SUB_DDM_Preferences_PreferencesEl3_0100 start.');
+      const Options: data_preferences.Options = {
+        name: "test_preferences_el3",
+        dataGroupId: "123456",
+      };
+      try {
+        let el3Ctx = context.createAreaModeContext(contextConstant.AreaMode.EL3);
+        let pref = data_preferences.getPreferencesSync(el3Ctx, Options);
+        pref.putSync("stringKey", "testValue");
+        pref.putSync("intKey", 1);
+        let stringVal = pref.getSync("stringKey", "defValue");
+        expect("testValue").assertEqual(stringVal);
+        pref.flushSync();
+        data_preferences.removePreferencesFromCacheSync(el3Ctx, Options)
+        pref = data_preferences.getPreferencesSync(el3Ctx, Options)
+        let intVal = pref.getSync("intKey", 0);
+        expect(1).assertEqual(intVal);
+        pref.deleteSync("intKey");
+        intVal = pref.getSync("intKey", 0);
+        expect(0).assertEqual(intVal);
+        pref.clearSync();
+        expect(false).assertEqual(pref.hasSync("stringKey"));
+        data_preferences.deletePreferences(el3Ctx, Options);
+        done();
+      } catch (errInfo) {
+        console.error(TAG, `failed, code is ${errInfo.code}, message is ${errInfo.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+    
+    /**
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_2400
+     * @tc.name SUB_DDM_Preferences_PreferencesEl4_0100
+     * @tc.desc PreferencesSync interface PreferencesEl4 test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_DDM_Preferences_PreferencesEl4_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL2, async (done: Function) => {
+      console.info(TAG, 'SUB_DDM_Preferences_PreferencesEl4_0100 start.');
+      const Options: data_preferences.Options = {
+        name: "test_preferences_el4",
+        dataGroupId: "123456",
+      };
+      try {
+        let el4Ctx = context.createAreaModeContext(contextConstant.AreaMode.EL4);
+        let pref = data_preferences.getPreferencesSync(el4Ctx, Options);
+        pref.putSync("stringKey", "testValue");
+        pref.putSync("intKey", 1);
+        let stringVal = pref.getSync("stringKey", "defValue");
+        expect("testValue").assertEqual(stringVal);
+        pref.flushSync();
+        data_preferences.removePreferencesFromCacheSync(el4Ctx, Options)
+        pref = data_preferences.getPreferencesSync(el4Ctx, Options)
+        let intVal = pref.getSync("intKey", 0);
+        expect(1).assertEqual(intVal);
+        pref.deleteSync("intKey");
+        intVal = pref.getSync("intKey", 0);
+        expect(0).assertEqual(intVal);
+        pref.clearSync();
+        expect(false).assertEqual(pref.hasSync("stringKey"));
+        data_preferences.deletePreferences(el4Ctx, Options);
+        done();
+      } catch (errInfo) {
+        console.error(TAG, `failed, code is ${errInfo.code}, message is ${errInfo.message}`);
+        expect().assertFail();
+        done();
+      }
     })
   })
 }
