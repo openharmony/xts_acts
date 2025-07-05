@@ -75,7 +75,12 @@ class EntryAbility extends UIAbility {
     return true;
   }
 
-  // onDestroyAsync() {
-  //   hilog.info(0x0000, 'testTag  EntryAbility', 'EntryAbility onDestroyAsync');
-  // }
+  onDestroyAsync(): Promise<void> {
+    hilog.info(0x0000, 'testTag  EntryAbility', 'onDestroyAsync');
+    return new Promise<void>((resolve: (a: undefined)=>void, reject: (err: Error)=>void): void => {
+      hilog.info(0x0000, 'testTag  EntryAbility', 'onDestroyAsync resolve 1');
+      resolve(undefined);
+      hilog.info(0x0000, 'testTag  EntryAbility', 'onDestroyAsync resolve 2');
+    });
+  }
 }
