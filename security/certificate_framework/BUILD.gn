@@ -19,7 +19,7 @@ group("certificate_framework") {
       "js_api_test_oh40:ActsCertFrameworkTwoJSNormalTest",
       "js_api_test_oh41:ActsCertFrameworkJSFuncTest",
       "js_api_test_oh50:ActsCertFrameworkExtJSFuncTest",
-      "js_api_test_oh60_sttaic:ActsCertFrameworkIDL1StaticTest",
+      "js_api_test_oh60_static:ActsCertFrameworkIDL1StaticTest",
       "js_api_test_one:ActsCertificateFrameworkJSNormalTest",
     ]
   }
