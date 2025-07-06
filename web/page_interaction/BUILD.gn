@@ -19,6 +19,7 @@ group("pageInteraction") {
       "focus_processing:ActsWebFocusProcessingTest",
       "gesture_operation:ActsWebGestureOperationTest",
       "keyboard_mouse_operations:ActsWebKeyboardMouseOperationsTest",
+      "keyboard_mouse_operations_static:ActsWebKeyboardMouseOperationsStaticTest",
       "page_scrolling:ActsWebPageScrollingTest",
       "page_scrollingOne:ActsWebPageScrollingOneTest",
       "page_scrollingTwo:ActsWebPageScrollingTwoTest",
