@@ -1960,6 +1960,38 @@ export default function fileIOStat() {
     });
 
     /**
+     * @tc.number SUB_DF_FILEIO_STAT_ASYNC_LOCATION_0000
+     * @tc.name fileIO_stat_async_location_static_000
+     * @tc.desc Test the location member of class Stat. Promise.
+     * Enter the path or fd parameter to get stat.location is LOCAl.
+     * @tc.size MEDIUM
+     * @tc.type Functoin
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_stat_async_location_static_000', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done:()=>void): Promise<void> => {
+      let fpath = await Utils.nextFileName('fileIO_stat_async_location_static_000');
+      expect(await Utils.prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+      try {
+        let stat = await fs.stat(fpath);
+        expect(stat.location == 1).assertTrue();
+        expect(fs.LocationType.LOCAL == 1).assertTrue();
+        expect(fs.LocationType.CLOUD == 2).assertTrue();
+
+        let file = fs.openSync(fpath);
+        let stat2 = await fs.stat(file.fd);
+        expect(stat2.location == 1).assertTrue();
+        fs.closeSync(file);
+        fs.unlinkSync(fpath);
+        done();
+      } catch (e: BusinessError) {
+        hilog.info(domain, tag, '%{public}s', 'fileIO_stat_async_is_symbolic_link_static_000 has failed for' + JSON.stringify(e));
+        expect(false).assertTrue();
+      }
+    });
+
+    /**
      * @tc.number SUB_DF_fileIO_stat_sync_atimeNs_static_0000
      * @tc.name fileIO_stat_sync_atimeNs_static_000
      * @tc.desc Test the atimeNs of class statSync.
