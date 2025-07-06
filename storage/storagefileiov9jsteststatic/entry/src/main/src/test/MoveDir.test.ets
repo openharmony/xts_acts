@@ -24,56 +24,56 @@ export async function readyFiles(testNum: string) : Promise<Dir> {
   return new Promise<Dir>((resolve, reject) => {
     let dpath = await Utils.nextFileName(testNum);
     try {
-      let ddpath1 = dpath + '/srcDir';
-      let ddpath2 = dpath + '/destDir';
-      let dddpath1 = ddpath1 + '/srcDir_first';
-      let dddpath2 = ddpath2 + '/srcDir';
-      let fpath1 = ddpath1 + '/srcFile_first_01';
-      let fpath2 = ddpath1 + '/srcFile_first_02';
-      let fpath3 = dddpath2 + '/srcFile_first_01';
-      let fpath4 = dddpath2 + '/destFile_second_01';
-      let ffpath1 = dddpath1 + '/srcFile_second_01';
-      let ffpath2 = dddpath1 + '/srcFile_second_02';
-      let ddddpath1 = dddpath1 + '/srcDir_second';
-      let ddddpath2 = dddpath2 + '/srcDir_first';
-      let fffpath1 = ddddpath1 + '/srcFile_third_01';
-      let fffpath2 = ddddpath1 + '/srcFile_third_02';
-      let fffpath3 = ddddpath2 + '/srcFile_second_01';
-      let fffpath4 = ddddpath2 + '/destFile_third_01';
-      fs.mkdirSync(dpath);
-      fs.mkdirSync(ddpath1);
-      fs.mkdirSync(ddpath2);
-      fs.mkdirSync(dddpath1);
-      fs.mkdirSync(dddpath2);
-      fs.mkdirSync(ddddpath1);
-      fs.mkdirSync(ddddpath2);
-      expect(await Utils.prepareFile(fpath1, await Utils.randomString(10))).assertTrue();
-      expect(await Utils.prepareFile(fpath2, await Utils.randomString(15))).assertTrue();
-      expect(await Utils.prepareFile(fpath3, await Utils.randomString(20))).assertTrue();
-      expect(await Utils.prepareFile(fpath4, await Utils.randomString(25))).assertTrue();
-      expect(await Utils.prepareFile(ffpath1, await Utils.randomString(30))).assertTrue();
-      expect(await Utils.prepareFile(ffpath2, await Utils.randomString(35))).assertTrue();
-      expect(await Utils.prepareFile(fffpath1, await Utils.randomString(40))).assertTrue();
-      expect(await Utils.prepareFile(fffpath2, await Utils.randomString(45))).assertTrue();
-      expect(await Utils.prepareFile(fffpath3, await Utils.randomString(50))).assertTrue();
-      expect(await Utils.prepareFile(fffpath4, await Utils.randomString(55))).assertTrue();
-      let alldir: Dir = {
-        baseDir: dpath,
-        srcDir: ddpath1,
-        destDir: ddpath2
+        let ddpath1 = dpath + '/srcDir';
+        let ddpath2 = dpath + '/destDir';
+        let dddpath1 = ddpath1 + '/srcDir_first';
+        let dddpath2 = ddpath2 + '/srcDir';
+        let fpath1 = ddpath1 + '/srcFile_first_01';
+        let fpath2 = ddpath1 + '/srcFile_first_02';
+        let fpath3 = dddpath2 + '/srcFile_first_01';
+        let fpath4 = dddpath2 + '/destFile_second_01';
+        let ffpath1 = dddpath1 + '/srcFile_second_01';
+        let ffpath2 = dddpath1 + '/srcFile_second_02';
+        let ddddpath1 = dddpath1 + '/srcDir_second';
+        let ddddpath2 = dddpath2 + '/srcDir_first';
+        let fffpath1 = ddddpath1 + '/srcFile_third_01';
+        let fffpath2 = ddddpath1 + '/srcFile_third_02';
+        let fffpath3 = ddddpath2 + '/srcFile_second_01';
+        let fffpath4 = ddddpath2 + '/destFile_third_01';
+        fs.mkdirSync(dpath);
+        fs.mkdirSync(ddpath1);
+        fs.mkdirSync(ddpath2);
+        fs.mkdirSync(dddpath1);
+        fs.mkdirSync(dddpath2);
+        fs.mkdirSync(ddddpath1);
+        fs.mkdirSync(ddddpath2);
+        expect(await Utils.prepareFile(fpath1, await Utils.randomString(10))).assertTrue();
+        expect(await Utils.prepareFile(fpath2, await Utils.randomString(15))).assertTrue();
+        expect(await Utils.prepareFile(fpath3, await Utils.randomString(20))).assertTrue();
+        expect(await Utils.prepareFile(fpath4, await Utils.randomString(25))).assertTrue();
+        expect(await Utils.prepareFile(ffpath1, await Utils.randomString(30))).assertTrue();
+        expect(await Utils.prepareFile(ffpath2, await Utils.randomString(35))).assertTrue();
+        expect(await Utils.prepareFile(fffpath1, await Utils.randomString(40))).assertTrue();
+        expect(await Utils.prepareFile(fffpath2, await Utils.randomString(45))).assertTrue();
+        expect(await Utils.prepareFile(fffpath3, await Utils.randomString(50))).assertTrue();
+        expect(await Utils.prepareFile(fffpath4, await Utils.randomString(55))).assertTrue();
+        let alldir: Dir = {
+          baseDir: dpath,
+          srcDir: ddpath1,
+          destDir: ddpath2
+        }
+        resolve(alldir);
+      } catch (e: BusinessError) {
+        hilog.info(domain, tag, '%{public}s',
+          testNum + 'failed to readyFiles for ' + e.message + ', code: ' + e.code);
+        expect(false).assertTrue();
+        let alldir: Dir = {
+          baseDir: dpath,
+          srcDir: '',
+          destDir: ''
+        }
+        resolve(alldir);
       }
-      resolve(alldir);
-    } catch (e: BusinessError) {
-      hilog.info(domain, tag, '%{public}s',
-        testNum + 'failed to readyFiles for ' + e.message + ', code: ' + e.code);
-      expect(false).assertTrue();
-      let alldir: Dir = {
-        baseDir: dpath,
-        srcDir: '',
-        destDir: ''
-      }
-      resolve(alldir);
-    }
   })
 }
 
@@ -611,7 +611,7 @@ export default function fileIOMoveDir() {
       }
     });
 
-    /**
+     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIR_ASYNC_0100
      * @tc.name fileIO_test_moveDir_async_static_001
      * @tc.desc Test moveDir() interface.Callback.
@@ -643,19 +643,19 @@ export default function fileIOMoveDir() {
         let stat1 = fs.statSync(fpath1);
         let stat2 = fs.statSync(ffpath1);
         fs.moveDir(ddpath1, ddpath2, (err: BusinessError<void>|null): void=> {
-          if (err?.code != 0) {
-            hilog.info(domain, tag, '%{public}s', 'fileIO_test_moveDir_async_static_001 error for' + JSON.stringify(err));
-            expect(false).assertTrue();
-          }
-          expect(fs.accessSync(ddpath1)).assertFalse();
-          expect(fs.accessSync(ddpath2 + '/srcDir/srcFile_first_01')).assertTrue();
-          expect(fs.accessSync(ddpath2 + '/srcDir/srcDir_first/srcFile_second_01')).assertTrue();
-          let stat3 = fs.statSync(ddpath2 + '/srcDir/srcFile_first_01');
-          expect(stat1.size == stat3.size).assertTrue();
-          let stat4 = fs.statSync(ddpath2 + '/srcDir/srcDir_first/srcFile_second_01');
-          expect(stat2.size == stat4.size).assertTrue();
-          fs.rmdirSync(dpath);
-          done();
+            if (err?.code != 0) {
+              hilog.info(domain, tag, '%{public}s', 'fileIO_test_moveDir_async_static_001 error for' + JSON.stringify(err));
+              expect(false).assertTrue();
+            }
+            expect(fs.accessSync(ddpath1)).assertFalse();
+            expect(fs.accessSync(ddpath2 + '/srcDir/srcFile_first_01')).assertTrue();
+            expect(fs.accessSync(ddpath2 + '/srcDir/srcDir_first/srcFile_second_01')).assertTrue();
+            let stat3 = fs.statSync(ddpath2 + '/srcDir/srcFile_first_01');
+            expect(stat1.size == stat3.size).assertTrue();
+            let stat4 = fs.statSync(ddpath2 + '/srcDir/srcDir_first/srcFile_second_01');
+            expect(stat2.size == stat4.size).assertTrue();
+            fs.rmdirSync(dpath);
+            done();
         });
       } catch (e: BusinessError) {
         hilog.info(domain, tag, '%{public}s', 'fileIO_test_moveDir_async_static_001 has failed for' + JSON.stringify(e));
@@ -712,7 +712,7 @@ export default function fileIOMoveDir() {
       }
     });
 
-    /**
+     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIR_ASYNC_0300
      * @tc.name fileIO_test_moveDir_async_static_003
      * @tc.desc Test moveDir() interface.Callback.
@@ -1348,7 +1348,7 @@ export default function fileIOMoveDir() {
       }
     });
 
-    /**
+     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_2100
      * @tc.name fileIO_test_moveDir_async_static_021
      * @tc.desc Test moveFile() interface.Callback.
@@ -1402,7 +1402,7 @@ export default function fileIOMoveDir() {
       }
     });
 
-    /**
+     /**
      * @tc.number SUB_DF_FILEIO_MOVEDIRASYNC_2300
      * @tc.name fileIO_test_moveDir_async_static_023
      * @tc.desc Test moveFile() interface.Callback.
