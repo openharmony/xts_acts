@@ -59,3 +59,47 @@ class MobilePhone {
   public model: String;
   public weight: int;
 }
+
+class Animal {
+  constructor(name: string, value: boolean) {
+    this.name = name;
+    this.value = value;
+  }
+  public name: string;
+  public value: boolean;
+}
+
+function newAnimalObject() {
+  return new Animal('Cat', true);
+}
+
+class Test {
+  constructor(a: int, tag: string, animal: Animal) {
+    this.a = a;
+    this.tag = tag;
+    this.animal = animal;
+  }
+
+  checkValue(): boolean {
+    return this.a == 200 && this.tag == 'Pure P60' && this.animal.name == 'Cat' && this.animal.value == true;
+  }
+
+  setValue(a: int, tag: string, animal: Animal) {
+    this.a = a;
+    this.tag = tag;
+    this.animal = animal;
+  }
+
+  newTestObject(a: int, tag: string, animal: Animal): Test {
+    this.setValue(a, tag, animal);
+    return this;
+  }
+
+  private a: int;
+  private tag: string;
+  private animal: Animal;
+};
+
+function getNull(): null {
+  return null
+}

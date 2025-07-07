@@ -57,6 +57,13 @@
      }
      return "NO1";
    }
+
+   static funcA(a0: int, a1: int): string {
+     if (a0 == 5 && a1 == 6) {
+       return "INT5"
+     }
+     return "NO1";
+   }
  };
 
  class OperationsShort {

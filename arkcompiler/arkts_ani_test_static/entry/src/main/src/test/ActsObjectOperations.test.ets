@@ -186,5 +186,24 @@ export default function objectOperationsTest() {
         done();
         hilog.info(domain, tag, 'Object_New_A_0100 end');
       })
+
+    /*
+      * @tc.number    : Object_New_V_0100
+      * @tc.name      : Object_New_V_0100
+      * @tc.desc      : MediumTest
+      * @tc.size      : Function
+      * @tc.type      : Function test
+      * @tc.level     : Level 3
+      */
+    it("Object_New_V_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'Object_New_V_0100 start');
+        let cls = new Foo();
+        let result = cls.test_Object_New_V();
+        expect(result).assertTrue();
+        hilog.info(domain, tag, 'Object_New_V_0100 done');
+        done();
+        hilog.info(domain, tag, 'Object_New_V_0100 end');
+      })
   })
 }

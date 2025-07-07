@@ -25,6 +25,7 @@ export class Foo {
   native test_Reference_Equals(): boolean;
   native test_Array_New_Ref(): boolean;
   native test_Object_New_A(): boolean;
+  native test_Object_New_V(): boolean;
   native test_Class_GetStaticField_Boolean(): boolean;
   native test_Class_GetStaticField_Char(): boolean;
   native test_Class_GetStaticField_Byte(): boolean;
@@ -183,9 +184,6 @@ export class Foo {
   native test_Class_CallStaticMethod_Void(): boolean;
   native test_Class_CallStaticMethod_Void_A(): boolean;
   native test_Class_CallStaticMethod_Void_V(): boolean;
-  native test_DescribeError(): boolean;
-  native test_ThrowError(): boolean;
-  native test_GetUnhandledError(): boolean;
   native test_Abort(): boolean;
   native test_ResetError(): boolean;
   native test_WeakReference_Create(): boolean;
@@ -359,6 +357,25 @@ export class Foo {
   native test_Class_CallStaticMethod_Boolean(): boolean;
   native test_Class_CallStaticMethod_Boolean_A(): boolean;
   native test_Class_CallStaticMethod_Boolean_V(): boolean;
+
+  native test_ANI_CreateVMAndDestroyVM(): boolean;
+  native test_AttachCurrentThreadAndDetachCurrentThread(): boolean;
+
+  native test_Array_New_Set_Get(): boolean;
+  native test_Array_Push_Pop(): boolean;
+
+  native test_FixedArray_GetLength(): boolean;
+  native test_FixedArray_Boolean(): boolean;
+  native test_FixedArray_Byte(): boolean;
+  native test_FixedArray_Char(): boolean;
+  native test_FixedArray_Short(): boolean;
+  native test_FixedArray_Int(): boolean;
+  native test_FixedArray_Long(): boolean;
+  native test_FixedArray_Float(): boolean;
+  native test_FixedArray_Double(): boolean;
+  native test_FixedArray_Get_Ref(): boolean;
+  native test_FixedArray_New_Ref(): boolean;
+  native test_FixedArray_Set_Ref(): boolean;
 
   constructor() {
   }
