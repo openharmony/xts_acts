@@ -224,5 +224,43 @@ export default function ArrayOperationsTest() {
         done();
         hilog.info(domain, tag, 'test_array_CreateBuffer_0100 end');
       })
+
+    /*
+     * @tc.number    : test_Array_New_Set_Get_0100
+     * @tc.name      : test_Array_New_Set_Get_0100
+     * @tc.desc      : MediumTest
+     * @tc.size      : Function
+     * @tc.type      : Function test
+     * @tc.level     : Level 3
+     */
+    it("test_Array_New_Set_Get_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'test_Array_New_Set_Get_0100 start');
+        let cls = new Foo();
+        let result = cls.test_Array_New_Set_Get();
+        expect(result).assertTrue();
+        hilog.info(domain, tag, 'test_Array_New_Set_Get_0100 done');
+        done();
+        hilog.info(domain, tag, 'test_Array_New_Set_Get_0100 end');
+      })
+
+    /*
+     * @tc.number    : test_Array_Push_Pop_0100
+     * @tc.name      : test_Array_Push_Pop_0100
+     * @tc.desc      : MediumTest
+     * @tc.size      : Function
+     * @tc.type      : Function test
+     * @tc.level     : Level 3
+     */
+    it("test_Array_Push_Pop_0100", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
+      async (done: () => void): Promise<void> => {
+        hilog.info(domain, tag, 'test_Array_Push_Pop_0100 start');
+        let cls = new Foo();
+        let result = cls.test_Array_Push_Pop();
+        expect(result).assertTrue();
+        hilog.info(domain, tag, 'test_Array_Push_Pop_0100 done');
+        done();
+        hilog.info(domain, tag, 'test_Array_Push_Pop_0100 end');
+      })
   })
 }

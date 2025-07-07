@@ -202,4 +202,73 @@ ani_boolean test_array_CreateBuffer([[maybe_unused]] ani_env *env, [[maybe_unuse
     ASSERT_EQ(resultData[2U], 3U);
     return ANI_TRUE;
 }
+
+ani_int test_Array_New_Set_Get([[maybe_unused]] ani_env *env_, [[maybe_unused]] ani_object object)
+{
+    ani_class intClass = nullptr;
+    ani_method intUnbox = nullptr;
+    ani_method intCtor = nullptr;
+    env_->FindClass("Lstd/core/Int;", &intClass);
+    env_->Class_FindMethod(intClass, "<ctor>", "I:V", &intCtor);
+    env_->Class_FindMethod(intClass, "unboxed", ":I", &intUnbox);
+    ani_size arrSize = 5U;
+    ani_object boxedInt{};
+    ani_array array{};
+    ASSERT_EQ(env_->Array_New(arrSize, nullptr, &array), ANI_OK);
+    ani_ref val{};
+    for (ani_size it = 0; it < arrSize; ++it) {
+        env_->Object_New(intClass, intCtor, &boxedInt, it);
+        ASSERT_EQ(env_->Array_Set(array, it, boxedInt), ANI_OK);
+        ASSERT_EQ(env_->Array_Get(array, it, &val), ANI_OK);
+        ani_int unboxedInt = -1;
+        ASSERT_EQ(env_->Object_CallMethod_Int(reinterpret_cast<ani_object>(val), intUnbox, &unboxedInt), ANI_OK);
+        ASSERT_EQ(unboxedInt, it);
+    }
+
+    ani_object boxedInt2{};
+    ani_array arrayInt{};
+    ASSERT_EQ(env_->Array_New(arrSize, boxedInt, &arrayInt), ANI_OK);
+    for (ani_size it = 0; it < arrSize; ++it) {
+        env_->Object_New(intClass, intCtor, &boxedInt2, it);
+        ASSERT_EQ(env_->Array_Set(arrayInt, it, boxedInt2), ANI_OK);
+        ASSERT_EQ(env_->Array_Get(arrayInt, it, &val), ANI_OK);
+        ani_int unboxedInt = -1;
+        ASSERT_EQ(env_->Object_CallMethod_Int(reinterpret_cast<ani_object>(val), intUnbox, &unboxedInt), ANI_OK);
+        ASSERT_EQ(unboxedInt, it);
+    }
+    return ANI_TRUE;
+}
+
+ani_int test_Array_Push_Pop([[maybe_unused]] ani_env *env_, [[maybe_unused]] ani_object object)
+{
+    ani_class intClass = nullptr;
+    ani_method intUnbox = nullptr;
+    ani_method intCtor = nullptr;
+    env_->FindClass("Lstd/core/Int;", &intClass);
+    env_->Class_FindMethod(intClass, "<ctor>", "I:V", &intCtor);
+    env_->Class_FindMethod(intClass, "unboxed", ":I", &intUnbox);
+    ani_size arrSize = 5U;
+    ani_array array{};
+    ASSERT_EQ(env_->Array_New(0U, nullptr, &array), ANI_OK);
+
+    for (ani_size it = 0; it < arrSize; ++it) {
+        ani_object boxedInt {};
+        env_->Object_New(intClass, intCtor, &boxedInt, it);
+        ASSERT_EQ(env_->Array_Push(array, boxedInt), ANI_OK);
+    }
+    ani_size len = -1;
+    ASSERT_EQ(env_->Array_GetLength(array, &len), ANI_OK);
+    ASSERT_EQ(len, arrSize);
+
+    for (ani_int it = arrSize - 1; it >= 0; --it) {
+        ani_ref boxedInt {};
+        ASSERT_EQ(env_->Array_Pop(array, &boxedInt), ANI_OK);
+        ani_int unboxedInt = -1;
+        ASSERT_EQ(env_->Object_CallMethod_Int(reinterpret_cast<ani_object>(boxedInt), intUnbox, &unboxedInt), ANI_OK);
+        ASSERT_EQ(unboxedInt, it);
+    }
+    ASSERT_EQ(env_->Array_GetLength(array, &len), ANI_OK);
+    ASSERT_EQ(len, 0);
+    return ANI_TRUE;
+}
 #endif // ARKTS_ANI_TEST_ARRAYOPERATIONS_H

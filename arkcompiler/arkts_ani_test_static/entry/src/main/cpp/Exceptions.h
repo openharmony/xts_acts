@@ -30,4 +30,42 @@ ani_int test_ExistUnhandledError([[maybe_unused]] ani_env *env, [[maybe_unused]]
     ASSERT_EQ(hasError, ANI_FALSE);
     return ANI_TRUE;
 }
+
+ani_int GetFunctionFromModule(ani_env *env, ani_namespace *ns, ani_function *func, const char *functionName,
+                              const char *signature)
+{
+    ASSERT_NE(ns, nullptr);
+    ASSERT_NE(func, nullptr);
+
+    ASSERT_EQ(env->FindNamespace("Lentry/src/main/src/ets/Exception/testing;", ns), ANI_OK);
+    ASSERT_EQ(env->Namespace_FindFunction(*ns, functionName, signature, func), ANI_OK);
+
+    return ANI_TRUE;
+}
+
+ani_function GetThrowErrorFunction(ani_env *env)
+{
+    ani_namespace ns = nullptr;
+    ani_function func = nullptr;
+    GetFunctionFromModule(env, &ns, &func, "throwError", "I:I");
+    return func;
+}
+
+ani_int test_ResetError([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object)
+{
+    auto func = GetThrowErrorFunction(env);
+
+    ani_int errorResult = 0;
+    ani_boolean result = ANI_TRUE;
+    ASSERT_EQ(env->ExistUnhandledError(&result), ANI_OK);
+    ASSERT_EQ(result, ANI_FALSE);
+    ani_int tmpNum = 5;
+    ASSERT_EQ(env->Function_Call_Int(func, &errorResult, tmpNum), ANI_PENDING_ERROR);
+    ASSERT_EQ(env->ExistUnhandledError(&result), ANI_OK);
+    ASSERT_EQ(result, ANI_TRUE);
+    ASSERT_EQ(env->ResetError(), ANI_OK);
+    ASSERT_EQ(env->ExistUnhandledError(&result), ANI_OK);
+    ASSERT_EQ(result, ANI_FALSE);
+    return ANI_TRUE;
+}
 #endif //ARKTS_ANI_TEST_EXCEPTIONS_H
