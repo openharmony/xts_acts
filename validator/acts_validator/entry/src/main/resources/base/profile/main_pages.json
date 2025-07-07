@@ -10,6 +10,7 @@
     "pages/ArkUI/RotationGestureTest",
     "pages/ArkUI/SwipeGestureTest",
     "pages/ArkUI/TapGesture",
+    "pages/ArkUI/DraggingSizeChangeEffect",
     "pages/ArkUI/TouchMoveTest",
     "pages/ArkUI/bindSheetTest",
     "pages/ArkUI/CanvasLineWidth",
