@@ -19,7 +19,7 @@
     "vendor": "huawei",
     "versionCode": 1000000,
     "versionName": "1.0.0",
-    "icon": "$media:icon",
+    "icon": "$media:app_icon",
     "label": "$string:app_name"
   }
 }

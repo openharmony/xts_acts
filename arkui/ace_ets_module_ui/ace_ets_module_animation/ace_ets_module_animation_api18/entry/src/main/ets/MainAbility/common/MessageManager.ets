@@ -31,7 +31,7 @@ export class MessageManager {
     this.callbacks.set(type, callback)
   }
 
-  notify(message: ESObject, type?: string) {
+  notify(message: any, type?: string) {
     if (type == undefined) {
       this.callback(message)
       return

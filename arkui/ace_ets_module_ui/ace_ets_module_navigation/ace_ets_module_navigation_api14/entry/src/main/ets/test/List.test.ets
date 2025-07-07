@@ -12,13 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import SafeAreaPadding from './BarStyleTest/SafeAreaPadding.test'
-import MultiNavigationTest from './MultiNavigation/MultiNavigationTest.test'
 import NavigationEnableDragBar from './EnableDragBarTest/NavigationEnableDragBar.test'
 import NavigationBindToScrollable from './BindToScrollable/NavigationBindToScrollable.test'
 import NavigationBindToNestedScrollable from './BindToScrollable/NavigationBindToNestedScrollable.test'
 import Recoverable from './Navigation/Recoverable.test'
+import MultiNavigationTest from './MultiNavigation/MultiNavigationTest.test'
 import SystemTransition from './Navigation/SystemTransition.test'
 import RouterRecoverable from './Navigation/RouterRecoverable.test'
 import RouterRecoverable2 from './Navigation/RouterRecoverable2.test'
@@ -27,11 +26,11 @@ import MultiEntry from './MultiNavigation/MultiEntry.test'
 
 export default function testsuite() {
   SafeAreaPadding();
-  MultiNavigationTest();
   NavigationEnableDragBar();
   NavigationBindToScrollable();
   NavigationBindToNestedScrollable();
   Recoverable();
+  MultiNavigationTest();
   SystemTransition();
   RouterRecoverable();
   SystemTransition2();
