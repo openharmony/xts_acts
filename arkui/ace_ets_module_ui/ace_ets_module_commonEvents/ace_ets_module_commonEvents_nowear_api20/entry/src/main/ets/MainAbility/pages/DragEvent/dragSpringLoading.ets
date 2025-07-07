@@ -62,6 +62,7 @@ struct dragSpringLoading {
           Image($r('app.media.icon'))
             .id('image1')
             .width("25%")
+            .height("50%")
             .draggable(true)
             .onDragStart((event: DragEvent) => {
               console.log("Drag Start Image")
