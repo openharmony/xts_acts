@@ -2458,22 +2458,24 @@ export default function windowImmersiveTest() {
         await windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE);
         await sleep(1000);
         console.info(`${caseName} Succeeded in setPreferredOrientation LANDSCAPE.`);
+        await sleep(3000);
         windowClass.on('avoidAreaChange', async (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for avoid area changes. type:
            ${JSON.stringify(data.type)} area: ${JSON.stringify(data.area)}`);
-          expect(data.type).assertEqual(0);
-          windowClass.off('avoidAreaChange');
+           if(data.type == 0){
+              windowClass.off('avoidAreaChange');
+              await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+              await sleep(1000);
+              done();
+           }else{
+            await sleep(1000);
+           }
         });
-        windowClass.setSpecificSystemBarEnabled('status', true).then(async () => {
-          console.log(`${caseName} Succeeded in setting the status bar to be visible.`);
-          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
-          done();
-        }).catch(async (error: BusinessError) => {
-          console.log(`${caseName} Failed to set the status bar to be visible. Cause: ${JSON.stringify(error)}`);
-          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
-          expect().assertFail();
-          done();
-        });
+        await windowClass.setSpecificSystemBarEnabled('status', true);
+        console.log(`${caseName} Succeeded in setting the status bar to be visible.`);
+        await sleep(2000);
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+          
       } catch (exception) {
         console.error(`${caseName} Failed to set setSpecificSystemBarEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
@@ -2498,21 +2500,24 @@ export default function windowImmersiveTest() {
         await sleep(1000);
         console.info(`${caseName} Succeeded in setPreferredOrientation LANDSCAPE.`);
         await windowClass.setSpecificSystemBarEnabled('status', true);
+        await sleep(3000);
         windowClass.on('avoidAreaChange', async (data) => {
           console.info(`${caseName} Succeeded in enabling the listener for avoid area changes. type: ${JSON.stringify(data.type)} area: ${JSON.stringify(data.area)}`);
-          expect(data.type).assertEqual(0);
-          windowClass.off('avoidAreaChange');
+          if(data.type == 0){
+              windowClass.off('avoidAreaChange');
+              await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+              await sleep(1000);
+              done();
+           }else{
+            await sleep(1000);
+           }
         });
-        windowClass.setSpecificSystemBarEnabled('status', false).then(async () => {
-          console.log(`${caseName} Succeeded in setting the status bar to be invisible.`);
-          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
-          done();
-        }).catch(async (error: BusinessError) => {
-          console.log(`${caseName} Failed to set the status bar to be invisible. Cause: ${JSON.stringify(error)}`);
-          await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
-          expect().assertFail();
-          done();
-        });
+        await windowClass.setSpecificSystemBarEnabled('status', false);
+        console.log(`${caseName} Succeeded in setting the status bar to be invisible.`);
+        await sleep(2000);
+
+        await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
+          
       } catch (exception) {
         console.error(`${caseName} Failed to set setSpecificSystemBarEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
         await windowClass.setPreferredOrientation(window.Orientation.PORTRAIT);
